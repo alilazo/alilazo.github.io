@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Amado Lazo - Portfolio</title>
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<link rel="stylesheet" type="text/css" href="stylesheet.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script type="text/javascript" src="javascript.js"></script>
+</head>
+<body>
+	<!--Header-->
+	<div class="w3-top w3-black">
+		<div class="w3-bar w3-card">
+			<a href="#" class="w3-bar-item w3-button w3-padding-large">HOME</a>
+			<a href="#about" class="w3-bar-item w3-button w3-padding-large">ABOUT ME</a>
+			<a href="#projects" class="w3-bar-item w3-button w3-padding-large">PROJECTS</a>
+			<a href="#resume" class="w3-bar-item w3-button w3-padding-large">RESUME</a>
+			<a href="#contact" class="w3-bar-item w3-button w3-padding-large">CONTACT</a>
+		</div>
+	</div>
+	<!--Make nav bar for phones-->
+	<!--Body-->
+	<div class="w3-content" style="max-width: 2000px; margin-top: 46px">
+		<div class="w3-display-container w3-center">
+			<img class="w3-opacity-min w3-grayscale-min" src="./Pictures/backg.jpg" style="width: 100%">
+			<div class="w3-display-middle w3-container w3-text-black w3-center w3-animate-opacity">
+				<h1 class="w3-border-bottom w3-padding w3-text-white">Amado Lazo</h1>
+				<h1 class="w3-text-white">Software Engineer</h1>
+			</div>
+		</div>
+
+		<!--About Me-->
+		<div class="w3-row w3-content w3-padding-64 w3-border-bottom"  id="about"> <!--style="max-width: 800px"-->
+			<div class="w3-col m6 w3-image w3-opacity-min" style="max-width: 300px">
+				<img src="./Pictures/self.PNG" style="width: 100%;">
+			</div>
+			<div class="w3-col m6 w3-padding-large">
+				<h2 class="w3-wide w3-center w3-padding-large w3-border-bottom">ABOUT ME</h2>
+				<p class="w3-large w3-justify">Programming to me has always been important in my life. I use my everyday knowledge when I program especially to grow my problem solving skills to make my software run faster. I'm 19 years old and currently a Junior Computer Science major at TAMUCC.</p>
+			</div>
+			<!--<p class="w3-justify">I like to program</p>-->
+		</div>
+
+		<!--PROJECTS-->
+		<div class="w3-container w3-content w3-padding-64 w3-border-bottom" id="projects">
+			<h2 class="w3-wide w3-center">PROJECTS</h2>
+			
+			<div class="w3-col m6" style="max-width: 450px">
+				<h4 class="w3-center">Movie Theatre Ticketing System</h4>
+				<img class="w3-hover-opacity" src="./Pictures/Projects/Ticketing/1.png" style="width: 100%; cursor: pointer;">
+			</div>
+
+			<div class="w3-col m7 w3-right-align" style="max-width: 450px">
+				<h4 class="w3-center" style="margin-left: 40%;">GasJunkie</h4>
+				<img class="w3-hover-opacity" src="./Pictures/Projects/GasJunkie/2.jpg" style="width: 60.5%; cursor: pointer;">
+			</div>
+		</div>
+
+		<!--RESUME-->
+		<div class="w3-container w3-content w3-padding-64 w3-border-bottom"id="resume">
+			<h2 class="w3-wide w3-center">RESUME</h2>
+			<div class="w3-center">
+				<img class="w3-card w3-hover-opacity" src="./Pictures/resume.PNG" style="cursor: pointer;" onclick="document.getElementById('modal01').style.display='block'">
+				<div id="modal01" class="w3-modal" onclick="this.style.display='none'">
+					<span class="w3-button w3-hover-red w3-xlarge w3-display-topright">&times;</span>
+					<div class="w3-modal-content w3-animate-zoom">
+						<iframe src="https://docs.google.com/document/d/e/2PACX-1vT1CrwDGpXrApBrXtijzoJ1b1ZDXIN7T5I67Un_m6E5OAMCFXvVzLnPbaW1pU8hhw/pub?embedded=true" style="width: 100%; height: 600px"></iframe>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!--CONTACT-->
+		<div class="w3-container w3-content w3-padding-64 w3-border-bottom"id="contact">
+			<h2 class="w3-wide w3-center">CONTACT</h2>
+			<p class="w3-opacity w3-center">Need any questions answered? Fill in the form below!</p>
+			<p class="w3-opacity w3-center">Or contact me via email: lazoali98@gmail.com</p>
+			<form action="/action_page.php" target="_blank">
+          		<div class="w3-row-padding" style="margin:0 -16px 8px -16px">
+            		<div class="w3-half">
+              			<input class="w3-input w3-border" type="text" placeholder="Name" required name="Name">
+            		</div>
+	            	<div class="w3-half">
+	              		<input class="w3-input w3-border" type="text" placeholder="Email" required name="Email">
+	            	</div>
+          		</div>
+          		<input class="w3-input w3-border" type="text" placeholder="Message" required name="Message">
+          		<div class="w3-center">
+          			<button class="w3-button w3-black w3-section w3-center" type="submit">SEND</button>
+          		</div>
+        	</form>
+		</div>
+		<!--https://www.w3schools.com/w3css/tryit.asp?filename=tryw3css_templates_gourmet_catering&stacked=h-->
+	</div>
+
+	<!--Footer-->
+	<footer class="w3-container w3-center">
+		<a href="#" class="fa fa-github"></a>
+		<a href="#" class="fa fa-google"></a>
+		<p>&#169; 2020 Amado Lazo</p>
+	</footer>
+</body>
+</html>
