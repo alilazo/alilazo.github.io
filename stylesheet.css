@@ -26,6 +26,11 @@
   color: white;
 }
 
+.fa-handshake-o {
+  background: #3498db;
+  color: white;
+}
+
 .mySlides {
 	display: none;
 }
