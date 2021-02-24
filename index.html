@@ -6,17 +6,18 @@
 	<link rel="stylesheet" type="text/css" href="stylesheet.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<script type="text/javascript" src="javascript.js"></script>
+	<script src="./jquery-3.5.1.min.js"></script>
 </head>
 <body>
 	<!--Header-->
 	<div class="w3-top w3-black">
-		<div class="w3-bar w3-card">
+		<div class="w3-bar w3-card" id="navButton">
 			<a href="#" class="w3-bar-item w3-button w3-padding-large">HOME</a>
-			<a href="#about" class="w3-bar-item w3-button w3-padding-large">ABOUT ME</a>
+			<a href="#about"  class="w3-bar-item w3-button w3-padding-large">ABOUT ME</a>
 			<a href="./projects.html" class="w3-bar-item w3-button w3-padding-large">PROJECTS</a>
 			<a href="#resume" class="w3-bar-item w3-button w3-padding-large">RESUME</a>
-			<a href="#contact" class="w3-bar-item w3-button w3-padding-large">CONTACT</a>
-			<a href="./artifacts.html" class="w3-bar-item w3-button w3-padding-large w3-red">Experiential Artifact</a>
+			<a href="#contact"class="w3-bar-item w3-button w3-padding-large">CONTACT</a>
+			<a href="./artifacts.html"class="w3-bar-item w3-button w3-padding-large w3-red">Experiential Artifact</a>
 		</div>
 	</div>
 	<!--Make nav bar for phones-->
@@ -41,21 +42,6 @@
 			</div>
 			<!--<p class="w3-justify">I like to program</p>-->
 		</div>
-
-		<!--PROJECTS
-		<div class="w3-container w3-content w3-padding-64 w3-border-bottom" id="projects">
-			<h2 class="w3-wide w3-center">PROJECTS</h2>
-			
-			<div class="w3-col m6" style="max-width: 450px">
-				<h4 class="w3-center">Movie Theatre Ticketing System</h4>
-				<img class="w3-hover-opacity" src="./Pictures/Projects/Ticketing/1.png" style="width: 100%; cursor: pointer;">
-			</div>
-
-			<div class="w3-col m7 w3-right-align" style="max-width: 450px">
-				<h4 class="w3-center" style="margin-left: 40%;">GasJunkie</h4>
-				<img class="w3-hover-opacity" src="./Pictures/Projects/GasJunkie/2.jpg" style="width: 60.5%; cursor: pointer;">
-			</div>
-		</div>-->
 
 		<!--RESUME-->
 		<div class="w3-container w3-content w3-padding-64 w3-border-bottom"id="resume">
@@ -100,5 +86,76 @@
 		<a href="https://tamucc.joinhandshake.com/users/20542267" class="fa fa-handshake-o"></a>
 		<p>&#169; 2020 Amado Lazo</p>
 	</footer>
+
+	<div class="loader-wrapper">
+		<span class="loader">
+			<span class="loader-inner">Amado Lazo</span>
+		</span>
+	</div>
+
+	<!--JQUARY SCRIPT FOR LOADING SCREEN-->
+	<script>
+		//keeps track if you've been on the page
+		var firstTime = 0;
+
+		$("#navButton a").click(function(){
+			firstTime = 1;
+		});
+
+		$('body').addClass('stop-scrolling')
+
+		var keys = {37: 1, 38: 1, 39: 1, 40: 1};
+
+		function preventDefault(e) {
+		e.preventDefault();
+		}
+
+		function preventDefaultForScrollKeys(e) {
+			if (keys[e.keyCode]) {
+				preventDefault(e);
+				return false;
+			}
+		}
+
+		// modern Chrome requires { passive: false } when adding event
+		var supportsPassive = false;
+		try {
+			window.addEventListener("test", null, Object.defineProperty({}, 'passive', {
+				get: function () { supportsPassive = true; } 
+			}));
+		} catch(e) {}
+
+		var wheelOpt = supportsPassive ? { passive: false } : false;
+		var wheelEvent = 'onwheel' in document.createElement('div') ? 'wheel' : 'mousewheel';
+
+		//Disables scroll function
+		function disableScroll() {
+			window.addEventListener('DOMMouseScroll', preventDefault, false); // older FF
+			window.addEventListener(wheelEvent, preventDefault, wheelOpt); // modern desktop
+			window.addEventListener('touchmove', preventDefault, wheelOpt); // mobile
+			window.addEventListener('keydown', preventDefaultForScrollKeys, false);
+		}
+
+		disableScroll();
+
+		//Enables scroll function 
+		function enableScroll() {
+			window.removeEventListener('DOMMouseScroll', preventDefault, false);
+			window.removeEventListener(wheelEvent, preventDefault, wheelOpt); 
+			window.removeEventListener('touchmove', preventDefault, wheelOpt);
+			window.removeEventListener('keydown', preventDefaultForScrollKeys, false);
+		}
+
+		if(firstTime === 0){
+			$(document).ready(function(){
+				function fadeoutSlow(){
+					$(".loader-wrapper").fadeOut("slow");
+					enableScroll();
+					$('body').removeClass('stop-scrolling')
+				}
+				window.setTimeout(fadeoutSlow, 2000);
+			});
+		}
+    </script>
 </body>
 </html>
