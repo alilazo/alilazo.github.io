@@ -1,3 +1,7 @@
+body{
+  background: white;
+}
+
 .imgBlur {
   -webkit-filter: blur(3px); /* Safari 6.0 - 9.0 */
   filter: blur(3px);
@@ -34,3 +38,81 @@
 .mySlides {
 	display: none;
 }
+
+.backgroundShadow{
+  -webkit-filter: drop-shadow( -2px 2px 2px rgb(95, 95, 95) );
+  filter: drop-shadow( -2px 2px 2px rgb(95, 95, 95) );
+}
+
+#whiteText{
+  color: #f5f6fa;
+}
+
+#projectMovieTheatre{
+  width: 450px; 
+  padding-left: 50px; 
+  padding-right: 50px; 
+  background-color: #2f3640;
+  position: relative;
+  left: -30px;
+  bottom: -200px;
+}
+
+#projectGasJunkie{
+  width: 450px; 
+  padding-left: 50px; 
+  padding-right: 50px; 
+  background-color: #2f3640;
+  position: relative;
+  right: 230px;
+  bottom: -200px;
+}
+
+#projectNumberGuess{
+  width: 450px; 
+  padding-left: 50px; 
+  padding-right: 50px; 
+  background-color: #2f3640;
+  position: relative;
+  left: -170px;
+  bottom: -200px;
+}
+/* This is a single-line comment 
+.column div {
+	position: relative;
+  left: -40px;
+}
+
+.column div span {
+	position: absolute;
+	bottom: -20px;
+	z-index: -1;
+	display: block;
+	width: 300px;
+	color: #2f3640;
+	font-size: 18px;
+	text-decoration: none;
+	text-align: center;
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+	opacity: 0;
+}
+figure {
+	background: #fff;
+	overflow: hidden;
+}
+
+figure:hover+span {
+	bottom: -36px;
+	opacity: 1;
+}
+
+<div class="column">
+  <div>
+    <figure><img src="./Pictures/Projects/Ticketing/1.png" style="width: 100%;"></figure>
+    <span>Hover</span>
+  </div>
+</div>
+
+*/
+

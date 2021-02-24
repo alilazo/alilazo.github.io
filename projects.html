@@ -11,12 +11,12 @@
 	<!--Header-->
 	<div class="w3-top w3-black">
 		<div class="w3-bar w3-card">
-			<a href="#" class="w3-bar-item w3-button w3-padding-large">HOME</a>
-			<a href="#about" class="w3-bar-item w3-button w3-padding-large">ABOUT ME</a>
-			<a href="#projects" class="w3-bar-item w3-button w3-padding-large">PROJECTS</a>
-			<a href="#resume" class="w3-bar-item w3-button w3-padding-large">RESUME</a>
-			<a href="#contact" class="w3-bar-item w3-button w3-padding-large">CONTACT</a>
-			<a href="#reflective" class="w3-bar-item w3-button w3-padding-large w3-red">REFLECTIVE OVERVIEW</a>
+			<a href="./index.html" class="w3-bar-item w3-button w3-padding-large">HOME</a>
+			<a href="./index.html#about" class="w3-bar-item w3-button w3-padding-large">ABOUT ME</a>
+			<a href="./projects.html" class="w3-bar-item w3-button w3-padding-large w3-red">PROJECTS</a>
+			<a href="./index.html#resume" class="w3-bar-item w3-button w3-padding-large">RESUME</a>
+			<a href="./index.html#contact" class="w3-bar-item w3-button w3-padding-large">CONTACT</a>
+			<a href="./artifacts.html" class="w3-bar-item w3-button w3-padding-large">REFLECTIVE OVERVIEW</a>
 		</div>
 	</div>
 	<!--Make nav bar for phones-->
@@ -24,16 +24,48 @@
 	<div class="w3-content" style="max-width: 2000px; margin-top: 46px">
 		<!--PROJECTS-->
 		<div class="w3-container w3-content w3-padding-64 w3-border-bottom" id="projects">
-			<h2 class="w3-wide w3-center">PROJECTS</h2>
+			<h2 class="w3-wide w3-center w3-border-bottom">PROJECTS</h2>
 			
-			<div class="w3-col m6" style="max-width: 450px">
-				<h4 class="w3-center">Movie Theatre Ticketing System</h4>
-				<img class="w3-hover-opacity" src="./Pictures/Projects/Ticketing/1.png" style="width: 100%; cursor: pointer;">
+			<div class="w3-row">
+				<div class="w3-col m6" style="max-width: 450px; padding-top: 50px; position: relative;">
+					<h4 class="w3-center">Movie Theatre Ticketing System</h4>
+					<a href="sdsd">
+						<img class="w3-hover-opacity backgroundShadow" src="./Pictures/Projects/Ticketing/1.png" style="width: 100%;">
+					</a>
+				</div>
+				<div class="w3-center w3-round w3-col m6" id="projectMovieTheatre">
+					<p id="whiteText">Movie theatre ticketing system made in Java and provides a nice looking UI that is reactive to touch and by mouse.</p>
+				</div>
+				<img class="w3-col m6 w3-opacity" src="./Pictures/ProgrammingIcons/java-coffee-cup-logo.png" style="position: relative; width: 4%; height: auto; right: 70px; top: 305px;">
 			</div>
 
-			<div class="w3-col m7 w3-right-align" style="max-width: 450px">
-				<h4 class="w3-center" style="margin-left: 40%;">GasJunkie</h4>
-				<img class="w3-hover-opacity" src="./Pictures/Projects/GasJunkie/2.jpg" style="width: 60.5%; cursor: pointer;">
+			<div class="w3-row">
+				<div class="w3-col m6" style="max-width: 450px; padding-top: 50px; position: relative; left: 650px;">
+					<h4 class="w3-center" style="margin-left: -125px;">GasJunkie</h4>
+					<a href="https://github.com/alilazo/GasJunkie">
+					<img class="w3-hover-opacity backgroundShadow" src="./Pictures/Projects/GasJunkie/2.jpg" style="width: 70%; cursor: pointer;"> <!---->
+					</a>
+				</div>
+				<div class="w3-center w3-round w3-col m6" id="projectGasJunkie">
+					<p id="whiteText">Android application that gets users current location VIA google maps api and maps out all the gas stations near a given distance (miles).</p>
+				</div>
+				<img class="w3-col m6 w3-opacity" src="./Pictures/ProgrammingIcons/java-coffee-cup-logo.png" style="position: relative; width: 4%; height: auto; right: 680px; top: 325px;">
+				<img class="w3-col m6 w3-opacity" src="./Pictures/ProgrammingIcons/xml.png" style="position: relative; width: 3%; height: auto; right: 625px; top: 295px;">
+			</div>
+
+			<div class="w3-row">
+				<div class="w3-col m6" style="max-width: 600px; padding-top: 50px; position: relative">
+					<h4 class="w3-center" style="margin-left: -140px;">Number Guessing Game</h4>
+					<a href="https://github.com/alilazo/number-guesser">
+					<img class="w3-hover-opacity backgroundShadow" src="./Pictures/Projects/Number-Guesser/numberGuesser.PNG" style="width: 70%; cursor: pointer;">
+					</a>
+				</div>
+				<div class="w3-center w3-round w3-col m6" id="projectNumberGuess">
+					<p id="whiteText">A fun number guessing game made in HTML, CSS, and JAVASCRIPT, who will win, you or the computer?</p>
+				</div>
+				<img class="w3-col m6 w3-opacity" src="./Pictures/ProgrammingIcons/javascript-logo.png" style="position: relative; width: 3%; height: auto; left: 250px; top: 210px;">
+				<img class="w3-col m7 w3-opacity" src="./Pictures/ProgrammingIcons/html.png" style="position: relative; width: 3%; height: auto; left: 175px; top: 210px;">
+				<img class="w3-col m8 w3-opacity" src="./Pictures/ProgrammingIcons/css.png" style="position: relative; width: 3%; height: auto; left: 100px; top: 210px;">
 			</div>
 		</div>
 		<!--https://www.w3schools.com/w3css/tryit.asp?filename=tryw3css_templates_gourmet_catering&stacked=h-->
@@ -41,9 +73,8 @@
 
 	<!--Footer-->
 	<footer class="w3-container w3-center">
-		<a href="#" class="fa fa-github"></a>
-		<a href="#" class="fa fa-google"></a>
-		<a href="#" class="fa fa-handshake-o"></a>
+		<a href="https://github.com/alilazo" class="fa fa-github"></a>
+		<a href="https://tamucc.joinhandshake.com/users/20542267" class="fa fa-handshake-o"></a>
 		<p>&#169; 2020 Amado Lazo</p>
 	</footer>
 </body>
