@@ -1,6 +1,31 @@
 body{
   background: white;
 }
+/* h1 h2 p are all view port adjusted */
+h1 {
+  font-size: 2.5vw;
+}
+
+h2{
+  font-size: 3.0vh;
+}
+
+p {
+  font-size: 2vmin;
+}
+
+#resumePic {
+  cursor: pointer; 
+  width: auto; 
+  max-width: 100%; 
+  height: auto;
+}
+
+#mainBackgroundPic{
+  width: auto;
+  max-width: 100%;
+  height: auto;
+}
 
 .imgBlur {
   -webkit-filter: blur(3px); /* Safari 6.0 - 9.0 */
