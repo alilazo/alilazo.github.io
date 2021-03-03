@@ -10,6 +10,10 @@ h2{
   font-size: 3.0vh;
 }
 
+h4 {
+  font-size: 2.3vh;
+}
+
 p {
   font-size: 2vmin;
 }
@@ -71,13 +75,19 @@ p {
 
 /* Hide scrollbar for Chrome, Safari and Opera */
 .stop-scrolling::-webkit-scrollbar {
-  display: none;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */  
+  display: none;  
+  overflow-y: hidden; /* Hide vertical scrollbar */
+  overflow-x: hidden; /* Hide horizontal scrollbar */
 }
 
 /* Hide scrollbar for IE, Edge and Firefox */
 .stop-scrolling {
   -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  scrollbar-width: none;  /* Firefox */  
+  overflow-y: hidden; /* Hide vertical scrollbar */
+  overflow-x: hidden; /* Hide horizontal scrollbar */
 }
 
 .enable-scrolling::-webkit-scrollbar {
@@ -158,71 +168,83 @@ p {
   color: #f5f6fa;
 }
 
-#projectMovieTheatre{
-  width: 450px; 
-  padding-left: 50px; 
-  padding-right: 50px; 
-  background-color: #2f3640;
+
+.project{
+  display: inline-block;
   position: relative;
-  left: -30px;
-  bottom: -200px;
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+  border: 1px solid black;
+  border-radius: 50%;
+  box-shadow: 5px 3px 5px #747d8c;
+  cursor: pointer;
 }
 
-#projectGasJunkie{
-  width: 450px; 
-  padding-left: 50px; 
-  padding-right: 50px; 
-  background-color: #2f3640;
+.project:hover{
+  opacity: 0.6;
+  box-shadow: 5px 3px 5px #444444;
+  transition: .3s ease;
+}
+
+.project img{
   position: relative;
-  right: 230px;
-  bottom: -200px;
+  width: auto;
+  height: 120%;
 }
 
-#projectNumberGuess{
-  width: 450px; 
-  padding-left: 50px; 
-  padding-right: 50px; 
-  background-color: #2f3640;
+.project .quotePic{
+  width: auto;
+  height: 100%;
+  transform: translateX(-25%);
+}
+
+.projectArea{
   position: relative;
-  left: -170px;
-  bottom: -200px;
-}
-/* This is a single-line comment 
-.column div {
-	position: relative;
-  left: -40px;
+  margin: 1em auto;
+  width: 50%;
+  padding: 10px;
 }
 
-.column div span {
-	position: absolute;
-	bottom: -20px;
-	z-index: -1;
-	display: block;
-	width: 300px;
-	color: #2f3640;
-	font-size: 18px;
-	text-decoration: none;
-	text-align: center;
-	-webkit-transition: .3s ease-in-out;
-	transition: .3s ease-in-out;
-	opacity: 0;
-}
-figure {
-	background: #fff;
-	overflow: hidden;
+.container {
+  padding: 2px 16px;
 }
 
-figure:hover+span {
-	bottom: -36px;
-	opacity: 1;
+/* Float four columns side by side */
+.column {
+  float: left;
+  width: auto;
+  margin: 1em 1em;
 }
 
-<div class="column">
-  <div>
-    <figure><img src="./Pictures/Projects/Ticketing/1.png" style="width: 100%;"></figure>
-    <span>Hover</span>
-  </div>
-</div>
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  margin: 1em auto;
+  clear: both;
+}
 
-*/
+@media screen and (max-width: 600px) {
+  .column {
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 1em auto;
+  }
+}
 
+.bottomCardFooter{
+  margin-bottom: 5px;
+}
+
+.githubProjectPic{
+  max-width: 13%;
+  height: auto;
+}
+
+.githubProjectPic:hover{
+  opacity: 0.5;
+  cursor: pointer;
+}
