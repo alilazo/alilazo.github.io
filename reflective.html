@@ -36,8 +36,39 @@
 	<div class="w3-container w3-border-bottom">
 		<h1 class="w3-center w3-wide w3-border-bottom w3-padding" style="margin-top: 50px;">Reflective Overview</h1>
         <div class="w3-content">
-            <p>fjdslkfjskldfjklsjf</p>
-        </div>
+            <p>When starting our team coding project in the class UNIV-1102-021 First year seminar II, we stumbled upon a bunch of problems with our code. It did not work like we wanted it to so we then seperated some parts throughout the group. I am currently the back-end programmer
+				 who programs classes and optimizes file codes. When I was developing the file reading algorithm for the game, I had a bunch of ideas floating around my head. I had already made a seperate folder that stored 3 other files that had a row of cards in each of them.
+				  My idea was to get the 3 files and somehow read eachline without modifying anything. <br><br>
+				  There are an unknown number of cards that can be added to the file so it would have to work with an <i><b>N</b></i> amount of lines in each file. The first thing I though about was to get each file and iterate each line using an uninitialized array and then thought it was a waste of computation power because of all the unfilled data it is goin g to hold.
+				   I then had to come up with another idea which <i><b>Vectors</b></i> popped into my head because we have talked about them in our <i><b>COSC-1436 class</b></i> which is shown here. <br><br>
+			</p>
+			<div class="w3-center">
+				<img src="./Pictures/artifacts/lecture.PNG" width="600px" height="600px" class="w3-image">
+			</div>
+			<p><br>
+				I then went and implemented vectors into our project which helped manage the file data and made more room to configure things. It also freed up a bunch of computational power and made it more simple to read. <br>
+			<br></p>
+			<div class="w3-center">
+				<img src="./Pictures/artifacts/mainVectorPic.png" width="600px" height="600px" class="w3-image">
+			</div>
+			<p><br>
+				I then made a readAttackFile function that has a string vector and string filename as perameters. This function is to read any file and put each line into a vector array for future reference. I then used the push_back feature in the vector class to store the file line string which we have learned in class.
+			<br></p>
+			<div class="w3-center">
+				<img src="./Pictures/artifacts/lecture2.PNG" width="600px" height="600px" class="w3-image">
+				<img src="./Pictures/artifacts/mainVectorPic2.png" width="800px" height="800px" class="w3-image">
+			</div>
+			<p><br>
+				By using the & symbol we can directly access any created vector array and modify the data inside it. This is what we want because vectors store an unknown amount of space but is only configured to how many arrays you are passing as seen in the picture below.
+			<div class="w3-center">
+				<img src="./Pictures/artifacts/lecture3.PNG" width="600px" height="600px" class="w3-image">
+				<img src="./Pictures/artifacts/mainVectorPic3.png" width="600px" height="600px" class="w3-image">
+			</div>
+			<br></p>
+			<p><br>
+				By using vectors we can see a significant of free space that is not junk data like we would have if we were to use the simple string array. Of course there are problems that require simple things like creating an array instead of a vector but in this case we had to create a vector because of the unknown amount of data we have to deal with and store.
+			<br></p>
+		</div>
 		<!--https://www.w3schools.com/w3css/tryit.asp?filename=tryw3css_templates_gourmet_catering&stacked=h-->
 	</div>
 	
