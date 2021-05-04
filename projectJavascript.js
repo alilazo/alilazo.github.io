@@ -2,6 +2,7 @@ console.log("Project Javascript");
 const goToHandshake = () => open("https://tamucc.joinhandshake.com/users/20542267");
 const goToInspirationalQuote = () => open("https://alilazo.github.io/Inspiration-Quotes/");
 const goToNumberGuesser = () => open("https://alilazo.github.io/number-guesser/index.html");
+const goToTechBreak = () => open("https://github.com/alilazo/Tech-Break-Game");
 const openGitHub = (url) => open(url);
 
 const openModal = (name) => document.getElementById(name).style.display='block';
