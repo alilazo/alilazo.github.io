@@ -1,0 +1,119 @@
+body {
+    background-color: black;
+    color: #ffffff;
+    padding-top: 0px;
+}
+
+.navig {
+    display: none;
+}
+
+.headerClass {
+    margin-bottom: 2em;
+}
+
+.backgroundHeaderImage{
+    position: absolute;
+    height: auto;
+    width: 100%;
+}
+
+.headerTitle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.headerTitleText {
+    color: white;
+    font-size: 100px;
+    transform: translateY(150px);
+    opacity: 0;
+    transition: 1.5s all ease;
+}
+.headerTitleText.active {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.subHeaderText {
+    color: #ffffff;
+    opacity: 0;
+    transition: 1s all ease;
+}
+
+.subHeaderText.active {
+    opacity: 1;
+}
+
+
+.headerBlock {
+    margin: 0;
+    display: block;
+    height: 100vh;
+    width: 100%;
+    background-color: #000000;
+}
+
+.fadeImg {
+    position: absolute;
+    max-width: 35%;
+    left: 30px;
+}
+
+/*Project section CSS*/
+.projectImage {
+    position: relative;
+    width: auto;
+    height: 17%;
+}
+
+.projectBtn {
+    position: absolute;
+    bottom: 10px;
+}
+
+.projectBtnRight {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+
+/*Load More Button*/
+.loadMoreBtn.hide {
+    display: none;
+}
+
+/*Reveal animation when scrolled*/
+.reveal{
+    position: relative;
+    transform: translateY(150px);
+    opacity: 0;
+    transition: 2s all ease;
+}
+
+.reveal.active{
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/*Reveal animation left to right*/
+.revealLR{
+    transform: translateX(150px);
+    opacity: 0;
+    transition: 1s all ease;
+}
+
+.revealLR.active{
+    transform: translateX(0);
+    opacity: 1;
+}
+
+/*Navigation bar autohide animation for scrolling*/
+.scrolled-down{
+    transform:translateY(-100%); transition: all 0.3s ease-in-out;
+}
+.scrolled-up{
+    transform:translateY(0); transition: all 0.3s ease-in-out;
+}
