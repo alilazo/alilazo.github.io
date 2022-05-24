@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Amado Lazo - Portfolio</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<link rel="stylesheet" type="text/css" href="stylesheet.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script src="./jquery-3.5.1.min.js"></script>
+	<script src="./javascript.js"></script>
+	<style> @media only screen and (max-width: 600px) {#main {margin-left: 0}} 
+	</style>
+</head>
+<body>
+	
+	<!--Header-->
+	<div class="w3-top w3-black w3-hide-small">
+		<div class="w3-bar w3-card" id="navButton">
+			<a href="#" class="w3-bar-item w3-button w3-padding-large">HOME</a>
+			<a href="#about"  class="w3-bar-item w3-button w3-padding-large">ABOUT ME</a>
+			<a href="#resume" class="w3-bar-item w3-button w3-padding-large">RESUME</a>
+			<a href="#contact"class="w3-bar-item w3-button w3-padding-large">CONTACT</a>
+			<a href="./projects.html" class="w3-bar-item w3-button w3-padding-large">PROJECTS</a>
+			<a href="./artifacts.html"class="w3-bar-item w3-button w3-padding-large w3-red">Experiential Artifact</a>
+		</div>
+	</div>
+
+	<!--Make nav bar for phones-->
+	<!-- Navbar on small screens (Hidden on medium and large screens) -->
+	<div class="w3-hide-large w3-hide-medium">
+		<div class="w3-top w3-black">
+				<button class="w3-button w3-black w3-xlarge" onclick="openSidebar()">☰</button>
+		</div>
+		
+		<div class="w3-sidebar w3-animate-left w3-bar-block w3-black" style="display: none;" id="Sidebar">
+				<button onclick="closeSidebar()" class="w3-black   w3-bar-item" >Close &times;</button>
+				<a href="#about" onclick="closeSidebar()" class="w3-bar-item			 	     w3-button" >ABOUT ME</a>
+				<a href="#resume" onclick="closeSidebar()" class="w3-bar-item 		 	     w3-button" >RESUME</a>
+				<a href="#contact" onclick="closeSidebar()" class="w3-bar-item 			     w3-button" >CONTACT</a>
+				<a href="./projects.html" onclick="closeSidebar()" class="w3-bar-item 	     w3-button" >PROJECTS</a>
+				<a href="./artifacts.html" onclick="closeSidebar()" class="w3-bar-item w3-button w3-red" >Experiential Artifact</a>
+		</div>
+	</div>
+
+	<!--Body-->
+	<div class="w3-content" style="max-width: 3000px; margin-top: 46px">
+		<div class="w3-display-container w3-center">
+			<img class="w3-opacity-min w3-grayscale-min" src="./Pictures/backg.jpg" id="mainBackgroundPic">
+			<div class="w3-display-middle w3-container w3-text-black w3-center w3-animate-opacity">
+				<h1 class="w3-border-bottom w3-padding w3-text-white">Amado Lazo</h1>
+				<h1 class="w3-text-white">Software Engineer</h1>
+			</div>
+		</div>
+
+		<!--About Me-->
+		<div class="w3-row w3-content w3-padding-64 w3-border-bottom"  id="about"> <!--style="max-width: 800px"-->
+			<div class="w3-col m6 w3-image w3-opacity-min w3-center">
+				<img class="backgroundShadow" src="./Pictures/self.PNG" style="width: auto; max-width: 300px; height: auto;">
+			</div>
+			<div class="w3-col m5 w3-padding-large w3-center">
+				<h2 class="w3-wide w3-center w3-padding-large w3-border-bottom">ABOUT ME</h2>
+				<p class="w3-justify">Programming to me has always been important in my life. I use my everyday knowledge when I program especially to grow my problem solving skills to make my software run faster. I'm 19 years old and currently a Junior Computer Science major at TAMUCC.
+					 In my spare time, I like to make custom made software for everyday uses and make people their own special made software to.
+				</p>
+			</div>
+			<!--<p class="w3-justify">I like to program</p>-->
+		</div>
+
+		<!--RESUME-->
+		<div class="w3-container w3-content w3-padding-64 w3-border-bottom" id="resume">
+			<h2 class="w3-wide w3-center">RESUME</h2>
+			<div class="w3-center">
+				<img class="w3-card w3-hover-opacity" src="./Pictures/resume.PNG" onclick="document.getElementById('modal01').style.display='block'" id="resumePic">
+				<div id="modal01" class="w3-modal" onclick="this.style.display='none'">
+					<span class="w3-button w3-hover-red w3-xlarge w3-display-topright">&times;</span>
+					<div class="w3-modal-content w3-animate-zoom">
+						<iframe src="https://docs.google.com/document/d/e/2PACX-1vT1CrwDGpXrApBrXtijzoJ1b1ZDXIN7T5I67Un_m6E5OAMCFXvVzLnPbaW1pU8hhw/pub?embedded=true" style="width: 100%; height: 600px"></iframe>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!--CONTACT-->
+		<div class="w3-container w3-content w3-padding-64 w3-border-bottom"id="contact">
+			<h2 class="w3-wide w3-center">CONTACT</h2>
+			<p class="w3-opacity w3-center">Need any questions answered? Fill in the form below!</p>
+			<p class="w3-opacity w3-center">Or contact me via email: alazo2@islander.tamucc.edu</p>
+			<form action="/action_page.php" target="_blank">
+          		<div class="w3-row-padding" style="margin:0 -16px 8px -16px">
+            		<div class="w3-half">
+              			<input class="w3-input w3-border" type="text" placeholder="Name" required name="Name">
+            		</div>
+	            	<div class="w3-half">
+	              		<input class="w3-input w3-border" type="text" placeholder="Email" required name="Email">
+	            	</div>
+          		</div>
+          		<input class="w3-input w3-border" type="text" placeholder="Message" required name="Message">
+          		<div class="w3-center">
+          			<button class="w3-button w3-black w3-section w3-center" type="submit">SEND</button>
+          		</div>
+        	</form>
+		</div>
+	</div>
+
+	<!--Footer-->
+	<footer class="w3-container w3-center">
+		<a href="https://github.com/alilazo" class="fa fa-github"></a>
+		<a href="https://tamucc.joinhandshake.com/users/20542267" class="fa fa-handshake-o"></a>
+		<p>&#169; 2020 Amado Lazo</p>
+	</footer>
+
+	<!--Loading screen-->
+	<div class="loader-wrapper">
+		<span class="loader">
+			<span class="loader-inner">Amado Lazo</span>
+		</span>
+	</div>
+
+	<!--JQUARY SCRIPT FOR LOADING SCREEN-->
+	<script>
+
+    </script>
+</body>
+</html>
