@@ -1,10 +1,20 @@
+//check if the user is on mobile
+const isMobile = () => {
+    if (window.innerWidth < 768) {
+      console.log("Mobile");
+        return true;
+    }
+}
+
+
 //Load more projects btn
 function loadMoreProjects () {
+    var porjectsOnScreen = 6;
     var loadMoreBtn = document.querySelector(".loadMoreBtn");
     var projects = document.querySelectorAll(".project");
     var projectsLength = projects.length;
-    var projectsToShow = 3;
-    var projectsShown = 3;
+    var projectsToShow = porjectsOnScreen;
+    var projectsShown = porjectsOnScreen;
     var totalProjects =  projectsShown + projectsToShow;
 
     if (totalProjects >= projectsLength)
@@ -87,6 +97,7 @@ const revealLR = () => {
     }
 }
 
+isMobile();
 window.addEventListener("scroll", reveal);
 window.addEventListener("scroll", revealLR);
 reveal();

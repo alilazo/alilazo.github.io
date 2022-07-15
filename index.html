@@ -11,6 +11,7 @@
     <title>Amado Lazo Portfolio</title>
 </head>
 <body>
+    
     <!--- Navigation -->
     <div class="navig">
         <nav class="autohide navbar navbar-expand-lg navbar-dark fixed-top bg-black">
@@ -35,21 +36,52 @@
             </div>
         </nav>
     </div>
-    <!---Main Content-->
+    
+    <!--Header-->
     <div class="headerClass">
-        <img src="pics/IMG2A.jpg" alt="Amado Lazo" class="backgroundHeaderImage">
+        <img class="backgroundHeaderImage mobile">
         <div class="headerBlock"></div>
         <div class="headerTitle">
-            <h1 class="headerTitleText ">Amado Lazo</h1>
+            <h1 class="headerTitleText text-center">Amado Lazo</h1>
             <h4 class="text-center"><i class="subHeaderText">Computer Science BCS</i></h4>
         </div>
     </div>
 
+    <!---Main Content-->
     <div class="container">
         <!--Projects-->
         <div class="reveal pt-5 mt-5" id="Projects">
             <h1 class="text-center pb-4">Projects</h1>
             <div class="row row-cols-2 row-cols-lg-3 g-2 g-lg-2">
+
+                <div class="col-6">
+                    <div class="card project" style="height: 100%;">
+                        <div class="card-body text-dark">
+                            <h5 class="card-title text-center">Mflix</h5>
+                            <img src="pics/Projects/Wizards.png" class="card-img-top"/>
+                            <p class="card-text pb-5">
+                                A Netflix/IMDB like application that allows users to search for movies and view their information. This is a web application made from the M.E.R.N stack and other Technologies such as Jest.
+                            </p>
+                            <a href="#" class="btn btn-dark bg-black projectBtn">Check It Out!</a>
+                            <a href="#" class="btn btn-primary projectBtnRight">Skills Used</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-6">
+                    <div class="card project" style="height: 100%;">
+                        <div class="card-body text-dark">
+                            <h5 class="card-title text-center">Movie Ticketing System (TAMUCC)</h5>
+                            <img src="pics/Projects/Movie Theatre.PNG" class="card-img-top"/>
+                            <p class="card-text pb-5">
+                                Movie theatre ticketing system made in Java and provides a nice looking UI that is reactive to touch and by mouse.
+                            </p>
+                            <a href="#" class="btn btn-dark bg-black projectBtn">Check It Out!</a>
+                            <a href="#" class="btn btn-primary projectBtnRight">Skills Used</a>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="col-6">
                     <div class="card project" style="height: 100%;">
                         <div class="card-body text-dark">
@@ -93,7 +125,7 @@
                 </div>
 
                 <div class="col-6">
-                    <div class="card project" style="height: 100%; display: none;">
+                    <div class="card project" style="height: 100%;">
                         <div class="card-body text-dark">
                             <h5 class="card-title text-center">Inspirational Quotes</h5>
                             <img src="pics/Projects/Inspirational Quote.PNG" class="card-img-top"/>
@@ -136,10 +168,9 @@
         </div>
 
         <!--Side Fade Image-->
-        <div>
-            <img src="pics/imageFade.png" class="img-fluid fadeImg revealLR"/>
-        </div>
-
+        <!--<div>
+            <img src="pics/imageFade.png" id="notMobile" class="img-fluid fadeImg revealLR"/>
+        </div>-->
         <!--Resume-->
         <div class="reveal p-5 m-5" id="Resume">
             <div class="text-center">
@@ -152,7 +183,7 @@
         <!--Contact me-->
         <div class="reveal p-5 text-center" id="Contact">
             <h1>Contact Me</h1>
-            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdqNrA8OIf-VjHIIqlJnj6oZ2KR6LGZ77h8Rp1sO8XmaYpOSg/viewform?embedded=true" width="640" height="1220" frameborder="10px" marginheight="10px" marginwidth="0">Loading…</iframe>
+            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdqNrA8OIf-VjHIIqlJnj6oZ2KR6LGZ77h8Rp1sO8XmaYpOSg/viewform?embedded=true" width="100%" height="1220" frameborder="10px" marginheight="10px" marginwidth="0">Loading…</iframe>
         </div>
     </div>
 
@@ -175,8 +206,8 @@
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-xl">
             <div class="modal-content">
-                <div class="modal-body">
-                    <iframe src="Resume.pdf" width="100%" height="800px"/>
+                <div class="modal-body p-0">
+                    <iframe src="Resume.pdf#view=fitH" width="100%" height="800px"/>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close">Close</button>
