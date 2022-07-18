@@ -14,13 +14,32 @@
     
     <!--- Navigation -->
     <div class="navig">
+    
+        <!--Phone Nav---->
+        <div class="collapse" id="navbarToggleExternalContent">
+            <div class="bg-dark p-4">
+                <li class="">
+                    <a class="" href="#About">About Me</a>
+                </li>
+                <li class="">
+                    <a class="" href="#Projects">Projects</a>
+                </li>
+                <li class="">
+                    <a class="" href="#Contact">Contact Me</a>
+                </li>
+            </div>
+        </div>
+    
         <nav class="autohide navbar navbar-expand-lg navbar-dark fixed-top bg-black">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">Amado Lazo</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+
+                <!--Phone Nav---->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                
+                <div class="collapse navbar-collapse" id="navbarSupportedContent" >
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
                             <a class="nav-link" href="#About">About Me</a>
@@ -30,6 +49,9 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#Contact">Contact Me</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#Blog">Blog</a>
                         </li>
                     </ul>
                 </div>
@@ -49,21 +71,22 @@
 
     <!---Main Content-->
     <div class="container">
-        <!--Projects-->
-        <div class="reveal pt-5 mt-5" id="Projects">
+        <!--Projects  - (This can be more simple with Javascript coding and keepin gthem in an array)  -->
+        <div class="reveal pt-5" id="Projects">
             <h1 class="text-center pb-4">Projects</h1>
             <div class="row row-cols-2 row-cols-lg-3 g-2 g-lg-2">
 
                 <div class="col-6">
                     <div class="card project" style="height: 100%;">
                         <div class="card-body text-dark">
-                            <h5 class="card-title text-center">Mflix</h5>
+                            <h5 class="card-title text-center">Mflix Database</h5>
                             <img src="pics/Projects/Wizards.png" class="card-img-top"/>
                             <p class="card-text pb-5">
                                 A Netflix/IMDB like application that allows users to search for movies and view their information. This is a web application made from the M.E.R.N stack and other Technologies such as Jest.
                             </p>
-                            <a href="#" class="btn btn-dark bg-black projectBtn">Check It Out!</a>
-                            <a href="#" class="btn btn-primary projectBtnRight">Skills Used</a>
+                            <div class="d-grid position-absolute bottom-0 start-0 end-0 p-2">
+                                <a href="#" class="btn btn-dark bg-black">Learn More!</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -76,8 +99,9 @@
                             <p class="card-text pb-5">
                                 Movie theatre ticketing system made in Java and provides a nice looking UI that is reactive to touch and by mouse.
                             </p>
-                            <a href="#" class="btn btn-dark bg-black projectBtn">Check It Out!</a>
-                            <a href="#" class="btn btn-primary projectBtnRight">Skills Used</a>
+                            <div class="d-grid position-absolute bottom-0 start-0 end-0 p-2">
+                                <a href="#" class="btn btn-dark bg-black">Learn More!</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -90,8 +114,11 @@
                             <p class="card-text pb-5">
                                 Android application that gets users current location VIA google maps api and maps out all the gas stations near a given distance (miles).
                             </p>
-                            <a href="#" class="btn btn-dark bg-black projectBtn">Check It Out!</a>
-                            <a href="#" class="btn btn-primary projectBtnRight">Skills Used</a>
+                            <div class="d-grid">
+                                <div class="d-grid position-absolute bottom-0 start-0 end-0 p-2">
+                                    <a href="#" class="btn btn-dark bg-black">Learn More!</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -104,8 +131,9 @@
                             <p class="card-text pb-5">
                                 Movie theatre ticketing system made in Java and provides a nice looking UI that is reactive to touch and by mouse.
                             </p>
-                            <a href="#" class="btn btn-dark bg-black projectBtn">Check It Out!</a>
-                            <a href="#" class="btn btn-primary projectBtnRight">Skills Used</a>
+                            <div class="d-grid position-absolute bottom-0 start-0 end-0 p-2">
+                                <a href="#" class="btn btn-dark bg-black">Learn More!</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -118,8 +146,9 @@
                             <p class="card-text pb-5">
                                 A fun number guessing game made in HTML, CSS, and JAVASCRIPT, who will win, you or the computer?
                             </p>
-                            <a href="#" class="btn btn-dark bg-black projectBtn">Check It Out!</a>
-                            <a href="#" class="btn btn-primary projectBtnRight">Skills Used</a>
+                            <div class="d-grid position-absolute bottom-0 start-0 end-0 p-2">
+                                <a href="#" class="btn btn-dark bg-black">Learn More!</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -132,8 +161,9 @@
                             <p class="card-text pb-5">
                                 Need to get inspired as a programmer? Check out this quote generator I have made!
                             </p>
-                            <a href="#" class="btn btn-dark bg-black projectBtn">Check It Out!</a>
-                            <a href="#" class="btn btn-primary projectBtnRight">Skills Used</a>
+                            <div class="d-grid position-absolute bottom-0 start-0 end-0 p-2">
+                                <a href="#" class="btn btn-dark bg-black">Learn More!</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -146,15 +176,31 @@
                             <p class="card-text pb-5">
                                 Texas A&M University-Corpus Christi, First Year Seminar Card Game Project! Made with a team of 4 a game called Wizard and Warriors C++.
                             </p>
-                            <a href="#" class="btn btn-dark bg-black projectBtn">Check It Out!</a>
-                            <a href="#" class="btn btn-primary projectBtnRight">Skills Used</a>
+                            <div class="d-grid position-absolute bottom-0 start-0 end-0 p-2">
+                                <a href="#" class="btn btn-dark bg-black">Learn More!</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-6">
+                    <div class="card project" style="height: 100%; display: none;">
+                        <div class="card-body text-dark">
+                            <h5 class="card-title text-center">Amado Lazo Portfolio</h5>
+                            <img src="pics/Projects/Wizards.png" class="card-img-top"/>
+                            <p class="card-text pb-5">
+                                Texas A&M University-Corpus Christi, First Year Seminar Card Game Project! Made with a team of 4 a game called Wizard and Warriors C++.
+                            </p>
+                            <div class="d-grid position-absolute bottom-0 start-0 end-0 p-2">
+                                <a href="#" class="btn btn-dark bg-black">Learn More!</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
             <div class="d-grid text-center mt-3">
-                <button class="loadMoreBtn btn btn-outline-light btn-lg" onclick="loadMoreProjects()">Load More</button>
+                <button class="loadMoreBtn btn btn-primary btn-outline-light btn-lg" onclick="loadMoreProjects()">Load More</button>
             </div>
         </div>
         
