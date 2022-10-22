@@ -33,6 +33,11 @@ body {
     transform: translate(-50%, -50%);
 }
 
+.boxShadow {
+    box-shadow: 10px 10px #ffffff; 
+    border: 1px solid #ffffff;
+}
+
 .headerTitleText {
     color: white;
     font-size: 100px;

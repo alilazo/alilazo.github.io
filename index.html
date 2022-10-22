@@ -65,18 +65,30 @@
         <div class="headerBlock"></div>
         <div class="headerTitle">
             <h1 class="headerTitleText text-center">Amado Lazo</h1>
-            <h4 class="text-center"><i class="subHeaderText">Computer Science BCS</i></h4>
+            <h4 class="text-center"><i class="subHeaderText">Computer Science B.A.</i></h4>
         </div>
     </div>
 
     <!---Main Content-->
     <div class="container">
+        <!--About me Section-->
+        <div class="reveal p-5 boxShadow" id="About">
+            <h1 class="text-center p-3">About Me</h1>
+            <p class="text-center lead">
+                I am a Computer Science student at Texas A&M-Corpus Christi. I am currently in my senior year and am looking for a full-time position in the field of Computer Science.
+                I am 21 years young and have a passion for programming and learning new things. I am a very hard worker and am always looking to improve myself.
+                I have experience in Java, C++, HTML, CSS, JavasScript which includes front-end and back-end frameworks such as MongoDB, ExpressJS, ReactJS and NodeJS which I did use at IBM during my Acelerate Program!
+            </p>
+        </div>
+
+
+
         <!--Projects  - (This can be more simple with Javascript coding and keepin gthem in an array)  -->
         <div class="reveal pt-5" id="Projects">
             <h1 class="text-center pb-4">Projects</h1>
-            <div class="row row-cols-2 row-cols-lg-3 g-2 g-lg-2">
+            <div class="row row-cols-1 row-cols-lg-3  g-2">
 
-                <div class="col-6">
+                <div class="col">
                     <div class="card project" style="height: 100%;">
                         <div class="card-body text-dark">
                             <h5 class="card-title text-center">Mflix Database</h5>
@@ -85,13 +97,13 @@
                                 A Netflix/IMDB like application that allows users to search for movies and view their information. This is a web application made from the M.E.R.N stack and other Technologies such as Jest.
                             </p>
                             <div class="d-grid position-absolute bottom-0 start-0 end-0 p-2">
-                                <a href="#" class="btn btn-dark bg-black">Learn More!</a>
+                                <button type="button" class="btn btn-dark bg-black" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">Learn More!</button>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-6">
+                <div class="col">
                     <div class="card project" style="height: 100%;">
                         <div class="card-body text-dark">
                             <h5 class="card-title text-center">Movie Ticketing System (TAMUCC)</h5>
@@ -106,7 +118,7 @@
                     </div>
                 </div>
 
-                <div class="col-6">
+                <div class="col">
                     <div class="card project" style="height: 100%;">
                         <div class="card-body text-dark">
                             <h5 class="card-title text-center">Gas Junkie</h5>
@@ -123,7 +135,7 @@
                     </div>
                 </div>
 
-                <div class="col-6">
+                <div class="col">
                     <div class="card project" style="height: 100%;">
                         <div class="card-body text-dark">
                             <h5 class="card-title text-center">Movie Ticketing System</h5>
@@ -138,7 +150,7 @@
                     </div>
                 </div>
 
-                <div class="col-6">
+                <div class="col">
                     <div class="card project" style="height: 100%;">
                         <div class="card-body text-dark">
                             <h5 class="card-title text-center">Guess the Number</h5>
@@ -153,7 +165,7 @@
                     </div>
                 </div>
 
-                <div class="col-6">
+                <div class="col">
                     <div class="card project" style="height: 100%;">
                         <div class="card-body text-dark">
                             <h5 class="card-title text-center">Inspirational Quotes</h5>
@@ -168,7 +180,7 @@
                     </div>
                 </div>
 
-                <div class="col-6">
+                <div class="col">
                     <div class="card project" style="height: 100%; display: none;">
                         <div class="card-body text-dark">
                             <h5 class="card-title text-center">Wizards and Warriors</h5>
@@ -183,13 +195,28 @@
                     </div>
                 </div>
 
-                <div class="col-6">
+                <div class="col">
                     <div class="card project" style="height: 100%; display: none;">
                         <div class="card-body text-dark">
                             <h5 class="card-title text-center">Amado Lazo Portfolio</h5>
-                            <img src="pics/Projects/Wizards.png" class="card-img-top"/>
+                            <img src="pics/Projects/portfolioWebsite.png" class="card-img-top"/>
                             <p class="card-text pb-5">
-                                Texas A&M University-Corpus Christi, First Year Seminar Card Game Project! Made with a team of 4 a game called Wizard and Warriors C++.
+                                This is the current project you are looking at! Made with HTML, CSS, and JAVASCRIPT. Also uses Bootstrap and Font Awesome.
+                            </p>
+                            <div class="d-grid position-absolute bottom-0 start-0 end-0 p-2">
+                                <a href="#" class="btn btn-dark bg-black">Learn More!</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card project" style="height: 100%; display: none;">
+                        <div class="card-body text-dark">
+                            <h5 class="card-title text-center">Sample Gym Website</h5>
+                            <img src="pics/Projects/GymWebsite.PNG" class="card-img-top"/>
+                            <p class="card-text pb-5">
+                                This is a Sample Gym Website I have created to test my skills in HTML, CSS, and JAVASCRIPT. It uses W3.CSS and Font Awesome and also uses googleMaps API.
                             </p>
                             <div class="d-grid position-absolute bottom-0 start-0 end-0 p-2">
                                 <a href="#" class="btn btn-dark bg-black">Learn More!</a>
@@ -203,22 +230,13 @@
                 <button class="loadMoreBtn btn btn-primary btn-outline-light btn-lg" onclick="loadMoreProjects()">Load More</button>
             </div>
         </div>
-        
-        <!--About me Section-->
-        <div class="reveal p-5 m-5" id="About">
-            <h1 class="text-center p-3">About Me</h1>
-            <p class="text-center lead">
-                I am a Computer Science student at Texas A&M-Corpus Christi. I am currently in my senior year and am looking for a full-time position in the field of Computer Science. 
-                I am a self-taught programmer and I am always looking to learn new things. I am a fast learner and I am always looking to improve my skills. I am 20 years old.
-            </p>
-        </div>
 
         <!--Side Fade Image-->
         <!--<div>
             <img src="pics/imageFade.png" id="notMobile" class="img-fluid fadeImg revealLR"/>
         </div>-->
         <!--Resume-->
-        <div class="reveal p-5 m-5" id="Resume">
+        <div class="reveal p-5 mt-5 boxShadow" id="Resume">
             <div class="text-center">
                 <h1>Resume</h1>
                 <p>Click the button below to View my Resume</p>
@@ -261,5 +279,25 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                ...
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+              </div>
+            </div>
+          </div>
+      </div>
 </body>
 </html>
