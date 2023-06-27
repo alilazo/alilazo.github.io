@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="js/bootstrap.js"></script>
     <script src="js/script.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/style.css">
     <title>Amado Lazo Portfolio</title>
@@ -20,6 +21,9 @@
             <div class="bg-dark p-4">
                 <li class="">
                     <a class="" href="#About">About Me</a>
+                </li>
+                <li class="">
+                    <a class="" href="#Skills">Skills</a>
                 </li>
                 <li class="">
                     <a class="" href="#Projects">Projects</a>
@@ -42,16 +46,16 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent" >
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="#About">About Me</a>
+                            <a class="nav-link text-center" href="#About">About Me</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-center" href="#Skills">Skills</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#Projects">Projects</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#Contact">Contact Me</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#Blog">Blog</a>
                         </li>
                     </ul>
                 </div>
@@ -81,70 +85,141 @@
             </p>
         </div>
 
+        <div class="reveal p-5 mt-5 boxShadow" id="Skills">
+            <h1 class="text-center mb-5">Skills</h1>
+            <h3 class="text-center">Programming Languages</h3>
+            <div class="skillList">
+                <ul class="language-list">
+                    <li>
+                        <span class="language-name">JavaScript</span>
+                        <i class="devicon-javascript-plain colored"></i>
+                    </li>
+                    <li>
+                        <span class="language-name">C++</span>
+                        <i class="devicon-cplusplus-plain colored"></i>
+                    </li>
+                    <li>
+                        <span class="language-name">C</span>
+                        <i class="devicon-c-plain colored"></i>
+                    </li>
+                    <li>
+                        <span class="language-name">Java</span>
+                        <i class="devicon-java-plain colored"></i>
+                    </li>
+                    <li>
+                        <span class="language-name">HTML</span>
+                        <i class="devicon-html5-plain colored"></i>
+                    </li>
+                    <li>
+                        <span class="language-name">CSS</span>
+                        <i class="devicon-css3-plain colored"></i>
+                    </li>
+                    <li>
+                        <span class="language-name">Python</span>
+                        <i class="devicon-python-plain colored"></i>
+                    </li>
+                    <li>
+                        <span class="language-name">SQL</span>
+                        <i class="devicon-mysql-plain colored"></i>
+                    </li>
+                    <li>
+                        <span class="language-name">.Net Core</span>
+                        <i class="devicon-dotnetcore-plain colored"></i>
+                    </li>
+                </ul>
+                <h3 class="mt-5 text-center">Libraries</h3>
+                <ul class="library-list">
+                    <li>
+                        <span class="library-name">ReactJS</span>
+                        <i class="devicon-react-original colored"></i>
+                    </li>
+                    
+                    <li>
+                        <span class="library-name">NodeJS</span>
+                        <i class="devicon-nodejs-plain colored"></i>
+                    </li>
+                    <li>
+                        <span class="library-name">ExpressJS</span>
+                        <i class="devicon-express-original colored"></i>
+                    </li>
+                    <li>
+                        <span class="library-name">MongoDB</span>
+                        <i class="devicon-mongodb-plain colored"></i>
+                    </li>
+                    <li>
+                        <span class="library-name">Bootstrap</span>
+                        <i class="devicon-bootstrap-plain colored"></i>
+                    </li>
+                    <li>
+                        <span class="library-name">Material UI</span>
+                        <i class="devicon-materialui-plain colored"></i>
+                    </li>
+                </ul>
+                <h3 class="mt-5 text-center">Tools</h3>
+                <ul class="tool-list">
+                    <li>
+                        <span class="tool-name">Git</span>
+                        <i class="devicon-git-plain colored"></i>
+                    </li>
+                    <li>
+                        <span class="tool-name">GitHub</span>
+                        <i class="devicon-github-original colored"></i>
+                    </li>
+                    <li>
+                        <span class="tool-name">Visual Studio Code</span>
+                        <i class="devicon-visualstudio-plain colored"></i>
+                    </li>
+                    <li>
+                        <span class="tool-name">IntelliJ</span>
+                        <i class="devicon-intellij-plain colored"></i>
+                    </li>
+                    <li>
+                        <span class="tool-name">Android Studio</span>
+                        <i class="devicon-androidstudio-plain colored"></i>
+                    </li>
+                    <li>
+                        <span class="tool-name">AWS</span>
+                        <i class="devicon-amazonwebservices-original colored"></i>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
 
 
         <!--Projects  - (This can be more simple with Javascript coding and keepin gthem in an array)  -->
         <div class="reveal pt-5" id="Projects">
             <h1 class="text-center pb-4">Projects</h1>
+            <div class="pb-5 text-center">
+                <a href="https://github.com/alilazo" style="text-decoration: none;"><i class="devicon-github-plain colored" style="font-size: 5em;"></i></a>
+            </div>
             <div class="row row-cols-1 row-cols-lg-3  g-2">
 
                 <div class="col">
                     <div class="card project" style="height: 100%;">
                         <div class="card-body text-dark">
+                            <h5 class="card-title text-center">Comparing A.I. Models</h5>
+                            <img src="pics/Projects/ComparingAI.png" class="card-img-top"/>
+                            <p class="card-text pb-5">
+                                Created for a client in California, this application allows users to compare different A.I. models and their accuracy. This application is made with ReactJS, NodeJS, ExpressJS, and MongoDB.
+                            </p>
+                            <div class="d-grid position-absolute bottom-0 start-0 end-0 p-2">
+                                <a href="http://comparing-ai.s3-website.us-east-2.amazonaws.com/" class="btn btn-dark bg-black">Visit Now!</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card project" style="height: 100%;">
+                        <div class="card-body text-dark">
                             <h5 class="card-title text-center">Mflix Database</h5>
-                            <img src="pics/Projects/Wizards.png" class="card-img-top"/>
+                            <img src="pics/Projects/mflix.png" class="card-img-top"/>
                             <p class="card-text pb-5">
                                 A Netflix/IMDB like application that allows users to search for movies and view their information. This is a web application made from the M.E.R.N stack and other Technologies such as Jest.
                             </p>
                             <div class="d-grid position-absolute bottom-0 start-0 end-0 p-2">
-                                <button type="button" class="btn btn-dark bg-black" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">Learn More!</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col">
-                    <div class="card project" style="height: 100%;">
-                        <div class="card-body text-dark">
-                            <h5 class="card-title text-center">Movie Ticketing System (TAMUCC)</h5>
-                            <img src="pics/Projects/Movie Theatre.PNG" class="card-img-top"/>
-                            <p class="card-text pb-5">
-                                Movie theatre ticketing system made in Java and provides a nice looking UI that is reactive to touch and by mouse.
-                            </p>
-                            <div class="d-grid position-absolute bottom-0 start-0 end-0 p-2">
-                                <a href="#" class="btn btn-dark bg-black">Learn More!</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col">
-                    <div class="card project" style="height: 100%;">
-                        <div class="card-body text-dark">
-                            <h5 class="card-title text-center">Gas Junkie</h5>
-                            <img src="pics/Projects/Gas Junkie.jpg" class="card-img-top" />
-                            <p class="card-text pb-5">
-                                Android application that gets users current location VIA google maps api and maps out all the gas stations near a given distance (miles).
-                            </p>
-                            <div class="d-grid">
-                                <div class="d-grid position-absolute bottom-0 start-0 end-0 p-2">
-                                    <a href="#" class="btn btn-dark bg-black">Learn More!</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col">
-                    <div class="card project" style="height: 100%;">
-                        <div class="card-body text-dark">
-                            <h5 class="card-title text-center">Movie Ticketing System</h5>
-                            <img src="pics/Projects/Movie Theatre.PNG" class="card-img-top"/>
-                            <p class="card-text pb-5">
-                                Movie theatre ticketing system made in Java and provides a nice looking UI that is reactive to touch and by mouse.
-                            </p>
-                            <div class="d-grid position-absolute bottom-0 start-0 end-0 p-2">
-                                <a href="#" class="btn btn-dark bg-black">Learn More!</a>
+                                <a href="https://github.com/gratiaa/mflix" class="btn btn-dark bg-black">Learn More!</a>
                             </div>
                         </div>
                     </div>
@@ -156,10 +231,9 @@
                             <h5 class="card-title text-center">Guess the Number</h5>
                             <img src="pics/Projects/Number Guesser.PNG" class="card-img-top"/>
                             <p class="card-text pb-5">
-                                A fun number guessing game made in HTML, CSS, and JAVASCRIPT, who will win, you or the computer?
-                            </p>
+                                Embark on an exciting number guessing game created using HTML, CSS, and JavaScript. Challenge yourself against the computer and see who will emerge victorious - can you outsmart the algorithm?                            </p>
                             <div class="d-grid position-absolute bottom-0 start-0 end-0 p-2">
-                                <a href="#" class="btn btn-dark bg-black">Learn More!</a>
+                                <a href="https://alilazo.github.io/number-guesser/" class="btn btn-dark bg-black">Learn More!</a>
                             </div>
                         </div>
                     </div>
@@ -171,8 +245,51 @@
                             <h5 class="card-title text-center">Inspirational Quotes</h5>
                             <img src="pics/Projects/Inspirational Quote.PNG" class="card-img-top"/>
                             <p class="card-text pb-5">
-                                Need to get inspired as a programmer? Check out this quote generator I have made!
-                            </p>
+                                Looking for inspiration as a programmer? Explore this quote generator I've developed! Discover insightful quotes that can ignite your creativity and motivation in the world of programming.                            </p>
+                            <div class="d-grid position-absolute bottom-0 start-0 end-0 p-2">
+                                <a href="https://alilazo.github.io/Inspiration-Quotes/" class="btn btn-dark bg-black">Learn More!</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card project" style="height: 100%;">
+                        <div class="card-body text-dark">
+                            <h5 class="card-title text-center">Gym Website</h5>
+                            <img src="pics/Projects/GymWebsite.PNG" class="card-img-top"/>
+                            <p class="card-text pb-5">
+                                This Gym Website showcases my HTML, CSS, and JavaScript skills. It's a testament to my abilities, incorporating W3.CSS and Font Awesome for enhanced styling and utilizing the Google Maps API for location features. Explore the site to witness the culmination of my web development expertise.                            </p>
+                            <div class="d-grid position-absolute bottom-0 start-0 end-0 p-2">
+                                <a href="https://alilazo.github.io/SampleGymWebsite/" class="btn btn-dark bg-black">Learn More!</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card project" style="height: 100%;">
+                        <div class="card-body text-dark">
+                            <h5 class="card-title text-center">Gas Junkie</h5>
+                            <img src="pics/Projects/Gas Junkie.jpg" class="card-img-top" />
+                            <p class="card-text pb-5">
+                                Discover an Android application leveraging the power of the Google Maps API to provide users with their current location. This innovative app maps out all nearby gas stations within a specified distance in miles, allowing users to conveniently locate fueling stations on the go.                            </p>
+                            <div class="d-grid">
+                                <div class="d-grid position-absolute bottom-0 start-0 end-0 p-2">
+                                    <a href="https://github.com/alilazo/GasJunkie" class="btn btn-dark bg-black">Learn More!</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card project" style="height: 100%; display: none;">
+                        <div class="card-body text-dark">
+                            <h5 class="card-title text-center">Movie Ticketing System</h5>
+                            <img src="pics/Projects/Movie Theatre.PNG" class="card-img-top"/>
+                            <p class="card-text pb-5">
+                                Experience a sophisticated movie theatre ticketing system developed in Java. This feature-rich application offers a visually appealing user interface that is responsive to touch and mouse interactions. Enjoy seamless ticket booking and an immersive cinema experience with this advanced Java-based solution.                            </p>
                             <div class="d-grid position-absolute bottom-0 start-0 end-0 p-2">
                                 <a href="#" class="btn btn-dark bg-black">Learn More!</a>
                             </div>
@@ -186,10 +303,9 @@
                             <h5 class="card-title text-center">Wizards and Warriors</h5>
                             <img src="pics/Projects/Wizards.png" class="card-img-top"/>
                             <p class="card-text pb-5">
-                                Texas A&M University-Corpus Christi, First Year Seminar Card Game Project! Made with a team of 4 a game called Wizard and Warriors C++.
-                            </p>
+                                Introducing the Texas A&M University-Corpus Christi First Year Seminar Card Game Project! Our team of four collaborated to create an exciting game called 'Wizard and Warriors' using C++. Immerse yourself in this captivating card game adventure developed as part of our seminar project. Prepare to embark on a journey filled with magic, battles, and strategic gameplay!                            </p>
                             <div class="d-grid position-absolute bottom-0 start-0 end-0 p-2">
-                                <a href="#" class="btn btn-dark bg-black">Learn More!</a>
+                                <a href="https://github.com/alilazo/Tech-Break-Game" class="btn btn-dark bg-black">Learn More!</a>
                             </div>
                         </div>
                     </div>
@@ -201,25 +317,9 @@
                             <h5 class="card-title text-center">Amado Lazo Portfolio</h5>
                             <img src="pics/Projects/portfolioWebsite.png" class="card-img-top"/>
                             <p class="card-text pb-5">
-                                This is the current project you are looking at! Made with HTML, CSS, and JAVASCRIPT. Also uses Bootstrap and Font Awesome.
-                            </p>
+                                You are currently exploring the project right in front of you! This project has been crafted using HTML, CSS, and JavaScript. It incorporates the powerful features of Bootstrap and Font Awesome to enhance its design and functionality. Dive into this impressive work that showcases the seamless integration of these technologies and the creative potential they offer.                            </p>
                             <div class="d-grid position-absolute bottom-0 start-0 end-0 p-2">
-                                <a href="#" class="btn btn-dark bg-black">Learn More!</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col">
-                    <div class="card project" style="height: 100%; display: none;">
-                        <div class="card-body text-dark">
-                            <h5 class="card-title text-center">Sample Gym Website</h5>
-                            <img src="pics/Projects/GymWebsite.PNG" class="card-img-top"/>
-                            <p class="card-text pb-5">
-                                This is a Sample Gym Website I have created to test my skills in HTML, CSS, and JAVASCRIPT. It uses W3.CSS and Font Awesome and also uses googleMaps API.
-                            </p>
-                            <div class="d-grid position-absolute bottom-0 start-0 end-0 p-2">
-                                <a href="#" class="btn btn-dark bg-black">Learn More!</a>
+                                <a href="https://github.com/alilazo/alilazo.github.io" class="btn btn-dark bg-black">Learn More!</a>
                             </div>
                         </div>
                     </div>
@@ -254,12 +354,12 @@
     <!--- Footer -->
     <footer class="footer p-4 row m-0 sticky-bottom d-flex align-items-center">
         <div class="col-1">
-            <span class="text-muted">&copy; Amado Lazo, 2020</span>
+            <span class="text-muted">&copy; Amado Lazo, 2023</span>
         </div>
         <div class="col-2">
-            <img src="pics/svg/logo-github.svg" />
+            <a href="https://github.com/alilazo" style="text-decoration: none;" ><img src="pics/svg/logo-github.svg" /></a>
             <div class="ml-2">
-                <img src="pics/svg/linkedin-3.svg" />
+                <a href="https://www.linkedin.com/in/amado-lazo/" style="text-decoration: none;" ><img src="pics/svg/linkedin-3.svg" /></a>
             </div>
         </div>
         <div class="col-2">

@@ -24,11 +24,11 @@ const hideLoadMoreBtn = (loadMoreBtn, projectsLength, totalProjects) => {
 
 //Load more projects btn
 function loadMoreProjects () {
-    const porjectsOnScreen = 6;
+    const porjectsOnScreen = 3;
     const loadMoreBtn = document.querySelector(".loadMoreBtn");
     const projects = document.querySelectorAll(".project");
     const projectsLength = projects.length;
-    let projectsToShow = porjectsOnScreen;
+    let projectsToShow = projectsLength;
     let projectsShown = porjectsOnScreen;
     const totalProjects =  projectsShown + projectsToShow;
 
@@ -69,8 +69,10 @@ const onLoadFunction = () => {
     const autohide = document.querySelector('.autohide');
     const headerText = document.querySelector(".headerTitleText");
     const subHeaderText = document.querySelector(".subHeaderText");
+    const backgroundHeaderImage = document.querySelector(".backgroundHeaderImage");
 
     headerText.classList.add("active");
+    backgroundHeaderImage.classList.add("active");
     autohide.classList.add('scrolled-down');
     headerText.addEventListener("transitionend", () => {
         subHeaderText.classList.add("active");

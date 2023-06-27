@@ -1,7 +1,8 @@
 body {
-    background-color: black;
-    color: #ffffff;
-    padding-top: 0px;
+    background-color: #ffffff;
+    color: #000000;
+    padding: 0px;
+    margin: 0px;
 }
 
 .navig {
@@ -15,15 +16,24 @@ body {
 .backgroundHeaderImage{
     position: absolute;
     background-image: url('../pics/IMG2A.jpg');
-    overflow: hidden;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    border-radius: 0px 0px 0px 0px;
     height: 100%;
     width: 100%;
+    border: none;
+    padding: 0px;
+    margin: 0px;
+    overflow: hidden;
+    transition: 1.5s border-radius ease;
+}
+
+.backgroundHeaderImage.active {
+    border-radius: 0px 0px 50px 50px;
 }
 
 .headerTitle {
@@ -34,8 +44,8 @@ body {
 }
 
 .boxShadow {
-    box-shadow: 10px 10px #ffffff; 
-    border: 1px solid #ffffff;
+    box-shadow: 10px 10px #000000; 
+    border: 1px solid #000000;
 }
 
 .headerTitleText {
@@ -66,13 +76,122 @@ body {
     display: block;
     height: 100vh;
     width: 100%;
-    background-color: #000000;
+    background-color: #ffffff;
 }
 
 .fadeImg {
     position: absolute;
     max-width: 35%;
     left: 30px;
+}
+
+/*Programming list*/
+.language-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+}
+
+.language-list li {
+    width: 150px;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 10px;
+}
+
+.language-list li .language-name {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.language-list li i {
+    font-size: 4em;
+}
+
+/*Library List*/
+.library-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+}
+
+.library-list li {
+    width: 150px;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 10px;
+}
+
+.library-list li .library-name {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.library-list li i {
+    font-size: 4em;
+}
+
+/*Tool List*/
+.tool-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+}
+
+.tool-list li {
+    width: 150px;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 10px;
+}
+
+.tool-list li .tool-name {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.tool-list li i {
+    font-size: 4em;
+}
+
+.skillList ul li:hover {
+    transform: scale(1.01); /* Increase the size of the element */
+    box-shadow: 0 0 10px #ccc; /* Add a larger box shadow */
+    transition: transform 0.3s, box-shadow 0.3s; /* Apply transition to both properties */
+}
+
+.skillList ul li span {
+    text-align: center;
 }
 
 /*Project section CSS*/
