@@ -194,6 +194,10 @@ body {
     text-align: center;
 }
 
+.skillList ul li {
+    position: relative;
+}
+
 /*Project section CSS*/
 .projectImage {
     position: relative;

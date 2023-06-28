@@ -80,7 +80,7 @@ const onLoadFunction = () => {
     });
     const typed = new Typed('.typewriter', {
         strings: ['As a senior Computer Science student at Texas A&amp;M-Corpus Christi, I am eager to transition into a full-time role in the field. With a passion for programming and a constant desire to learn and improve, I am confident in my ability to contribute to a company\'s success. My 21 years of experience and hardworking attitude make me a valuable asset to any team. I have a strong background in Java, C++, HTML, CSS, JavaScript and have worked with front-end and back-end frameworks such as MongoDB, ExpressJS, ReactJS, and NodeJS through my experience at IBM during my Accelerate Program.'],
-        typeSpeed: 8, // Adjust the typing speed (in milliseconds)
+        typeSpeed: 1, // Adjust the typing speed (in milliseconds)
         loop: false, // Set to true if you want the typewriter effect to loop
         cursorChar: '|',
     });
