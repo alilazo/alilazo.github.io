@@ -17,24 +17,6 @@
     <!--- Navigation -->
     <div class="navig">
     
-        <!--Phone Nav---->
-        <div class="collapse" id="navbarToggleExternalContent">
-            <div class="bg-dark p-4">
-                <li class="">
-                    <a class="" href="#About">About Me</a>
-                </li>
-                <li class="">
-                    <a class="" href="#Skills">Skills</a>
-                </li>
-                <li class="">
-                    <a class="" href="#Projects">Projects</a>
-                </li>
-                <li class="">
-                    <a class="" href="#Contact">Contact Me</a>
-                </li>
-            </div>
-        </div>
-    
         <nav class="autohide navbar navbar-expand-lg navbar-dark fixed-top bg-black">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">Amado Lazo</a>
@@ -53,10 +35,10 @@
                             <a class="nav-link text-center" href="#Skills">Skills</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#Projects">Projects</a>
+                            <a class="nav-link text-center" href="#Projects">Projects</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#Contact">Contact Me</a>
+                            <a class="nav-link text-center" href="#Contact">Contact Me</a>
                         </li>
                     </ul>
                 </div>
@@ -77,15 +59,15 @@
     <!---Main Content-->
     <div class="container">
         <!--About me Section-->
-        <div class="reveal p-5 boxShadow" id="About">
+        <div class="reveal about-section boxShadow" id="About" data-target="About">
             <h1 class="text-center p-3">About Me</h1>
-            <p class="text-center lead">
+            <p class="lead about-text">
                 <span class="typewriter">
               </span>
             </p>
         </div>
 
-        <div class="reveal p-5 mt-5 boxShadow" id="Skills">
+        <div class="reveal mt-5 boxShadow" id="Skills" data-target="Skills">
             <h1 class="text-center mb-5">Skills</h1>
             <p class="text-center" style="color: #bdc3c7;">*Includes Non-Professional & Professional Experience</p>
             <h3 class="text-center">Programming Languages</h3>
@@ -189,7 +171,7 @@
 
 
         <!--Projects  - (This can be more simple with Javascript coding and keepin gthem in an array)  -->
-        <div class="reveal pt-5" id="Projects">
+        <div class="reveal pt-5" id="Projects" data-target="Projects">
             <h1 class="text-center pb-4">Projects</h1>
             <div class="pb-5 text-center">
                 <a href="https://github.com/alilazo" style="text-decoration: none;"><i class="devicon-github-plain colored" style="font-size: 5em;"></i></a>
@@ -346,7 +328,7 @@
         </div>
 
         <!--Contact me-->
-        <div class="reveal p-5 text-center" id="Contact">
+        <div class="reveal p-5 text-center " id="Contact" data-target="Contact">
             <h1>Contact Me</h1>
             <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdqNrA8OIf-VjHIIqlJnj6oZ2KR6LGZ77h8Rp1sO8XmaYpOSg/viewform?embedded=true" width="100%" height="1220" frameborder="10px" marginheight="10px" marginwidth="0">Loading…</iframe>
         </div>

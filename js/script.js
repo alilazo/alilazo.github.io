@@ -1,8 +1,7 @@
 //check if the user is on mobile
 const isMobile = () => {
-    if (window.innerWidth < 768) {
+    if (window.matchMedia("(max-width: 768px)").matches) {
       console.log("Mobile");
-      return true;
     }
 }
 
@@ -144,9 +143,10 @@ const revealLR = (className) => {
     })
 }
 
-isMobile();
-window.addEventListener("load", () => onLoadFunction());
+
+window.addEventListener("DOMContentLoaded", () => onLoadFunction());
+window.addEventListener("load", () => isMobile());
 window.addEventListener("scroll", () => reveal("reveal"));
 window.addEventListener("scroll", () => reveal("revealLR"));
 //startTypeOnAbout is called in the reveal function because it checks if the element has the class "active"
-window.addEventListener("scroll", () => startTypeOnAbout());
+//window.addEventListener("scroll", () => startTypeOnAbout());

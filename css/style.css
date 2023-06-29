@@ -29,11 +29,11 @@ body {
     padding: 0px;
     margin: 0px;
     overflow: hidden;
-    transition: 1.5s border-radius ease;
+    transition: 1.5s all ease;
 }
 
 .backgroundHeaderImage.active {
-    border-radius: 0px 0px 50px 50px;
+    border-radius: 0px 0px 8% 8%;
 }
 
 .headerTitle {
@@ -50,7 +50,7 @@ body {
 
 .headerTitleText {
     color: white;
-    font-size: 100px;
+    font-size: 5rem;
     transform: translateY(150px);
     opacity: 0;
     transition: 1.5s all ease;
@@ -83,6 +83,14 @@ body {
     position: absolute;
     max-width: 35%;
     left: 30px;
+}
+
+.about-text {
+    text-align: center;
+}
+
+.about-section {
+    padding: 3rem;
 }
 
 /*Programming list*/
@@ -196,6 +204,48 @@ body {
 
 .skillList ul li {
     position: relative;
+}
+
+#Skills {
+    padding: 3rem;
+}
+
+@media only screen and (max-width: 600px) {
+    .skillList ul li {
+        width: 112px;
+        height: 150px;
+    }
+
+    #Skills {
+        padding: 1rem;
+    }
+
+    .about-section {
+        padding: 1rem;
+    }
+
+    .about-text {
+        text-align: left;
+        font-size: 1rem;
+    }
+
+    .headerTitleText {
+        font-size: 3rem;
+    }
+
+    .headerTitle {
+        width: 100%;
+    }
+
+    .backgroundHeaderImage.active {
+        border-radius: 50%;
+        width: 300px;
+        height: 300px;
+    }
+
+    .col-1 {
+        width: 40%;
+    }
 }
 
 /*Project section CSS*/
