@@ -1,3 +1,137 @@
+document.addEventListener('DOMContentLoaded', function() {
+  //Cursor
+  const bigBall = document.querySelector('.cursor__ball--big');
+  const smallBall = document.querySelector('.cursor__ball--small');
+  const hoverables = document.querySelectorAll('.hoverable');
+  bigBall.style.mixBlendMode = "difference";
+  smallBall.style.mixBlendMode = "difference";
+
+  // Move the cursor
+  function onMouseMove(e) {
+    const bigBallR = bigBall.children[0].children[0].getAttribute("r");
+    const smallBallR = smallBall.children[0].children[0].getAttribute("r");
+
+    bigBall.style.opacity = 1;
+    smallBall.style.opacity = 1;
+
+    TweenMax.to(bigBall, 0.5, {
+      x: e.x - bigBallR-1,
+      y: e.y - bigBallR-2
+    });
+    TweenMax.to(smallBall, 0.1, {
+      x: e.x - smallBallR,
+      y: e.y - smallBallR -10
+    });
+  }
+
+  document.body.addEventListener('mousemove', onMouseMove);
+
+  function onMouseHover(e) {
+    TweenMax.to(bigBall, 0.3, {
+      scale: 0,
+      opacity: 0
+    });
+    TweenMax.to(smallBall, 0.2, {
+      scale: 0,
+      opacity: 0
+    });
+
+    //get the child elements of e
+    let children = [];
+    let innerText = [];
+    for(let i = 0; i < e.currentTarget.children.length; i++) {
+      if(!e.currentTarget.children[i].classList.contains("inner-text")) {
+        children.push(e.currentTarget.children[i]);
+      } else if(e.currentTarget.children[i].classList.contains("inner-text")) {
+        innerText.push(e.currentTarget.children[i]);
+      }
+    }
+    //make a variable that gets all the childrent of .skillList
+    const skillListChildren = document.querySelector(".skillList").children;
+    for(let i = 0; i < children.length; i++) {
+      //iterate throught the skillListChildren and check if the e parent element has skillListChildren
+      for(let j = 0; j < skillListChildren.length; j++) {
+        if(e.currentTarget.parentElement == skillListChildren[j]) {
+          TweenMax.to(children[i], 0.3, {
+            opacity: 0
+          });
+        }
+      }
+    }
+
+    for(let i = 0; i < innerText.length; i++) {
+      TweenMax.to(innerText[i], 0.3, {
+        opacity: 1
+      });
+    }
+  }
+
+  function onMouseHoverOut(e) {
+    TweenMax.to(bigBall, 0.3, {
+      scale: 1,
+      opacity: 1
+    });
+    TweenMax.to(smallBall, 0.3, {
+      scale: 1,
+      opacity: 1
+    });
+
+    //get the child elements of e
+    let children = [];
+    let innerText = [];
+    for(let i = 0; i < e.currentTarget.children.length; i++) {
+      if(!e.currentTarget.children[i].classList.contains("inner-text")) {
+        children.push(e.currentTarget.children[i]);
+      } else if(e.currentTarget.children[i].classList.contains("inner-text")) {
+        innerText.push(e.currentTarget.children[i]);
+      }
+    }
+    //make a variable that gets all the childrent of .skillList
+    const skillListChildren = document.querySelector(".skillList").children;
+    for(let i = 0; i < children.length; i++) {
+      //iterate throught the skillListChildren and check if the e parent element has skillListChildren
+      for(let j = 0; j < skillListChildren.length; j++) {
+        if(e.currentTarget.parentElement == skillListChildren[j]) {
+          TweenMax.to(children[i], 0.4, {
+            opacity: 1
+          });
+        }
+      }
+    }
+    for(let i = 0; i < innerText.length; i++) {
+      TweenMax.to(innerText[i], 0.4, {
+        opacity: 0,
+      });
+    }
+  }
+
+  for (let i = 0; i < hoverables.length; i++) {
+    hoverables[i].addEventListener('mouseenter', onMouseHover);
+    hoverables[i].addEventListener('mouseleave', onMouseHoverOut);
+  }
+
+  initilizeHeadings();
+
+});
+
+const initilizeHeadings = () => {
+  //init the picture on the header
+  const picture = document.querySelector(".backgroundHeaderImage");
+  const currentDirectory = window.location.pathname;
+  const currentDirectoryParent = currentDirectory.substring(0, currentDirectory.lastIndexOf("/"));
+  const picturePath = currentDirectoryParent + "/pics/IMG2A.jpg";
+  picture.style.backgroundImage = "url('" + picturePath + "')";
+
+  //init the animations on the header
+  const headerText = document.querySelector(".headerTitleText");
+  const headerTextActive = document.querySelector(".headerTitleText.active");
+
+  headerText.style.transfom = "translateY(150px)";
+  headerTextActive.style.transfom = "translateY(0)";
+
+}
+
+
 //check if the user is on mobile
 const isMobile = () => {
     if (window.matchMedia("(max-width: 768px)").matches) {
@@ -19,7 +153,6 @@ const hideLoadMoreBtn = (loadMoreBtn, projectsLength, totalProjects) => {
       loadMoreBtn.classList.add("hide");
   }
 }
-
 
 //Load more projects btn
 function loadMoreProjects () {
@@ -85,29 +218,6 @@ const onLoadFunction = () => {
     });
 }
 
-/*
-//write a function that checks if the element ID "About" has a class called "active" and if it does then start the typed animation
-const startTypeOnAbout = () => {
-    let hasStartedTyping = false;
-    const about = document.querySelector("#About");
-
-    if(about.classList.contains("active") && !hasStartedTyping){
-      hasStartedTyping = true;
-      const typed = new Typed('.typewriter', {
-        strings: ['As a senior Computer Science student at Texas A&amp;M-Corpus Christi, I am eager to transition into a full-time role in the field. With a passion for programming and a constant desire to learn and improve, I am confident in my ability to contribute to a company\'s success. My 21 years of experience and hardworking attitude make me a valuable asset to any team. I have a strong background in Java, C++, HTML, CSS, JavaScript and have worked with front-end and back-end frameworks such as MongoDB, ExpressJS, ReactJS, and NodeJS through my experience at IBM during my Accelerate Program.'],
-        typeSpeed: 8, // Adjust the typing speed (in milliseconds)
-        loop: false, // Set to true if you want the typewriter effect to loop
-        cursorChar: '|',
-      });
-      console.log("Typing");
-      console.log(hasStartedTyping);
-      typed.start();
-    } else if (hasStartedTyping) {
-      console.log("Stopped Typing");
-      console.log(hasStartedTyping);
-    }
-} */
-
 //reveal class scroll animation
 const reveal = () => {
     const reveals = document.querySelectorAll(".reveal");
@@ -128,7 +238,7 @@ const reveal = () => {
 
 //reveal class scroll animation
 const revealLR = (className) => {
-    const reveals = document.querySelectorAll('${className}');
+    const reveals = document.querySelectorAll(className);
     const elementVisible = 150;
     const windowHeight = window.innerHeight;
 

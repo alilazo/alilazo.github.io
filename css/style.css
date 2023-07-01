@@ -5,6 +5,24 @@ body {
     margin: 0px;
 }
 
+/*Cursor*/
+
+.cursor {
+    pointer-events: none;
+}
+  
+.cursor__ball {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    opacity: 0;
+}
+  
+.cursor__ball circle {
+    fill: #f7f8fa;
+}
+
 .navig {
     display: none;
 }
@@ -15,7 +33,7 @@ body {
 
 .backgroundHeaderImage{
     position: absolute;
-    background-image: url('../pics/IMG2A.jpg');
+    background-image: url(''); /*../pics/IMG2A.jpg*/
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -51,13 +69,23 @@ body {
 .headerTitleText {
     color: white;
     font-size: 5rem;
-    transform: translateY(150px);
+    /*transform: translateY(150px);*/
     opacity: 0;
     transition: 1.5s all ease;
 }
 .headerTitleText.active {
-    transform: translateY(0);
+    /*transform: translateY(0); */
     opacity: 1;
+}
+
+.inner-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.2rem;
+    font-weight: bold;
+    opacity: 0;
 }
 
 .subHeaderText {
@@ -91,6 +119,9 @@ body {
 
 .about-section {
     padding: 3rem;
+    width: auto;
+    height: auto;
+    transition: width 0.3s, height 0.3s;
 }
 
 /*Programming list*/
@@ -192,10 +223,16 @@ body {
     font-size: 4em;
 }
 
+.skillList ul li {
+    transition: 0.3s;
+    cursor: pointer;
+}
+
 .skillList ul li:hover {
     transform: scale(1.01); /* Increase the size of the element */
-    box-shadow: 0 0 10px #ccc; /* Add a larger box shadow */
-    transition: transform 0.3s, box-shadow 0.3s; /* Apply transition to both properties */
+    box-shadow: 0 0 20px #ccc; /* Add a larger box shadow */
+    border: 10px solid #000000;
+    transition: transform 0.3s, box-shadow 0.3s, border 0.3s; /* Apply transition to both properties */
 }
 
 .skillList ul li span {
@@ -211,9 +248,21 @@ body {
 }
 
 @media only screen and (max-width: 600px) {
+
+    Circle {
+        opacity: 0;
+    }
+
     .skillList ul li {
         width: 112px;
         height: 150px;
+    }
+
+    .skillList ul li:hover {
+        transform: scale(1.01); /* Increase the size of the element */
+        box-shadow: 0 0 10px #ccc; /* Add a larger box shadow */
+        border: 2px solid #ccc;
+        transition: transform 0.3s, box-shadow 0.3s; /* Apply transition to both properties */
     }
 
     #Skills {
@@ -246,6 +295,8 @@ body {
     .col-1 {
         width: 40%;
     }
+
+
 }
 
 /*Project section CSS*/
