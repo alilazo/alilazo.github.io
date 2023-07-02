@@ -6,6 +6,13 @@ document.addEventListener('DOMContentLoaded', function() {
   bigBall.style.mixBlendMode = "difference";
   smallBall.style.mixBlendMode = "difference";
 
+  if(!isMobile()){
+    //get the cursor class
+    const cursor = document.querySelector(".cursor");
+    cursor.style.opacity = 1;
+
+  }
+
   // Move the cursor
   function onMouseMove(e) {
     const bigBallR = bigBall.children[0].children[0].getAttribute("r");
@@ -146,12 +153,6 @@ const initilizeHeadings = () => {
 const isMobile = () => {
     if (window.matchMedia("(max-width: 768px)").matches) {
       console.log("Mobile");
-      //get the Circle element
-      const circle = document.querySelector(".circle");
-      if(circle) {
-        circle.style.display = "none";
-        circle.style.opacity = "0";
-      }
       return true;
     }
 }
