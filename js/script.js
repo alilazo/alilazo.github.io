@@ -3,14 +3,14 @@ document.addEventListener('DOMContentLoaded', function() {
   const bigBall = document.querySelector('.cursor__ball--big');
   const smallBall = document.querySelector('.cursor__ball--small');
   const hoverables = document.querySelectorAll('.hoverable');
-  bigBall.style.mixBlendMode = "difference";
-  smallBall.style.mixBlendMode = "difference";
 
   if(!isMobile()){
+    bigBall.style.mixBlendMode = "difference";
+    smallBall.style.mixBlendMode = "difference";
+
     //get the cursor class
     const cursor = document.querySelector(".cursor");
     cursor.style.opacity = 1;
-
   }
 
   // Move the cursor
@@ -21,8 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if(!isMobile()){
       bigBall.style.opacity = 1;
       smallBall.style.opacity = 1;
-    }
-    if(!isMobile()){
+
       TweenMax.to(bigBall, 0.5, {
         x: e.x - bigBallR-1,
         y: e.y - bigBallR-2
@@ -34,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 
-  document.body.addEventListener('mousemove', onMouseMove);
+  if(!isMobile()) document.body.addEventListener('mousemove', onMouseMove);
 
   function onMouseHover(e) {
     if(!isMobile()){
@@ -119,9 +118,11 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 
-  for (let i = 0; i < hoverables.length; i++) {
-    hoverables[i].addEventListener('mouseenter', onMouseHover);
-    hoverables[i].addEventListener('mouseleave', onMouseHoverOut);
+  if(!isMobile()){
+    for (let i = 0; i < hoverables.length; i++) {
+      hoverables[i].addEventListener('mouseenter', onMouseHover);
+      hoverables[i].addEventListener('mouseleave', onMouseHoverOut);
+    }
   }
 
   initilizeHeadings();
