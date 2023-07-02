@@ -14,14 +14,16 @@ document.addEventListener('DOMContentLoaded', function() {
     bigBall.style.opacity = 1;
     smallBall.style.opacity = 1;
 
-    TweenMax.to(bigBall, 0.5, {
-      x: e.x - bigBallR-1,
-      y: e.y - bigBallR-2
-    });
-    TweenMax.to(smallBall, 0.1, {
-      x: e.x - smallBallR,
-      y: e.y - smallBallR -10
-    });
+    if(!isMobile()){
+      TweenMax.to(bigBall, 0.5, {
+        x: e.x - bigBallR-1,
+        y: e.y - bigBallR-2
+      });
+      TweenMax.to(smallBall, 0.1, {
+        x: e.x - smallBallR,
+        y: e.y - smallBallR -10
+      });
+    }
   }
 
   document.body.addEventListener('mousemove', onMouseMove);
