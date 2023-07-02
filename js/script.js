@@ -27,14 +27,16 @@ document.addEventListener('DOMContentLoaded', function() {
   document.body.addEventListener('mousemove', onMouseMove);
 
   function onMouseHover(e) {
-    TweenMax.to(bigBall, 0.3, {
-      scale: 0,
-      opacity: 0
-    });
-    TweenMax.to(smallBall, 0.2, {
-      scale: 0,
-      opacity: 0
-    });
+    if(!isMobile()){
+      TweenMax.to(bigBall, 0.3, {
+        scale: 0,
+        opacity: 0
+      });
+      TweenMax.to(smallBall, 0.2, {
+        scale: 0,
+        opacity: 0
+      });
+    }
 
     //get the child elements of e
     let children = [];
@@ -67,14 +69,16 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   function onMouseHoverOut(e) {
-    TweenMax.to(bigBall, 0.3, {
-      scale: 1,
-      opacity: 1
-    });
-    TweenMax.to(smallBall, 0.3, {
-      scale: 1,
-      opacity: 1
-    });
+    if(!isMobile()){
+      TweenMax.to(bigBall, 0.3, {
+        scale: 1,
+        opacity: 1
+      });
+      TweenMax.to(smallBall, 0.3, {
+        scale: 1,
+        opacity: 1
+      });
+    }
 
     //get the child elements of e
     let children = [];
@@ -146,6 +150,7 @@ const isMobile = () => {
         circle.style.display = "none";
         circle.style.opacity = "0";
       }
+      return true;
     }
 }
 
