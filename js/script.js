@@ -126,8 +126,12 @@ const initilizeHeadings = () => {
   const headerText = document.querySelector(".headerTitleText");
   const headerTextActive = document.querySelector(".headerTitleText.active");
 
-  headerText.style.transfom = "translateY(150px)";
-  headerTextActive.style.transfom = "translateY(0)";
+  if(headerText) {
+    headerText.style.transfom = "translateY(150px)";
+  }
+  if(headerTextActive) {
+    headerTextActive.style.transfom = "translateY(0)";
+  }
 
 }
 
@@ -136,6 +140,12 @@ const initilizeHeadings = () => {
 const isMobile = () => {
     if (window.matchMedia("(max-width: 768px)").matches) {
       console.log("Mobile");
+      //get the Circle element
+      const circle = document.querySelector(".circle");
+      if(circle) {
+        circle.style.display = "none";
+        circle.style.opacity = "0";
+      }
     }
 }
 
