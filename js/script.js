@@ -18,9 +18,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const bigBallR = bigBall.children[0].children[0].getAttribute("r");
     const smallBallR = smallBall.children[0].children[0].getAttribute("r");
 
-    bigBall.style.opacity = 1;
-    smallBall.style.opacity = 1;
-
+    if(!isMobile()){
+      bigBall.style.opacity = 1;
+      smallBall.style.opacity = 1;
+    }
     if(!isMobile()){
       TweenMax.to(bigBall, 0.5, {
         x: e.x - bigBallR-1,

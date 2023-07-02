@@ -256,6 +256,14 @@ body {
         opacity: 0;
     }
 
+    circle {
+        opacity: 0;
+    }
+
+    .cursor__ball {
+        opacity: 0;
+    }
+
     .skillList ul li {
         width: 112px;
         height: 150px;
