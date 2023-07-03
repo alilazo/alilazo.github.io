@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
         scale: 0,
         opacity: 0
       });
-      TweenMax.to(smallBall, 0.2, {
+      TweenMax.to(smallBall, 0.3, {
         scale: 0,
         opacity: 0
       });
