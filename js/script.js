@@ -118,11 +118,9 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 
-  if(!isMobile()){
-    for (let i = 0; i < hoverables.length; i++) {
-      hoverables[i].addEventListener('mouseenter', onMouseHover);
-      hoverables[i].addEventListener('mouseleave', onMouseHoverOut);
-    }
+  for (let i = 0; i < hoverables.length; i++) {
+    hoverables[i].addEventListener('mouseenter', onMouseHover);
+    hoverables[i].addEventListener('mouseleave', onMouseHoverOut);
   }
 
   initilizeHeadings();
