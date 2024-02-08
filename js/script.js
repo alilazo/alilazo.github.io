@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+window.onload = function() {
   //Cursor
   const bigBall = document.querySelector('.cursor__ball--big');
   const smallBall = document.querySelector('.cursor__ball--small');
@@ -124,8 +124,8 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   initilizeHeadings();
-
-});
+  initilizeFAQ();
+};
 
 const initilizeHeadings = () => {
   //init the picture on the header
@@ -146,6 +146,19 @@ const initilizeHeadings = () => {
     headerTextActive.style.transfom = "translateY(0)";
   }
 
+}
+
+const initilizeFAQ = () => {
+  const faqItems = document.querySelectorAll('.faq-item');
+
+  faqItems.forEach((item) => {
+    const question = item.querySelector('.question');
+    const answer = item.querySelector('.answer');
+    question.addEventListener('click', () => {
+      item.classList.toggle('show-answer');
+      answer.style.display = item.classList.contains('show-answer') ? 'block' : 'none';
+    });
+  });
 }
 
 
