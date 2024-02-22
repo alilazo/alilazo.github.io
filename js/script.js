@@ -242,7 +242,8 @@ const onLoadFunction = () => {
         subHeaderText.classList.add("active");
     });
     const typed = new Typed('.typewriter', {
-      strings: ['As a recent graduate from Texas A&amp;M University-Corpus Christi with a bachelors in Computer Science, I am eager to transition into a full-time role in the field. With a passion for programming and a constant desire to learn and improve, I am confident in my ability to contribute to a company\'s success. My 4+ years of programming experience and hardworking attitude make me a valuable asset to any team. I have a strong background in Java, C++, HTML, CSS, JavaScript and have worked with front-end and back-end frameworks such as MongoDB, ExpressJS, ReactJS, and NodeJS.'],        typeSpeed: 1, // Adjust the typing speed (in milliseconds)
+        strings: ['As a recent graduate from Texas A&amp;M University-Corpus Christi with a bachelors in Computer Science, I am eager to transition into a full-time role in the field. With a passion for programming and a constant desire to learn and improve, I am confident in my ability to contribute to a company\'s success. My 4+ years of programming experience and hardworking attitude make me a valuable asset to any team. I have a strong background in Java, C++, HTML, CSS, JavaScript and have worked with front-end and back-end frameworks such as MongoDB, ExpressJS, ReactJS, and NodeJS.'],        
+        typeSpeed: 1, // Adjust the typing speed (in milliseconds)
         loop: false, // Set to true if you want the typewriter effect to loop
         cursorChar: '|',
     });
