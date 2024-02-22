@@ -2,12 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="description" content="Amado Lazo's Portfolio: A recent Computer Science graduate from Texas A&M University-Corpus Christi with 4+ years of programming experience.">
+    <meta name="keywords" content="Amado Lazo, Portfolio, Computer Science, Programming, Java, C++, HTML, CSS, JavaScript, MongoDB, ExpressJS, ReactJS, NodeJS">
+    <meta name="author" content="Amado Lazo">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="js/bootstrap.js"></script>
     <script src="js/script.js"></script>
     <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12/dist/gsap.min.js"></script>
+    <link rel="icon" href="pics/favico.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/style.css">
@@ -29,435 +33,464 @@
         </div>
     </div>
     <!--- Navigation -->
-    <div class="navig">
-    
-        <nav class="autohide navbar navbar-expand-lg navbar-dark fixed-top bg-black">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#">Amado Lazo</a>
+    <nav>
+        <div class="navig">
+            <nav class="autohide navbar navbar-expand-lg navbar-dark fixed-top bg-black">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#">Amado Lazo</a>
 
-                <!--Phone Nav---->
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                
-                <div class="collapse navbar-collapse" id="navbarSupportedContent" >
-                    <ul class="navbar-nav me-auto">
-                        <li class="nav-item">
-                            <a class="nav-link text-center" href="#About">About Me</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-center" href="#Skills">Skills</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-center" href="#Projects">Projects</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-center" href="#faq">FAQ</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-center" href="#Contact">Contact Me</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-center" href="#Resume">Resume</a>
-                        </li>
-                    </ul>
+                    <!--Phone Nav---->
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent" >
+                        <ul class="navbar-nav me-auto">
+                            <li class="nav-item">
+                                <a class="nav-link text-center" href="#About">About Me</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-center" href="#Skills">Skills</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-center" href="#Projects">Projects</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-center" href="#faq">FAQ</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-center" href="#Contact">Contact Me</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-center" href="#Resume">Resume</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-        </nav>
-    </div>
+            </nav>
+        </div>
+    </nav>
     
     <!--Header-->
-    <div class="headerClass">
-        <img class="backgroundHeaderImage mobile">
-        <div class="headerBlock"></div>
-        <div class="headerTitle">
-            <h1 class="headerTitleText text-center">Amado Lazo</h1>
-            <h4 class="text-center"><i class="subHeaderText">Computer Science B.S.</i></h4>
+    <header>
+        <div class="headerClass">
+            <img class="backgroundHeaderImage mobile">
+            <div class="headerBlock"></div>
+            <div class="headerTitle">
+                <h1 class="headerTitleText text-center">Amado Lazo</h1>
+                <h4 class="text-center"><i class="subHeaderText">Computer Science B.S.</i></h4>
+            </div>
         </div>
-    </div>
+    </header>
 
     <!---Main Content-->
     <div class="container">
         <!--About me Section-->
-        <div class="reveal about-section boxShadow" id="About" data-target="About">
-            <h1 class="text-center p-3">About Me</h1>
-            <p class="lead about-text">
-                <span class="typewriter"></span>
-            </p>
-        </div>
-
-        <div class="reveal mt-5 boxShadow" id="Skills" data-target="Skills">
-            <h1 class="text-center mb-5">Skills</h1>
-            <p class="text-center" style="color: #bdc3c7;">*Includes Non-Professional & Professional Experience</p>
-            <h3 class="text-center">Programming Languages</h3>
-            <div class="skillList">
-                <ul class="language-list">
-                    <li class="hoverable">
-                        <span class="language-name">JavaScript</span>
-                        <i class="devicon-javascript-plain colored"></i>
-                        <span class="inner-text">4 Years</span>
-                    </li>
-                    <li class="hoverable">
-                        <span class="language-name">C++</span>
-                        <i class="devicon-cplusplus-plain colored"></i>
-                        <span class="inner-text">4 Years</span>
-                    </li>
-                    <li class="hoverable">
-                        <span class="language-name">C</span>
-                        <i class="devicon-c-plain colored"></i>
-                        <span class="inner-text">3 Years</span>
-                    </li>
-                    <li class="hoverable">
-                        <span class="language-name">Java</span>
-                        <i class="devicon-java-plain colored"></i>
-                        <span class="inner-text">4 Years</span>
-                    </li>
-                    <li class="hoverable">
-                        <span class="language-name">HTML</span>
-                        <i class="devicon-html5-plain colored"></i>
-                        <span class="inner-text">3 Years</span>
-                    </li>
-                    <li class="hoverable">
-                        <span class="language-name">CSS</span>
-                        <i class="devicon-css3-plain colored"></i>
-                        <span class="inner-text">4 Years</span>
-                    </li>
-                    <li class="hoverable">
-                        <span class="language-name">Python</span>
-                        <i class="devicon-python-plain colored"></i>
-                        <span class="inner-text">2 Years</span>
-                    </li>
-                    <li class="hoverable">
-                        <span class="language-name">SQL</span>
-                        <i class="devicon-mysql-plain colored"></i>
-                        <span class="inner-text">4 Years</span>
-                    </li>
-                    <li class="hoverable">
-                        <span class="language-name">.Net Core</span>
-                        <i class="devicon-dotnetcore-plain colored"></i>
-                        <span class="inner-text">1 Year</span>
-                    </li>
-                </ul>
-                <h3 class="mt-5 text-center">Libraries</h3>
-                <ul class="library-list">
-                    <li class="hoverable">
-                        <span class="library-name">ReactJS</span>
-                        <i class="devicon-react-original colored"></i>
-                        <span class="inner-text">3 Years</span>
-                    </li>
-                    
-                    <li class="hoverable">
-                        <span class="library-name">NodeJS</span>
-                        <i class="devicon-nodejs-plain colored"></i>
-                        <span class="inner-text">3 Years</span>
-                    </li>
-                    <li class="hoverable">
-                        <span class="library-name">ExpressJS</span>
-                        <i class="devicon-express-original colored"></i>
-                        <span class="inner-text">2 Year</span>
-                    </li>
-                    <li class="hoverable">
-                        <span class="library-name">MongoDB</span>
-                        <i class="devicon-mongodb-plain colored"></i>
-                        <span class="inner-text">4 Years</span>
-                    </li>
-                    <li class="hoverable">
-                        <span class="library-name">Bootstrap</span>
-                        <i class="devicon-bootstrap-plain colored"></i>
-                        <span class="inner-text">1 Year</span>
-                    </li>
-                    <li class="hoverable">
-                        <span class="library-name">Material UI</span>
-                        <i class="devicon-materialui-plain colored"></i>
-                        <span class="inner-text">1 Year</span>
-                    </li>
-                </ul>
-                <h3 class="mt-5 text-center">Tools</h3>
-                <ul class="tool-list">
-                    <li class="hoverable">
-                        <span class="tool-name">Git</span>
-                        <i class="devicon-git-plain colored"></i>
-                        <span class="inner-text">4 Years</span>
-                    </li>
-                    <li class="hoverable">
-                        <span class="tool-name">GitHub</span>
-                        <i class="devicon-github-original colored"></i>
-                        <span class="inner-text">5 Years</span>
-                    </li>
-                    <li class="hoverable">
-                        <span class="tool-name">Visual Studio Code</span>
-                        <i class="devicon-visualstudio-plain colored"></i>
-                        <span class="inner-text">5 Years</span>
-                    </li>
-                    <li class="hoverable">
-                        <span class="tool-name">IntelliJ</span>
-                        <i class="devicon-intellij-plain colored"></i>
-                        <span class="inner-text">3 Years</span>
-                    </li>
-                    <li class="hoverable">
-                        <span class="tool-name">Android Studio</span>
-                        <i class="devicon-androidstudio-plain colored"></i>
-                        <span class="inner-text">3 Years</span>
-                    </li>
-                    <li class="hoverable">
-                        <span class="tool-name">AWS</span>
-                        <i class="devicon-amazonwebservices-original colored"></i>
-                        <span class="inner-text">2 Years</span>
-                    </li>
-                </ul>
+        <section>
+            <div class="reveal about-section boxShadow" id="About" data-target="About">
+                <h1 class="text-center p-3">About Me</h1>
+                <p class="lead about-text">
+                    <span class="typewriter"></span>
+                </p>
             </div>
-        </div>
+        </section>
+
+        <section>
+            <div class="reveal mt-5 boxShadow" id="Skills" data-target="Skills">
+                <h1 class="text-center mb-5">Skills</h1>
+                <p class="text-center" style="color: #bdc3c7;">*Includes Non-Professional & Professional Experience</p>
+                <h3 class="text-center">Programming Languages</h3>
+                <div class="skillList">
+                    <ul class="language-list">
+                        <li class="hoverable">
+                            <span class="language-name">JavaScript</span>
+                            <i class="devicon-javascript-plain colored"></i>
+                            <span class="inner-text">4 Years</span>
+                        </li>
+                        <li class="hoverable">
+                            <span class="language-name">C++</span>
+                            <i class="devicon-cplusplus-plain colored"></i>
+                            <span class="inner-text">4 Years</span>
+                        </li>
+                        <li class="hoverable">
+                            <span class="language-name">C</span>
+                            <i class="devicon-c-plain colored"></i>
+                            <span class="inner-text">3 Years</span>
+                        </li>
+                        <li class="hoverable">
+                            <span class="language-name">Java</span>
+                            <i class="devicon-java-plain colored"></i>
+                            <span class="inner-text">4 Years</span>
+                        </li>
+                        <li class="hoverable">
+                            <span class="language-name">HTML</span>
+                            <i class="devicon-html5-plain colored"></i>
+                            <span class="inner-text">3 Years</span>
+                        </li>
+                        <li class="hoverable">
+                            <span class="language-name">CSS</span>
+                            <i class="devicon-css3-plain colored"></i>
+                            <span class="inner-text">4 Years</span>
+                        </li>
+                        <li class="hoverable">
+                            <span class="language-name">Python</span>
+                            <i class="devicon-python-plain colored"></i>
+                            <span class="inner-text">2 Years</span>
+                        </li>
+                        <li class="hoverable">
+                            <span class="language-name">SQL</span>
+                            <i class="devicon-mysql-plain colored"></i>
+                            <span class="inner-text">4 Years</span>
+                        </li>
+                        <li class="hoverable">
+                            <span class="language-name">.Net Core</span>
+                            <i class="devicon-dotnetcore-plain colored"></i>
+                            <span class="inner-text">1 Year</span>
+                        </li>
+                    </ul>
+                    <h3 class="mt-5 text-center">Libraries</h3>
+                    <ul class="library-list">
+                        <li class="hoverable">
+                            <span class="library-name">MongoDB</span>
+                            <i class="devicon-mongodb-plain colored"></i>
+                            <span class="inner-text">4 Years</span>
+                        </li>
+                        <li class="hoverable">
+                            <span class="library-name">ReactJS</span>
+                            <i class="devicon-react-original colored"></i>
+                            <span class="inner-text">3 Years</span>
+                        </li>
+                        
+                        <li class="hoverable">
+                            <span class="library-name">NodeJS</span>
+                            <i class="devicon-nodejs-plain colored"></i>
+                            <span class="inner-text">3 Years</span>
+                        </li>
+                        <li class="hoverable">
+                            <span class="library-name">PostgreSQL</span>
+                            <i class="devicon-postgresql-plain colored"></i>
+                            <span class="inner-text">2 Years</span>
+                        </li>
+                        <li class="hoverable">
+                            <span class="library-name">Fast API</span>
+                            <i class="devicon-fastapi-plain colored"></i>
+                            <span class="inner-text">1 Year</span>
+                        </li>
+                        <li class="hoverable">
+                            <span class="library-name">Gatsby</span>
+                            <i class="devicon-gatsby-plain colored"></i>
+                            <span class="inner-text">1 Year</span>
+                        </li>
+                        <li class="hoverable">
+                            <span class="library-name">ExpressJS</span>
+                            <i class="devicon-express-original colored"></i>
+                            <span class="inner-text">2 Year</span>
+                        </li>
+                        <li class="hoverable">
+                            <span class="library-name">Bootstrap</span>
+                            <i class="devicon-bootstrap-plain colored"></i>
+                            <span class="inner-text">1 Year</span>
+                        </li>
+                        <li class="hoverable">
+                            <span class="library-name">Material UI</span>
+                            <i class="devicon-materialui-plain colored"></i>
+                            <span class="inner-text">1 Year</span>
+                        </li>
+                    </ul>
+                    <h3 class="mt-5 text-center">Tools</h3>
+                    <ul class="tool-list">
+                        <li class="hoverable">
+                            <span class="tool-name">Git</span>
+                            <i class="devicon-git-plain colored"></i>
+                            <span class="inner-text">4 Years</span>
+                        </li>
+                        <li class="hoverable">
+                            <span class="tool-name">GitHub</span>
+                            <i class="devicon-github-original colored"></i>
+                            <span class="inner-text">5 Years</span>
+                        </li>
+                        <li class="hoverable">
+                            <span class="tool-name">Visual Studio Code</span>
+                            <i class="devicon-visualstudio-plain colored"></i>
+                            <span class="inner-text">5 Years</span>
+                        </li>
+                        <li class="hoverable">
+                            <span class="tool-name">IntelliJ</span>
+                            <i class="devicon-intellij-plain colored"></i>
+                            <span class="inner-text">3 Years</span>
+                        </li>
+                        <li class="hoverable">
+                            <span class="tool-name">Android Studio</span>
+                            <i class="devicon-androidstudio-plain colored"></i>
+                            <span class="inner-text">3 Years</span>
+                        </li>
+                        <li class="hoverable">
+                            <span class="tool-name">AWS</span>
+                            <i class="devicon-amazonwebservices-original colored"></i>
+                            <span class="inner-text">2 Years</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
 
         <!--Projects  - (This can be more simple with Javascript coding and keepin gthem in an array)  -->
-        <div class="reveal pt-5" id="Projects" data-target="Projects">
-            
-            <h1 class="text-center pb-4">Projects</h1>
-            <div class="text-center pb-4">
-                <a href="https://github.com/alilazo" style="text-decoration: none;"><i class="devicon-github-plain colored" style="font-size: 5em;"></i></a>
-            </div>
-            <!--Project Highlight-->
-            <h1 class="pb-4 text-center">Highlighted Project</h1>
-            <div class="centerHighlightedProjectContainer pb-5">
-                <div class="highlightedProjectContainer">
-                    <div class="text-center pb-3">
-                        <img src="pics/Projects/CareForge.png" class="highlightedProjectImage"/>
-                    </div>
-                    <div class="highlightedProjectText">
-                        <h3 class="text-center">CareForge AI</h3>
-                        <p class="text-center">
-                            CareForge AI is a 24/7 AI-powered mental health platform that helps veterans thrive.
-                            Our platform provides veterans with access to a friend, counselor, and health coach, all in one place. We understand the unique challenges faced by veterans, and our platform is designed to help them stay on track with their mental health.</p>
-                        <h4 class="text-center">My Contributions</h4>
-                        <p class="text-center">
-                            I was responsible for developing the front-end of the application using ReactJS and Gatsby. I was also responsible for developing and implementing the endpoints using Python and FastAPI including the Pydantics library and PostgreSQL.
-                        </p>
-                        <h4 class="text-center">Technologies Used</h4>
-                        <div class="text-center pb-4">
-                            <i class="devicon-react-original colored" style="font-size: 2em;"></i>
-                            <i class="devicon-nodejs-plain colored" style="font-size: 2em;"></i>
-                            <i class="devicon-css3-plain colored" style="font-size: 2em;"></i>
-                            <i class="devicon-python-plain colored" style="font-size: 2em;"></i>
-                            <i class="devicon-fastapi-plain colored" style="font-size: 2em;"></i>
-                            <i class="devicon-gatsby-plain colored" style="font-size: 2em;"></i>
-                            <i class="devicon-javascript-plain colored" style="font-size: 2em;"></i>
-                            <i class="devicon-emotion-plain colored" style="font-size: 2em;"></i>
-                            <i class="devicon-axios-plain colored" style="font-size: 2em;"></i>
-                            <i class="devicon-postgresql-plain colored" style="font-size: 2em;"></i>
-                        </div>
-
-                        <div class="d-grid bottom-0 start-0 end-0 p-2 hoverable">
-                            <a href="https://careforge.ai/" class="btn btn-dark bg-black">Visit Now!</a>
-                        </div>
-                    </div>
+        <section>
+            <div class="reveal pt-5" id="Projects" data-target="Projects">
+                <h1 class="text-center pb-4">Projects</h1>
+                <div class="text-center pb-4">
+                    <a href="https://github.com/alilazo" style="text-decoration: none;"><i class="devicon-github-plain colored" style="font-size: 5em;"></i></a>
                 </div>
-            </div>
-            <div class="row row-cols-1 row-cols-lg-3  g-2">
-
-                <div class="col">
-                    <div class="card project" style="height: 100%;">
-                        <div class="card-body text-dark">
-                            <h5 class="card-title text-center">Comparing A.I. Models</h5>
-                            <img src="pics/Projects/ComparingAI.png" class="card-img-top"/>
-                            <p class="card-text pb-5">
-                                Created for a client in California, this application allows users to compare different A.I. models and their accuracy. This application is made with ReactJS, NodeJS, ExpressJS, and MongoDB.
+                <!--Project Highlight-->
+                <h1 class="pb-4 text-center">Highlighted Project</h1>
+                <div class="centerHighlightedProjectContainer pb-5">
+                    <div class="highlightedProjectContainer">
+                        <div class="text-center pb-3">
+                            <img src="pics/Projects/CareForge.png" class="highlightedProjectImage"/>
+                        </div>
+                        <div class="highlightedProjectText">
+                            <h3 class="text-center">CareForge AI</h3>
+                            <p class="text-center">
+                                CareForge AI is a 24/7 AI-powered mental health platform that helps veterans thrive.
+                                Our platform provides veterans with access to a friend, counselor, and health coach, all in one place. We understand the unique challenges faced by veterans, and our platform is designed to help them stay on track with their mental health.</p>
+                            <h4 class="text-center">My Contributions</h4>
+                            <p class="text-center">
+                                I was responsible for developing the front-end of the application using ReactJS and Gatsby. I was also responsible for developing and implementing the endpoints using Python and FastAPI including the Pydantics library and PostgreSQL.
                             </p>
-                            <div class="d-grid position-absolute bottom-0 start-0 end-0 p-2 hoverable">
-                                <a href="http://comparing-ai.s3-website.us-east-2.amazonaws.com/" class="btn btn-dark bg-black">Visit Now!</a>
+                            <h4 class="text-center">Technologies Used</h4>
+                            <div class="text-center pb-4">
+                                <i class="devicon-react-original colored" style="font-size: 2em;"></i>
+                                <i class="devicon-nodejs-plain colored" style="font-size: 2em;"></i>
+                                <i class="devicon-css3-plain colored" style="font-size: 2em;"></i>
+                                <i class="devicon-python-plain colored" style="font-size: 2em;"></i>
+                                <i class="devicon-fastapi-plain colored" style="font-size: 2em;"></i>
+                                <i class="devicon-gatsby-plain colored" style="font-size: 2em;"></i>
+                                <i class="devicon-javascript-plain colored" style="font-size: 2em;"></i>
+                                <i class="devicon-emotion-plain colored" style="font-size: 2em;"></i>
+                                <i class="devicon-axios-plain colored" style="font-size: 2em;"></i>
+                                <i class="devicon-postgresql-plain colored" style="font-size: 2em;"></i>
+                            </div>
+
+                            <div class="d-grid bottom-0 start-0 end-0 p-2 hoverable">
+                                <a href="https://careforge.ai/" class="btn btn-dark bg-black">Visit Now!</a>
                             </div>
                         </div>
                     </div>
                 </div>
+                <div class="row row-cols-1 row-cols-lg-3  g-2">
 
-                <div class="col">
-                    <div class="card project" style="height: 100%;">
-                        <div class="card-body text-dark">
-                            <h5 class="card-title text-center">Mflix Database</h5>
-                            <img src="pics/Projects/mflix.png" class="card-img-top"/>
-                            <p class="card-text pb-5">
-                                A Netflix/IMDB like application that allows users to search for movies and view their information. This is a web application made from the M.E.R.N stack and other Technologies such as Jest.
-                            </p>
-                            <div class="d-grid position-absolute bottom-0 start-0 end-0 p-2 hoverable">
-                                <a href="https://github.com/gratiaa/mflix" class="btn btn-dark bg-black">Learn More!</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col">
-                    <div class="card project" style="height: 100%;">
-                        <div class="card-body text-dark">
-                            <h5 class="card-title text-center">Guess the Number</h5>
-                            <img src="pics/Projects/Number Guesser.PNG" class="card-img-top"/>
-                            <p class="card-text pb-5">
-                                Embark on an exciting number guessing game created using HTML, CSS, and JavaScript. Challenge yourself against the computer and see who will emerge victorious - can you outsmart the algorithm?                            </p>
-                            <div class="d-grid position-absolute bottom-0 start-0 end-0 p-2 hoverable">
-                                <a href="https://alilazo.github.io/number-guesser/" class="btn btn-dark bg-black">Visit Now!</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col">
-                    <div class="card project" style="height: 100%;">
-                        <div class="card-body text-dark">
-                            <h5 class="card-title text-center">Inspirational Quotes</h5>
-                            <img src="pics/Projects/Inspirational Quote.PNG" class="card-img-top"/>
-                            <p class="card-text pb-5">
-                                Looking for inspiration as a programmer? Explore this quote generator I've developed! Discover insightful quotes that can ignite your creativity and motivation in the world of programming.                            </p>
-                            <div class="d-grid position-absolute bottom-0 start-0 end-0 p-2 hoverable">
-                                <a href="https://alilazo.github.io/Inspiration-Quotes/" class="btn btn-dark bg-black">Visit Now!</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col">
-                    <div class="card project" style="height: 100%;">
-                        <div class="card-body text-dark">
-                            <h5 class="card-title text-center">Gym Website</h5>
-                            <img src="pics/Projects/GymWebsite.PNG" class="card-img-top"/>
-                            <p class="card-text pb-5">
-                                This Gym Website showcases my HTML, CSS, and JavaScript skills. It's a testament to my abilities, incorporating W3.CSS and Font Awesome for enhanced styling and utilizing the Google Maps API for location features. Explore the site to witness the culmination of my web development expertise.                            </p>
-                            <div class="d-grid position-absolute bottom-0 start-0 end-0 p-2 hoverable">
-                                <a href="https://alilazo.github.io/SampleGymWebsite/" class="btn btn-dark bg-black">Visit Now!</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col">
-                    <div class="card project" style="height: 100%;">
-                        <div class="card-body text-dark">
-                            <h5 class="card-title text-center">Gas Junkie</h5>
-                            <img src="pics/Projects/Gas Junkie.jpg" class="card-img-top" />
-                            <p class="card-text pb-5">
-                                Discover an Android application leveraging the power of the Google Maps API to provide users with their current location. This innovative app maps out all nearby gas stations within a specified distance in miles, allowing users to conveniently locate fueling stations on the go.                            </p>
-                            <div class="d-grid">
+                    <div class="col">
+                        <div class="card project" style="height: 100%;">
+                            <div class="card-body text-dark">
+                                <h5 class="card-title text-center">Comparing A.I. Models</h5>
+                                <img src="pics/Projects/ComparingAI.png" class="card-img-top"/>
+                                <p class="card-text pb-5">
+                                    Created for a client in California, this application allows users to compare different A.I. models and their accuracy. This application is made with ReactJS, NodeJS, ExpressJS, and MongoDB.
+                                </p>
                                 <div class="d-grid position-absolute bottom-0 start-0 end-0 p-2 hoverable">
-                                    <a href="https://github.com/alilazo/GasJunkie" class="btn btn-dark bg-black">Learn More!</a>
+                                    <a href="http://comparing-ai.s3-website.us-east-2.amazonaws.com/" class="btn btn-dark bg-black">Visit Now!</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="card project" style="height: 100%;">
+                            <div class="card-body text-dark">
+                                <h5 class="card-title text-center">Mflix Database</h5>
+                                <img src="pics/Projects/mflix.png" class="card-img-top"/>
+                                <p class="card-text pb-5">
+                                    A Netflix/IMDB like application that allows users to search for movies and view their information. This is a web application made from the M.E.R.N stack and other Technologies such as Jest.
+                                </p>
+                                <div class="d-grid position-absolute bottom-0 start-0 end-0 p-2 hoverable">
+                                    <a href="https://github.com/gratiaa/mflix" class="btn btn-dark bg-black">Learn More!</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="card project" style="height: 100%;">
+                            <div class="card-body text-dark">
+                                <h5 class="card-title text-center">Guess the Number</h5>
+                                <img src="pics/Projects/Number Guesser.PNG" class="card-img-top"/>
+                                <p class="card-text pb-5">
+                                    Embark on an exciting number guessing game created using HTML, CSS, and JavaScript. Challenge yourself against the computer and see who will emerge victorious - can you outsmart the algorithm?                            </p>
+                                <div class="d-grid position-absolute bottom-0 start-0 end-0 p-2 hoverable">
+                                    <a href="https://alilazo.github.io/number-guesser/" class="btn btn-dark bg-black">Visit Now!</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="card project" style="height: 100%;">
+                            <div class="card-body text-dark">
+                                <h5 class="card-title text-center">Inspirational Quotes</h5>
+                                <img src="pics/Projects/Inspirational Quote.PNG" class="card-img-top"/>
+                                <p class="card-text pb-5">
+                                    Looking for inspiration as a programmer? Explore this quote generator I've developed! Discover insightful quotes that can ignite your creativity and motivation in the world of programming.                            </p>
+                                <div class="d-grid position-absolute bottom-0 start-0 end-0 p-2 hoverable">
+                                    <a href="https://alilazo.github.io/Inspiration-Quotes/" class="btn btn-dark bg-black">Visit Now!</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="card project" style="height: 100%;">
+                            <div class="card-body text-dark">
+                                <h5 class="card-title text-center">Gym Website</h5>
+                                <img src="pics/Projects/GymWebsite.PNG" class="card-img-top"/>
+                                <p class="card-text pb-5">
+                                    This Gym Website showcases my HTML, CSS, and JavaScript skills. It's a testament to my abilities, incorporating W3.CSS and Font Awesome for enhanced styling and utilizing the Google Maps API for location features. Explore the site to witness the culmination of my web development expertise.                            </p>
+                                <div class="d-grid position-absolute bottom-0 start-0 end-0 p-2 hoverable">
+                                    <a href="https://alilazo.github.io/SampleGymWebsite/" class="btn btn-dark bg-black">Visit Now!</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="card project" style="height: 100%;">
+                            <div class="card-body text-dark">
+                                <h5 class="card-title text-center">Gas Junkie</h5>
+                                <img src="pics/Projects/Gas Junkie.jpg" class="card-img-top" />
+                                <p class="card-text pb-5">
+                                    Discover an Android application leveraging the power of the Google Maps API to provide users with their current location. This innovative app maps out all nearby gas stations within a specified distance in miles, allowing users to conveniently locate fueling stations on the go.                            </p>
+                                <div class="d-grid">
+                                    <div class="d-grid position-absolute bottom-0 start-0 end-0 p-2 hoverable">
+                                        <a href="https://github.com/alilazo/GasJunkie" class="btn btn-dark bg-black">Learn More!</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="card project" style="height: 100%; display: none;">
+                            <div class="card-body text-dark">
+                                <h5 class="card-title text-center">Movie Ticketing System</h5>
+                                <img src="pics/Projects/Movie Theatre.PNG" class="card-img-top"/>
+                                <p class="card-text pb-5">
+                                    Experience a sophisticated movie theatre ticketing system developed in Java. This feature-rich application offers a visually appealing user interface that is responsive to touch and mouse interactions. Enjoy seamless ticket booking and an immersive cinema experience with this advanced Java-based solution.                            </p>
+                                <div class="d-grid position-absolute bottom-0 start-0 end-0 p-2 hoverable">
+                                    <a href="#" class="btn btn-dark bg-black">Learn More!</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="card project" style="height: 100%; display: none;">
+                            <div class="card-body text-dark">
+                                <h5 class="card-title text-center">Wizards and Warriors</h5>
+                                <img src="pics/Projects/Wizards.png" class="card-img-top"/>
+                                <p class="card-text pb-5">
+                                    Introducing the Texas A&M University-Corpus Christi First Year Seminar Card Game Project! Our team of four collaborated to create an exciting game called 'Wizard and Warriors' using C++. Immerse yourself in this captivating card game adventure developed as part of our seminar project. Prepare to embark on a journey filled with magic, battles, and strategic gameplay!                            </p>
+                                <div class="d-grid position-absolute bottom-0 start-0 end-0 p-2 hoverable">
+                                    <a href="https://github.com/alilazo/Tech-Break-Game" class="btn btn-dark bg-black">Learn More!</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="card project" style="height: 100%; display: none;">
+                            <div class="card-body text-dark">
+                                <h5 class="card-title text-center">Amado Lazo Portfolio</h5>
+                                <img src="pics/Projects/portfolioWebsite.png" class="card-img-top"/>
+                                <p class="card-text pb-5">
+                                    You are currently exploring the project right in front of you! This project has been crafted using HTML, CSS, and JavaScript. It incorporates the powerful features of Bootstrap and Font Awesome to enhance its design and functionality. Dive into this impressive work that showcases the seamless integration of these technologies and the creative potential they offer.                            </p>
+                                <div class="d-grid position-absolute bottom-0 start-0 end-0 p-2 hoverable">
+                                    <a href="https://github.com/alilazo/alilazo.github.io" class="btn btn-dark bg-black">Learn More!</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="col">
-                    <div class="card project" style="height: 100%; display: none;">
-                        <div class="card-body text-dark">
-                            <h5 class="card-title text-center">Movie Ticketing System</h5>
-                            <img src="pics/Projects/Movie Theatre.PNG" class="card-img-top"/>
-                            <p class="card-text pb-5">
-                                Experience a sophisticated movie theatre ticketing system developed in Java. This feature-rich application offers a visually appealing user interface that is responsive to touch and mouse interactions. Enjoy seamless ticket booking and an immersive cinema experience with this advanced Java-based solution.                            </p>
-                            <div class="d-grid position-absolute bottom-0 start-0 end-0 p-2 hoverable">
-                                <a href="#" class="btn btn-dark bg-black">Learn More!</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col">
-                    <div class="card project" style="height: 100%; display: none;">
-                        <div class="card-body text-dark">
-                            <h5 class="card-title text-center">Wizards and Warriors</h5>
-                            <img src="pics/Projects/Wizards.png" class="card-img-top"/>
-                            <p class="card-text pb-5">
-                                Introducing the Texas A&M University-Corpus Christi First Year Seminar Card Game Project! Our team of four collaborated to create an exciting game called 'Wizard and Warriors' using C++. Immerse yourself in this captivating card game adventure developed as part of our seminar project. Prepare to embark on a journey filled with magic, battles, and strategic gameplay!                            </p>
-                            <div class="d-grid position-absolute bottom-0 start-0 end-0 p-2 hoverable">
-                                <a href="https://github.com/alilazo/Tech-Break-Game" class="btn btn-dark bg-black">Learn More!</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col">
-                    <div class="card project" style="height: 100%; display: none;">
-                        <div class="card-body text-dark">
-                            <h5 class="card-title text-center">Amado Lazo Portfolio</h5>
-                            <img src="pics/Projects/portfolioWebsite.png" class="card-img-top"/>
-                            <p class="card-text pb-5">
-                                You are currently exploring the project right in front of you! This project has been crafted using HTML, CSS, and JavaScript. It incorporates the powerful features of Bootstrap and Font Awesome to enhance its design and functionality. Dive into this impressive work that showcases the seamless integration of these technologies and the creative potential they offer.                            </p>
-                            <div class="d-grid position-absolute bottom-0 start-0 end-0 p-2 hoverable">
-                                <a href="https://github.com/alilazo/alilazo.github.io" class="btn btn-dark bg-black">Learn More!</a>
-                            </div>
-                        </div>
-                    </div>
+                <div class="d-grid text-center mt-3">
+                    <button class="loadMoreBtn btn btn-primary btn-outline-light btn-lg hoverable" onclick="loadMoreProjects()">Load More</button>
                 </div>
             </div>
-
-            <div class="d-grid text-center mt-3">
-                <button class="loadMoreBtn btn btn-primary btn-outline-light btn-lg hoverable" onclick="loadMoreProjects()">Load More</button>
-            </div>
-        </div>
+        </section>
 
         <!--FAQ-->
-        <div class="faq-section reveal" id="faq">
-            <div class="profile-picture">
-                <img src="pics/new_mexico.jpg" alt="Profile Picture">
+        <section>
+            <div class="faq-section reveal" id="faq">
+                <div class="profile-picture">
+                    <img src="pics/new_mexico.jpg" alt="Profile Picture">
+                </div>
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <div class="question">
+                            <h3>How Long Have I Been Coding?</h3>
+                            <span class="arrow"></span>
+                        </div>
+                        <div class="answer">
+                            <p>I have been coding for 7 years now.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="question">
+                            <h3>My Previous Employment.</h3>
+                            <span class="arrow"></span>
+                        </div>
+                        <div class="answer">
+                            <ul>
+                                <li>Software Developer at <b>CareForge AI</b></li>
+                                <li>Systems Administrator 1 Travel Technician Contractor for <b>The State of Texas</b></li>
+                                <li>Software Engineer Accelerate at <b>IBM</b></li>
+                                <li>Technical Support Specialist Assistant at <b>Texas A&M University-Corpus Christi</b></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="question">
+                            <h3>What are my Hobbies?</h3>
+                            <span class="arrow"></span>
+                        </div>
+                        <div class="answer">
+                            <p>My hobbies include playing guitar, golfing, watching movies, and going to the gym.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="question">
+                            <h3>What is my Favorite Programming Language?</h3>
+                            <span class="arrow"></span>
+                        </div>
+                        <div class="answer">
+                            <p>My favorite programming language is JavaScript especially with the React framework. For programming interviews I prefer using C++.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="faq-container">
-                <div class="faq-item">
-                    <div class="question">
-                        <h3>How Long Have I Been Coding?</h3>
-                        <span class="arrow"></span>
-                    </div>
-                    <div class="answer">
-                        <p>I have been coding for 7 years now.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="question">
-                        <h3>My Previous Employment.</h3>
-                        <span class="arrow"></span>
-                    </div>
-                    <div class="answer">
-                        <ul>
-                            <li>Software Developer at <b>CareForge AI</b></li>
-                            <li>Systems Administrator 1 Travel Technician Contractor for <b>The State of Texas</b></li>
-                            <li>Software Engineer Accelerate at <b>IBM</b></li>
-                            <li>Technical Support Specialist Assistant at <b>Texas A&M University-Corpus Christi</b></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="question">
-                        <h3>What are my Hobbies?</h3>
-                        <span class="arrow"></span>
-                    </div>
-                    <div class="answer">
-                        <p>My hobbies include playing guitar, golfing, watching movies, and going to the gym.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="question">
-                        <h3>What is my Favorite Programming Language?</h3>
-                        <span class="arrow"></span>
-                    </div>
-                    <div class="answer">
-                        <p>My favorite programming language is JavaScript especially with the React framework. For programming interviews I prefer using C++.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+        </section>
         <!--Resume-->
-        <div class="reveal p-5 mt-5 boxShadow" id="Resume">
-            <div class="text-center">
-                <h1>Resume</h1>
-                <p>Click the button below to View my Resume</p>
-                <button type="button" class="btn btn-primary btn-lg hoverable" data-bs-toggle="modal" data-bs-target="#exampleModal">View Resume</button>
+        <section>
+            <div class="reveal p-5 mt-5 boxShadow" id="Resume">
+                <div class="text-center">
+                    <h1>Resume</h1>
+                    <p>Click the button below to View my Resume</p>
+                    <button type="button" class="btn btn-primary btn-lg hoverable" data-bs-toggle="modal" data-bs-target="#exampleModal">View Resume</button>
+                </div>
             </div>
-        </div>
+        </section>
 
         <!--Contact me-->
-        <div class="reveal p-5 text-center hoverable" id="Contact" data-target="Contact">
-            <h1>Contact Me</h1>
-            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdqNrA8OIf-VjHIIqlJnj6oZ2KR6LGZ77h8Rp1sO8XmaYpOSg/viewform?embedded=true" width="100%" height="1220" frameborder="10px" marginheight="10px" marginwidth="0">Loading…</iframe>
-        </div>
+        <section>
+            <div class="reveal p-5 text-center hoverable" id="Contact" data-target="Contact">
+                <h1>Contact Me</h1>
+                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdqNrA8OIf-VjHIIqlJnj6oZ2KR6LGZ77h8Rp1sO8XmaYpOSg/viewform?embedded=true" width="100%" height="1220" frameborder="10px" marginheight="10px" marginwidth="0">Loading…</iframe>
+            </div>
+        </section>
     </div>
 
     <!--- Footer -->
     <footer class="footer p-4 row m-0 sticky-bottom d-flex align-items-center hoverable">
         <div class="col-1">
-            <span class="text-muted">&copy; Amado Lazo, 2023</span>
+            <span class="text-muted">&copy; Amado Lazo, 2024</span>
         </div>
         <div class="col-2">
             <a href="https://github.com/alilazo" style="text-decoration: none;" ><img src="pics/svg/logo-github.svg" /></a>
