@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Calculate printing costs based on image size and cost per square inch. Upload images and get instant cost calculations.">
+    <meta name="keywords" content="image, cost, calculator, printing, square inch, resize">
+    <meta name="author" content="Image Cost Calculator">
+    
+    <!-- Open Graph meta tags for social sharing -->
+    <meta property="og:title" content="Image Cost Calculator">
+    <meta property="og:description" content="Calculate printing costs based on image size and cost per square inch">
+    <meta property="og:type" content="website">
+    
+    <title>Image Cost Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%233498db'%3E%3Cpath d='M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z' /%3E%3C/svg%3E">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">Image Cost Calculator</a>
+            </div>
+            <div class="nav-menu" id="navMenu">
+                <a href="index.html" class="nav-link active">Calculator</a>
+                <a href="sizing-guide.html" class="nav-link">Sizing Guide</a>
+                <a href="cart.html" class="nav-link">Cart <span id="cartCount" class="cart-count">0</span></a>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <header>
+            <h1>Image Cost Calculator</h1>
+            <p>Calculate printing costs based on image size</p>
+        </header>
+
+        <main>
+            <!-- Background requirement notice -->
+            <div class="background-notice">
+                <p><strong>Important:</strong> Images must be uploaded without background for best printing results.</p>
+            </div>
+
+            <!-- Image upload area -->
+            <div class="upload-area" id="uploadArea">
+                <div class="upload-content">
+                    <svg class="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/>
+                    </svg>
+                    <p>Drag and drop an image here</p>
+                    <p class="upload-subtitle">or</p>
+                    <button class="upload-button" id="uploadButton">Choose File</button>
+                </div>
+                <input type="file" id="fileInput" accept="image/*" hidden>
+            </div>
+
+            <!-- Image preview and controls -->
+            <div class="image-section" id="imageSection" style="display: none;">
+                <div class="image-container">
+                    <img id="previewImage" alt="Preview">
+                </div>
+                
+                <div class="controls">
+                    <div class="size-controls">
+                        <label for="imageSize">Image Size (inches):</label>
+                        <input type="range" id="imageSize" min="1" max="50" value="10" step="0.1">
+                        <span id="sizeDisplay">10.0"</span>
+                        <p class="constraint-info">Maximum: 13" width × 15" height</p>
+                    </div>
+                    
+                    <div class="dimension-display">
+                        <div class="dimension-item">
+                            <span class="label">Width:</span>
+                            <span id="widthDisplay">10.0"</span>
+                        </div>
+                        <div class="dimension-item">
+                            <span class="label">Height:</span>
+                            <span id="heightDisplay">10.0"</span>
+                        </div>
+                        <div class="dimension-item">
+                            <span class="label">Area:</span>
+                            <span id="areaDisplay">100.0 sq in</span>
+                        </div>
+                    </div>
+                    
+                    <div class="sizing-guide-note">
+                        <p>📏 <a href="sizing-guide.html" class="sizing-guide-link">Please click here to view our sizing guide</a></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cost calculation display -->
+            <div class="cost-section" id="costSection" style="display: none;">
+                <div class="cost-display">
+                    <h2>Printing Cost</h2>
+                    <div class="cost-amount" id="costAmount">$3.50</div>
+                    <div class="cost-breakdown">
+                        <span id="costBreakdown">100.0 sq in × $0.035 = $3.50</span>
+                    </div>
+                    
+                    <div class="cart-controls">
+                        <div class="quantity-section">
+                            <label for="quantity">Quantity:</label>
+                            <input type="number" id="quantity" value="1" min="1" max="99">
+                        </div>
+                        <button class="add-to-cart-button" id="addToCartButton">Add to Cart</button>
+                    </div>
+                </div>
+                
+                <button class="reset-button" id="resetButton">Upload New Image</button>
+            </div>
+        </main>
+    </div>
+
+    <script src="cart.js"></script>
+    <script src="script.js"></script>
+    <script src="navigation.js"></script>
+</body>
+</html>
