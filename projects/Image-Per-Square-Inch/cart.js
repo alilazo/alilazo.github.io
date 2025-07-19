@@ -421,7 +421,7 @@ class CartManager {
             emailBody += `ITEM ${index + 1}: ${item.name}\n`;
             emailBody += `  • Width: ${item.width.toFixed(2)} inches\n`;
             emailBody += `  • Height: ${item.height.toFixed(2)} inches\n`;
-            emailBody += `  • Print Area: ${item.area.toFixed(2)} sq in\n`;
+            emailBody += `  • Print Area per Item: ${item.area.toFixed(2)} sq in\n`;
             emailBody += `  • Quantity: ${item.quantity} piece(s)\n`;
             emailBody += `  • Unit Cost: $${item.cost.toFixed(2)} each\n`;
             emailBody += `  • Line Total: $${(item.cost * item.quantity).toFixed(2)}\n`;
@@ -447,7 +447,7 @@ class CartManager {
         emailBody += '• Order Method: Calculated via Image Cost Calculator tool\n\n';
         
         emailBody += '=== NEXT STEPS ===\n';
-        emailBody += 'Please review this order and confirm:\n';
+        emailBody += 'Please review this order and expect a confirmation of:\n';
         emailBody += '1. Current pricing rates and any bulk discounts\n';
         emailBody += '2. Production timeline and delivery options\n';
         emailBody += '3. Payment methods accepted\n';
@@ -500,7 +500,7 @@ class CartManager {
             emailBody += `ITEM ${index + 1}: ${item.name}\n`;
             emailBody += `  • Width: ${item.width.toFixed(2)} inches\n`;
             emailBody += `  • Height: ${item.height.toFixed(2)} inches\n`;
-            emailBody += `  • Print Area: ${item.area.toFixed(2)} sq in\n`;
+            emailBody += `  • Print Area per Item: ${item.area.toFixed(2)} sq in\n`;
             emailBody += `  • Quantity: ${item.quantity} piece(s)\n`;
             emailBody += `  • Unit Cost: $${item.cost.toFixed(2)} each\n`;
             emailBody += `  • Line Total: $${(item.cost * item.quantity).toFixed(2)}\n`;
@@ -525,9 +525,9 @@ class CartManager {
         emailBody += '• Background Removal: All images uploaded without backgrounds as required\n';
         emailBody += '• Aspect Ratio: Original proportions maintained\n';
         emailBody += '• Image Quality: High resolution (please maintain quality when uploading)\n';
-        emailBody += '• Pricing Rate: $0.035 per square inch (please confirm current rates)\n';
+        emailBody += '• Pricing Rate: $0.035 per square inch\n';
         emailBody += '• File Format: Original formats preserved\n';
-        emailBody += '• Order Method: Calculated via Image Cost Calculator tool\n\n';
+        emailBody += '• Order Method: Calculated via HTGDesigns Cost Calculator tool\n\n';
         
         emailBody += '=== NEXT STEPS ===\n';
         emailBody += 'Please review this order and confirm:\n';
@@ -537,7 +537,6 @@ class CartManager {
         emailBody += '4. Payment methods accepted\n\n';
         
         emailBody += 'I look forward to working with you on this project!\n\n';
-        emailBody += 'Best regards,\n[Your Name]\n[Your Contact Information]';
 
         // Create mailto link
         const mailtoLink = `mailto:hometowngraphics22@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
