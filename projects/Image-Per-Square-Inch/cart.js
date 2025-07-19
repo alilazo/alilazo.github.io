@@ -412,7 +412,7 @@ class CartManager {
         emailBody += `Order Date: ${orderDate} at ${orderTime}\n`;
         emailBody += `Total Items: ${cartData.totalItems}\n`;
         emailBody += `Total Print Area: ${cartData.totalArea.toFixed(2)} square inches\n`;
-        emailBody += `Estimated Cost: $${cartData.totalCost.toFixed(2)} (at $0.035 per sq in)\n`;
+        emailBody += `Estimated Cost: $${cartData.totalCost.toFixed(2)}\n`;
         emailBody += `Order ID: IMG-${Date.now().toString().slice(-6)}\n\n`;
         
         emailBody += '=== DETAILED ITEM BREAKDOWN ===\n';
@@ -442,7 +442,7 @@ class CartManager {
         emailBody += '• Background Removal: All images uploaded without backgrounds as required\n';
         emailBody += '• Aspect Ratio: Original proportions maintained\n';
         emailBody += '• Image Quality: High resolution preserved via ImgBB hosting\n';
-        emailBody += '• Pricing Rate: $0.035 per square inch (please confirm current rates)\n';
+        emailBody += '• Pricing Rate: $0.035 per square inch\n';
         emailBody += '• File Format: Images converted to web-compatible formats\n';
         emailBody += '• Order Method: Calculated via Image Cost Calculator tool\n\n';
         
@@ -454,7 +454,6 @@ class CartManager {
         emailBody += '4. Any additional requirements or specifications\n\n';
         
         emailBody += 'I look forward to working with you on this project!\n\n';
-        emailBody += 'Best regards,\n[Your Name]\n[Your Contact Information]';
 
         // Create mailto link
         const mailtoLink = `mailto:hometowngraphics22@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;

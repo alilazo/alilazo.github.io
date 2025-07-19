@@ -1,4 +1,4 @@
-# Image Cost Calculator
+# HTGDesigns Cost Calculator
 
 A minimalistic web application that calculates printing costs based on image dimensions and cost per square inch.
 
