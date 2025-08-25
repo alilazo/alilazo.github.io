@@ -5,6 +5,9 @@ class CartManager {
         this.costPerSqIn = 0.035;
         this.initializeCart();
         this.updateCartCount();
+        
+        // Check if this is a preview request
+        this.checkForPreview();
     }
 
     initializeCart() {
@@ -101,6 +104,20 @@ class CartManager {
         if (document.getElementById('cartItems')) {
             this.renderCart();
         }
+    }
+
+    clearCartAfterEmail() {
+        // Clear the cart after email is sent
+        this.cart = [];
+        this.saveCart();
+        
+        // Re-render cart if on cart page
+        if (document.getElementById('cartItems')) {
+            this.renderCart();
+        }
+        
+        // Show confirmation message
+        this.showCartClearedMessage();
     }
 
     updateCartCount() {
@@ -446,6 +463,11 @@ class CartManager {
         emailBody += '• File Format: Images converted to web-compatible formats\n';
         emailBody += '• Order Method: Calculated via Image Cost Calculator tool\n\n';
         
+        emailBody += '=== VERIFICATION ===\n';
+        emailBody += 'Click the link below to preview this order with all details:\n';
+        const verificationLink = 'https://amadolazo.com/projects/Image-Per-Square-Inch/index.html?preview=true&orderId=IMG-' + Date.now().toString().slice(-6) + '&items=' + encodeURIComponent(JSON.stringify(cartData.items)) + '&totalItems=' + cartData.totalItems + '&totalArea=' + cartData.totalArea.toFixed(2) + '&totalCost=' + cartData.totalCost.toFixed(2) + '&orderDate=' + encodeURIComponent(orderDate) + '&orderTime=' + encodeURIComponent(orderTime) + '&hasImages=true&imageLinks=' + encodeURIComponent(JSON.stringify(uploadedImages.map(img => ({ name: img.name, url: img.url, directUrl: img.directUrl }))));
+        emailBody += 'Verification Link: ' + verificationLink + '\n\n';
+        
         emailBody += '=== NEXT STEPS ===\n';
         emailBody += 'Please review this order and expect a confirmation of:\n';
         emailBody += '1. Current pricing rates and any bulk discounts\n';
@@ -467,7 +489,7 @@ class CartManager {
                 this.showEmailFailsafe(subject, emailBody, true);
             }, 2000);
             
-            // Show success message
+            // Show success message (but don't clear cart yet)
             this.showEmailSentMessage(true);
         } catch (error) {
             console.error('Error opening email client:', error);
@@ -521,6 +543,11 @@ class CartManager {
         });
         emailBody += '\n';
         
+        emailBody += '=== VERIFICATION ===\n';
+        emailBody += 'Click the link below to preview this order with all details:\n';
+        const verificationLinkManual = 'https://amadolazo.com/projects/Image-Per-Square-Inch/index.html?preview=true&orderId=IMG-' + Date.now().toString().slice(-6) + '&items=' + encodeURIComponent(JSON.stringify(cartData.items)) + '&totalItems=' + cartData.totalItems + '&totalArea=' + cartData.totalArea.toFixed(2) + '&totalCost=' + cartData.totalCost.toFixed(2) + '&orderDate=' + encodeURIComponent(orderDate) + '&orderTime=' + encodeURIComponent(orderTime) + '&hasImages=false';
+        emailBody += 'Verification Link: ' + verificationLinkManual + '\n\n';
+        
         emailBody += '=== ORDER SPECIFICATIONS ===\n';
         emailBody += '• Background Removal: All images uploaded without backgrounds as required\n';
         emailBody += '• Aspect Ratio: Original proportions maintained\n';
@@ -550,7 +577,7 @@ class CartManager {
                 this.showEmailFailsafe(subject, emailBody, false);
             }, 2000);
             
-            // Show fallback message
+            // Show fallback message (but don't clear cart yet)
             this.showEmailSentMessage(false);
         } catch (error) {
             console.error('Error opening email client:', error);
@@ -666,6 +693,7 @@ class CartManager {
         message.innerHTML = `
             <div class="failsafe-content">
                 <div class="failsafe-header">
+                    <button class="close-failsafe-x" id="closeFailsafeX">×</button>
                     <svg class="info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                         <circle cx="12" cy="12" r="10"></circle>
                         <path d="m9,12 2,2 4,-4"></path>
@@ -757,6 +785,28 @@ class CartManager {
                 margin-bottom: 2rem;
                 padding-bottom: 1rem;
                 border-bottom: 2px solid #f0f0f0;
+                position: relative;
+            }
+            .failsafe-header .close-failsafe-x {
+                position: absolute;
+                top: -10px;
+                right: -10px;
+                background: #dc3545;
+                color: white;
+                border: none;
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                font-size: 20px;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: background-color 0.3s ease;
+                z-index: 1;
+            }
+            .failsafe-header .close-failsafe-x:hover {
+                background: #c82333;
             }
             .failsafe-header .info-icon {
                 width: 48px;
@@ -955,16 +1005,18 @@ class CartManager {
             document.body.removeChild(message);
             const styles = document.getElementById('failsafeStyles');
             if (styles) document.head.removeChild(styles);
+            // Clear cart when user closes the modal
+            this.clearCartAfterEmail();
         });
 
-        // Auto-close after 30 seconds
-        setTimeout(() => {
-            if (message.parentNode) {
-                document.body.removeChild(message);
-                const styles = document.getElementById('failsafeStyles');
-                if (styles) document.head.removeChild(styles);
-            }
-        }, 30000);
+        // Add event listener for the X button
+        document.getElementById('closeFailsafeX').addEventListener('click', () => {
+            document.body.removeChild(message);
+            const styles = document.getElementById('failsafeStyles');
+            if (styles) document.head.removeChild(styles);
+            // Clear cart when user closes the modal
+            this.clearCartAfterEmail();
+        });
     }
 
     showEmailContentModal(subject, emailBody) {
@@ -1330,6 +1382,484 @@ class CartManager {
                 document.body.removeChild(message);
             }
         }, 10000);
+    }
+
+    showCartClearedMessage() {
+        const message = document.createElement('div');
+        message.className = 'cart-cleared-message';
+        message.innerHTML = `
+            <div class="message-content">
+                <svg class="success-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                    <polyline points="22,4 12,14.01 9,11.01"></polyline>
+                </svg>
+                <div class="message-text">
+                    <strong>Cart Cleared Successfully!</strong>
+                    <p>Your cart has been emptied after sending the email. You can now add new items for your next order.</p>
+                </div>
+                <button class="close-message-btn" onclick="this.parentElement.parentElement.parentElement.click()">Got it!</button>
+            </div>
+        `;
+        
+        message.style.cssText = `
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            border: 2px solid #28a745;
+            border-radius: 15px;
+            padding: 2rem;
+            z-index: 1001;
+            max-width: 450px;
+            width: 90%;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            animation: popIn 0.3s ease-out;
+        `;
+
+        // Add styles for the cart cleared message
+        const style = document.createElement('style');
+        style.textContent = `
+            .cart-cleared-message .message-content {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+            .cart-cleared-message .success-icon {
+                width: 24px;
+                height: 24px;
+                color: #28a745;
+                align-self: center;
+            }
+            .cart-cleared-message .message-text {
+                width: 100%;
+            }
+            .cart-cleared-message .message-text strong {
+                color: #28a745;
+                font-size: 1.1rem;
+                display: block;
+                margin-bottom: 0.5rem;
+                text-align: center;
+            }
+            .cart-cleared-message .message-text p {
+                margin: 0 0 1rem 0;
+                color: #333;
+                line-height: 1.4;
+                text-align: center;
+            }
+            .cart-cleared-message .close-message-btn {
+                background-color: #3498db;
+                color: white;
+                border: none;
+                padding: 0.5rem 1.5rem;
+                border-radius: 20px;
+                cursor: pointer;
+                font-weight: 500;
+                align-self: center;
+                margin-top: 0.5rem;
+                transition: background-color 0.3s ease;
+            }
+            .cart-cleared-message .close-message-btn:hover {
+                background-color: #2980b9;
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Create backdrop
+        const backdrop = document.createElement('div');
+        backdrop.style.cssText = `
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        `;
+
+        document.body.appendChild(backdrop);
+        document.body.appendChild(message);
+
+        // Close on backdrop click
+        backdrop.addEventListener('click', () => {
+            document.body.removeChild(backdrop);
+            document.body.removeChild(message);
+        });
+
+        // Auto close after 8 seconds
+        setTimeout(() => {
+            if (backdrop.parentNode && message.parentNode) {
+                document.body.removeChild(backdrop);
+                document.body.removeChild(message);
+            }
+        }, 8000);
+    }
+
+    checkForPreview() {
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('preview') === 'true') {
+            this.showOrderPreview(urlParams);
+        }
+    }
+
+    showOrderPreview(urlParams) {
+        try {
+            const orderId = urlParams.get('orderId') || 'Unknown';
+            const totalItems = urlParams.get('totalItems') || '0';
+            const totalArea = urlParams.get('totalArea') || '0';
+            const totalCost = urlParams.get('totalCost') || '0';
+            const orderDate = urlParams.get('orderDate') || 'Unknown';
+            const orderTime = urlParams.get('orderTime') || 'Unknown';
+            const hasImages = urlParams.get('hasImages') === 'true';
+            
+            let items = [];
+            let imageLinks = [];
+            
+            try {
+                const itemsParam = urlParams.get('items');
+                if (itemsParam) {
+                    items = JSON.parse(decodeURIComponent(itemsParam));
+                }
+            } catch (e) {
+                console.error('Error parsing items:', e);
+            }
+            
+            try {
+                const imageLinksParam = urlParams.get('imageLinks');
+                if (imageLinksParam) {
+                    imageLinks = JSON.parse(decodeURIComponent(imageLinksParam));
+                }
+            } catch (e) {
+                console.error('Error parsing image links:', e);
+            }
+
+            const previewModal = document.createElement('div');
+            previewModal.className = 'order-preview-modal';
+            previewModal.innerHTML = `
+                <div class="preview-content">
+                    <div class="preview-header">
+                        <h2>📋 Order Preview - ${orderId}</h2>
+                        <button class="close-preview-btn" id="closePreviewBtn">×</button>
+                    </div>
+                    
+                    <div class="preview-body">
+                        <div class="order-summary">
+                            <h3>Order Summary</h3>
+                            <div class="summary-grid">
+                                <div class="summary-item">
+                                    <strong>Order ID:</strong> ${orderId}
+                                </div>
+                                <div class="summary-item">
+                                    <strong>Date:</strong> ${orderDate} at ${orderTime}
+                                </div>
+                                <div class="summary-item">
+                                    <strong>Total Items:</strong> ${totalItems}
+                                </div>
+                                <div class="summary-item">
+                                    <strong>Total Area:</strong> ${totalArea} sq in
+                                </div>
+                                <div class="summary-item">
+                                    <strong>Total Cost:</strong> $${totalCost}
+                                </div>
+                                <div class="summary-item">
+                                    <strong>Images Status:</strong> ${hasImages ? '✅ Uploaded' : '⚠️ Manual Upload Required'}
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="order-items">
+                            <h3>Order Items</h3>
+                            <div class="items-list">
+                                ${items.map((item, index) => `
+                                    <div class="item-card">
+                                        <div class="item-header">
+                                            <h4>Item ${index + 1}: ${item.name}</h4>
+                                        </div>
+                                        <div class="item-details">
+                                            <div class="item-specs">
+                                                <span><strong>Width:</strong> ${item.width.toFixed(2)}"</span>
+                                                <span><strong>Height:</strong> ${item.height.toFixed(2)}"</span>
+                                                <span><strong>Area:</strong> ${item.area.toFixed(2)} sq in</span>
+                                                <span><strong>Quantity:</strong> ${item.quantity}</span>
+                                                <span><strong>Unit Cost:</strong> $${item.cost.toFixed(2)}</span>
+                                                <span><strong>Line Total:</strong> $${(item.cost * item.quantity).toFixed(2)}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                        
+                        ${hasImages && imageLinks.length > 0 ? `
+                            <div class="image-links">
+                                <h3>Image Links</h3>
+                                <div class="links-list">
+                                    ${imageLinks.map((img, index) => `
+                                        <div class="image-link-item">
+                                            <strong>${img.name}:</strong>
+                                            <div class="link-buttons">
+                                                <a href="${img.url}" target="_blank" class="view-link-btn">View Page</a>
+                                                <a href="${img.directUrl}" target="_blank" class="download-link-btn">Direct Download</a>
+                                            </div>
+                                        </div>
+                                    `).join('')}
+                                </div>
+                            </div>
+                        ` : `
+                            <div class="manual-upload-notice">
+                                <h3>⚠️ Manual Image Upload Required</h3>
+                                <p>Images were not automatically uploaded. Customer will need to upload images manually to ImgBB and provide links.</p>
+                            </div>
+                        `}
+                    </div>
+                    
+                    <div class="preview-footer">
+                        <button class="close-preview-btn" id="closePreviewFooterBtn">Close Preview</button>
+                    </div>
+                </div>
+            `;
+
+            previewModal.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.9);
+                z-index: 1004;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                animation: fadeIn 0.3s ease-out;
+            `;
+
+            // Add comprehensive styles for the preview modal
+            const style = document.createElement('style');
+            style.id = 'previewStyles';
+            style.textContent = `
+                .preview-content {
+                    background-color: white;
+                    border-radius: 15px;
+                    width: 95%;
+                    max-width: 800px;
+                    max-height: 90vh;
+                    display: flex;
+                    flex-direction: column;
+                    overflow: hidden;
+                    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+                }
+                .preview-header {
+                    padding: 1.5rem;
+                    border-bottom: 2px solid #e9ecef;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    background-color: #f8f9fa;
+                }
+                .preview-header h2 {
+                    margin: 0;
+                    color: #333;
+                    font-size: 1.5rem;
+                }
+                .close-preview-btn {
+                    background: #dc3545;
+                    color: white;
+                    border: none;
+                    width: 35px;
+                    height: 35px;
+                    border-radius: 50%;
+                    font-size: 1.5rem;
+                    cursor: pointer;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    transition: background-color 0.3s ease;
+                }
+                .close-preview-btn:hover {
+                    background: #c82333;
+                }
+                .preview-body {
+                    padding: 1.5rem;
+                    overflow-y: auto;
+                    flex: 1;
+                }
+                .order-summary {
+                    margin-bottom: 2rem;
+                    padding: 1.5rem;
+                    background-color: #f8f9fa;
+                    border-radius: 10px;
+                    border-left: 4px solid #3498db;
+                }
+                .order-summary h3 {
+                    margin: 0 0 1rem 0;
+                    color: #333;
+                    font-size: 1.3rem;
+                }
+                .summary-grid {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                    gap: 1rem;
+                }
+                .summary-item {
+                    padding: 0.5rem;
+                    background-color: white;
+                    border-radius: 6px;
+                    border: 1px solid #e9ecef;
+                }
+                .order-items {
+                    margin-bottom: 2rem;
+                }
+                .order-items h3 {
+                    margin: 0 0 1rem 0;
+                    color: #333;
+                    font-size: 1.3rem;
+                }
+                .items-list {
+                    display: grid;
+                    gap: 1rem;
+                }
+                .item-card {
+                    border: 2px solid #e9ecef;
+                    border-radius: 10px;
+                    padding: 1.5rem;
+                    transition: border-color 0.3s ease;
+                }
+                .item-card:hover {
+                    border-color: #3498db;
+                }
+                .item-header h4 {
+                    margin: 0 0 1rem 0;
+                    color: #333;
+                    font-size: 1.1rem;
+                }
+                .item-specs {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                    gap: 0.75rem;
+                }
+                .item-specs span {
+                    padding: 0.5rem;
+                    background-color: #f8f9fa;
+                    border-radius: 4px;
+                    font-size: 0.9rem;
+                }
+                .image-links {
+                    margin-bottom: 2rem;
+                }
+                .image-links h3 {
+                    margin: 0 0 1rem 0;
+                    color: #333;
+                    font-size: 1.3rem;
+                }
+                .links-list {
+                    display: grid;
+                    gap: 1rem;
+                }
+                .image-link-item {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    padding: 1rem;
+                    background-color: #f8f9fa;
+                    border-radius: 8px;
+                    border: 1px solid #e9ecef;
+                }
+                .link-buttons {
+                    display: flex;
+                    gap: 0.5rem;
+                }
+                .view-link-btn, .download-link-btn {
+                    padding: 0.5rem 1rem;
+                    border: none;
+                    border-radius: 6px;
+                    text-decoration: none;
+                    font-weight: 500;
+                    transition: background-color 0.3s ease;
+                    font-size: 0.9rem;
+                }
+                .view-link-btn {
+                    background-color: #3498db;
+                    color: white;
+                }
+                .view-link-btn:hover {
+                    background-color: #2980b9;
+                }
+                .download-link-btn {
+                    background-color: #28a745;
+                    color: white;
+                }
+                .download-link-btn:hover {
+                    background-color: #218838;
+                }
+                .manual-upload-notice {
+                    padding: 1.5rem;
+                    background-color: #fff3cd;
+                    border: 1px solid #ffeaa7;
+                    border-radius: 10px;
+                    border-left: 4px solid #ffa500;
+                }
+                .manual-upload-notice h3 {
+                    margin: 0 0 0.5rem 0;
+                    color: #856404;
+                }
+                .manual-upload-notice p {
+                    margin: 0;
+                    color: #856404;
+                }
+                .preview-footer {
+                    padding: 1.5rem;
+                    border-top: 2px solid #e9ecef;
+                    text-align: center;
+                    background-color: #f8f9fa;
+                }
+                @media (max-width: 768px) {
+                    .preview-content {
+                        width: 98%;
+                        margin: 1rem;
+                    }
+                    .summary-grid {
+                        grid-template-columns: 1fr;
+                    }
+                    .item-specs {
+                        grid-template-columns: 1fr;
+                    }
+                    .image-link-item {
+                        flex-direction: column;
+                        align-items: stretch;
+                        gap: 1rem;
+                    }
+                    .link-buttons {
+                        justify-content: center;
+                    }
+                }
+            `;
+            document.head.appendChild(style);
+            document.body.appendChild(previewModal);
+
+            // Event listeners
+            document.getElementById('closePreviewBtn').addEventListener('click', () => {
+                document.body.removeChild(previewModal);
+                document.head.removeChild(style);
+            });
+
+            document.getElementById('closePreviewFooterBtn').addEventListener('click', () => {
+                document.body.removeChild(previewModal);
+                document.head.removeChild(style);
+            });
+
+            // Close on background click
+            previewModal.addEventListener('click', (e) => {
+                if (e.target === previewModal) {
+                    document.body.removeChild(previewModal);
+                    document.head.removeChild(style);
+                }
+            });
+
+        } catch (error) {
+            console.error('Error showing order preview:', error);
+            alert('Error displaying order preview. Please check the console for details.');
+        }
     }
 }
 
