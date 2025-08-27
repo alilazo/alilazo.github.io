@@ -1,6 +1,9 @@
 // Cart management functionality
 class CartManager {
     constructor() {
+        // Clear localStorage on page refresh to fix cart issues
+        this.handlePageRefresh();
+        
         this.cart = this.loadCart();
         this.costPerSqIn = 0.035;
         this.initializeCart();
@@ -8,6 +11,22 @@ class CartManager {
         
         // Check if this is a preview request
         this.checkForPreview();
+    }
+
+    handlePageRefresh() {
+        // Check if this is a page refresh (not a new session)
+        if (performance.navigation && performance.navigation.type === 1) {
+            // Type 1 means the page was reloaded
+            console.log('Page refresh detected - clearing localStorage to fix cart issues');
+            localStorage.removeItem('imageCart');
+        } else if (performance.getEntriesByType && performance.getEntriesByType('navigation').length > 0) {
+            // Modern way to check for page refresh
+            const navEntry = performance.getEntriesByType('navigation')[0];
+            if (navEntry.type === 'reload') {
+                console.log('Page reload detected - clearing localStorage to fix cart issues');
+                localStorage.removeItem('imageCart');
+            }
+        }
     }
 
     initializeCart() {
