@@ -482,10 +482,10 @@ class CartManager {
         emailBody += '• File Format: Images converted to web-compatible formats\n';
         emailBody += '• Order Method: Calculated via Image Cost Calculator tool\n\n';
         
-        emailBody += '=== VERIFICATION ===\n';
-        emailBody += 'Click the link below to preview this order with all details:\n';
-        const verificationLink = 'https://amadolazo.com/projects/Image-Per-Square-Inch/index.html?preview=true&orderId=IMG-' + Date.now().toString().slice(-6) + '&items=' + encodeURIComponent(JSON.stringify(cartData.items)) + '&totalItems=' + cartData.totalItems + '&totalArea=' + cartData.totalArea.toFixed(2) + '&totalCost=' + cartData.totalCost.toFixed(2) + '&orderDate=' + encodeURIComponent(orderDate) + '&orderTime=' + encodeURIComponent(orderTime) + '&hasImages=true&imageLinks=' + encodeURIComponent(JSON.stringify(uploadedImages.map(img => ({ name: img.name, url: img.url, directUrl: img.directUrl }))));
-        emailBody += 'Verification Link: ' + verificationLink + '\n\n';
+        // emailBody += '=== VERIFICATION ===\n';
+        // emailBody += 'Click the link below to preview this order with all details:\n';
+        // const verificationLink = 'https://amadolazo.com/projects/Image-Per-Square-Inch/index.html?preview=true&orderId=IMG-' + Date.now().toString().slice(-6) + '&items=' + encodeURIComponent(JSON.stringify(cartData.items)) + '&totalItems=' + cartData.totalItems + '&totalArea=' + cartData.totalArea.toFixed(2) + '&totalCost=' + cartData.totalCost.toFixed(2) + '&orderDate=' + encodeURIComponent(orderDate) + '&orderTime=' + encodeURIComponent(orderTime) + '&hasImages=true&imageLinks=' + encodeURIComponent(JSON.stringify(uploadedImages.map(img => ({ name: img.name, url: img.url, directUrl: img.directUrl }))));
+        // emailBody += 'Verification Link: ' + verificationLink + '\n\n';
         
         emailBody += '=== NEXT STEPS ===\n';
         emailBody += 'Please review this order and expect a confirmation of:\n';
