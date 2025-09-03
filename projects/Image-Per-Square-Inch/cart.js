@@ -812,15 +812,16 @@ class CartManager {
         
         // Primary attempt: Open email client
         try {
-            window.location.href = mailtoLink;
+            window.open(mailtoLink, '_blank');
             
-            // Set a timeout to check if email opened successfully
+            // Show success message immediately
+            this.showEmailSentMessage(true);
+            
+            // Show failsafe modal after a short delay in case email client didn't open
             setTimeout(() => {
                 this.showEmailFailsafe(subject, emailBody, true);
-            }, 2000);
+            }, 3000);
             
-            // Show success message (but don't clear cart yet)
-            this.showEmailSentMessage(true);
         } catch (error) {
             console.error('Error opening email client:', error);
             // Immediate failsafe if error occurs
@@ -900,15 +901,16 @@ class CartManager {
         
         // Primary attempt: Open email client
         try {
-            window.location.href = mailtoLink;
+            window.open(mailtoLink, '_blank');
             
-            // Set a timeout to check if email opened successfully
+            // Show fallback message immediately
+            this.showEmailSentMessage(false);
+            
+            // Show failsafe modal after a short delay in case email client didn't open
             setTimeout(() => {
                 this.showEmailFailsafe(subject, emailBody, false);
-            }, 2000);
+            }, 3000);
             
-            // Show fallback message (but don't clear cart yet)
-            this.showEmailSentMessage(false);
         } catch (error) {
             console.error('Error opening email client:', error);
             // Immediate failsafe if error occurs
@@ -1323,12 +1325,16 @@ class CartManager {
         });
 
         document.getElementById('viewEmailBtn').addEventListener('click', () => {
+            console.log('View Email Content button clicked');
+            console.log('Subject:', subject);
+            console.log('Email body length:', emailBody.length);
             this.showEmailContentModal(subject, emailBody);
         });
 
         document.getElementById('tryAgainBtn').addEventListener('click', () => {
             const mailtoLink = `mailto:hometowngraphics22@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
-            window.location.href = mailtoLink;
+            // Use window.open instead of window.location.href for better compatibility
+            window.open(mailtoLink, '_blank');
         });
 
         document.getElementById('closeFailsafeBtn').addEventListener('click', () => {
@@ -1350,6 +1356,8 @@ class CartManager {
     }
 
     showEmailContentModal(subject, emailBody) {
+        console.log('showEmailContentModal called');
+        console.log('Creating modal for subject:', subject);
         const modal = document.createElement('div');
         modal.className = 'email-content-modal';
         modal.innerHTML = `
@@ -1386,7 +1394,7 @@ class CartManager {
             width: 100%;
             height: 100%;
             background-color: rgba(0, 0, 0, 0.9);
-            z-index: 1003;
+            z-index: 1005;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -1490,6 +1498,7 @@ class CartManager {
         `;
         document.head.appendChild(contentStyle);
         document.body.appendChild(modal);
+        console.log('Modal added to DOM');
 
         // Event listeners
         document.getElementById('closeContentBtn').addEventListener('click', () => {
