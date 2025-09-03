@@ -90,29 +90,177 @@ class ImageCostCalculator {
         }
     }
 
-    processFile(file) {
-        const reader = new FileReader();
+    async processFile(file) {
+        // Show uploading message
+        this.showUploadingMessage();
         
-        reader.onload = (e) => {
+        try {
+            // Upload to ImgBB first
+            const imgbbUrl = await this.uploadToImgBB(file);
+            
+            // Create image object to get dimensions
             const img = new Image();
             img.onload = () => {
                 this.currentImage = img;
                 this.aspectRatio = img.width / img.height;
                 this.currentImageData = {
                     name: file.name,
-                    imageUrl: e.target.result,
+                    imageUrl: imgbbUrl, // Use ImgBB URL instead of data URL
                     originalWidth: img.width,
                     originalHeight: img.height
                 };
-                this.displayImage(e.target.result);
+                this.displayImage(imgbbUrl); // Display ImgBB URL
                 this.calculateMaxSize();
                 this.showImageControls();
                 this.updateDimensions();
+                this.hideUploadingMessage();
             };
-            img.src = e.target.result;
-        };
+            img.src = imgbbUrl;
+            
+        } catch (error) {
+            console.error('Error uploading to ImgBB:', error);
+            this.hideUploadingMessage();
+            
+            // Fallback to original method if ImgBB fails
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                const img = new Image();
+                img.onload = () => {
+                    this.currentImage = img;
+                    this.aspectRatio = img.width / img.height;
+                    this.currentImageData = {
+                        name: file.name,
+                        imageUrl: e.target.result,
+                        originalWidth: img.width,
+                        originalHeight: img.height
+                    };
+                    this.displayImage(e.target.result);
+                    this.calculateMaxSize();
+                    this.showImageControls();
+                    this.updateDimensions();
+                };
+                img.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+    }
+
+    async uploadToImgBB(file) {
+        const API_KEY = '7b482fa896250425780bc2a5d12996ab';
         
-        reader.readAsDataURL(file);
+        // Create form data for ImgBB
+        const formData = new FormData();
+        formData.append('image', file);
+        formData.append('name', file.name.replace(/[^a-zA-Z0-9]/g, '_'));
+        
+        // Upload to ImgBB
+        const response = await fetch(`https://api.imgbb.com/1/upload?key=${API_KEY}`, {
+            method: 'POST',
+            body: formData
+        });
+        
+        const result = await response.json();
+        
+        if (result.success) {
+            return result.data.url; // Return the ImgBB URL
+        } else {
+            throw new Error(`Upload failed: ${result.error?.message || 'Unknown error'}`);
+        }
+    }
+
+    showUploadingMessage() {
+        // Create uploading message
+        const message = document.createElement('div');
+        message.id = 'uploadingMessage';
+        message.className = 'uploading-message';
+        message.innerHTML = `
+            <div class="upload-content">
+                <div class="upload-spinner"></div>
+                <div class="upload-text">
+                    <strong>Uploading to ImgBB...</strong>
+                    <p>Converting image for optimal storage and performance</p>
+                </div>
+            </div>
+        `;
+        
+        message.style.cssText = `
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            border: 2px solid #3498db;
+            border-radius: 15px;
+            padding: 2rem;
+            z-index: 1001;
+            max-width: 400px;
+            width: 90%;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            text-align: center;
+        `;
+
+        // Add spinner styles
+        const style = document.createElement('style');
+        style.id = 'uploadingStyles';
+        style.textContent = `
+            .upload-spinner {
+                width: 40px;
+                height: 40px;
+                border: 4px solid #f3f3f3;
+                border-top: 4px solid #3498db;
+                border-radius: 50%;
+                animation: spin 1s linear infinite;
+                margin: 0 auto 1rem auto;
+            }
+            @keyframes spin {
+                0% { transform: rotate(0deg); }
+                100% { transform: rotate(360deg); }
+            }
+            .upload-text strong {
+                color: #3498db;
+                font-size: 1.1rem;
+                display: block;
+                margin-bottom: 0.5rem;
+            }
+            .upload-text p {
+                margin: 0;
+                color: #666;
+                font-size: 0.9rem;
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Create backdrop
+        const backdrop = document.createElement('div');
+        backdrop.id = 'uploadingBackdrop';
+        backdrop.style.cssText = `
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        `;
+
+        document.body.appendChild(backdrop);
+        document.body.appendChild(message);
+    }
+
+    hideUploadingMessage() {
+        const message = document.getElementById('uploadingMessage');
+        const backdrop = document.getElementById('uploadingBackdrop');
+        const styles = document.getElementById('uploadingStyles');
+        
+        if (message && message.parentNode) {
+            document.body.removeChild(message);
+        }
+        if (backdrop && backdrop.parentNode) {
+            document.body.removeChild(backdrop);
+        }
+        if (styles && styles.parentNode) {
+            document.head.removeChild(styles);
+        }
     }
 
     displayImage(src) {

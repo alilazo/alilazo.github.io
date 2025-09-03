@@ -557,72 +557,19 @@ class CartManager {
             return;
         }
 
-        // Show uploading progress
-        this.showUploadingMessage();
-
-        try {
-            // Upload all images to ImgBB
-            const uploadedImages = await this.uploadImagesToImgBB();
-            
-            // Hide uploading message
-            this.hideUploadingMessage();
-            
-            // Create email with uploaded image links
-            this.createAndSendEmail(uploadedImages);
-            
-        } catch (error) {
-            console.error('Error uploading images:', error);
-            this.hideUploadingMessage();
-            
-            // Fallback to manual upload instructions
-            this.createAndSendEmailWithManualUpload();
-        }
+        // Images are already uploaded to ImgBB, so we can use them directly
+        const uploadedImages = this.cart.map(item => ({
+            name: item.name,
+            url: item.imageUrl, // Already an ImgBB URL
+            directUrl: item.imageUrl, // Use the same URL for direct access
+            item: item
+        }));
+        
+        // Create email with existing image links
+        this.createAndSendEmail(uploadedImages);
     }
 
-    async uploadImagesToImgBB() {
-        const API_KEY = '7b482fa896250425780bc2a5d12996ab';
-        const uploadedImages = [];
-        
-        for (let i = 0; i < this.cart.length; i++) {
-            const item = this.cart[i];
-            this.updateUploadProgress(i + 1, this.cart.length, item.name);
-            
-            try {
-                // Convert image URL to blob
-                const response = await fetch(item.imageUrl);
-                const blob = await response.blob();
-                
-                // Create form data for ImgBB
-                const formData = new FormData();
-                formData.append('image', blob);
-                formData.append('name', item.name.replace(/[^a-zA-Z0-9]/g, '_'));
-                
-                // Upload to ImgBB
-                const uploadResponse = await fetch(`https://api.imgbb.com/1/upload?key=${API_KEY}`, {
-                    method: 'POST',
-                    body: formData
-                });
-                
-                const uploadResult = await uploadResponse.json();
-                
-                if (uploadResult.success) {
-                    uploadedImages.push({
-                        name: item.name,
-                        url: uploadResult.data.url,
-                        directUrl: uploadResult.data.image.url,
-                        item: item
-                    });
-                } else {
-                    throw new Error(`Upload failed for ${item.name}: ${uploadResult.error?.message || 'Unknown error'}`);
-                }
-            } catch (error) {
-                console.error(`Failed to upload ${item.name}:`, error);
-                throw error;
-            }
-        }
-        
-        return uploadedImages;
-    }
+
 
     createAndSendEmail(uploadedImages) {
         const cartData = this.getCartData();
@@ -659,7 +606,7 @@ class CartManager {
         });
         
         emailBody += '=== IMAGE GALLERY ===\n';
-        emailBody += 'All images automatically uploaded to ImgBB:\n';
+        emailBody += 'All images are hosted on ImgBB for optimal quality:\n';
         uploadedImages.forEach((img, index) => {
             emailBody += `${index + 1}. ${img.name}\n`;
             emailBody += `   View Page: ${img.url}\n`;
@@ -671,8 +618,8 @@ class CartManager {
         emailBody += '• Aspect Ratio: Original proportions maintained\n';
         emailBody += '• Image Quality: High resolution preserved via ImgBB hosting\n';
         emailBody += '• Pricing Rate: $0.035 per square inch\n';
-        emailBody += '• File Format: Images converted to web-compatible formats\n';
-        emailBody += '• Order Method: Calculated via Image Cost Calculator tool\n\n';
+        emailBody += '• File Format: Images optimized for web and printing\n';
+        emailBody += '• Order Method: Calculated via HTGDesigns Cost Calculator tool\n\n';
         
         // emailBody += '=== VERIFICATION ===\n';
         // emailBody += 'Click the link below to preview this order with all details:\n';
@@ -1411,14 +1358,14 @@ class CartManager {
                         <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
                         <polyline points="22,4 12,14.01 9,11.01"></polyline>
                     </svg>
-                    <div class="message-text">
-                        <strong>Email Ready with Images!</strong>
-                        <p>Your email client should open with the order details and all images automatically uploaded to ImgBB.</p>
-                        <div class="success-note">
-                            <p><strong>✅ All images uploaded successfully!</strong></p>
-                            <p>The email contains direct links to your high-quality images.</p>
-                        </div>
-                    </div>
+                                         <div class="message-text">
+                         <strong>Email Ready with Images!</strong>
+                         <p>Your email client should open with the order details and all images hosted on ImgBB.</p>
+                         <div class="success-note">
+                             <p><strong>✅ All images ready for order!</strong></p>
+                             <p>The email contains direct links to your high-quality images.</p>
+                         </div>
+                     </div>
                     <button class="close-message-btn" onclick="this.parentElement.parentElement.parentElement.click()">Perfect!</button>
                 </div>
             `;
