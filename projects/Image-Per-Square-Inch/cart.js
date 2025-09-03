@@ -55,11 +55,11 @@ class CartManager {
         const saved = localStorage.getItem('imageCart');
         if (saved) {
             const parsedCart = JSON.parse(saved);
-            // Restore the cart with minimal data - images will be missing but that's okay
+            // Restore the cart with all data including imageUrl
             return parsedCart.map(item => ({
                 ...item,
-                imageUrl: null, // Images will be missing from localStorage
-                originalImageData: null
+                imageUrl: item.imageUrl || null, // Keep the imageUrl if it exists
+                originalImageData: item.originalImageData || null
             }));
         }
         return [];
@@ -67,21 +67,22 @@ class CartManager {
 
     saveCart() {
         try {
-            // Create a minimal version of the cart data to save space
-            const minimalCartData = this.cart.map(item => ({
+            // Create a version of the cart data that includes imageUrl
+            const cartData = this.cart.map(item => ({
                 id: item.id,
                 imageKey: item.imageKey,
                 name: item.name,
+                imageUrl: item.imageUrl, // Save the imageUrl
                 width: item.width,
                 height: item.height,
                 area: item.area,
                 cost: item.cost,
                 quantity: item.quantity,
-                addedAt: item.addedAt
-                // Don't save imageUrl, originalImageData, or any large data
+                addedAt: item.addedAt,
+                originalImageData: item.originalImageData
             }));
             
-            localStorage.setItem('imageCart', JSON.stringify(minimalCartData));
+            localStorage.setItem('imageCart', JSON.stringify(cartData));
             this.updateCartCount();
         } catch (error) {
             console.error('Failed to save cart to localStorage:', error);
@@ -101,7 +102,7 @@ class CartManager {
             // Clear all localStorage to make space
             localStorage.clear();
             
-            // Try saving again with minimal data
+            // Try saving again with minimal data (without imageUrl to save space)
             const minimalCart = this.cart.map(item => ({
                 id: item.id,
                 imageKey: item.imageKey,
@@ -112,7 +113,7 @@ class CartManager {
                 cost: item.cost,
                 quantity: item.quantity,
                 addedAt: item.addedAt
-                // Don't save imageUrl or originalImageData
+                // Don't save imageUrl or originalImageData to save space
             }));
             
             localStorage.setItem('imageCart', JSON.stringify(minimalCart));
@@ -401,11 +402,46 @@ class CartManager {
         // Bind events after rendering
         setTimeout(() => this.bindCartEvents(), 10);
         
-        // Add CSS for image missing notice
+        // Add CSS for image display and missing notice
         if (!document.querySelector('#cartMissingImageStyles')) {
             const style = document.createElement('style');
             style.id = 'cartMissingImageStyles';
             style.textContent = `
+                .cart-item-image-container {
+                    position: relative;
+                    width: 120px;
+                    height: 120px;
+                    border-radius: 8px;
+                    overflow: hidden;
+                    border: 2px solid #e9ecef;
+                    background-color: #f8f9fa;
+                    flex-shrink: 0;
+                }
+                .cart-item-image {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    transition: transform 0.3s ease;
+                }
+                .cart-item-image:hover {
+                    transform: scale(1.05);
+                }
+                .image-overlay {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    background-color: rgba(255, 193, 7, 0.9);
+                    color: #856404;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 0.8rem;
+                    font-weight: 500;
+                    text-align: center;
+                    padding: 0.5rem;
+                }
                 .image-missing-notice {
                     background-color: #fff3cd;
                     color: #856404;
@@ -414,6 +450,120 @@ class CartManager {
                     font-size: 0.8rem;
                     margin-bottom: 0.5rem;
                     border-left: 3px solid #ffa500;
+                }
+                .cart-item {
+                    display: flex;
+                    align-items: center;
+                    gap: 1rem;
+                    padding: 1rem;
+                    border: 1px solid #e9ecef;
+                    border-radius: 8px;
+                    margin-bottom: 1rem;
+                    background-color: white;
+                    transition: box-shadow 0.3s ease;
+                }
+                .cart-item:hover {
+                    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+                }
+                .cart-item-details {
+                    flex: 1;
+                    min-width: 0;
+                }
+                .cart-item-name {
+                    font-weight: 600;
+                    font-size: 1.1rem;
+                    color: #333;
+                    margin-bottom: 0.5rem;
+                }
+                .cart-item-specs {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+                    gap: 0.5rem;
+                    margin-bottom: 0.5rem;
+                }
+                .cart-item-spec {
+                    background-color: #f8f9fa;
+                    padding: 0.25rem 0.5rem;
+                    border-radius: 4px;
+                    font-size: 0.9rem;
+                    color: #666;
+                }
+                .cart-item-pricing {
+                    display: flex;
+                    gap: 1rem;
+                    align-items: center;
+                }
+                .unit-cost {
+                    color: #666;
+                    font-size: 0.9rem;
+                }
+                .cart-item-cost {
+                    font-weight: 600;
+                    color: #28a745;
+                    font-size: 1.1rem;
+                }
+                .cart-item-actions {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 0.5rem;
+                    align-items: flex-end;
+                }
+                .quantity-controls {
+                    display: flex;
+                    align-items: center;
+                    gap: 0.25rem;
+                }
+                .qty-btn {
+                    background-color: #6c757d;
+                    color: white;
+                    border: none;
+                    width: 30px;
+                    height: 30px;
+                    border-radius: 4px;
+                    cursor: pointer;
+                    font-weight: bold;
+                    transition: background-color 0.3s ease;
+                }
+                .qty-btn:hover {
+                    background-color: #5a6268;
+                }
+                .qty-input {
+                    width: 50px;
+                    height: 30px;
+                    text-align: center;
+                    border: 1px solid #ddd;
+                    border-radius: 4px;
+                    font-size: 0.9rem;
+                }
+                .remove-item-button {
+                    background-color: #dc3545;
+                    color: white;
+                    border: none;
+                    padding: 0.5rem 1rem;
+                    border-radius: 4px;
+                    cursor: pointer;
+                    font-size: 0.9rem;
+                    transition: background-color 0.3s ease;
+                }
+                .remove-item-button:hover {
+                    background-color: #c82333;
+                }
+                @media (max-width: 768px) {
+                    .cart-item {
+                        flex-direction: column;
+                        align-items: stretch;
+                    }
+                    .cart-item-image-container {
+                        width: 100%;
+                        height: 150px;
+                        align-self: center;
+                    }
+                    .cart-item-actions {
+                        align-items: stretch;
+                    }
+                    .quantity-controls {
+                        justify-content: center;
+                    }
                 }
             `;
             document.head.appendChild(style);
@@ -430,12 +580,16 @@ class CartManager {
         // Handle missing image URL
         const imageSrc = item.imageUrl || this.getPlaceholderImage(item.name);
         const imageAlt = item.name || 'Image';
+        const hasImage = !!item.imageUrl;
 
         div.innerHTML = `
-            <img src="${imageSrc}" alt="${imageAlt}" class="cart-item-image" ${!item.imageUrl ? 'style="opacity: 0.5;"' : ''}>
+            <div class="cart-item-image-container">
+                <img src="${imageSrc}" alt="${imageAlt}" class="cart-item-image" ${!hasImage ? 'style="opacity: 0.5;"' : ''}>
+                ${!hasImage ? '<div class="image-overlay">⚠️ No Image</div>' : ''}
+            </div>
             <div class="cart-item-details">
                 <div class="cart-item-name">${item.name}</div>
-                ${!item.imageUrl ? '<div class="image-missing-notice">⚠️ Image needs to be re-uploaded</div>' : ''}
+                ${!hasImage ? '<div class="image-missing-notice">⚠️ Image needs to be re-uploaded</div>' : ''}
                 <div class="cart-item-specs">
                     <div class="cart-item-spec">Width: ${item.width.toFixed(1)}"</div>
                     <div class="cart-item-spec">Height: ${item.height.toFixed(1)}"</div>
