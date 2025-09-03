@@ -50,7 +50,10 @@ class ImageCostCalculator {
 
         // Add to cart button
         if (this.addToCartButton) {
+            console.log('Add to Cart button found, adding event listener');
             this.addToCartButton.addEventListener('click', () => this.addToCart());
+        } else {
+            console.error('Add to Cart button not found!');
         }
 
         // Prevent default drag behaviors on document
@@ -234,12 +237,17 @@ class ImageCostCalculator {
     }
 
     addToCart() {
+        console.log('Add to Cart button clicked');
+        console.log('Current image data:', this.currentImageData);
+        console.log('Cart manager available:', !!window.cartManager);
+        
         if (!this.currentImageData || !window.cartManager) {
             console.error('Cart manager not available or no image data');
             return;
         }
 
         const quantity = parseInt(this.quantityInput.value) || 1;
+        console.log('Quantity to add:', quantity);
         
         // Add the specified quantity to cart
         for (let i = 0; i < quantity; i++) {

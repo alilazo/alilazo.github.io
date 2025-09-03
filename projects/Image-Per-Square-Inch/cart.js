@@ -57,8 +57,165 @@ class CartManager {
     }
 
     saveCart() {
-        localStorage.setItem('imageCart', JSON.stringify(this.cart));
-        this.updateCartCount();
+        try {
+            // Create a compressed version of the cart data
+            const cartData = this.cart.map(item => ({
+                ...item,
+                // Remove the large imageUrl to save space - we'll regenerate it when needed
+                imageUrl: null,
+                // Keep a reference to the original image data
+                originalImageData: item.originalImageData || null
+            }));
+            
+            localStorage.setItem('imageCart', JSON.stringify(cartData));
+            this.updateCartCount();
+        } catch (error) {
+            console.error('Failed to save cart to localStorage:', error);
+            
+            // If localStorage is full, try to clear some space
+            if (error.name === 'QuotaExceededError') {
+                this.handleStorageQuotaExceeded();
+            }
+        }
+    }
+
+    handleStorageQuotaExceeded() {
+        console.warn('localStorage quota exceeded, attempting to clear old data');
+        
+        // Try to clear some localStorage space
+        try {
+            // Clear any old cart data
+            localStorage.removeItem('imageCart');
+            
+            // Clear other potentially large items
+            const keysToClear = ['imageCart', 'cartData', 'tempImages'];
+            keysToClear.forEach(key => {
+                if (localStorage.getItem(key)) {
+                    localStorage.removeItem(key);
+                }
+            });
+            
+            // Try saving again with minimal data
+            const minimalCart = this.cart.map(item => ({
+                id: item.id,
+                imageKey: item.imageKey,
+                name: item.name,
+                width: item.width,
+                height: item.height,
+                area: item.area,
+                cost: item.cost,
+                quantity: item.quantity,
+                addedAt: item.addedAt
+                // Don't save imageUrl or originalImageData
+            }));
+            
+            localStorage.setItem('imageCart', JSON.stringify(minimalCart));
+            this.updateCartCount();
+            
+            // Show warning to user
+            this.showStorageWarning();
+            
+        } catch (retryError) {
+            console.error('Failed to clear storage space:', retryError);
+            this.showStorageError();
+        }
+    }
+
+    showStorageWarning() {
+        const message = document.createElement('div');
+        message.className = 'storage-warning-message';
+        message.innerHTML = `
+            <div class="warning-content">
+                <svg class="warning-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"></path>
+                    <path d="M12 9v4"></path>
+                    <path d="m12 17 .01 0"></path>
+                </svg>
+                <div class="warning-text">
+                    <strong>Storage Space Limited</strong>
+                    <p>Your browser's storage is nearly full. Cart data has been saved without images. Images will need to be re-uploaded when viewing the cart.</p>
+                </div>
+                <button class="close-warning-btn" onclick="this.parentElement.parentElement.parentElement.click()">Got it!</button>
+            </div>
+        `;
+        
+        message.style.cssText = `
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background-color: #fff3cd;
+            border: 2px solid #ffa500;
+            border-radius: 15px;
+            padding: 1.5rem;
+            z-index: 1001;
+            max-width: 400px;
+            width: 90%;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            animation: slideIn 0.3s ease-out;
+        `;
+
+        // Add styles for the warning message
+        const style = document.createElement('style');
+        style.textContent = `
+            .storage-warning-message .warning-content {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+            .storage-warning-message .warning-icon {
+                width: 24px;
+                height: 24px;
+                color: #ffa500;
+                align-self: center;
+            }
+            .storage-warning-message .warning-text {
+                width: 100%;
+            }
+            .storage-warning-message .warning-text strong {
+                color: #ffa500;
+                font-size: 1.1rem;
+                display: block;
+                margin-bottom: 0.5rem;
+                text-align: center;
+            }
+            .storage-warning-message .warning-text p {
+                margin: 0 0 1rem 0;
+                color: #333;
+                line-height: 1.4;
+                text-align: center;
+                font-size: 0.9rem;
+            }
+            .storage-warning-message .close-warning-btn {
+                background-color: #ffa500;
+                color: white;
+                border: none;
+                padding: 0.5rem 1.5rem;
+                border-radius: 20px;
+                cursor: pointer;
+                font-weight: 500;
+                align-self: center;
+                margin-top: 0.5rem;
+                transition: background-color 0.3s ease;
+            }
+            .storage-warning-message .close-warning-btn:hover {
+                background-color: #e09400;
+            }
+        `;
+        document.head.appendChild(style);
+
+        document.body.appendChild(message);
+
+        // Remove message after 8 seconds
+        setTimeout(() => {
+            if (message.parentNode) {
+                message.parentNode.removeChild(message);
+            }
+        }, 8000);
+    }
+
+    showStorageError() {
+        alert('Storage space is full. Please clear some browser data or try again later.');
     }
 
     addToCart(imageData, showMessage = true) {
@@ -85,7 +242,14 @@ class CartManager {
                 area: imageData.area,
                 cost: imageData.cost,
                 quantity: 1,
-                addedAt: new Date().toISOString()
+                addedAt: new Date().toISOString(),
+                // Store original image data for regeneration if needed
+                originalImageData: {
+                    name: imageData.name,
+                    imageUrl: imageData.imageUrl,
+                    originalWidth: imageData.originalWidth,
+                    originalHeight: imageData.originalHeight
+                }
             };
             this.cart.push(cartItem);
         }
@@ -223,6 +387,24 @@ class CartManager {
 
         // Bind events after rendering
         setTimeout(() => this.bindCartEvents(), 10);
+        
+        // Add CSS for image missing notice
+        if (!document.querySelector('#cartMissingImageStyles')) {
+            const style = document.createElement('style');
+            style.id = 'cartMissingImageStyles';
+            style.textContent = `
+                .image-missing-notice {
+                    background-color: #fff3cd;
+                    color: #856404;
+                    padding: 0.5rem;
+                    border-radius: 4px;
+                    font-size: 0.8rem;
+                    margin-bottom: 0.5rem;
+                    border-left: 3px solid #ffa500;
+                }
+            `;
+            document.head.appendChild(style);
+        }
     }
 
     createCartItemElement(item) {
@@ -231,11 +413,16 @@ class CartManager {
         div.dataset.itemId = item.id;
 
         const totalCost = item.cost * item.quantity;
+        
+        // Handle missing image URL
+        const imageSrc = item.imageUrl || this.getPlaceholderImage(item.name);
+        const imageAlt = item.name || 'Image';
 
         div.innerHTML = `
-            <img src="${item.imageUrl}" alt="${item.name}" class="cart-item-image">
+            <img src="${imageSrc}" alt="${imageAlt}" class="cart-item-image" ${!item.imageUrl ? 'style="opacity: 0.5;"' : ''}>
             <div class="cart-item-details">
                 <div class="cart-item-name">${item.name}</div>
+                ${!item.imageUrl ? '<div class="image-missing-notice">⚠️ Image needs to be re-uploaded</div>' : ''}
                 <div class="cart-item-specs">
                     <div class="cart-item-spec">Width: ${item.width.toFixed(1)}"</div>
                     <div class="cart-item-spec">Height: ${item.height.toFixed(1)}"</div>
@@ -250,7 +437,7 @@ class CartManager {
                 <div class="quantity-controls">
                     <label for="qty-${item.id}">Qty:</label>
                     <button class="qty-btn qty-decrease" data-item-id="${item.id}">-</button>
-                    <input type="number" class="qty-input" id="qty-${item.id}" value="${item.quantity}" min="1" max="99" data-item-id="${item.id}">
+                    <input type="number" class="qty-input" id="qty-${item.id}" value="${item.quantity}" min="1" max="50" data-item-id="${item.id}">
                     <button class="qty-btn qty-increase" data-item-id="${item.id}">+</button>
                 </div>
                 <button class="remove-item-button" data-item-id="${item.id}">Remove</button>
@@ -258,6 +445,11 @@ class CartManager {
         `;
 
         return div;
+    }
+
+    getPlaceholderImage(imageName) {
+        // Return a simple placeholder image
+        return `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23f0f0f0'/%3E%3Ctext x='50' y='50' text-anchor='middle' dy='.3em' fill='%23999' font-family='Arial' font-size='12'%3E${encodeURIComponent(imageName || 'Image')}%3C/text%3E%3C/svg%3E`;
     }
 
     updateCartSummary() {
@@ -316,7 +508,7 @@ class CartManager {
 
     updateQuantity(itemId, newQuantity) {
         const item = this.cart.find(item => item.id === itemId);
-        if (item && newQuantity >= 1 && newQuantity <= 99) {
+        if (item && newQuantity >= 1 && newQuantity <= 50) {
             item.quantity = newQuantity;
             this.saveCart();
             this.renderCart();
@@ -325,7 +517,7 @@ class CartManager {
 
     increaseQuantity(itemId) {
         const item = this.cart.find(item => item.id === itemId);
-        if (item && item.quantity < 99) {
+        if (item && item.quantity < 50) {
             item.quantity += 1;
             this.saveCart();
             this.renderCart();
@@ -562,10 +754,10 @@ class CartManager {
         });
         emailBody += '\n';
         
-        emailBody += '=== VERIFICATION ===\n';
-        emailBody += 'Click the link below to preview this order with all details:\n';
-        const verificationLinkManual = 'https://amadolazo.com/projects/Image-Per-Square-Inch/index.html?preview=true&orderId=IMG-' + Date.now().toString().slice(-6) + '&items=' + encodeURIComponent(JSON.stringify(cartData.items)) + '&totalItems=' + cartData.totalItems + '&totalArea=' + cartData.totalArea.toFixed(2) + '&totalCost=' + cartData.totalCost.toFixed(2) + '&orderDate=' + encodeURIComponent(orderDate) + '&orderTime=' + encodeURIComponent(orderTime) + '&hasImages=false';
-        emailBody += 'Verification Link: ' + verificationLinkManual + '\n\n';
+        // emailBody += '=== VERIFICATION ===\n';
+        // emailBody += 'Click the link below to preview this order with all details:\n';
+        // const verificationLinkManual = 'https://amadolazo.com/projects/Image-Per-Square-Inch/index.html?preview=true&orderId=IMG-' + Date.now().toString().slice(-6) + '&items=' + encodeURIComponent(JSON.stringify(cartData.items)) + '&totalItems=' + cartData.totalItems + '&totalArea=' + cartData.totalArea.toFixed(2) + '&totalCost=' + cartData.totalCost.toFixed(2) + '&orderDate=' + encodeURIComponent(orderDate) + '&orderTime=' + encodeURIComponent(orderTime) + '&hasImages=false';
+        // emailBody += 'Verification Link: ' + verificationLinkManual + '\n\n';
         
         emailBody += '=== ORDER SPECIFICATIONS ===\n';
         emailBody += '• Background Removal: All images uploaded without backgrounds as required\n';
@@ -1887,3 +2079,7 @@ const cartManager = new CartManager();
 
 // Make it globally available
 window.cartManager = cartManager;
+
+// Debug logging
+console.log('Cart manager initialized:', cartManager);
+console.log('Cart manager available globally:', !!window.cartManager);
