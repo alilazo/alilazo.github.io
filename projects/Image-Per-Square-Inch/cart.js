@@ -664,7 +664,10 @@ class CartManager {
         // Email cart button
         const emailButton = document.getElementById('emailCartButton');
         if (emailButton) {
-            emailButton.addEventListener('click', () => {
+            // Remove existing event listeners to prevent duplicates
+            emailButton.replaceWith(emailButton.cloneNode(true));
+            const newEmailButton = document.getElementById('emailCartButton');
+            newEmailButton.addEventListener('click', () => {
                 this.sendCartEmail();
             });
         }
