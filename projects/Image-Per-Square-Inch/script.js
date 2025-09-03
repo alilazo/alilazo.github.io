@@ -397,14 +397,26 @@ class ImageCostCalculator {
         const quantity = parseInt(this.quantityInput.value) || 1;
         console.log('Quantity to add:', quantity);
         
-        // Add the specified quantity to cart
-        for (let i = 0; i < quantity; i++) {
-            // Use the same image data for all copies (they will be grouped)
-            window.cartManager.addToCart(this.currentImageData, i === quantity - 1);
-        }
+        // Add the item once with the specified quantity
+        // The cart manager will handle grouping identical items
+        const success = window.cartManager.addToCart(this.currentImageData, true);
         
-        // Show custom message for quantity
-        if (quantity > 1) {
+        if (success && quantity > 1) {
+            // If we successfully added the item and quantity > 1, 
+            // manually update the quantity to the desired amount
+            const cartItem = window.cartManager.cart.find(item => 
+                item.imageKey === `${this.currentImageData.name}_${this.currentImageData.width}_${this.currentImageData.height}`
+            );
+            
+            if (cartItem) {
+                cartItem.quantity = quantity;
+                window.cartManager.saveCart();
+                if (document.getElementById('cartItems')) {
+                    window.cartManager.renderCart();
+                }
+            }
+            
+            // Show custom message for quantity
             window.cartManager.showAddToCartMessage(quantity);
         }
         
