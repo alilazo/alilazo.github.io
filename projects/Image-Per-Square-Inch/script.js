@@ -399,7 +399,7 @@ class ImageCostCalculator {
         
         // Add the item once with the specified quantity
         // The cart manager will handle grouping identical items
-        const success = window.cartManager.addToCart(this.currentImageData, true);
+        const success = window.cartManager.addToCart(this.currentImageData, false); // Don't show message yet
         
         if (success && quantity > 1) {
             // If we successfully added the item and quantity > 1, 
@@ -415,8 +415,10 @@ class ImageCostCalculator {
                     window.cartManager.renderCart();
                 }
             }
-            
-            // Show custom message for quantity
+        }
+        
+        // Show success message (only once)
+        if (success) {
             window.cartManager.showAddToCartMessage(quantity);
         }
         
