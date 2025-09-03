@@ -604,7 +604,7 @@ class CartManager {
                 <div class="quantity-controls">
                     <label for="qty-${item.id}">Qty:</label>
                     <button class="qty-btn qty-decrease" data-item-id="${item.id}">-</button>
-                    <input type="number" class="qty-input" id="qty-${item.id}" value="${item.quantity}" min="1" max="50" data-item-id="${item.id}">
+                                         <input type="number" class="qty-input" id="qty-${item.id}" value="${item.quantity}" min="1" max="1000" data-item-id="${item.id}">
                     <button class="qty-btn qty-increase" data-item-id="${item.id}">+</button>
                 </div>
                 <button class="remove-item-button" data-item-id="${item.id}">Remove</button>
@@ -678,7 +678,7 @@ class CartManager {
 
     updateQuantity(itemId, newQuantity) {
         const item = this.cart.find(item => item.id === itemId);
-        if (item && newQuantity >= 1 && newQuantity <= 50) {
+        if (item && newQuantity >= 1 && newQuantity <= 1000) {
             item.quantity = newQuantity;
             this.saveCart();
             this.renderCart();
@@ -687,7 +687,7 @@ class CartManager {
 
     increaseQuantity(itemId) {
         const item = this.cart.find(item => item.id === itemId);
-        if (item && item.quantity < 50) {
+        if (item && item.quantity < 1000) {
             item.quantity += 1;
             this.saveCart();
             this.renderCart();

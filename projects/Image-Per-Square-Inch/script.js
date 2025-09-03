@@ -435,7 +435,7 @@ class ImageCostCalculator {
         this.uploadArea.classList.remove('dragover');
         
         // Reset slider to default values
-        this.imageSize.max = 50;
+        this.imageSize.max = 1000;
         this.imageSize.value = 10;
     }
 
