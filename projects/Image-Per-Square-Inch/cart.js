@@ -577,10 +577,10 @@ class CartManager {
 
         const totalCost = item.cost * item.quantity;
         
-        // Handle missing image URL
-        const imageSrc = item.imageUrl || this.getPlaceholderImage(item.name);
+        // Handle missing image URL - check both imageUrl and originalImageData.imageUrl
+        const imageSrc = item.imageUrl || (item.originalImageData && item.originalImageData.imageUrl) || this.getPlaceholderImage(item.name);
         const imageAlt = item.name || 'Image';
-        const hasImage = !!item.imageUrl;
+        const hasImage = !!(item.imageUrl || (item.originalImageData && item.originalImageData.imageUrl));
 
         div.innerHTML = `
             <div class="cart-item-image-container">
@@ -725,12 +725,17 @@ class CartManager {
         }
 
         // Images are already uploaded to ImgBB, so we can use them directly
-        const uploadedImages = this.cart.map(item => ({
-            name: item.name,
-            url: item.imageUrl, // Already an ImgBB URL
-            directUrl: item.imageUrl, // Use the same URL for direct access
-            item: item
-        }));
+        const uploadedImages = this.cart.map(item => {
+            // Get the correct image URL from either imageUrl or originalImageData.imageUrl
+            const imageUrl = item.imageUrl || (item.originalImageData && item.originalImageData.imageUrl);
+            
+            return {
+                name: item.name,
+                url: imageUrl, // Already an ImgBB URL
+                directUrl: imageUrl, // Use the same URL for direct access
+                item: item
+            };
+        });
         
         // Create email with existing image links
         this.createAndSendEmail(uploadedImages);
