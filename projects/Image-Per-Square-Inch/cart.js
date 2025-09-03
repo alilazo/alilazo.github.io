@@ -53,21 +53,35 @@ class CartManager {
 
     loadCart() {
         const saved = localStorage.getItem('imageCart');
-        return saved ? JSON.parse(saved) : [];
+        if (saved) {
+            const parsedCart = JSON.parse(saved);
+            // Restore the cart with minimal data - images will be missing but that's okay
+            return parsedCart.map(item => ({
+                ...item,
+                imageUrl: null, // Images will be missing from localStorage
+                originalImageData: null
+            }));
+        }
+        return [];
     }
 
     saveCart() {
         try {
-            // Create a compressed version of the cart data
-            const cartData = this.cart.map(item => ({
-                ...item,
-                // Remove the large imageUrl to save space - we'll regenerate it when needed
-                imageUrl: null,
-                // Keep a reference to the original image data
-                originalImageData: item.originalImageData || null
+            // Create a minimal version of the cart data to save space
+            const minimalCartData = this.cart.map(item => ({
+                id: item.id,
+                imageKey: item.imageKey,
+                name: item.name,
+                width: item.width,
+                height: item.height,
+                area: item.area,
+                cost: item.cost,
+                quantity: item.quantity,
+                addedAt: item.addedAt
+                // Don't save imageUrl, originalImageData, or any large data
             }));
             
-            localStorage.setItem('imageCart', JSON.stringify(cartData));
+            localStorage.setItem('imageCart', JSON.stringify(minimalCartData));
             this.updateCartCount();
         } catch (error) {
             console.error('Failed to save cart to localStorage:', error);
@@ -84,16 +98,8 @@ class CartManager {
         
         // Try to clear some localStorage space
         try {
-            // Clear any old cart data
-            localStorage.removeItem('imageCart');
-            
-            // Clear other potentially large items
-            const keysToClear = ['imageCart', 'cartData', 'tempImages'];
-            keysToClear.forEach(key => {
-                if (localStorage.getItem(key)) {
-                    localStorage.removeItem(key);
-                }
-            });
+            // Clear all localStorage to make space
+            localStorage.clear();
             
             // Try saving again with minimal data
             const minimalCart = this.cart.map(item => ({
@@ -219,6 +225,13 @@ class CartManager {
     }
 
     addToCart(imageData, showMessage = true) {
+        // Check cart size limit to prevent storage issues
+        const totalItems = this.cart.reduce((sum, item) => sum + item.quantity, 0);
+        if (totalItems >= 20) {
+            alert('Cart is full! Please remove some items or send your current order before adding more.');
+            return false;
+        }
+        
         // Create a unique key for grouping identical images
         const imageKey = `${imageData.name}_${imageData.width}_${imageData.height}`;
         
@@ -231,24 +244,24 @@ class CartManager {
             // Increment quantity of existing item
             existingItem.quantity += 1;
         } else {
-            // Add new item with quantity
+            // Add new item with quantity - store minimal data
             const cartItem = {
                 id: Date.now() + Math.random(),
                 imageKey: imageKey,
                 name: imageData.name || `Image ${this.cart.length + 1}`,
-                imageUrl: imageData.imageUrl,
+                imageUrl: imageData.imageUrl, // Keep in memory only, not in localStorage
                 width: imageData.width,
                 height: imageData.height,
                 area: imageData.area,
                 cost: imageData.cost,
                 quantity: 1,
                 addedAt: new Date().toISOString(),
-                // Store original image data for regeneration if needed
+                // Store minimal original image data
                 originalImageData: {
                     name: imageData.name,
-                    imageUrl: imageData.imageUrl,
                     originalWidth: imageData.originalWidth,
                     originalHeight: imageData.originalHeight
+                    // Don't store imageUrl in originalImageData to save space
                 }
             };
             this.cart.push(cartItem);
