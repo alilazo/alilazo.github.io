@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="description"
-        content="Amado Lazo's Portfolio: Software Engineer for the City of Austin and Sr. Software Engineer for careforge.ai.">
+        content="Amado Lazo's Portfolio: Software Engineer for the City of Austin and Sr. Software Engineer for Careforge.ai.">
     <meta name="keywords" content="Amado Lazo, Portfolio, Computer Science, Programming, ReactJS, NodeJS, AI">
     <meta name="author" content="Amado Lazo">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -30,7 +30,7 @@
     <meta property="og:url" content="https://alilazo.github.io/">
     <meta property="og:title" content="Amado Lazo | Software Engineer & AI Specialist">
     <meta property="og:description"
-        content="Portfolio of Amado Lazo, Software Engineer for the City of Austin and Sr. Software Engineer for careforge.ai. Specializing in Full-Stack & AI development.">
+        content="Portfolio of Amado Lazo, Software Engineer for the City of Austin and Sr. Software Engineer for Careforge.ai. Specializing in Full-Stack & AI development.">
     <meta property="og:image" content="https://alilazo.github.io/favicon.png">
 
     <!-- Twitter -->
@@ -38,7 +38,7 @@
     <meta property="twitter:url" content="https://alilazo.github.io/">
     <meta property="twitter:title" content="Amado Lazo | Software Engineer & AI Specialist">
     <meta property="twitter:description"
-        content="Portfolio of Amado Lazo, Software Engineer for the City of Austin and Sr. Software Engineer for careforge.ai. Specializing in Full-Stack & AI development.">
+        content="Portfolio of Amado Lazo, Software Engineer for the City of Austin and Sr. Software Engineer for Careforge.ai. Specializing in Full-Stack & AI development.">
     <meta property="twitter:image" content="https://alilazo.github.io/favicon.png">
 
     <!-- Structured Data (Schema.org) -->
@@ -85,7 +85,7 @@
     <!-- AI-First Semantic Data (AIO) -->
     <div id="ai-summary" style="display: none;" aria-hidden="true">
         <h2>AI Summary of Amado Lazo</h2>
-        <p>Amado Lazo is a Software Engineer at the City of Austin and a Sr. Software Engineer at careforge.ai. He
+        <p>Amado Lazo is a Software Engineer at the City of Austin and a Sr. Software Engineer at Careforge.ai. He
             specializes in Full-Stack development and AI systems. He is currently leveraging AI as a force multiplier to
             build a 24/7 mental health platform for veterans. Core skills: React, Node, Python, C++, Java, and AI
             Integration. He specializes in Swiss and Scandinavian design aesthetics.</p>
@@ -101,7 +101,7 @@
         "name": "Who is Amado Lazo?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Amado Lazo is a Software Engineer based in Austin, Texas, currently working for the City of Austin and careforge.ai. He is an expert in AI-driven software development."
+          "text": "Amado Lazo is a Software Engineer based in Austin, Texas, currently working for the City of Austin and Careforge.ai. He is an expert in AI-driven software development."
         }
       }, {
         "@type": "Question",
@@ -114,19 +114,26 @@
     }
     </script>
 
-    <!--- Custom Cursor -->
-    <div class="cursor">
-        <div class="cursor__ball cursor__ball--big">
-            <svg height="50" width="50">
-                <circle cx="25" cy="25" r="23"></circle>
-            </svg>
-        </div>
-        <div class="cursor__ball cursor__ball--small">
-            <svg height="10" width="10">
-                <circle cx="5" cy="5" r="4"></circle>
-            </svg>
+    <!--- Custom Blob Cursor -->
+    <div class="cursor-wrapper">
+        <div class="cursor">
+            <div class="cursor__blob main-blob"></div>
+            <div class="cursor__blob secondary-blob"></div>
+            <div class="cursor__blob secondary-blob"></div>
         </div>
     </div>
+
+    <!-- SVG Gooey Filter -->
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" style="display:none">
+        <defs>
+            <filter id="goo">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+                <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7"
+                    result="goo" />
+                <feBlend in="SourceGraphic" in2="goo" />
+            </filter>
+        </defs>
+    </svg>
 
     <!-- Scroll Progress -->
     <div class="scroll-progress" id="scrollProgress"></div>
@@ -141,6 +148,8 @@
             <a href="#Experience" class="nav-link-custom" data-umami-event="Nav Click - Experience">Experience</a>
             <a href="#Recognition" class="nav-link-custom" data-umami-event="Nav Click - Recognition">Recognition</a>
             <a href="#Projects" class="nav-link-custom" data-umami-event="Nav Click - Projects">Projects</a>
+            <a href="#Services" class="nav-link-custom" data-umami-event="Nav Click - Services">Services</a>
+            <a href="#Life" class="nav-link-custom" data-umami-event="Nav Click - Life">Life</a>
             <a href="#Tips" class="nav-link-custom" data-umami-event="Nav Click - Tips">Tips & Tricks</a>
             <a href="#Contact" class="nav-link-custom" data-umami-event="Nav Click - Contact">Contact</a>
             <button class="theme-switch" id="themeToggle">DARK MODE</button>
@@ -160,6 +169,8 @@
         <a href="#Experience" class="mobile-nav-link" data-umami-event="Mobile Nav Click - Experience">Experience</a>
         <a href="#Recognition" class="mobile-nav-link" data-umami-event="Mobile Nav Click - Recognition">Recognition</a>
         <a href="#Projects" class="mobile-nav-link" data-umami-event="Mobile Nav Click - Projects">Projects</a>
+        <a href="#Services" class="mobile-nav-link" data-umami-event="Mobile Nav Click - Services">Services</a>
+        <a href="#Life" class="mobile-nav-link" data-umami-event="Mobile Nav Click - Life">Life</a>
         <a href="#Tips" class="mobile-nav-link" data-umami-event="Mobile Nav Click - Tips">Tips & Tricks</a>
         <a href="#Contact" class="mobile-nav-link" data-umami-event="Mobile Nav Click - Contact">Contact</a>
         <button class="theme-switch mt-4" id="themeToggleMobile">DARK MODE</button>
@@ -172,8 +183,8 @@
                 <h1>Hi, I'm <br><span>Amado</span><br>Lazo</h1>
                 <div class="hero-roles mt-4">
                     Software Engineer @ <strong>City of Austin</strong><br>
-                    Sr. Software Engineer @ <strong>careforge.ai</strong><br>
-                    Specializing in Full-Stack & AI
+                    Sr. Software Engineer @ <strong>Careforge.ai</strong><br>
+                    Specializing in Full-Stack
                 </div>
                 <p class="lead mt-4">
                     <span class="typewriter"></span>
@@ -185,8 +196,10 @@
             </div>
             <div class="hero-img reveal hoverable">
                 <div class="hero-image-container boxShadow">
-                    <img src="pics/Potrait.jpg" alt="Amado Lazo" class="hero-image">
+                    <img src="pics/Potrait_TAMUCC_Looking_at_Camera.jpg" alt="Amado Lazo" class="hero-image">
                     <div class="decorative-shape"></div>
+                    <img src="pics/OilPaintMaskImage.png" alt="Artistic Overlay" class="oil-paint-float reveal"
+                        style="position: absolute; bottom: -50px; right: -50px; width: 180px; z-index: 2; filter: drop-shadow(10px 10px 20px rgba(0,0,0,0.2));">
                 </div>
             </div>
         </div>
@@ -319,6 +332,42 @@
                     <i class="devicon-amazonwebservices-original colored"></i>
                     <span class="skill-name">AWS</span>
                 </div>
+                <div class="skill-item boxShadow hoverable">
+                    <span class="skill-name fw-bold fs-4">Render</span>
+                </div>
+                <div class="skill-item boxShadow hoverable">
+                    <span class="skill-name fw-bold fs-4">Vercel</span>
+                </div>
+                <div class="skill-item boxShadow hoverable">
+                    <span class="skill-name fw-bold fs-4">Expo</span>
+                </div>
+                <div class="skill-item boxShadow hoverable">
+                    <i class="devicon-react-original colored"></i>
+                    <span class="skill-name">React Native</span>
+                </div>
+                <div class="skill-item boxShadow hoverable">
+                    <span class="skill-name fw-bold fs-4">Umami</span>
+                </div>
+                <div class="skill-item boxShadow hoverable">
+                    <i class="devicon-azure-plain colored"></i>
+                    <span class="skill-name">Azure</span>
+                </div>
+                <div class="skill-item boxShadow hoverable">
+                    <i class="devicon-firebase-plain colored"></i>
+                    <span class="skill-name">Firebase</span>
+                </div>
+                <div class="skill-item boxShadow hoverable">
+                    <i class="devicon-google-plain colored"></i>
+                    <span class="skill-name">Analytics</span>
+                </div>
+                <div class="skill-item boxShadow hoverable">
+                    <i class="devicon-fastapi-plain colored"></i>
+                    <span class="skill-name">FastAPI</span>
+                </div>
+                <div class="skill-item boxShadow hoverable">
+                    <i class="devicon-mysql-plain colored"></i>
+                    <span class="skill-name">SQL</span>
+                </div>
             </div>
         </section>
 
@@ -443,7 +492,86 @@
             </div>
         </section>
 
-        <!-- Contact Section -->
+        <!-- Life Beyond Code Section -->
+        <section id="Life">
+            <div class="row align-items-center">
+                <div class="col-md-6 revealLR">
+                    <h2 class="section-title">Life Beyond Code</h2>
+                    <p class="lead mb-4">Balance is the key to sustainable engineering.</p>
+                    <p>When I'm not architecting AI solutions or debugging complex systems, you'll find me exploring the
+                        outdoors or traveling. I believe that stepping away from the screen provides the clarity needed
+                        to solve the toughest technical challenges.</p>
+                    <p class="mt-3 fst-italic text-muted">A moment from my travels in New Mexico — 2024</p>
+                </div>
+                <div class="col-md-6 revealLR hoverable" style="transition-delay: 0.2s;">
+                    <div class="life-image-wrapper boxShadow p-2 bg-white" style="transform: rotate(2deg);">
+                        <img src="pics/new_mexico.jpg" alt="Exploring New Mexico" class="img-fluid"
+                            style="border: 1px solid var(--border-color);">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Development Services Section -->
+        <section id="Services">
+            <h2 class="section-title text-center d-block reveal">Freelance Services</h2>
+            <p class="text-center mb-5 reveal">Bespoke web solutions tailored to your unique needs.</p>
+
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3 reveal hoverable">
+                    <div class="tip-card boxShadow" style="height: 100%;">
+                        <span class="tip-number">P</span>
+                        <div class="tip-content">
+                            <h4>Portfolios</h4>
+                            <p class="small mb-3">Professional, minimalist, and AI-optimized portfolios designed to sell
+                                your skills. Perfect for engineers & creatives.</p>
+                            <div class="fw-bold text-accent mb-4">Contact for a custom quote</div>
+                            <a href="#Contact" class="btn-custom w-100 text-center"
+                                data-umami-event="Service Inquiry - Portfolio">Inquire</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 reveal hoverable" style="transition-delay: 0.1s;">
+                    <div class="tip-card boxShadow" style="height: 100%;">
+                        <span class="tip-number">S</span>
+                        <div class="tip-content">
+                            <h4>Startups</h4>
+                            <p class="small mb-3">Fast MVPs, scalable frontend architecture, and robust API
+                                integrations to launch your idea quickly.</p>
+                            <div class="fw-bold text-accent mb-4">Contact for a custom quote</div>
+                            <a href="#Contact" class="btn-custom w-100 text-center"
+                                data-umami-event="Service Inquiry - Startup">Inquire</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 reveal hoverable" style="transition-delay: 0.2s;">
+                    <div class="tip-card boxShadow" style="height: 100%;">
+                        <span class="tip-number">B</span>
+                        <div class="tip-content">
+                            <h4>Businesses</h4>
+                            <p class="small mb-3">SEO-ready, high-conversion landing pages and informative sites to grow
+                                your local presence and authority.</p>
+                            <div class="fw-bold text-accent mb-4">Contact for a custom quote</div>
+                            <a href="#Contact" class="btn-custom w-100 text-center"
+                                data-umami-event="Service Inquiry - Business">Inquire</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 reveal hoverable" style="transition-delay: 0.3s;">
+                    <div class="tip-card boxShadow" style="height: 100%;">
+                        <span class="tip-number">E</span>
+                        <div class="tip-content">
+                            <h4>Ecommerce</h4>
+                            <p class="small mb-3">Secure, modern online stores with seamless payment integration and
+                                intuitive inventory management.</p>
+                            <div class="fw-bold text-accent mb-4">Contact for a custom quote</div>
+                            <a href="#Contact" class="btn-custom w-100 text-center"
+                                data-umami-event="Service Inquiry - Ecommerce">Inquire</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
         <section id="Contact">
             <div class="contact-container boxShadow reveal hoverable text-center">
                 <h2>Let's build something beautiful.</h2>

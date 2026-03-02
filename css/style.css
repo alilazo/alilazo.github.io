@@ -12,6 +12,8 @@
     --card-bg: #ffffff;
     --shadow: 4px 4px 0px 0px var(--text-color);
     --hover-shadow: 8px 8px 0px 0px var(--text-color);
+    --water-color: rgba(52, 152, 219, 0.8);
+    --droplet-color: rgba(52, 152, 219, 0.4);
 }
 
 [data-theme="dark"] {
@@ -26,6 +28,8 @@
     --card-bg: #1a1a1a;
     --shadow: 4px 4px 0px 0px var(--text-color);
     --hover-shadow: 8px 8px 0px 0px var(--text-color);
+    --water-color: rgba(0, 191, 255, 0.8);
+    --droplet-color: rgba(0, 191, 255, 0.4);
 }
 
 html {
@@ -82,28 +86,50 @@ a:hover {
     box-shadow: var(--hover-shadow);
 }
 
-/* Cursor */
-.cursor {
-    pointer-events: none;
+.text-accent {
+    color: var(--accent-color);
 }
 
-.cursor__ball {
+/* Blob Cursor */
+.cursor-wrapper {
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 10000;
-    opacity: 0;
+    width: 100%;
+    height: 100%;
     pointer-events: none;
+    z-index: 10000;
+    filter: url('#goo');
+    opacity: 1;
+    transition: opacity 0.2s ease;
 }
 
-.cursor__ball circle {
-    fill: var(--accent-color);
+.cursor {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    transition: opacity 0.2s ease;
 }
 
-.cursor__ball--big circle {
-    fill: transparent;
-    stroke: var(--text-color);
-    stroke-width: 1px;
+.cursor__blob {
+    position: absolute;
+    background-color: var(--accent-color);
+    border-radius: 50%;
+    pointer-events: none;
+    transition: background-color 0.5s ease;
+}
+
+.main-blob {
+    width: 40px;
+    height: 40px;
+    z-index: 2;
+}
+
+.secondary-blob {
+    width: 25px;
+    height: 25px;
+    opacity: 0.8;
 }
 
 /* Navigation */
@@ -266,10 +292,38 @@ section {
 .hero-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-    max-width: 1400px;
+    gap: 4rem;
+    max-width: 1200px;
     width: 100%;
     align-items: center;
+}
+
+.oil-paint-float {
+    animation: float-art 6s ease-in-out infinite;
+}
+
+@keyframes float-art {
+
+    0%,
+    100% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+
+    33% {
+        transform: translate(10px, -15px) rotate(2deg);
+    }
+
+    66% {
+        transform: translate(-5px, 10px) rotate(-1deg);
+    }
+}
+
+.life-image-wrapper {
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.life-image-wrapper:hover {
+    transform: rotate(0deg) scale(1.02) !important;
 }
 
 .hero-text h1 {
@@ -294,16 +348,16 @@ section {
 
 .hero-image-container {
     position: relative;
-    width: 100%;
-    aspect-ratio: 1;
-    overflow: hidden;
+    width: fit-content;
+    max-width: 100%;
+    margin: 0 auto;
     border: 2px solid var(--border-color);
 }
 
 .hero-image {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
+    display: block;
+    max-width: 100%;
+    height: auto;
     filter: grayscale(100%) contrast(1.2);
     transition: filter 0.5s ease, transform 0.5s ease;
 }

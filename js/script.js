@@ -1,39 +1,53 @@
 window.onload = function () {
-    // Cursor
-    const bigBall = document.querySelector('.cursor__ball--big');
-    const smallBall = document.querySelector('.cursor__ball--small');
+    // Blob Cursor logic
+    const mainBlob = document.querySelector('.main-blob');
+    const secondaryBlobs = document.querySelectorAll('.secondary-blob');
     const hoverables = document.querySelectorAll('.hoverable');
 
     let isMobile = window.matchMedia("(max-width: 768px)").matches;
 
-    if (!isMobile) {
-        const cursorEl = document.querySelector(".cursor");
-        if (cursorEl) cursorEl.style.opacity = 1;
+    if (!isMobile && mainBlob) {
+        const cursorWrapper = document.querySelector(".cursor-wrapper");
+        if (cursorWrapper) cursorWrapper.style.opacity = 1;
 
-        // Move cursor
+        // Move blobs with different delays for a liquid effect
         document.body.addEventListener('mousemove', (e) => {
-            gsap.to(bigBall, {
-                duration: 0.5,
-                x: e.clientX - 20,
-                y: e.clientY - 20
+            const { clientX, clientY } = e;
+
+            gsap.to(mainBlob, {
+                duration: 0.2,
+                x: clientX - 20,
+                y: clientY - 20,
+                ease: "power2.out"
             });
-            gsap.to(smallBall, {
-                duration: 0.1,
-                x: e.clientX - 5,
-                y: e.clientY - 5
+
+            secondaryBlobs.forEach((blob, index) => {
+                gsap.to(blob, {
+                    duration: 0.4 + (index * 0.15),
+                    x: clientX - 12,
+                    y: clientY - 12,
+                    ease: "power3.out"
+                });
             });
         });
 
-        // Hover effects
-        hoverables.forEach(el => {
-            el.addEventListener('mouseenter', () => {
-                gsap.to(bigBall, { duration: 0.3, scale: 2, backgroundColor: 'rgba(230, 57, 70, 0.2)' });
-                gsap.to(smallBall, { duration: 0.3, opacity: 0 });
-            });
-            el.addEventListener('mouseleave', () => {
-                gsap.to(bigBall, { duration: 0.3, scale: 1, backgroundColor: 'transparent' });
-                gsap.to(smallBall, { duration: 0.3, opacity: 1 });
-            });
+        // Hide cursor when hovering over text and interactive elements
+        const hoverSelector = 'a, button, input, textarea, p, h1, h2, h3, h4, h5, h6, span, li, .card, .project-card, .hoverable, img';
+
+        document.body.addEventListener('mouseover', (e) => {
+            if (e.target.closest(hoverSelector)) {
+                gsap.to('.cursor-wrapper', { duration: 0.2, opacity: 0 });
+            }
+        });
+
+        document.body.addEventListener('mouseout', (e) => {
+            // Only restore if we are leaving a hoverable element to go to a non-hoverable one
+            if (e.target.closest(hoverSelector)) {
+                // Determine if the new target is also hoverable
+                if (!e.relatedTarget || !e.relatedTarget.closest || !e.relatedTarget.closest(hoverSelector)) {
+                    gsap.to('.cursor-wrapper', { duration: 0.2, opacity: 1 });
+                }
+            }
         });
     }
 
