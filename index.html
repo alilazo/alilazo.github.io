@@ -1,572 +1,474 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="Amado Lazo's Portfolio: A recent Computer Science graduate from Texas A&M University-Corpus Christi with 4+ years of programming experience.">
-    <meta name="keywords" content="Amado Lazo, Portfolio, Computer Science, Programming, Java, C++, HTML, CSS, JavaScript, MongoDB, ExpressJS, ReactJS, NodeJS">
+    <meta name="description"
+        content="Amado Lazo's Portfolio: Software Engineer for the City of Austin and Sr. Software Engineer for careforge.ai.">
+    <meta name="keywords" content="Amado Lazo, Portfolio, Computer Science, Programming, ReactJS, NodeJS, AI">
     <meta name="author" content="Amado Lazo">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="js/bootstrap.js"></script>
-    <script src="js/script.js"></script>
+    <script src="js/script.js" defer></script>
     <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12/dist/gsap.min.js"></script>
-    <link rel="icon" href="pics/favico.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/style.css">
-    <title>Amado Lazo Portfolio</title>
+    <script defer src="https://cloud.umami.is/script.js"
+        data-website-id="7efb876f-5d13-4b99-bb0a-23fcbe8612cc"></script>
+
+    <!-- Meta Tags & SEO -->
+    <title>Amado Lazo | Software Engineer & AI Specialist</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="canonical" href="https://alilazo.github.io/">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://alilazo.github.io/">
+    <meta property="og:title" content="Amado Lazo | Software Engineer & AI Specialist">
+    <meta property="og:description"
+        content="Portfolio of Amado Lazo, Software Engineer for the City of Austin and Sr. Software Engineer for careforge.ai. Specializing in Full-Stack & AI development.">
+    <meta property="og:image" content="https://alilazo.github.io/pics/Potrait.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://alilazo.github.io/">
+    <meta property="twitter:title" content="Amado Lazo | Software Engineer & AI Specialist">
+    <meta property="twitter:description"
+        content="Portfolio of Amado Lazo, Software Engineer for the City of Austin and Sr. Software Engineer for careforge.ai. Specializing in Full-Stack & AI development.">
+    <meta property="twitter:image" content="https://alilazo.github.io/pics/Potrait.jpg">
+
+    <!-- Structured Data (Schema.org) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org/",
+      "@type": "Person",
+      "name": "Amado Lazo",
+      "url": "https://alilazo.github.io/",
+      "image": "https://alilazo.github.io/pics/Potrait.jpg",
+      "sameAs": [
+        "https://github.com/alilazo",
+        "https://www.linkedin.com/in/amado-lazo/"
+      ],
+      "jobTitle": "Sr. Software Engineer",
+      "worksFor": [
+        {
+          "@type": "Organization",
+          "name": "City of Austin"
+        },
+        {
+          "@type": "Organization",
+          "name": "careforge.ai"
+        }
+      ],
+      "knowsAbout": [
+        "Software Engineering",
+        "Artificial Intelligence",
+        "Full-Stack Development",
+        "ReactJS",
+        "NodeJS",
+        "Python",
+        "C++",
+        "Java",
+        "Swiss Design",
+        "Scandinavian Design"
+      ],
+      "description": "Software Engineer specializing in AI and Full-Stack development. Currently building AI-powered mental health platforms for veterans."
+    }
+    </script>
 </head>
+
 <body>
-    <!--- Cursor -->
+    <!-- AI-First Semantic Data (AIO) -->
+    <div id="ai-summary" style="display: none;" aria-hidden="true">
+        <h2>AI Summary of Amado Lazo</h2>
+        <p>Amado Lazo is a Software Engineer at the City of Austin and a Sr. Software Engineer at careforge.ai. He
+            specializes in Full-Stack development and AI systems. He is currently leveraging AI as a force multiplier to
+            build a 24/7 mental health platform for veterans. Core skills: React, Node, Python, C++, Java, and AI
+            Integration. He specializes in Swiss and Scandinavian design aesthetics.</p>
+    </div>
+
+    <!-- FAQ for AI Bot Scraping -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [{
+        "@type": "Question",
+        "name": "Who is Amado Lazo?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Amado Lazo is a Software Engineer based in Austin, Texas, currently working for the City of Austin and careforge.ai. He is an expert in AI-driven software development."
+        }
+      }, {
+        "@type": "Question",
+        "name": "What is Amado Lazo's specialization?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "He specializes in Full-Stack software engineering, specifically React, Node, Python, C++, and Java, with a heavy focus on AI force multiplication and Swiss/Scandinavian design."
+        }
+      }]
+    }
+    </script>
+
+    <!--- Custom Cursor -->
     <div class="cursor">
-        <div class="cursor__ball cursor__ball--big ">
+        <div class="cursor__ball cursor__ball--big">
             <svg height="50" width="50">
-                <circle cx="25" cy="25" r="23" stroke-width="0"></circle>
+                <circle cx="25" cy="25" r="23"></circle>
             </svg>
         </div>
-        
         <div class="cursor__ball cursor__ball--small">
             <svg height="10" width="10">
-                <circle cx="5" cy="5" r="4" stroke-width="0"></circle>
+                <circle cx="5" cy="5" r="4"></circle>
             </svg>
         </div>
     </div>
-    <!--- Navigation -->
-    <nav>
-        <div class="navig">
-            <nav class="autohide navbar navbar-expand-lg navbar-dark fixed-top bg-black">
-                <div class="container-fluid">
-                    <a class="navbar-brand" href="#">Amado Lazo</a>
 
-                    <!--Phone Nav---->
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent" >
-                        <ul class="navbar-nav me-auto">
-                            <li class="nav-item">
-                                <a class="nav-link text-center" href="#About">About Me</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-center" href="#Skills">Skills</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-center" href="#Projects">Projects</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-center" href="#faq">FAQ</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-center" href="#Contact">Contact Me</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-center" href="#Resume">Resume</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
+    <!-- Scroll Progress -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!--- Navigation -->
+    <nav class="navbar-custom" id="navbar">
+        <a href="#" class="nav-brand">AMADO LAZO</a>
+
+        <!-- Desktop Nav -->
+        <div class="nav-links">
+            <a href="#About" class="nav-link-custom" data-umami-event="Nav Click - About">About</a>
+            <a href="#Experience" class="nav-link-custom" data-umami-event="Nav Click - Experience">Experience</a>
+            <a href="#Recognition" class="nav-link-custom" data-umami-event="Nav Click - Recognition">Recognition</a>
+            <a href="#Projects" class="nav-link-custom" data-umami-event="Nav Click - Projects">Projects</a>
+            <a href="#Tips" class="nav-link-custom" data-umami-event="Nav Click - Tips">Tips & Tricks</a>
+            <a href="#Contact" class="nav-link-custom" data-umami-event="Nav Click - Contact">Contact</a>
+            <button class="theme-switch" id="themeToggle">DARK MODE</button>
+        </div>
+
+        <!-- Mobile Sandwich Menu Toggle -->
+        <div class="menu-toggle" id="mobileMenuToggle">
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
     </nav>
-    
-    <!--Header-->
-    <header>
-        <div class="headerClass">
-            <img class="backgroundHeaderImage mobile"/>
-            <div class="headerBlock"></div>
-            <div class="headerTitle">
-                <h1 class="headerTitleText text-center">Amado Lazo</h1>
-                <h4 class="text-center"><i class="subHeaderText">Computer Science B.S.</i></h4>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay">
+        <a href="#About" class="mobile-nav-link" data-umami-event="Mobile Nav Click - About">About</a>
+        <a href="#Experience" class="mobile-nav-link" data-umami-event="Mobile Nav Click - Experience">Experience</a>
+        <a href="#Recognition" class="mobile-nav-link" data-umami-event="Mobile Nav Click - Recognition">Recognition</a>
+        <a href="#Projects" class="mobile-nav-link" data-umami-event="Mobile Nav Click - Projects">Projects</a>
+        <a href="#Tips" class="mobile-nav-link" data-umami-event="Mobile Nav Click - Tips">Tips & Tricks</a>
+        <a href="#Contact" class="mobile-nav-link" data-umami-event="Mobile Nav Click - Contact">Contact</a>
+        <button class="theme-switch mt-4" id="themeToggleMobile">DARK MODE</button>
+    </div>
+
+    <!-- Hero Section -->
+    <header class="headerClass">
+        <div class="hero-grid">
+            <div class="hero-text reveal">
+                <h1>Hi, I'm <br><span>Amado</span><br>Lazo</h1>
+                <div class="hero-roles mt-4">
+                    Software Engineer @ <strong>City of Austin</strong><br>
+                    Sr. Software Engineer @ <strong>careforge.ai</strong><br>
+                    Specializing in Full-Stack & AI
+                </div>
+                <p class="lead mt-4">
+                    <span class="typewriter"></span>
+                </p>
+                <div class="mt-5">
+                    <a href="#Projects" class="btn-custom hoverable me-3">View Work</a>
+                    <a href="#Contact" class="btn-custom hoverable">Contact Me</a>
+                </div>
+            </div>
+            <div class="hero-img reveal hoverable">
+                <div class="hero-image-container boxShadow">
+                    <img src="pics/Potrait.jpg" alt="Amado Lazo" class="hero-image">
+                    <div class="decorative-shape"></div>
+                </div>
             </div>
         </div>
     </header>
 
-    <!---Main Content-->
-    <div class="container">
-        <!--About me Section-->
-        <section>
-            <div class="reveal about-section boxShadow" id="About" data-target="About">
-                <h1 class="text-center p-3">About Me</h1>
-                <p class="lead about-text">
-                    <span class="typewriter"></span>
-                </p>
-            </div>
-        </section>
-
-        <section>
-            <div class="reveal mt-5 boxShadow" id="Skills" data-target="Skills">
-                <h1 class="text-center mb-5">Skills</h1>
-                <p class="text-center" style="color: #bdc3c7;">*Includes Non-Professional & Professional Experience</p>
-                <h3 class="text-center">Programming Languages</h3>
-                <div class="skillList">
-                    <ul class="language-list">
-                        <li class="hoverable">
-                            <span class="language-name">JavaScript</span>
-                            <i class="devicon-javascript-plain colored"></i>
-                            <span class="inner-text">4 Years</span>
-                        </li>
-                        <li class="hoverable">
-                            <span class="language-name">C++</span>
-                            <i class="devicon-cplusplus-plain colored"></i>
-                            <span class="inner-text">4 Years</span>
-                        </li>
-                        <li class="hoverable">
-                            <span class="language-name">C</span>
-                            <i class="devicon-c-plain colored"></i>
-                            <span class="inner-text">3 Years</span>
-                        </li>
-                        <li class="hoverable">
-                            <span class="language-name">Java</span>
-                            <i class="devicon-java-plain colored"></i>
-                            <span class="inner-text">4 Years</span>
-                        </li>
-                        <li class="hoverable">
-                            <span class="language-name">HTML</span>
-                            <i class="devicon-html5-plain colored"></i>
-                            <span class="inner-text">3 Years</span>
-                        </li>
-                        <li class="hoverable">
-                            <span class="language-name">CSS</span>
-                            <i class="devicon-css3-plain colored"></i>
-                            <span class="inner-text">4 Years</span>
-                        </li>
-                        <li class="hoverable">
-                            <span class="language-name">Python</span>
-                            <i class="devicon-python-plain colored"></i>
-                            <span class="inner-text">2 Years</span>
-                        </li>
-                        <li class="hoverable">
-                            <span class="language-name">SQL</span>
-                            <i class="devicon-mysql-plain colored"></i>
-                            <span class="inner-text">4 Years</span>
-                        </li>
-                        <li class="hoverable">
-                            <span class="language-name">.Net Core</span>
-                            <i class="devicon-dotnetcore-plain colored"></i>
-                            <span class="inner-text">1 Year</span>
-                        </li>
-                    </ul>
-                    <h3 class="mt-5 text-center">Libraries</h3>
-                    <ul class="library-list">
-                        <li class="hoverable">
-                            <span class="library-name">MongoDB</span>
-                            <i class="devicon-mongodb-plain colored"></i>
-                            <span class="inner-text">4 Years</span>
-                        </li>
-                        <li class="hoverable">
-                            <span class="library-name">ReactJS</span>
-                            <i class="devicon-react-original colored"></i>
-                            <span class="inner-text">3 Years</span>
-                        </li>
-                        
-                        <li class="hoverable">
-                            <span class="library-name">NodeJS</span>
-                            <i class="devicon-nodejs-plain colored"></i>
-                            <span class="inner-text">3 Years</span>
-                        </li>
-                        <li class="hoverable">
-                            <span class="library-name">PostgreSQL</span>
-                            <i class="devicon-postgresql-plain colored"></i>
-                            <span class="inner-text">2 Years</span>
-                        </li>
-                        <li class="hoverable">
-                            <span class="library-name">Fast API</span>
-                            <i class="devicon-fastapi-plain colored"></i>
-                            <span class="inner-text">1 Year</span>
-                        </li>
-                        <li class="hoverable">
-                            <span class="library-name">Gatsby</span>
-                            <i class="devicon-gatsby-plain colored"></i>
-                            <span class="inner-text">1 Year</span>
-                        </li>
-                        <li class="hoverable">
-                            <span class="library-name">ExpressJS</span>
-                            <i class="devicon-express-original colored"></i>
-                            <span class="inner-text">2 Year</span>
-                        </li>
-                        <li class="hoverable">
-                            <span class="library-name">Bootstrap</span>
-                            <i class="devicon-bootstrap-plain colored"></i>
-                            <span class="inner-text">1 Year</span>
-                        </li>
-                        <li class="hoverable">
-                            <span class="library-name">Material UI</span>
-                            <i class="devicon-materialui-plain colored"></i>
-                            <span class="inner-text">1 Year</span>
-                        </li>
-                    </ul>
-                    <h3 class="mt-5 text-center">Tools</h3>
-                    <ul class="tool-list">
-                        <li class="hoverable">
-                            <span class="tool-name">Git</span>
-                            <i class="devicon-git-plain colored"></i>
-                            <span class="inner-text">4 Years</span>
-                        </li>
-                        <li class="hoverable">
-                            <span class="tool-name">GitHub</span>
-                            <i class="devicon-github-original colored"></i>
-                            <span class="inner-text">5 Years</span>
-                        </li>
-                        <li class="hoverable">
-                            <span class="tool-name">Visual Studio Code</span>
-                            <i class="devicon-visualstudio-plain colored"></i>
-                            <span class="inner-text">5 Years</span>
-                        </li>
-                        <li class="hoverable">
-                            <span class="tool-name">IntelliJ</span>
-                            <i class="devicon-intellij-plain colored"></i>
-                            <span class="inner-text">3 Years</span>
-                        </li>
-                        <li class="hoverable">
-                            <span class="tool-name">Android Studio</span>
-                            <i class="devicon-androidstudio-plain colored"></i>
-                            <span class="inner-text">3 Years</span>
-                        </li>
-                        <li class="hoverable">
-                            <span class="tool-name">AWS</span>
-                            <i class="devicon-amazonwebservices-original colored"></i>
-                            <span class="inner-text">2 Years</span>
-                        </li>
-                    </ul>
+    <!--- Main Content -->
+    <main>
+        <!-- Experience & Abstract Art Section -->
+        <section id="Experience">
+            <div class="row align-items-center">
+                <div class="col-md-6 revealLR hoverable">
+                    <img src="pics/scandi.png" alt="Scandinavian Minimalist Art" class="img-fluid boxShadow"
+                        style="border-radius: 0;">
+                </div>
+                <div class="col-md-6 revealLR" style="transition-delay: 0.2s;">
+                    <h2 class="section-title">My Experience</h2>
+                    <div class="mb-4">
+                        <h4>Software Engineer</h4>
+                        <p class="text-muted mb-1">City of Austin</p>
+                        <p>Developing robust, scalable solutions for municipal infrastructure and public services.</p>
+                    </div>
+                    <div class="mb-4">
+                        <h4>Sr. Software Engineer</h4>
+                        <p class="text-muted mb-1">careforge.ai</p>
+                        <p>Leading the development of a 24/7 AI-powered mental health platform dedicated to helping
+                            veterans thrive.</p>
+                    </div>
+                    <div class="mb-4">
+                        <h4>IT Technical Assistant (CASA)</h4>
+                        <p class="text-muted mb-1">TAMU-CC (Center for Academic Student Achievement)</p>
+                        <p>Developed custom software to automate departmental workflows, reducing document conversion
+                            time by **60%**.</p>
+                    </div>
+                    <p class="mt-4">
+                        With over 4+ years of professional experience across diverse stacks (React, Node, Python, C++,
+                        Java), I specialize in utilizing AI as a force multiplier—speeding up development and
+                        architectural drafting by 3x.
+                    </p>
                 </div>
             </div>
         </section>
 
-        <!--Projects  - (This can be more simple with Javascript coding and keepin gthem in an array)  -->
-        <section>
-            <div class="reveal pt-5" id="Projects" data-target="Projects">
-                <h1 class="text-center pb-4">Projects</h1>
-                <div class="text-center pb-4">
-                    <a href="https://github.com/alilazo" style="text-decoration: none;"><i class="devicon-github-plain colored" style="font-size: 5em;"></i></a>
-                </div>
-                <!--Project Highlight-->
-                <h1 class="pb-4 text-center">Highlighted Project</h1>
-                <div class="row row-cols-1 row-cols-lg-2 g-4">
-                    <div class="col">
-                        <div class="centerHighlightedProjectContainer pb-5">
-                            <div class="highlightedProjectContainer">
-                                <div class="text-center pb-3">
-                                    <img src="pics/Projects/CareForge.png" class="highlightedProjectImage" alt="Highlighted Project: CareForge AI"/>
-                                </div>
-                                <div class="highlightedProjectText">
-                                    <h3 class="text-center">CareForge AI</h3>
-                                    <p class="text-center">
-                                        CareForge AI is a 24/7 AI-powered mental health platform that helps veterans thrive.
-                                        Our platform provides veterans with access to a friend, counselor, and health coach, all in one place. We understand the unique challenges faced by veterans, and our platform is designed to help them stay on track with their mental health.</p>
-                                    <h4 class="text-center">My Contributions</h4>
-                                    <p class="text-center">
-                                        I was responsible for developing the front-end of the application using ReactJS and Gatsby. I was also responsible for developing and implementing the endpoints using Python and FastAPI including the Pydantics library and PostgreSQL.
-                                    </p>
-                                    <h4 class="text-center">Technologies Used</h4>
-                                    <div class="text-center pb-4">
-                                        <i class="devicon-react-original colored" style="font-size: 2em;"></i>
-                                        <i class="devicon-nodejs-plain colored" style="font-size: 2em;"></i>
-                                        <i class="devicon-css3-plain colored" style="font-size: 2em;"></i>
-                                        <i class="devicon-python-plain colored" style="font-size: 2em;"></i>
-                                        <i class="devicon-fastapi-plain colored" style="font-size: 2em;"></i>
-                                        <i class="devicon-gatsby-plain colored" style="font-size: 2em;"></i>
-                                        <i class="devicon-javascript-plain colored" style="font-size: 2em;"></i>
-                                        <i class="devicon-emotion-plain colored" style="font-size: 2em;"></i>
-                                        <i class="devicon-axios-plain colored" style="font-size: 2em;"></i>
-                                        <i class="devicon-postgresql-plain colored" style="font-size: 2em;"></i>
-                                    </div>
-                                    <div class="d-grid bottom-0 start-0 end-0 p-2 hoverable">
-                                        <a href="https://careforge.ai/" class="btn btn-dark bg-black">Visit Now!</a>
-                                    </div>
-                                </div>
-                            </div>
+        <!-- Recognition & Publications Section -->
+        <section id="Recognition">
+            <h2 class="section-title reveal">Recognition & Research</h2>
+            <div class="row g-4 mt-2">
+                <!-- Award 1 -->
+                <div class="col-lg-12 reveal hoverable">
+                    <div class="award-card boxShadow p-5 d-flex flex-column flex-md-row align-items-center gap-5"
+                        style="border: 1px solid var(--border-color); background: var(--secondary-bg);">
+                        <div class="award-year fw-bold display-4 text-outline"
+                            style="-webkit-text-stroke: 1px var(--text-color); color: transparent; opacity: 0.5;">2023
                         </div>
-                    </div>
-                    <div class="col">
-                        <div class="centerHighlightedProjectContainer pb-5">
-                            <div class="highlightedProjectContainer">
-                                <div class="text-center pb-3">
-                                    <img src="pics/Projects/Stellar.png" class="highlightedProjectImage" alt="Highlighted Project: Stellar Inventory Management"/>
-                                </div>
-                                <div class="highlightedProjectText">
-                                    <h3 class="text-center">Stellar Inventory Management</h3>
-                                    <p class="text-center">
-                                        Stellar Inventory Management is an advanced inventory tracking system designed to streamline business operations. The system utilizes Bluetooth technology for quick barcode and QR code scanning, making inventory management efficient and accurate. Cheap and easy to use, Stellar Inventory Management is the ideal solution for businesses of all sizes.
-                                    <h4 class="text-center">My Contributions</h4>
-                                    <p class="text-center">
-                                        I developed the front-end of the application using React Native and Expo. Additionally, I integrated the Bluetooth scanning functionality and ensured seamless interaction with the backend services which were developed using NodeJS and MongoDB.
-                                    </p>
-                                    <h4 class="text-center">Technologies Used</h4>
-                                    <div class="text-center pb-4">
-                                        <i class="devicon-react-original colored" style="font-size: 2em;"></i>
-                                        <i class="devicon-nodejs-plain colored" style="font-size: 2em;"></i>
-                                        <i class="devicon-tailwindcss-plain colored" style="font-size: 2em;"></i>
-                                        <i class="devicon-javascript-plain colored" style="font-size: 2em;"></i>
-                                        <i class="devicon-mongodb-plain colored" style="font-size: 2em;"></i>
-                                        <i class="devicon-expo-plain colored" style="font-size: 2em;"></i>
-                                    </div>
-                                    <div class="d-grid bottom-0 start-0 end-0 p-2 hoverable">
-                                        <a href="https://www.stellarinsight.app/" class="btn btn-dark bg-black">Visit Now!</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row row-cols-1 row-cols-lg-3  g-2">
-
-                    <div class="col">
-                        <div class="card project" style="height: 100%;">
-                            <div class="card-body text-dark">
-                                <h5 class="card-title text-center">Comparing A.I. Models</h5>
-                                <img src="pics/Projects/ComparingAI.png" class="card-img-top" alt="Comparing AI Project Picture"/>
-                                <p class="card-text pb-5">
-                                    Created for a client in California, this application allows users to compare different A.I. models and their accuracy. This application is made with ReactJS, NodeJS, ExpressJS, and MongoDB.
-                                </p>
-                                <div class="d-grid position-absolute bottom-0 start-0 end-0 p-2 hoverable">
-                                    <a href="http://comparing-ai.s3-website.us-east-2.amazonaws.com/" class="btn btn-dark bg-black">Visit Now!</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col">
-                        <div class="card project" style="height: 100%;">
-                            <div class="card-body text-dark">
-                                <h5 class="card-title text-center">Mflix Database</h5>
-                                <img src="pics/Projects/mflix.png" class="card-img-top" alt="MFlix project"/>
-                                <p class="card-text pb-5">
-                                    A Netflix/IMDB like application that allows users to search for movies and view their information. This is a web application made from the M.E.R.N stack and other Technologies such as Jest.
-                                </p>
-                                <div class="d-grid position-absolute bottom-0 start-0 end-0 p-2 hoverable">
-                                    <a href="https://github.com/gratiaa/mflix" class="btn btn-dark bg-black">Learn More!</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col">
-                        <div class="card project" style="height: 100%;">
-                            <div class="card-body text-dark">
-                                <h5 class="card-title text-center">Guess the Number</h5>
-                                <img src="pics/Projects/Number Guesser.PNG" class="card-img-top" alt="Number Guesser Game Project"/>
-                                <p class="card-text pb-5">
-                                    Embark on an exciting number guessing game created using HTML, CSS, and JavaScript. Challenge yourself against the computer and see who will emerge victorious - can you outsmart the algorithm?                            </p>
-                                <div class="d-grid position-absolute bottom-0 start-0 end-0 p-2 hoverable">
-                                    <a href="https://alilazo.github.io/number-guesser/" class="btn btn-dark bg-black">Visit Now!</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col">
-                        <div class="card project" style="height: 100%;">
-                            <div class="card-body text-dark">
-                                <h5 class="card-title text-center">Inspirational Quotes</h5>
-                                <img src="pics/Projects/Inspirational Quote.PNG" class="card-img-top" alt="Inspiration Quotes Generator Project"/>
-                                <p class="card-text pb-5">
-                                    Looking for inspiration as a programmer? Explore this quote generator I've developed! Discover insightful quotes that can ignite your creativity and motivation in the world of programming.                            </p>
-                                <div class="d-grid position-absolute bottom-0 start-0 end-0 p-2 hoverable">
-                                    <a href="https://alilazo.github.io/Inspiration-Quotes/" class="btn btn-dark bg-black">Visit Now!</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col">
-                        <div class="card project" style="height: 100%;">
-                            <div class="card-body text-dark">
-                                <h5 class="card-title text-center">Gym Website</h5>
-                                <img src="pics/Projects/GymWebsite.PNG" class="card-img-top" alt="Sample Gym Website Project"/>
-                                <p class="card-text pb-5">
-                                    This Gym Website showcases my HTML, CSS, and JavaScript skills. It's a testament to my abilities, incorporating W3.CSS and Font Awesome for enhanced styling and utilizing the Google Maps API for location features. Explore the site to witness the culmination of my web development expertise.                            </p>
-                                <div class="d-grid position-absolute bottom-0 start-0 end-0 p-2 hoverable">
-                                    <a href="https://alilazo.github.io/SampleGymWebsite/" class="btn btn-dark bg-black">Visit Now!</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col">
-                        <div class="card project" style="height: 100%;">
-                            <div class="card-body text-dark">
-                                <h5 class="card-title text-center">Gas Junkie</h5>
-                                <img src="pics/Projects/Gas Junkie.jpg" class="card-img-top" alt="Gas Junkie App Project"/>
-                                <p class="card-text pb-5">
-                                    Discover an Android application leveraging the power of the Google Maps API to provide users with their current location. This innovative app maps out all nearby gas stations within a specified distance in miles, allowing users to conveniently locate fueling stations on the go.                            </p>
-                                <div class="d-grid">
-                                    <div class="d-grid position-absolute bottom-0 start-0 end-0 p-2 hoverable">
-                                        <a href="https://github.com/alilazo/GasJunkie" class="btn btn-dark bg-black">Learn More!</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col">
-                        <div class="card project" style="height: 100%; display: none;">
-                            <div class="card-body text-dark">
-                                <h5 class="card-title text-center">Movie Ticketing System</h5>
-                                <img src="pics/Projects/Movie Theatre.PNG" class="card-img-top" alt="Movie Theatre Ticketing System Project"/>
-                                <p class="card-text pb-5">
-                                    Experience a sophisticated movie theatre ticketing system developed in Java. This feature-rich application offers a visually appealing user interface that is responsive to touch and mouse interactions. Enjoy seamless ticket booking and an immersive cinema experience with this advanced Java-based solution.                            </p>
-                                <div class="d-grid position-absolute bottom-0 start-0 end-0 p-2 hoverable">
-                                    <a href="#" class="btn btn-dark bg-black">Learn More!</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col">
-                        <div class="card project" style="height: 100%; display: none;">
-                            <div class="card-body text-dark">
-                                <h5 class="card-title text-center">Wizards and Warriors</h5>
-                                <img src="pics/Projects/Wizards.png" class="card-img-top" alt="Wizards C++ Game Project"/>
-                                <p class="card-text pb-5">
-                                    Introducing the Texas A&M University-Corpus Christi First Year Seminar Card Game Project! Our team of four collaborated to create an exciting game called 'Wizard and Warriors' using C++. Immerse yourself in this captivating card game adventure developed as part of our seminar project. Prepare to embark on a journey filled with magic, battles, and strategic gameplay!                            </p>
-                                <div class="d-grid position-absolute bottom-0 start-0 end-0 p-2 hoverable">
-                                    <a href="https://github.com/alilazo/Tech-Break-Game" class="btn btn-dark bg-black">Learn More!</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col">
-                        <div class="card project" style="height: 100%; display: none;">
-                            <div class="card-body text-dark">
-                                <h5 class="card-title text-center">Amado Lazo Portfolio</h5>
-                                <img src="pics/Projects/portfolioWebsite.png" class="card-img-top" alt="Portfolio Website Project"/>
-                                <p class="card-text pb-5">
-                                    You are currently exploring the project right in front of you! This project has been crafted using HTML, CSS, and JavaScript. It incorporates the powerful features of Bootstrap and Font Awesome to enhance its design and functionality. Dive into this impressive work that showcases the seamless integration of these technologies and the creative potential they offer.                            </p>
-                                <div class="d-grid position-absolute bottom-0 start-0 end-0 p-2 hoverable">
-                                    <a href="https://github.com/alilazo/alilazo.github.io" class="btn btn-dark bg-black">Learn More!</a>
-                                </div>
-                            </div>
+                        <div class="award-content">
+                            <h3 class="mb-2">Outstanding Islander Graduate</h3>
+                            <p class="text-muted mb-3">Texas A&M University-Corpus Christi (College of Engineering)</p>
+                            <p class="mb-4">Selected as a record-breaking graduate for excellence in IT, robotics
+                                leadership, and technical resourcefulness. Notably improved CASA workflow speed by 60%
+                                via custom automation.</p>
+                            <a href="https://www.tamucc.edu/news/2023/08/outstanding-islander-amado-lazo-23-excels-in-it,-earns-computer-science-degree.php"
+                                target="_blank" class="btn-custom"
+                                data-umami-event="Award Click - Outstanding Islander">Read Feature Article</a>
                         </div>
                     </div>
                 </div>
 
-                <div class="d-grid text-center mt-3">
-                    <button class="loadMoreBtn btn btn-primary btn-outline-light btn-lg hoverable" onclick="loadMoreProjects()">Load More</button>
+                <!-- Publication 1 -->
+                <div class="col-lg-6 reveal hoverable">
+                    <div class="tip-card boxShadow" style="height: 100%;">
+                        <span class="tip-number text-outline">PUB</span>
+                        <div class="tip-content">
+                            <h4>Paper: Using AI to Land Jobs</h4>
+                            <p class="mb-4">A comprehensive analysis and strategy on leveraging modern AI tools to
+                                optimize the recruitment journey and personal branding.</p>
+                            <a href="Final_Report_Latex.pdf" target="_blank" class="btn-custom"
+                                data-umami-event="Resource View - AI Jobs Paper">View PDF</a>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </section>
 
-        <!--FAQ-->
-        <section>
-            <div class="faq-section reveal" id="faq">
-                <div class="profile-picture">
-                    <img src="pics/new_mexico.jpg" alt="Profile Picture">
-                </div>
-                <div class="faq-container">
-                    <div class="faq-item">
-                        <div class="question">
-                            <h3>How Long Have I Been Coding?</h3>
-                            <span class="arrow"></span>
-                        </div>
-                        <div class="answer">
-                            <p>I have been coding for 7 years now.</p>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <div class="question">
-                            <h3>My Previous Employment.</h3>
-                            <span class="arrow"></span>
-                        </div>
-                        <div class="answer">
-                            <ul>
-                                <li>Software Developer at <b>CareForge AI</b></li>
-                                <li>Systems Administrator 1 Travel Technician Contractor for <b>The State of Texas</b></li>
-                                <li>Software Engineer Accelerate at <b>IBM</b></li>
-                                <li>Technical Support Specialist Assistant at <b>Texas A&M University-Corpus Christi</b></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <div class="question">
-                            <h3>What are my Hobbies?</h3>
-                            <span class="arrow"></span>
-                        </div>
-                        <div class="answer">
-                            <p>My hobbies include playing guitar, golfing, watching movies, and going to the gym.</p>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <div class="question">
-                            <h3>What is my Favorite Programming Language?</h3>
-                            <span class="arrow"></span>
-                        </div>
-                        <div class="answer">
-                            <p>My favorite programming language is JavaScript especially with the React framework. For programming interviews I prefer using C++.</p>
+                <!-- Publication 2 -->
+                <div class="col-lg-6 reveal hoverable">
+                    <div class="tip-card boxShadow" style="height: 100%;">
+                        <span class="tip-number text-outline">PUB</span>
+                        <div class="tip-content">
+                            <h4>Paper: ChatGPT’s Data Collection</h4>
+                            <p class="mb-4">Exploring the delicate balance between rapid AI innovation and the ethical
+                                implications of large-scale data harvesting.</p>
+                            <a href="ChatGPT_Data_Collection.pdf" target="_blank" class="btn-custom"
+                                data-umami-event="Resource View - ChatGPT Ethics Paper">View PDF</a>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        <!--Resume-->
-        <section>
-            <div class="reveal p-5 mt-5 boxShadow" id="Resume">
-                <div class="text-center">
-                    <h1>Resume</h1>
-                    <p>Click the button below to View my Resume</p>
-                    <button type="button" class="btn btn-primary btn-lg hoverable" data-bs-toggle="modal" data-bs-target="#exampleModal">View Resume</button>
+
+        <!-- Skills Section -->
+        <section id="About">
+            <h2 class="section-title text-center d-block reveal">Technical Arsenal</h2>
+            <div class="skills-grid reveal mt-5">
+                <div class="skill-item boxShadow hoverable">
+                    <i class="devicon-javascript-plain colored"></i>
+                    <span class="skill-name">JavaScript</span>
+                </div>
+                <div class="skill-item boxShadow hoverable">
+                    <i class="devicon-python-plain colored"></i>
+                    <span class="skill-name">Python</span>
+                </div>
+                <div class="skill-item boxShadow hoverable">
+                    <i class="devicon-cplusplus-plain colored"></i>
+                    <span class="skill-name">C++</span>
+                </div>
+                <div class="skill-item boxShadow hoverable">
+                    <i class="devicon-react-original colored"></i>
+                    <span class="skill-name">React</span>
+                </div>
+                <div class="skill-item boxShadow hoverable">
+                    <i class="devicon-nodejs-plain colored"></i>
+                    <span class="skill-name">NodeJS</span>
+                </div>
+                <div class="skill-item boxShadow hoverable">
+                    <i class="devicon-mongodb-plain colored"></i>
+                    <span class="skill-name">MongoDB</span>
+                </div>
+                <div class="skill-item boxShadow hoverable">
+                    <i class="devicon-postgresql-plain colored"></i>
+                    <span class="skill-name">PostgreSQL</span>
+                </div>
+                <div class="skill-item boxShadow hoverable">
+                    <i class="devicon-amazonwebservices-original colored"></i>
+                    <span class="skill-name">AWS</span>
                 </div>
             </div>
         </section>
 
-        <!--Contact me-->
-        <section>
-            <div class="reveal p-5 text-center hoverable" id="Contact" data-target="Contact">
-                <h1>Contact Me</h1>
-                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdqNrA8OIf-VjHIIqlJnj6oZ2KR6LGZ77h8Rp1sO8XmaYpOSg/viewform?embedded=true" width="100%" height="1220" frameborder="10px" marginheight="10px" marginwidth="0">Loading…</iframe>
+        <!-- Projects Section -->
+        <section id="Projects">
+            <h2 class="section-title reveal">Selected Works</h2>
+
+            <div class="row g-4 mt-4">
+                <!-- Highlighted Project 1 -->
+                <div class="col-lg-6 reveal hoverable">
+                    <div class="project-card boxShadow">
+                        <div class="project-img-wrapper">
+                            <img src="pics/Projects/CareForge.png" alt="CareForge AI">
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">CareForge AI</h3>
+                            <p class="project-desc">A mental health platform for veterans featuring a 24/7 AI-powered
+                                counselor and health coach. Built with ReactJS, Gatsby, FastAPI, and PostgreSQL.</p>
+                            <a href="https://careforge.ai/" target="_blank" class="btn-custom mt-auto">Visit
+                                Platform</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Highlighted Project 2 -->
+                <div class="col-lg-6 reveal hoverable" style="transition-delay: 0.2s;">
+                    <div class="project-card boxShadow">
+                        <div class="project-img-wrapper">
+                            <img src="pics/Projects/Stellar.png" alt="Stellar Inventory">
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Stellar Inventory</h3>
+                            <p class="project-desc">Advanced inventory tracking system utilizing Bluetooth scanning
+                                technology for seamless business operations. Built with React Native, NodeJS, and
+                                MongoDB.</p>
+                            <a href="https://www.stellarinsight.app/" target="_blank" class="btn-custom mt-auto">Visit
+                                Platform</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Supporting Images / Art -->
+                <div class="col-lg-12 reveal hoverable mt-5">
+                    <img src="pics/swiss.png" alt="Swiss Geometric Art" class="img-fluid boxShadow"
+                        style="border-radius: 0; width: 100%; height: 300px; object-fit: cover;">
+                </div>
+
+                <!-- Secondary Projects Grid -->
+                <!-- Add other projects here if needed, keeping them minimal -->
+                <div class="col-md-4 reveal hoverable">
+                    <div class="project-card boxShadow">
+                        <div class="project-img-wrapper">
+                            <img src="pics/Projects/ComparingAI.png" alt="Comparing AI Models">
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Comparing AI Models</h3>
+                            <a href="http://comparing-ai.s3-website.us-east-2.amazonaws.com/" target="_blank"
+                                class="btn-custom mt-auto">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 reveal hoverable" style="transition-delay: 0.1s;">
+                    <div class="project-card boxShadow">
+                        <div class="project-img-wrapper">
+                            <img src="pics/Projects/mflix.png" alt="Mflix Database">
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Mflix Database</h3>
+                            <a href="https://github.com/gratiaa/mflix" target="_blank" class="btn-custom mt-auto">View
+                                Source</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 reveal hoverable" style="transition-delay: 0.2s;">
+                    <div class="project-card boxShadow">
+                        <div class="project-img-wrapper">
+                            <img src="pics/Projects/Gas Junkie.jpg" alt="Gas Junkie">
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Gas Junkie App</h3>
+                            <a href="https://github.com/alilazo/GasJunkie" target="_blank"
+                                class="btn-custom mt-auto">View Source</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
-    </div>
+
+        <!-- Tips and Tricks Section -->
+        <section id="Tips">
+            <h2 class="section-title text-center d-block reveal">Tips & Tricks</h2>
+            <p class="text-center mb-5 reveal">A few things I've learned that supercharge my workflow.</p>
+
+            <div class="tips-grid">
+                <div class="tip-card boxShadow reveal hoverable">
+                    <span class="tip-number">01</span>
+                    <div class="tip-content">
+                        <h4>AI Pair Programming</h4>
+                        <p>Treat AI tools like an intern. Give precise, bounded instructions and always review the
+                            generated code architecture before integrating it into your main branch. It speeds up
+                            boilerplate by 3x.</p>
+                    </div>
+                </div>
+                <div class="tip-card boxShadow reveal hoverable" style="transition-delay: 0.2s">
+                    <span class="tip-number">02</span>
+                    <div class="tip-content">
+                        <h4>Minimalist Architecture</h4>
+                        <p>Adopt a "Scandinavian" approach to your codebase. Keep interfaces clean, functions pure, and
+                            avoid over-engineering. Negative space in your code (comments and readability) is just as
+                            important as in design.</p>
+                    </div>
+                </div>
+                <div class="tip-card boxShadow reveal hoverable" style="transition-delay: 0.4s">
+                    <span class="tip-number">03</span>
+                    <div class="tip-content">
+                        <h4>Swiss Grid Layouts</h4>
+                        <p>When in doubt about UI, rely on rigid geometric grids and stark typography. High contrast not
+                            only creates an immediate 'premium' feel but completely solves accessibility contrast
+                            issues.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="Contact">
+            <div class="contact-container boxShadow reveal hoverable text-center">
+                <h2>Let's build something beautiful.</h2>
+                <p class="lead mt-3 mb-5">Open for discussions about software engineering, AI integration, or just to
+                    say hi.</p>
+                <!-- Retained existing Google Form iframe for contact -->
+                <iframe
+                    src="https://docs.google.com/forms/d/e/1FAIpQLSdqNrA8OIf-VjHIIqlJnj6oZ2KR6LGZ77h8Rp1sO8XmaYpOSg/viewform?embedded=true"
+                    width="100%" height="800" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+            </div>
+        </section>
+    </main>
 
     <!--- Footer -->
-    <footer class="footer p-4 row m-0 sticky-bottom d-flex align-items-center hoverable">
-        <div class="col-1">
-            <span class="text-muted">&copy; Amado Lazo, 2024</span>
+    <footer class="footer">
+        <div class="copyright">
+            <span class="fw-bold">&copy; Amado Lazo, 2026</span>
         </div>
-        <div class="col-2">
-            <a href="https://github.com/alilazo" style="text-decoration: none;" ><img src="pics/svg/logo-github.svg" alt="GitHub Logo"/></a>
-            <div class="ml-2">
-                <a href="https://www.linkedin.com/in/amado-lazo/" style="text-decoration: none;" ><img src="pics/svg/linkedin-3.svg" alt="LinkedIn Logo"/></a>
-            </div>
-        </div>
-        <div class="col-2">
+        <div class="social-links">
+            <a href="https://github.com/alilazo" target="_blank" class="hoverable"><img src="pics/svg/logo-github.svg"
+                    alt="GitHub Logo" /></a>
+            <a href="https://www.linkedin.com/in/amado-lazo/" target="_blank" class="hoverable"><img
+                    src="pics/svg/linkedin-3.svg" alt="LinkedIn Logo" /></a>
         </div>
     </footer>
-
-    <!--Modal-->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-xl">
-            <div class="modal-content">
-                <div class="modal-body p-0 bg-black">
-                    <iframe src="Resume.pdf#view=fitH" width="100%" height="800" frameborder="0" allowfullscreen/>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                ...
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
-            </div>
-        </div>
-    </div>
 </body>
+
 </html>

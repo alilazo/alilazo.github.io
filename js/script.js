@@ -1,293 +1,192 @@
-window.onload = function() {
-  //Cursor
-  const bigBall = document.querySelector('.cursor__ball--big');
-  const smallBall = document.querySelector('.cursor__ball--small');
-  const hoverables = document.querySelectorAll('.hoverable');
+window.onload = function () {
+    // Cursor
+    const bigBall = document.querySelector('.cursor__ball--big');
+    const smallBall = document.querySelector('.cursor__ball--small');
+    const hoverables = document.querySelectorAll('.hoverable');
 
-  if(!isMobile()){
-    bigBall.style.mixBlendMode = "difference";
-    smallBall.style.mixBlendMode = "difference";
+    let isMobile = window.matchMedia("(max-width: 768px)").matches;
 
-    //get the cursor class
-    const cursor = document.querySelector(".cursor");
-    cursor.style.opacity = 1;
-  }
+    if (!isMobile) {
+        const cursorEl = document.querySelector(".cursor");
+        if (cursorEl) cursorEl.style.opacity = 1;
 
-  // Move the cursor
-  function onMouseMove(e) {
-    const bigBallR = bigBall.children[0].children[0].getAttribute("r");
-    const smallBallR = smallBall.children[0].children[0].getAttribute("r");
+        // Move cursor
+        document.body.addEventListener('mousemove', (e) => {
+            gsap.to(bigBall, {
+                duration: 0.5,
+                x: e.clientX - 20,
+                y: e.clientY - 20
+            });
+            gsap.to(smallBall, {
+                duration: 0.1,
+                x: e.clientX - 5,
+                y: e.clientY - 5
+            });
+        });
 
-    if(!isMobile()){
-      bigBall.style.opacity = 1;
-      smallBall.style.opacity = 1;
-
-      TweenMax.to(bigBall, 0.5, {
-        x: e.x - bigBallR-1,
-        y: e.y - bigBallR-2
-      });
-      TweenMax.to(smallBall, 0.1, {
-        x: e.x - smallBallR,
-        y: e.y - smallBallR -10
-      });
-    }
-  }
-
-  if(!isMobile()) document.body.addEventListener('mousemove', onMouseMove);
-
-  function onMouseHover(e) {
-    if(!isMobile()){
-      TweenMax.to(bigBall, 0.3, {
-        scale: 0,
-        opacity: 0
-      });
-      TweenMax.to(smallBall, 0.3, {
-        scale: 0,
-        opacity: 0
-      });
-    }
-
-    //get the child elements of e
-    let children = [];
-    let innerText = [];
-    for(let i = 0; i < e.currentTarget.children.length; i++) {
-      if(!e.currentTarget.children[i].classList.contains("inner-text")) {
-        children.push(e.currentTarget.children[i]);
-      } else if(e.currentTarget.children[i].classList.contains("inner-text")) {
-        innerText.push(e.currentTarget.children[i]);
-      }
-    }
-    //make a variable that gets all the childrent of .skillList
-    const skillListChildren = document.querySelector(".skillList").children;
-    for(let i = 0; i < children.length; i++) {
-      //iterate throught the skillListChildren and check if the e parent element has skillListChildren
-      for(let j = 0; j < skillListChildren.length; j++) {
-        if(e.currentTarget.parentElement == skillListChildren[j]) {
-          TweenMax.to(children[i], 0.3, {
-            opacity: 0
-          });
-        }
-      }
-    }
-
-    for(let i = 0; i < innerText.length; i++) {
-      TweenMax.to(innerText[i], 0.3, {
-        opacity: 1
-      });
-    }
-  }
-
-  function onMouseHoverOut(e) {
-    if(!isMobile()){
-      TweenMax.to(bigBall, 0.3, {
-        scale: 1,
-        opacity: 1
-      });
-      TweenMax.to(smallBall, 0.3, {
-        scale: 1,
-        opacity: 1
-      });
-    }
-
-    //get the child elements of e
-    let children = [];
-    let innerText = [];
-    for(let i = 0; i < e.currentTarget.children.length; i++) {
-      if(!e.currentTarget.children[i].classList.contains("inner-text")) {
-        children.push(e.currentTarget.children[i]);
-      } else if(e.currentTarget.children[i].classList.contains("inner-text")) {
-        innerText.push(e.currentTarget.children[i]);
-      }
-    }
-    //make a variable that gets all the childrent of .skillList
-    const skillListChildren = document.querySelector(".skillList").children;
-    for(let i = 0; i < children.length; i++) {
-      //iterate throught the skillListChildren and check if the e parent element has skillListChildren
-      for(let j = 0; j < skillListChildren.length; j++) {
-        if(e.currentTarget.parentElement == skillListChildren[j]) {
-          TweenMax.to(children[i], 0.4, {
-            opacity: 1
-          });
-        }
-      }
-    }
-    for(let i = 0; i < innerText.length; i++) {
-      TweenMax.to(innerText[i], 0.4, {
-        opacity: 0,
-      });
-    }
-  }
-
-  for (let i = 0; i < hoverables.length; i++) {
-    hoverables[i].addEventListener('mouseenter', onMouseHover);
-    hoverables[i].addEventListener('mouseleave', onMouseHoverOut);
-  }
-
-  initilizeHeadings();
-  initilizeFAQ();
-};
-
-const initilizeHeadings = () => {
-  //init the picture on the header
-  const picture = document.querySelector(".backgroundHeaderImage");
-  const currentDirectory = window.location.pathname;
-  const currentDirectoryParent = currentDirectory.substring(0, currentDirectory.lastIndexOf("/"));
-  const picturePath = currentDirectoryParent + "/pics/IMG2A.jpg";
-  picture.style.backgroundImage = "url('" + picturePath + "')";
-
-  //init the animations on the header
-  const headerText = document.querySelector(".headerTitleText");
-  const headerTextActive = document.querySelector(".headerTitleText.active");
-
-  if(headerText) {
-    headerText.style.transfom = "translateY(150px)";
-  }
-  if(headerTextActive) {
-    headerTextActive.style.transfom = "translateY(0)";
-  }
-
-}
-
-const initilizeFAQ = () => {
-  const faqItems = document.querySelectorAll('.faq-item');
-
-  faqItems.forEach((item) => {
-    const question = item.querySelector('.question');
-    const answer = item.querySelector('.answer');
-    question.addEventListener('click', () => {
-      item.classList.toggle('show-answer');
-      answer.style.display = item.classList.contains('show-answer') ? 'block' : 'none';
-    });
-  });
-}
-
-
-//check if the user is on mobile
-const isMobile = () => {
-    if (window.matchMedia("(max-width: 768px)").matches) {
-      console.log("Mobile");
-      return true;
-    }
-}
-
-// function to show projects
-const showProjects = (projects, start, end) => {
-  for (let i = start; i < end; i++) {
-      projects[i].style.display = "block";
-      console.log("Projects Shown: " + i);
-  }
-}
-
-// function to hide the "load more" button when all projects have been shown
-const hideLoadMoreBtn = (loadMoreBtn, projectsLength, totalProjects) => {
-  if (totalProjects >= projectsLength) {
-      loadMoreBtn.classList.add("hide");
-  }
-}
-
-//Load more projects btn
-function loadMoreProjects () {
-    const porjectsOnScreen = 3;
-    const loadMoreBtn = document.querySelector(".loadMoreBtn");
-    const projects = document.querySelectorAll(".project");
-    const projectsLength = projects.length;
-    let projectsToShow = projectsLength;
-    let projectsShown = porjectsOnScreen;
-    const totalProjects =  projectsShown + projectsToShow;
-
-    hideLoadMoreBtn(loadMoreBtn, projectsLength, totalProjects);
-    showProjects(projects, projectsShown, projectsToShow);
-}
-
-//Navigation bar autoHideScroll
-const autoHideScroll = () => {
-    const autohide = document.querySelector('.autohide');
-    const navEnabler = document.querySelector('.navig');
-    const navbar_height = document.querySelector('.navbar').offsetHeight;
-    
-    document.body.style.paddingTop = navbar_height + 'px';
-
-    if(autohide){
-        let last_scroll_top = 0;
-        
-        window.addEventListener('scroll', function() {
-            navEnabler.classList.remove('navig');
-            const scroll_top = window.scrollY;
-            
-            if(scroll_top < last_scroll_top) {
-                autohide.classList.remove('scrolled-down');
-                autohide.classList.add('scrolled-up');
-            } else {
-                autohide.classList.remove('scrolled-up');
-                autohide.classList.add('scrolled-down');
-            }
-            last_scroll_top = scroll_top;
+        // Hover effects
+        hoverables.forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                gsap.to(bigBall, { duration: 0.3, scale: 2, backgroundColor: 'rgba(230, 57, 70, 0.2)' });
+                gsap.to(smallBall, { duration: 0.3, opacity: 0 });
+            });
+            el.addEventListener('mouseleave', () => {
+                gsap.to(bigBall, { duration: 0.3, scale: 1, backgroundColor: 'transparent' });
+                gsap.to(smallBall, { duration: 0.3, opacity: 1 });
+            });
         });
     }
-}
 
-//When the screen leads start the animations
-const onLoadFunction = () => { 
-    autoHideScroll();
-    
-    const autohide = document.querySelector('.autohide');
-    const headerText = document.querySelector(".headerTitleText");
-    const subHeaderText = document.querySelector(".subHeaderText");
-    const backgroundHeaderImage = document.querySelector(".backgroundHeaderImage");
-
-    headerText.classList.add("active");
-    backgroundHeaderImage.classList.add("active");
-    autohide.classList.add('scrolled-down');
-    headerText.addEventListener("transitionend", () => {
-        subHeaderText.classList.add("active");
-    });
-    const typed = new Typed('.typewriter', {
-        strings: ['As a recent graduate from Texas A&amp;M University-Corpus Christi with a bachelors in Computer Science, I am eager to transition into a full-time role in the field. With a passion for programming and a constant desire to learn and improve, I am confident in my ability to contribute to a company\'s success. My 4+ years of programming experience and hardworking attitude make me a valuable asset to any team. I have a strong background in Java, C++, HTML, CSS, JavaScript and have worked with front-end and back-end frameworks such as MongoDB, ExpressJS, ReactJS, and NodeJS.'],        
-        typeSpeed: 1, // Adjust the typing speed (in milliseconds)
-        loop: false, // Set to true if you want the typewriter effect to loop
-        cursorChar: '|',
-    });
-}
-
-//reveal class scroll animation
-const reveal = () => {
-    const reveals = document.querySelectorAll(".reveal");
-
-    for (var i = 0; i < reveals.length; i++) {
-      const windowHeight = window.innerHeight;
-      var elementTop = reveals[i].getBoundingClientRect().top;
-      var elementVisible = 150;
-
-      if (elementTop < windowHeight - elementVisible) {
-        reveals[i].classList.add("active");
-      } else {
-        reveals[i].classList.remove("active");
-      }
-
+    // Typed.js
+    const typedEl = document.querySelector('.typewriter');
+    if (typedEl) {
+        new Typed('.typewriter', {
+            strings: [
+                'I build scalable, modern web applications.',
+                'I specialize in AI & Full-Stack Development.',
+                'I love minimalist, functional design.'
+            ],
+            typeSpeed: 40,
+            backSpeed: 20,
+            loop: true,
+            cursorChar: '_',
+        });
     }
-}
 
-//reveal class scroll animation
-const revealLR = (className) => {
-    const reveals = document.querySelectorAll(className);
-    const elementVisible = 150;
-    const windowHeight = window.innerHeight;
+    // Dark Mode Logic
+    const initTheme = () => {
+        const storedTheme = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', storedTheme);
+        updateThemeButtons(storedTheme);
+    };
 
-    reveals.forEach((reveal) => {
-      var elementTop = reveal.getBoundingClientRect().top;
-      
-      if (elementTop < windowHeight - elementVisible) {
-        reveal.classList.add("active");
-      } else {
-        reveal.classList.remove("active");
-      }
-    })
-}
+    const toggleTheme = () => {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        updateThemeButtons(newTheme);
+    };
 
+    const updateThemeButtons = (theme) => {
+        const btns = document.querySelectorAll('.theme-switch');
+        btns.forEach(btn => {
+            btn.innerText = theme === 'light' ? 'DARK MODE' : 'LIGHT MODE';
+        });
+    };
 
-window.addEventListener("DOMContentLoaded", () => onLoadFunction());
-window.addEventListener("load", () => isMobile());
-window.addEventListener("scroll", () => reveal("reveal"));
-window.addEventListener("scroll", () => reveal("revealLR"));
-//startTypeOnAbout is called in the reveal function because it checks if the element has the class "active"
-//window.addEventListener("scroll", () => startTypeOnAbout());
+    document.querySelectorAll('.theme-switch').forEach(btn => {
+        btn.addEventListener('click', toggleTheme);
+    });
+    initTheme();
+
+    // Navigation hide/show on scroll (Desktop)
+    let lastScrollTop = 0;
+    const navbar = document.getElementById('navbar');
+
+    window.addEventListener('scroll', () => {
+        let scrollTop = window.scrollY || document.documentElement.scrollTop;
+
+        // Update Scroll Progress bar
+        const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = (winScroll / height) * 100;
+        document.getElementById("scrollProgress").style.width = scrolled + "%";
+
+        if (!isMobile) {
+            if (scrollTop > window.innerHeight * 0.5) {
+                navbar.classList.add('visible');
+            } else {
+                navbar.classList.remove('visible');
+            }
+        }
+        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For Mobile or negative scrolling
+    });
+
+    // Mobile Sandwich Menu
+    const mobileToggle = document.getElementById('mobileMenuToggle');
+    const mobileOverlay = document.getElementById('mobileMenuOverlay');
+    const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+
+    if (mobileToggle && mobileOverlay) {
+        const toggleMenu = () => {
+            mobileToggle.classList.toggle('active');
+            mobileOverlay.classList.toggle('active');
+            document.body.style.overflow = mobileOverlay.classList.contains('active') ? 'hidden' : '';
+        };
+
+        mobileToggle.addEventListener('click', toggleMenu);
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (mobileOverlay.classList.contains('active')) toggleMenu();
+            });
+        });
+
+        // Handle Resize Bug
+        window.addEventListener('resize', () => {
+            isMobile = window.matchMedia("(max-width: 768px)").matches;
+            // Close mobile menu if resized to desktop
+            if (!isMobile && mobileOverlay.classList.contains('active')) {
+                mobileToggle.classList.remove('active');
+                mobileOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+            // Handle cursor visibility
+            if (!isMobile) {
+                document.querySelector(".cursor").style.opacity = 1;
+            } else {
+                document.querySelector(".cursor").style.opacity = 0;
+            }
+        });
+    }
+
+    // Reveal Animations
+    const revealElements = () => {
+        const reveals = document.querySelectorAll(".reveal, .revealLR");
+        const windowHeight = window.innerHeight;
+        const elementVisible = 100;
+
+        reveals.forEach(el => {
+            const elementTop = el.getBoundingClientRect().top;
+            if (elementTop < windowHeight - elementVisible) {
+                el.classList.add("active");
+            }
+        });
+    };
+
+    window.addEventListener("scroll", revealElements);
+    revealElements(); // Trigger on load
+
+    // --- Analytics Tracking: Section Views ---
+    const trackSectionView = () => {
+        const sections = document.querySelectorAll('section[id], header.headerClass');
+        const trackedSections = new Set();
+
+        const observerOptions = {
+            root: null,
+            threshold: 0.5 // Trigger when 50% of the section is visible
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const sectionId = entry.target.id || 'Hero';
+                    if (!trackedSections.has(sectionId)) {
+                        // Umami track event
+                        if (window.umami && typeof window.umami.track === 'function') {
+                            window.umami.track('Section Viewed', {
+                                section: sectionId
+                            });
+                            trackedSections.add(sectionId);
+                        }
+                    }
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => observer.observe(section));
+    };
+
+    trackSectionView();
+};
