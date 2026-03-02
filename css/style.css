@@ -244,6 +244,23 @@ a:hover {
     justify-content: center;
     position: relative;
     padding: 2rem;
+    padding-top: 100px;
+    /* Offset for fixed navbar */
+}
+
+section {
+    scroll-margin-top: 100px;
+    /* Ensures headers aren't hidden when navigating */
+}
+
+@media (max-width: 768px) {
+    .headerClass {
+        padding-top: 120px;
+    }
+
+    section {
+        scroll-margin-top: 80px;
+    }
 }
 
 .hero-grid {
