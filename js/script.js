@@ -8,6 +8,7 @@ window.onload = function () {
 
     let isMobile = window.matchMedia("(max-width: 768px)").matches;
     let customCursorEnabled = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+    let zeroGravityEnabled = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
 
     const syncCustomCursorState = () => {
         customCursorEnabled = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
@@ -19,7 +20,16 @@ window.onload = function () {
         cursor.style.opacity = 0;
     };
 
+    const syncZeroGravityState = () => {
+        zeroGravityEnabled = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+
+        if (!zeroGravityEnabled && zeroGravityActive) {
+            disableZeroGravity();
+        }
+    };
+
     syncCustomCursorState();
+    syncZeroGravityState();
 
     if (mainBlob) {
         // Move blobs with different delays for a liquid effect
@@ -118,6 +128,7 @@ window.onload = function () {
     ].join(', ');
 
     const showZeroGravityToast = (message) => {
+        if (!zeroGravityEnabled) return;
         zeroGravityToast.textContent = message;
         zeroGravityToast.classList.add('visible');
         window.clearTimeout(zeroGravityToastTimer);
@@ -259,6 +270,8 @@ window.onload = function () {
     };
 
     const toggleZeroGravity = () => {
+        if (!zeroGravityEnabled) return;
+
         if (zeroGravityActive) {
             disableZeroGravity();
         } else {
@@ -267,7 +280,7 @@ window.onload = function () {
     };
 
     const handleZeroGravityPointerDown = (event) => {
-        if (!zeroGravityActive) return;
+        if (!zeroGravityEnabled || !zeroGravityActive) return;
 
         const target = event.target.closest('.zero-gravity-item');
         if (!target) return;
@@ -290,7 +303,7 @@ window.onload = function () {
     };
 
     const handleZeroGravityPointerMove = (event) => {
-        if (!zeroGravityActive) return;
+        if (!zeroGravityEnabled || !zeroGravityActive) return;
 
         zeroGravityTargets.forEach((item) => {
             if (!item.dragging || item.pointerId !== event.pointerId) return;
@@ -319,6 +332,8 @@ window.onload = function () {
     };
 
     const handleZeroGravityPointerEnd = (event) => {
+        if (!zeroGravityEnabled) return;
+
         zeroGravityTargets.forEach((item) => {
             if (!item.dragging || item.pointerId !== event.pointerId) return;
 
@@ -335,7 +350,7 @@ window.onload = function () {
     document.addEventListener('pointercancel', handleZeroGravityPointerEnd);
 
     document.addEventListener('click', (event) => {
-        if (!zeroGravityActive) return;
+        if (!zeroGravityEnabled || !zeroGravityActive) return;
 
         const target = event.target.closest('.zero-gravity-item');
         if (!target) return;
@@ -349,6 +364,8 @@ window.onload = function () {
     }, true);
 
     document.addEventListener('keydown', (event) => {
+        if (!zeroGravityEnabled) return;
+
         const activeTag = document.activeElement?.tagName;
         if (activeTag === 'INPUT' || activeTag === 'TEXTAREA' || document.activeElement?.isContentEditable) {
             return;
@@ -439,6 +456,7 @@ window.onload = function () {
         window.addEventListener('resize', () => {
             isMobile = window.matchMedia("(max-width: 768px)").matches;
             syncCustomCursorState();
+            syncZeroGravityState();
             // Close mobile menu if resized to desktop
             if (!isMobile && mobileOverlay.classList.contains('active')) {
                 mobileToggle.classList.remove('active');

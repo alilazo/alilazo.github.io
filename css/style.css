@@ -683,6 +683,10 @@ footer {
         min-height: 5.5rem;
     }
 
+    .zero-gravity-secret {
+        display: none;
+    }
+
     footer {
         flex-direction: column;
         gap: 1rem;
