@@ -93,16 +93,9 @@ window.onload = function () {
     let zeroGravityFrame = null;
     let zeroGravityToastTimer = null;
     let zeroGravityKeyBuffer = [];
-    let motionPermissionInitialized = false;
-    let motionPermissionGranted = false;
-    let motionListenerAttached = false;
-    let lastMotionSample = null;
-    let lastShakeAt = 0;
-    let recentShakeTimestamps = [];
     const zeroGravityToast = document.createElement('div');
     zeroGravityToast.className = 'zero-gravity-toast';
     document.body.appendChild(zeroGravityToast);
-    const zeroGravityFooterHint = document.querySelector('.zero-gravity-secret');
 
     const zeroGravitySelector = [
         '.hero-text h1',
@@ -371,106 +364,6 @@ window.onload = function () {
             toggleZeroGravity();
         }
     });
-
-    const handleDeviceShake = (event) => {
-        if (!motionPermissionGranted) return;
-
-        const motion = event.accelerationIncludingGravity || event.acceleration;
-        if (!motion) return;
-
-        const { x = 0, y = 0, z = 0 } = motion;
-
-        if (lastMotionSample === null) {
-            lastMotionSample = { x, y, z };
-            return;
-        }
-
-        const totalChange =
-            Math.abs(x - lastMotionSample.x) +
-            Math.abs(y - lastMotionSample.y) +
-            Math.abs(z - lastMotionSample.z);
-
-        const totalForce = Math.abs(x) + Math.abs(y) + Math.abs(z);
-        lastMotionSample = { x, y, z };
-
-        const isShakeSpike = totalChange > 12 || totalForce > 32;
-        if (!isShakeSpike) return;
-
-        const now = Date.now();
-        if (now - lastShakeAt < 300) return;
-
-        lastShakeAt = now;
-        recentShakeTimestamps = recentShakeTimestamps.filter((timestamp) => now - timestamp < 1400);
-        recentShakeTimestamps.push(now);
-
-        if (recentShakeTimestamps.length >= 2) {
-            recentShakeTimestamps = [];
-            toggleZeroGravity();
-        }
-    };
-
-    const initializeMotionTrigger = async () => {
-        if (typeof window.DeviceMotionEvent === 'undefined') return;
-
-        if (!motionPermissionInitialized) {
-            motionPermissionInitialized = true;
-
-            try {
-                if (typeof window.DeviceMotionEvent.requestPermission === 'function') {
-                    const permissionState = await window.DeviceMotionEvent.requestPermission();
-                    motionPermissionGranted = permissionState === 'granted';
-                } else {
-                    motionPermissionGranted = true;
-                }
-            } catch (error) {
-                motionPermissionGranted = false;
-            }
-        }
-
-        if (motionPermissionGranted) {
-            if (!motionListenerAttached) {
-                window.addEventListener('devicemotion', handleDeviceShake);
-                motionListenerAttached = true;
-            }
-
-            showZeroGravityToast('Motion enabled. Shake your phone twice for zero gravity.');
-        } else {
-            showZeroGravityToast('Motion access is blocked on this device/browser.');
-        }
-    };
-
-    if (window.matchMedia('(pointer: coarse)').matches) {
-        const unlockMotion = () => {
-            initializeMotionTrigger();
-        };
-
-        document.addEventListener('touchend', unlockMotion, { once: true, passive: true });
-        document.addEventListener('pointerup', unlockMotion, { once: true, passive: true });
-    }
-
-    if (zeroGravityFooterHint) {
-        zeroGravityFooterHint.addEventListener('click', () => {
-            if (window.matchMedia('(pointer: coarse)').matches) {
-                initializeMotionTrigger();
-                return;
-            }
-
-            showZeroGravityToast('Desktop code: Up Up Down Down Left Right Left Right');
-        });
-
-        zeroGravityFooterHint.addEventListener('keydown', (event) => {
-            if (event.key !== 'Enter' && event.key !== ' ') return;
-
-            event.preventDefault();
-
-            if (window.matchMedia('(pointer: coarse)').matches) {
-                initializeMotionTrigger();
-                return;
-            }
-
-            showZeroGravityToast('Desktop code: Up Up Down Down Left Right Left Right');
-        });
-    }
 
     // Dark Mode Logic
     const initTheme = () => {
