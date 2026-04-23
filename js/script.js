@@ -86,6 +86,353 @@ window.onload = function () {
         });
     }
 
+    // Zero Gravity Easter Egg
+    const zeroGravityCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight'];
+    const zeroGravityTargets = new Map();
+    let zeroGravityActive = false;
+    let zeroGravityFrame = null;
+    let zeroGravityToastTimer = null;
+    let zeroGravityKeyBuffer = [];
+    let motionPermissionInitialized = false;
+    let motionPermissionGranted = false;
+    let lastMotionMagnitude = null;
+    let lastShakeAt = 0;
+    let shakeCount = 0;
+    const zeroGravityToast = document.createElement('div');
+    zeroGravityToast.className = 'zero-gravity-toast';
+    document.body.appendChild(zeroGravityToast);
+
+    const zeroGravitySelector = [
+        '.hero-text h1',
+        '.hero-roles',
+        '.hero-typewriter',
+        '.hero-image-container',
+        '.section-title',
+        '.award-card',
+        '.tip-card',
+        '.skill-item',
+        '.project-card',
+        '.btn-custom',
+        '.life-image-wrapper',
+        '.contact-container',
+        '.nav-brand',
+        '.nav-link-custom',
+        '.theme-switch',
+        '.menu-toggle',
+        '.social-links a'
+    ].join(', ');
+
+    const showZeroGravityToast = (message) => {
+        zeroGravityToast.textContent = message;
+        zeroGravityToast.classList.add('visible');
+        window.clearTimeout(zeroGravityToastTimer);
+        zeroGravityToastTimer = window.setTimeout(() => {
+            zeroGravityToast.classList.remove('visible');
+        }, 2600);
+    };
+
+    const renderZeroGravityItem = (item) => {
+        item.element.style.transform = `translate3d(${item.x}px, ${item.y}px, 0) rotate(${item.rotation}deg)`;
+    };
+
+    const setupZeroGravityTargets = () => {
+        zeroGravityTargets.clear();
+
+        document.querySelectorAll(zeroGravitySelector).forEach((element, index) => {
+            zeroGravityTargets.set(element, {
+                id: index,
+                element,
+                x: 0,
+                y: 0,
+                vx: 0,
+                vy: 0,
+                rotation: 0,
+                vr: 0,
+                dragging: false,
+                moved: false,
+                pointerId: null,
+                lastClientX: 0,
+                lastClientY: 0,
+                lastTimestamp: 0
+            });
+        });
+    };
+
+    const stopZeroGravityLoop = () => {
+        if (zeroGravityFrame) {
+            window.cancelAnimationFrame(zeroGravityFrame);
+            zeroGravityFrame = null;
+        }
+    };
+
+    const zeroGravityLoop = () => {
+        if (!zeroGravityActive) {
+            stopZeroGravityLoop();
+            return;
+        }
+
+        const viewportWidth = window.innerWidth;
+        const viewportHeight = window.innerHeight;
+
+        zeroGravityTargets.forEach((item) => {
+            if (item.dragging) return;
+
+            item.vx *= 0.985;
+            item.vy *= 0.985;
+            item.vr *= 0.985;
+
+            if (Math.abs(item.vx) < 0.02) item.vx = 0;
+            if (Math.abs(item.vy) < 0.02) item.vy = 0;
+            if (Math.abs(item.vr) < 0.02) item.vr = 0;
+
+            item.x += item.vx;
+            item.y += item.vy;
+            item.rotation += item.vr;
+            renderZeroGravityItem(item);
+
+            const rect = item.element.getBoundingClientRect();
+            const isNearViewport = rect.bottom > -150 && rect.top < viewportHeight + 150;
+
+            if (!isNearViewport) return;
+
+            if (rect.left < 0) {
+                item.x += -rect.left;
+                item.vx = Math.abs(item.vx) * 0.9;
+            }
+
+            if (rect.right > viewportWidth) {
+                item.x -= rect.right - viewportWidth;
+                item.vx = -Math.abs(item.vx) * 0.9;
+            }
+
+            if (rect.top < 0) {
+                item.y += -rect.top;
+                item.vy = Math.abs(item.vy) * 0.9;
+            }
+
+            if (rect.bottom > viewportHeight) {
+                item.y -= rect.bottom - viewportHeight;
+                item.vy = -Math.abs(item.vy) * 0.9;
+            }
+
+            renderZeroGravityItem(item);
+        });
+
+        zeroGravityFrame = window.requestAnimationFrame(zeroGravityLoop);
+    };
+
+    const enableZeroGravity = () => {
+        setupZeroGravityTargets();
+        zeroGravityActive = true;
+        document.body.classList.add('zero-gravity-active');
+
+        zeroGravityTargets.forEach((item) => {
+            item.element.classList.add('zero-gravity-item');
+            item.element.style.willChange = 'transform';
+            item.element.style.touchAction = 'none';
+            item.element.style.zIndex = '2';
+        });
+
+        stopZeroGravityLoop();
+        zeroGravityFrame = window.requestAnimationFrame(zeroGravityLoop);
+        showZeroGravityToast('Zero gravity enabled. Drag and throw anything you see.');
+    };
+
+    const disableZeroGravity = () => {
+        zeroGravityActive = false;
+        document.body.classList.remove('zero-gravity-active');
+
+        zeroGravityTargets.forEach((item) => {
+            item.element.classList.remove('zero-gravity-item', 'zero-gravity-dragging');
+            item.element.style.transform = '';
+            item.element.style.willChange = '';
+            item.element.style.touchAction = '';
+            item.element.style.zIndex = '';
+            item.x = 0;
+            item.y = 0;
+            item.vx = 0;
+            item.vy = 0;
+            item.rotation = 0;
+            item.vr = 0;
+            item.dragging = false;
+            item.moved = false;
+            item.pointerId = null;
+        });
+
+        stopZeroGravityLoop();
+        showZeroGravityToast('Zero gravity disabled.');
+    };
+
+    const toggleZeroGravity = () => {
+        if (zeroGravityActive) {
+            disableZeroGravity();
+        } else {
+            enableZeroGravity();
+        }
+    };
+
+    const handleZeroGravityPointerDown = (event) => {
+        if (!zeroGravityActive) return;
+
+        const target = event.target.closest('.zero-gravity-item');
+        if (!target) return;
+
+        const item = zeroGravityTargets.get(target);
+        if (!item) return;
+
+        item.dragging = true;
+        item.moved = false;
+        item.pointerId = event.pointerId;
+        item.lastClientX = event.clientX;
+        item.lastClientY = event.clientY;
+        item.lastTimestamp = performance.now();
+        item.vx = 0;
+        item.vy = 0;
+        item.vr = 0;
+        item.element.classList.add('zero-gravity-dragging');
+        item.element.setPointerCapture?.(event.pointerId);
+        event.preventDefault();
+    };
+
+    const handleZeroGravityPointerMove = (event) => {
+        if (!zeroGravityActive) return;
+
+        zeroGravityTargets.forEach((item) => {
+            if (!item.dragging || item.pointerId !== event.pointerId) return;
+
+            const now = performance.now();
+            const deltaTime = Math.max(now - item.lastTimestamp, 16);
+            const deltaX = event.clientX - item.lastClientX;
+            const deltaY = event.clientY - item.lastClientY;
+
+            if (Math.abs(deltaX) > 1 || Math.abs(deltaY) > 1) {
+                item.moved = true;
+            }
+
+            item.x += deltaX;
+            item.y += deltaY;
+            item.vx = deltaX / (deltaTime / 16.67);
+            item.vy = deltaY / (deltaTime / 16.67);
+            item.rotation += deltaX * 0.08;
+            item.vr = deltaX * 0.02;
+            item.lastClientX = event.clientX;
+            item.lastClientY = event.clientY;
+            item.lastTimestamp = now;
+            renderZeroGravityItem(item);
+            event.preventDefault();
+        });
+    };
+
+    const handleZeroGravityPointerEnd = (event) => {
+        zeroGravityTargets.forEach((item) => {
+            if (!item.dragging || item.pointerId !== event.pointerId) return;
+
+            item.dragging = false;
+            item.pointerId = null;
+            item.element.classList.remove('zero-gravity-dragging');
+            item.element.releasePointerCapture?.(event.pointerId);
+        });
+    };
+
+    document.addEventListener('pointerdown', handleZeroGravityPointerDown, { passive: false });
+    document.addEventListener('pointermove', handleZeroGravityPointerMove, { passive: false });
+    document.addEventListener('pointerup', handleZeroGravityPointerEnd);
+    document.addEventListener('pointercancel', handleZeroGravityPointerEnd);
+
+    document.addEventListener('click', (event) => {
+        if (!zeroGravityActive) return;
+
+        const target = event.target.closest('.zero-gravity-item');
+        if (!target) return;
+
+        const item = zeroGravityTargets.get(target);
+        if (item?.moved) {
+            event.preventDefault();
+            event.stopPropagation();
+            item.moved = false;
+        }
+    }, true);
+
+    document.addEventListener('keydown', (event) => {
+        const activeTag = document.activeElement?.tagName;
+        if (activeTag === 'INPUT' || activeTag === 'TEXTAREA' || document.activeElement?.isContentEditable) {
+            return;
+        }
+
+        zeroGravityKeyBuffer.push(event.key);
+        if (zeroGravityKeyBuffer.length > zeroGravityCode.length) {
+            zeroGravityKeyBuffer.shift();
+        }
+
+        if (zeroGravityCode.every((key, index) => zeroGravityKeyBuffer[index] === key)) {
+            zeroGravityKeyBuffer = [];
+            toggleZeroGravity();
+        }
+    });
+
+    const handleDeviceShake = (event) => {
+        if (!motionPermissionGranted || !event.accelerationIncludingGravity) return;
+
+        const { x = 0, y = 0, z = 0 } = event.accelerationIncludingGravity;
+        const magnitude = Math.sqrt(x * x + y * y + z * z);
+
+        if (lastMotionMagnitude === null) {
+            lastMotionMagnitude = magnitude;
+            return;
+        }
+
+        const delta = Math.abs(magnitude - lastMotionMagnitude);
+        lastMotionMagnitude = magnitude;
+
+        if (delta < 14) return;
+
+        const now = Date.now();
+        if (now - lastShakeAt < 450) return;
+
+        if (now - lastShakeAt > 1800) {
+            shakeCount = 0;
+        }
+
+        lastShakeAt = now;
+        shakeCount += 1;
+
+        if (shakeCount >= 2) {
+            shakeCount = 0;
+            toggleZeroGravity();
+        }
+    };
+
+    const initializeMotionTrigger = async () => {
+        if (motionPermissionInitialized) return;
+        motionPermissionInitialized = true;
+
+        if (typeof window.DeviceMotionEvent === 'undefined') return;
+
+        try {
+            if (typeof window.DeviceMotionEvent.requestPermission === 'function') {
+                const permissionState = await window.DeviceMotionEvent.requestPermission();
+                motionPermissionGranted = permissionState === 'granted';
+            } else {
+                motionPermissionGranted = true;
+            }
+        } catch (error) {
+            motionPermissionGranted = false;
+        }
+
+        if (motionPermissionGranted) {
+            window.addEventListener('devicemotion', handleDeviceShake);
+            showZeroGravityToast('Shake your phone twice for zero gravity.');
+        }
+    };
+
+    if (window.matchMedia('(pointer: coarse)').matches) {
+        const unlockMotion = () => {
+            initializeMotionTrigger();
+        };
+
+        document.addEventListener('touchstart', unlockMotion, { once: true });
+    }
+
     // Dark Mode Logic
     const initTheme = () => {
         const storedTheme = localStorage.getItem('theme') || 'light';

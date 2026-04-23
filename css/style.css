@@ -361,6 +361,43 @@ section {
     display: inline-block;
 }
 
+.zero-gravity-toast {
+    position: fixed;
+    left: 50%;
+    bottom: 24px;
+    transform: translateX(-50%) translateY(20px);
+    background: var(--text-color);
+    color: var(--bg-color);
+    padding: 0.85rem 1.25rem;
+    border: 2px solid var(--border-color);
+    box-shadow: var(--shadow);
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 12000;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.zero-gravity-toast.visible {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+body.zero-gravity-active .zero-gravity-item {
+    cursor: grab;
+    user-select: none;
+    -webkit-user-select: none;
+    transition: box-shadow 0.2s ease, background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease;
+}
+
+body.zero-gravity-active .zero-gravity-item.zero-gravity-dragging {
+    cursor: grabbing;
+    box-shadow: var(--hover-shadow);
+}
+
 .hero-image-container {
     position: relative;
     width: fit-content;
