@@ -100,7 +100,7 @@ a:hover {
     pointer-events: none;
     z-index: 10000;
     filter: url('#goo');
-    opacity: 1;
+    opacity: 0;
     transition: opacity 0.2s ease;
 }
 
@@ -108,7 +108,7 @@ a:hover {
     position: absolute;
     width: 100%;
     height: 100%;
-    opacity: 1;
+    opacity: 0;
     transition: opacity 0.2s ease;
 }
 
@@ -130,6 +130,12 @@ a:hover {
     width: 25px;
     height: 25px;
     opacity: 0.8;
+}
+
+@media (hover: none), (pointer: coarse) {
+    .cursor-wrapper {
+        display: none !important;
+    }
 }
 
 /* Navigation */

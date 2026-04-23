@@ -3,16 +3,33 @@ window.onload = function () {
     const mainBlob = document.querySelector('.main-blob');
     const secondaryBlobs = document.querySelectorAll('.secondary-blob');
     const hoverables = document.querySelectorAll('.hoverable');
+    const cursorWrapper = document.querySelector(".cursor-wrapper");
+    const cursor = document.querySelector(".cursor");
 
     let isMobile = window.matchMedia("(max-width: 768px)").matches;
+    let customCursorEnabled = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
 
-    if (!isMobile && mainBlob) {
-        const cursorWrapper = document.querySelector(".cursor-wrapper");
-        if (cursorWrapper) cursorWrapper.style.opacity = 1;
+    const syncCustomCursorState = () => {
+        customCursorEnabled = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
 
+        if (!cursorWrapper || !cursor) return;
+
+        cursorWrapper.style.display = customCursorEnabled ? 'block' : 'none';
+        cursorWrapper.style.opacity = 0;
+        cursor.style.opacity = 0;
+    };
+
+    syncCustomCursorState();
+
+    if (mainBlob) {
         // Move blobs with different delays for a liquid effect
         document.body.addEventListener('mousemove', (e) => {
+            if (!customCursorEnabled) return;
+
             const { clientX, clientY } = e;
+
+            if (cursorWrapper) cursorWrapper.style.opacity = 1;
+            if (cursor) cursor.style.opacity = 1;
 
             gsap.to(mainBlob, {
                 duration: 0.2,
@@ -35,12 +52,14 @@ window.onload = function () {
         const hoverSelector = 'a, button, input, textarea, p, h1, h2, h3, h4, h5, h6, span, li, .card, .project-card, .hoverable, img';
 
         document.body.addEventListener('mouseover', (e) => {
+            if (!customCursorEnabled) return;
             if (e.target.closest(hoverSelector)) {
                 gsap.to('.cursor-wrapper', { duration: 0.2, opacity: 0 });
             }
         });
 
         document.body.addEventListener('mouseout', (e) => {
+            if (!customCursorEnabled) return;
             // Only restore if we are leaving a hoverable element to go to a non-hoverable one
             if (e.target.closest(hoverSelector)) {
                 // Determine if the new target is also hoverable
@@ -140,17 +159,12 @@ window.onload = function () {
         // Handle Resize Bug
         window.addEventListener('resize', () => {
             isMobile = window.matchMedia("(max-width: 768px)").matches;
+            syncCustomCursorState();
             // Close mobile menu if resized to desktop
             if (!isMobile && mobileOverlay.classList.contains('active')) {
                 mobileToggle.classList.remove('active');
                 mobileOverlay.classList.remove('active');
                 document.body.style.overflow = '';
-            }
-            // Handle cursor visibility
-            if (!isMobile) {
-                document.querySelector(".cursor").style.opacity = 1;
-            } else {
-                document.querySelector(".cursor").style.opacity = 0;
             }
         });
     }
