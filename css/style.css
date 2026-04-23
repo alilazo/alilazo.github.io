@@ -614,6 +614,26 @@ footer {
     background-color: var(--nav-bg);
 }
 
+.zero-gravity-secret {
+    background: transparent;
+    border: 2px solid var(--text-color);
+    color: var(--text-color);
+    padding: 0.6rem 1rem;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    max-width: 460px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.zero-gravity-secret:hover {
+    background: var(--text-color);
+    color: var(--bg-color);
+}
+
 .social-links {
     display: flex;
     gap: 1rem;
@@ -665,6 +685,19 @@ footer {
 
     .hero-typewriter {
         min-height: 5.5rem;
+    }
+
+    footer {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+
+    .zero-gravity-secret {
+        width: 100%;
+        max-width: none;
+        font-size: 0.7rem;
+        line-height: 1.5;
     }
 
     .contact-container {

@@ -95,12 +95,14 @@ window.onload = function () {
     let zeroGravityKeyBuffer = [];
     let motionPermissionInitialized = false;
     let motionPermissionGranted = false;
-    let lastMotionMagnitude = null;
+    let motionListenerAttached = false;
+    let lastMotionSample = null;
     let lastShakeAt = 0;
     let shakeCount = 0;
     const zeroGravityToast = document.createElement('div');
     zeroGravityToast.className = 'zero-gravity-toast';
     document.body.appendChild(zeroGravityToast);
+    const zeroGravityFooterHint = document.querySelector('.zero-gravity-secret');
 
     const zeroGravitySelector = [
         '.hero-text h1',
@@ -371,25 +373,31 @@ window.onload = function () {
     });
 
     const handleDeviceShake = (event) => {
-        if (!motionPermissionGranted || !event.accelerationIncludingGravity) return;
+        if (!motionPermissionGranted) return;
 
-        const { x = 0, y = 0, z = 0 } = event.accelerationIncludingGravity;
-        const magnitude = Math.sqrt(x * x + y * y + z * z);
+        const motion = event.accelerationIncludingGravity || event.acceleration;
+        if (!motion) return;
 
-        if (lastMotionMagnitude === null) {
-            lastMotionMagnitude = magnitude;
+        const { x = 0, y = 0, z = 0 } = motion;
+
+        if (lastMotionSample === null) {
+            lastMotionSample = { x, y, z };
             return;
         }
 
-        const delta = Math.abs(magnitude - lastMotionMagnitude);
-        lastMotionMagnitude = magnitude;
+        const totalChange =
+            Math.abs(x - lastMotionSample.x) +
+            Math.abs(y - lastMotionSample.y) +
+            Math.abs(z - lastMotionSample.z);
 
-        if (delta < 14) return;
+        lastMotionSample = { x, y, z };
+
+        if (totalChange < 15) return;
 
         const now = Date.now();
-        if (now - lastShakeAt < 450) return;
+        if (now - lastShakeAt < 250) return;
 
-        if (now - lastShakeAt > 1800) {
+        if (now - lastShakeAt > 2500) {
             shakeCount = 0;
         }
 
@@ -403,25 +411,32 @@ window.onload = function () {
     };
 
     const initializeMotionTrigger = async () => {
-        if (motionPermissionInitialized) return;
-        motionPermissionInitialized = true;
-
         if (typeof window.DeviceMotionEvent === 'undefined') return;
 
-        try {
-            if (typeof window.DeviceMotionEvent.requestPermission === 'function') {
-                const permissionState = await window.DeviceMotionEvent.requestPermission();
-                motionPermissionGranted = permissionState === 'granted';
-            } else {
-                motionPermissionGranted = true;
+        if (!motionPermissionInitialized) {
+            motionPermissionInitialized = true;
+
+            try {
+                if (typeof window.DeviceMotionEvent.requestPermission === 'function') {
+                    const permissionState = await window.DeviceMotionEvent.requestPermission();
+                    motionPermissionGranted = permissionState === 'granted';
+                } else {
+                    motionPermissionGranted = true;
+                }
+            } catch (error) {
+                motionPermissionGranted = false;
             }
-        } catch (error) {
-            motionPermissionGranted = false;
         }
 
         if (motionPermissionGranted) {
-            window.addEventListener('devicemotion', handleDeviceShake);
-            showZeroGravityToast('Shake your phone twice for zero gravity.');
+            if (!motionListenerAttached) {
+                window.addEventListener('devicemotion', handleDeviceShake);
+                motionListenerAttached = true;
+            }
+
+            showZeroGravityToast('Motion enabled. Shake your phone twice for zero gravity.');
+        } else {
+            showZeroGravityToast('Motion access is blocked on this device/browser.');
         }
     };
 
@@ -430,7 +445,18 @@ window.onload = function () {
             initializeMotionTrigger();
         };
 
-        document.addEventListener('touchstart', unlockMotion, { once: true });
+        document.addEventListener('touchstart', unlockMotion, { once: true, passive: true });
+    }
+
+    if (zeroGravityFooterHint) {
+        zeroGravityFooterHint.addEventListener('click', () => {
+            if (window.matchMedia('(pointer: coarse)').matches) {
+                initializeMotionTrigger();
+                return;
+            }
+
+            showZeroGravityToast('Desktop code: Up Up Down Down Left Right Left Right');
+        });
     }
 
     // Dark Mode Logic
