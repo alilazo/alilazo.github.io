@@ -98,7 +98,7 @@ window.onload = function () {
     let motionListenerAttached = false;
     let lastMotionSample = null;
     let lastShakeAt = 0;
-    let shakeCount = 0;
+    let recentShakeTimestamps = [];
     const zeroGravityToast = document.createElement('div');
     zeroGravityToast.className = 'zero-gravity-toast';
     document.body.appendChild(zeroGravityToast);
@@ -390,22 +390,21 @@ window.onload = function () {
             Math.abs(y - lastMotionSample.y) +
             Math.abs(z - lastMotionSample.z);
 
+        const totalForce = Math.abs(x) + Math.abs(y) + Math.abs(z);
         lastMotionSample = { x, y, z };
 
-        if (totalChange < 15) return;
+        const isShakeSpike = totalChange > 12 || totalForce > 32;
+        if (!isShakeSpike) return;
 
         const now = Date.now();
-        if (now - lastShakeAt < 250) return;
-
-        if (now - lastShakeAt > 2500) {
-            shakeCount = 0;
-        }
+        if (now - lastShakeAt < 300) return;
 
         lastShakeAt = now;
-        shakeCount += 1;
+        recentShakeTimestamps = recentShakeTimestamps.filter((timestamp) => now - timestamp < 1400);
+        recentShakeTimestamps.push(now);
 
-        if (shakeCount >= 2) {
-            shakeCount = 0;
+        if (recentShakeTimestamps.length >= 2) {
+            recentShakeTimestamps = [];
             toggleZeroGravity();
         }
     };
@@ -445,11 +444,25 @@ window.onload = function () {
             initializeMotionTrigger();
         };
 
-        document.addEventListener('touchstart', unlockMotion, { once: true, passive: true });
+        document.addEventListener('touchend', unlockMotion, { once: true, passive: true });
+        document.addEventListener('pointerup', unlockMotion, { once: true, passive: true });
     }
 
     if (zeroGravityFooterHint) {
         zeroGravityFooterHint.addEventListener('click', () => {
+            if (window.matchMedia('(pointer: coarse)').matches) {
+                initializeMotionTrigger();
+                return;
+            }
+
+            showZeroGravityToast('Desktop code: Up Up Down Down Left Right Left Right');
+        });
+
+        zeroGravityFooterHint.addEventListener('keydown', (event) => {
+            if (event.key !== 'Enter' && event.key !== ' ') return;
+
+            event.preventDefault();
+
             if (window.matchMedia('(pointer: coarse)').matches) {
                 initializeMotionTrigger();
                 return;

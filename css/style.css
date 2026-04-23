@@ -225,10 +225,10 @@ a:hover {
 
 .mobile-menu-overlay {
     position: fixed;
-    top: 0;
-    left: 0;
+    inset: 0;
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
+    min-height: 100dvh;
     background-color: var(--bg-color);
     z-index: 999;
     display: flex;
@@ -236,6 +236,9 @@ a:hover {
     justify-content: center;
     align-items: center;
     gap: 2rem;
+    padding: calc(2rem + env(safe-area-inset-top)) 2rem calc(2rem + env(safe-area-inset-bottom));
+    box-sizing: border-box;
+    overflow-y: auto;
     transform: translateX(100%);
     transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -616,22 +619,18 @@ footer {
 
 .zero-gravity-secret {
     background: transparent;
-    border: 2px solid var(--text-color);
+    border: none;
     color: var(--text-color);
-    padding: 0.6rem 1rem;
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
+    padding: 0;
+    font: inherit;
     max-width: 460px;
     text-align: center;
-    transition: all 0.3s ease;
+    opacity: 0.8;
+    cursor: pointer;
 }
 
 .zero-gravity-secret:hover {
-    background: var(--text-color);
-    color: var(--bg-color);
+    opacity: 1;
 }
 
 .social-links {
@@ -696,7 +695,7 @@ footer {
     .zero-gravity-secret {
         width: 100%;
         max-width: none;
-        font-size: 0.7rem;
+        font-size: 0.85rem;
         line-height: 1.5;
     }
 
