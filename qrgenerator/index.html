@@ -17,17 +17,73 @@
     <meta property="og:title" content="QR Generator | Amado Lazo">
     <meta property="og:description"
         content="Generate QR codes for links or plain text instantly. Use the page directly or share a URL-powered QR output.">
-    <meta property="og:image" content="https://amadolazo.com/pics/Projects/QRGenerator.svg">
+    <meta property="og:image" content="https://amadolazo.com/pics/projects/amadolazo-qr-code-generator.png">
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://amadolazo.com/qrgenerator/">
     <meta property="twitter:title" content="QR Generator | Amado Lazo">
     <meta property="twitter:description"
         content="Generate QR codes for links or text instantly with a free public tool by Amado Lazo.">
-    <meta property="twitter:image" content="https://amadolazo.com/pics/Projects/QRGenerator.svg">
+    <meta property="twitter:image" content="https://amadolazo.com/pics/projects/amadolazo-qr-code-generator.png">
     <link rel="icon" type="image/png" href="../favicon.png">
     <link rel="stylesheet" href="style.css">
     <script defer src="https://cloud.umami.is/script.js"
         data-website-id="7efb876f-5d13-4b99-bb0a-23fcbe8612cc"></script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebApplication",
+          "@id": "https://amadolazo.com/qrgenerator/#app",
+          "name": "QR Generator API",
+          "url": "https://amadolazo.com/qrgenerator/",
+          "applicationCategory": "DeveloperApplication",
+          "operatingSystem": "Any",
+          "browserRequirements": "Requires JavaScript and a modern web browser.",
+          "description": "A free QR code generator by Amado Lazo that converts links or text into scannable QR codes through a web page or URL-based interface.",
+          "creator": {
+            "@type": "Person",
+            "@id": "https://amadolazo.com/#person",
+            "name": "Amado Lazo",
+            "url": "https://amadolazo.com/"
+          },
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          },
+          "featureList": [
+            "Generate QR codes from links",
+            "Generate QR codes from plain text",
+            "Download QR codes as PNG images",
+            "Create QR codes from URL query parameters"
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://amadolazo.com/qrgenerator/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Is the QR Generator API free to use?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. The QR Generator API is free to use and does not require a login or payment."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How do I generate a QR code from a URL?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Open https://amadolazo.com/qrgenerator/ and paste a link or use a URL such as https://amadolazo.com/qrgenerator/?text=https%3A%2F%2Fexample.com."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
     <script defer src="vendor/qrious.min.js"></script>
     <script defer src="script.js"></script>
 </head>

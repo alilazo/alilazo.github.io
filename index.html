@@ -31,52 +31,138 @@
     <meta property="og:title" content="Amado Lazo | Software Engineer & AI Specialist">
     <meta property="og:description"
         content="Portfolio of Amado Lazo, Software Engineer for the City of Austin and Sr. Software Engineer for Careforge.ai. Specializing in Full-Stack & AI development.">
-    <meta property="og:image" content="https://amadolazo.com/favicon.png">
+    <meta property="og:image" content="https://amadolazo.com/pics/amado-lazo-tamucc-portrait.jpg">
 
     <!-- Twitter -->
-    <meta property="twitter:card" content="summary">
+    <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://amadolazo.com/">
     <meta property="twitter:title" content="Amado Lazo | Software Engineer & AI Specialist">
     <meta property="twitter:description"
         content="Portfolio of Amado Lazo, Software Engineer for the City of Austin and Sr. Software Engineer for Careforge.ai. Specializing in Full-Stack & AI development.">
-    <meta property="twitter:image" content="https://amadolazo.com/favicon.png">
+    <meta property="twitter:image" content="https://amadolazo.com/pics/amado-lazo-tamucc-portrait.jpg">
 
     <!-- Structured Data (Schema.org) -->
     <script type="application/ld+json">
     {
-      "@context": "https://schema.org/",
-      "@type": "Person",
-      "name": "Amado Lazo",
-      "url": "https://amadolazo.com/",
-      "image": "https://amadolazo.com/pics/Potrait.jpg",
-      "sameAs": [
-        "https://github.com/alilazo",
-        "https://www.linkedin.com/in/amado-lazo/"
-      ],
-      "jobTitle": "Sr. Software Engineer",
-      "worksFor": [
+      "@context": "https://schema.org",
+      "@graph": [
         {
-          "@type": "Organization",
-          "name": "City of Austin"
+          "@type": "WebSite",
+          "@id": "https://amadolazo.com/#website",
+          "url": "https://amadolazo.com/",
+          "name": "Amado Lazo",
+          "alternateName": "Amado Lazo Portfolio",
+          "description": "Portfolio of Amado Lazo, a software engineer specializing in full-stack development, AI integration, and minimalist web experiences.",
+          "inLanguage": "en-US",
+          "publisher": {
+            "@id": "https://amadolazo.com/#person"
+          }
         },
         {
-          "@type": "Organization",
-          "name": "careforge.ai"
+          "@type": "ProfilePage",
+          "@id": "https://amadolazo.com/#profilepage",
+          "url": "https://amadolazo.com/",
+          "name": "Amado Lazo | Software Engineer & AI Specialist",
+          "isPartOf": {
+            "@id": "https://amadolazo.com/#website"
+          },
+          "about": {
+            "@id": "https://amadolazo.com/#person"
+          },
+          "primaryImageOfPage": {
+            "@type": "ImageObject",
+            "url": "https://amadolazo.com/pics/amado-lazo-tamucc-portrait.jpg"
+          }
+        },
+        {
+          "@type": "Person",
+          "@id": "https://amadolazo.com/#person",
+          "name": "Amado Lazo",
+          "url": "https://amadolazo.com/",
+          "image": "https://amadolazo.com/pics/amado-lazo-tamucc-portrait.jpg",
+          "sameAs": [
+            "https://github.com/alilazo",
+            "https://www.linkedin.com/in/amado-lazo/"
+          ],
+          "jobTitle": "Sr. Software Engineer",
+          "worksFor": [
+            {
+              "@type": "Organization",
+              "name": "City of Austin"
+            },
+            {
+              "@type": "Organization",
+              "name": "careforge.ai",
+              "url": "https://careforge.ai/"
+            }
+          ],
+          "alumniOf": {
+            "@type": "CollegeOrUniversity",
+            "name": "Texas A&M University-Corpus Christi"
+          },
+          "knowsAbout": [
+            "Software Engineering",
+            "Artificial Intelligence",
+            "Full-Stack Development",
+            "React",
+            "Node.js",
+            "Python",
+            "C++",
+            "Java",
+            "FastAPI",
+            "PostgreSQL",
+            "Swiss Design",
+            "Scandinavian Design"
+          ],
+          "description": "Software engineer specializing in AI integration and full-stack development, with experience building municipal tools, health technology, and practical web utilities."
+        },
+        {
+          "@type": "ItemList",
+          "@id": "https://amadolazo.com/#projects",
+          "name": "Selected software engineering projects by Amado Lazo",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "item": {
+                "@type": "SoftwareApplication",
+                "name": "CareForge AI",
+                "url": "https://careforge.ai/",
+                "applicationCategory": "HealthApplication",
+                "description": "A mental health platform for veterans featuring a 24/7 AI-powered counselor and health coach."
+              }
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "item": {
+                "@type": "SoftwareApplication",
+                "name": "Stellar Inventory",
+                "url": "https://www.stellarinsight.app/",
+                "applicationCategory": "BusinessApplication",
+                "description": "An inventory tracking system using Bluetooth scanning technology for business operations."
+              }
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "item": {
+                "@type": "SoftwareApplication",
+                "name": "QR Generator API",
+                "url": "https://amadolazo.com/qrgenerator/",
+                "applicationCategory": "DeveloperApplication",
+                "operatingSystem": "Any",
+                "offers": {
+                  "@type": "Offer",
+                  "price": "0",
+                  "priceCurrency": "USD"
+                },
+                "description": "A free QR code generator that converts links or text into scannable QR codes through a web page or URL-based interface."
+              }
+            }
+          ]
         }
-      ],
-      "knowsAbout": [
-        "Software Engineering",
-        "Artificial Intelligence",
-        "Full-Stack Development",
-        "ReactJS",
-        "NodeJS",
-        "Python",
-        "C++",
-        "Java",
-        "Swiss Design",
-        "Scandinavian Design"
-      ],
-      "description": "Software Engineer specializing in AI and Full-Stack development. Currently building AI-powered mental health platforms for veterans."
+      ]
     }
     </script>
 </head>
@@ -196,9 +282,12 @@
             </div>
             <div class="hero-img reveal hoverable">
                 <div class="hero-image-container boxShadow">
-                    <img src="pics/Potrait_TAMUCC_Looking_at_Camera.jpg" alt="Amado Lazo" class="hero-image">
+                    <img src="pics/amado-lazo-tamucc-portrait.jpg"
+                        alt="Portrait of Amado Lazo, software engineer and AI specialist" class="hero-image">
                     <div class="decorative-shape"></div>
-                    <img src="pics/OilPaintMaskImage.png" alt="Artistic Overlay" class="oil-paint-float reveal"
+                    <img src="pics/amado-lazo-oil-paint-portrait-overlay.png"
+                        alt="Decorative oil paint style portrait overlay"
+                        class="oil-paint-float reveal"
                         style="position: absolute; bottom: -50px; right: -50px; width: 180px; z-index: 2; filter: drop-shadow(10px 10px 20px rgba(0,0,0,0.2));">
                 </div>
             </div>
@@ -211,7 +300,9 @@
         <section id="Experience">
             <div class="row align-items-center">
                 <div class="col-md-6 revealLR hoverable">
-                    <img src="pics/scandi.png" alt="Scandinavian Minimalist Art" class="img-fluid boxShadow"
+                    <img src="pics/scandinavian-minimalist-art.png"
+                        alt="Scandinavian minimalist artwork representing clean software design"
+                        class="img-fluid boxShadow"
                         style="border-radius: 0;">
                 </div>
                 <div class="col-md-6 revealLR" style="transition-delay: 0.2s;">
@@ -387,7 +478,8 @@
                 <div class="col-lg-6 reveal hoverable">
                     <div class="project-card boxShadow">
                         <div class="project-img-wrapper">
-                            <img src="pics/Projects/CareForge.png" alt="CareForge AI">
+                            <img src="pics/projects/careforge-ai-platform.png"
+                                alt="CareForge AI mental health platform project screenshot">
                         </div>
                         <div class="project-content">
                             <h3 class="project-title">CareForge AI</h3>
@@ -403,7 +495,8 @@
                 <div class="col-lg-6 reveal hoverable" style="transition-delay: 0.2s;">
                     <div class="project-card boxShadow">
                         <div class="project-img-wrapper">
-                            <img src="pics/Projects/Stellar.png" alt="Stellar Inventory">
+                            <img src="pics/projects/stellar-inventory-app.png"
+                                alt="Stellar Inventory mobile inventory tracking project screenshot">
                         </div>
                         <div class="project-content">
                             <h3 class="project-title">Stellar Inventory</h3>
@@ -418,14 +511,16 @@
 
                 <!-- Supporting Images / Art -->
                 <div class="col-lg-12 reveal hoverable mt-5">
-                    <img src="pics/swiss.png" alt="Swiss Geometric Art" class="img-fluid boxShadow"
+                    <img src="pics/swiss-geometric-art.png" alt="Swiss geometric artwork representing structured web design"
+                        class="img-fluid boxShadow"
                         style="border-radius: 0; width: 100%; height: 300px; object-fit: cover;">
                 </div>
 
                 <div class="col-lg-6 reveal hoverable mt-4">
                     <div class="project-card boxShadow">
                         <div class="project-img-wrapper">
-                            <img src="pics/Power Apps/(EMS) RA CAD Events App.png" alt="EMS RA CAD Events App">
+                            <img src="pics/power-apps/ems-ra-cad-events-power-app.png"
+                                alt="EMS RA CAD Events Power App interface screenshot">
                         </div>
                         <div class="project-content">
                             <h3 class="project-title">EMS RA CAD Events App</h3>
@@ -440,8 +535,8 @@
                 <div class="col-lg-6 reveal hoverable mt-4" style="transition-delay: 0.1s;">
                     <div class="project-card boxShadow">
                         <div class="project-img-wrapper">
-                            <img src="pics/Power Apps/(EMS) Lecture Workshop Power App.png"
-                                alt="EMS Lecture Workshop Power App">
+                            <img src="pics/power-apps/ems-lecture-workshop-power-app.png"
+                                alt="EMS Lecture Workshop Power App interface screenshot">
                         </div>
                         <div class="project-content">
                             <h3 class="project-title">EMS Lecture Workshop Power App</h3>
@@ -458,7 +553,8 @@
                 <div class="col-md-4 reveal hoverable">
                     <div class="project-card boxShadow">
                         <div class="project-img-wrapper">
-                            <img src="pics/Projects/amadolazo-qrcode-generator.png" alt="QR Generator API">
+                            <img src="pics/projects/amadolazo-qr-code-generator.png"
+                                alt="Amado Lazo QR Generator API project preview">
                         </div>
                         <div class="project-content">
                             <h3 class="project-title">QR Generator API</h3>
@@ -472,7 +568,8 @@
                 <div class="col-md-4 reveal hoverable">
                     <div class="project-card boxShadow">
                         <div class="project-img-wrapper">
-                            <img src="pics/Projects/ComparingAI.png" alt="Comparing AI Models">
+                            <img src="pics/projects/comparing-ai-models.png"
+                                alt="Comparing AI models project screenshot">
                         </div>
                         <div class="project-content">
                             <h3 class="project-title">Comparing AI Models</h3>
@@ -484,7 +581,8 @@
                 <div class="col-md-4 reveal hoverable" style="transition-delay: 0.1s;">
                     <div class="project-card boxShadow">
                         <div class="project-img-wrapper">
-                            <img src="pics/Projects/mflix.png" alt="Mflix Database">
+                            <img src="pics/projects/mflix-movie-database.png"
+                                alt="Mflix movie database project screenshot">
                         </div>
                         <div class="project-content">
                             <h3 class="project-title">Mflix Database</h3>
@@ -496,7 +594,8 @@
                 <div class="col-md-4 reveal hoverable" style="transition-delay: 0.2s;">
                     <div class="project-card boxShadow">
                         <div class="project-img-wrapper">
-                            <img src="pics/Projects/Gas Junkie.jpg" alt="Gas Junkie">
+                            <img src="pics/projects/gas-junkie-mobile-app.jpg"
+                                alt="Gas Junkie mobile app project screenshot">
                         </div>
                         <div class="project-content">
                             <h3 class="project-title">Gas Junkie App</h3>
@@ -557,7 +656,9 @@
                 </div>
                 <div class="col-md-6 revealLR hoverable" style="transition-delay: 0.2s;">
                     <div class="life-image-wrapper boxShadow p-2 bg-white" style="transform: rotate(2deg);">
-                        <img src="pics/new_mexico.jpg" alt="Exploring New Mexico" class="img-fluid"
+                        <img src="pics/amado-lazo-new-mexico-outdoors.jpg"
+                            alt="Amado Lazo exploring New Mexico outdoors"
+                            class="img-fluid"
                             style="border: 1px solid var(--border-color);">
                     </div>
                 </div>
@@ -644,10 +745,10 @@
         </div>
         <span class="zero-gravity-secret">Zero gravity on desktop: Up Up Down Down Left Right Left Right.</span>
         <div class="social-links">
-            <a href="https://github.com/alilazo" target="_blank" class="hoverable"><img src="pics/svg/logo-github.svg"
-                    alt="GitHub Logo" /></a>
+            <a href="https://github.com/alilazo" target="_blank" class="hoverable"><img src="pics/svg/github-logo.svg"
+                    alt="Amado Lazo GitHub profile" /></a>
             <a href="https://www.linkedin.com/in/amado-lazo/" target="_blank" class="hoverable"><img
-                    src="pics/svg/linkedin-3.svg" alt="LinkedIn Logo" /></a>
+                    src="pics/svg/linkedin-logo.svg" alt="Amado Lazo LinkedIn profile" /></a>
         </div>
     </footer>
 </body>
