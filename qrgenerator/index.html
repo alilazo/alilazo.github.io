@@ -26,6 +26,8 @@
     <meta property="twitter:image" content="https://amadolazo.com/pics/Projects/QRGenerator.svg">
     <link rel="icon" type="image/png" href="../favicon.png">
     <link rel="stylesheet" href="style.css">
+    <script defer src="https://cloud.umami.is/script.js"
+        data-website-id="7efb876f-5d13-4b99-bb0a-23fcbe8612cc"></script>
     <script defer src="vendor/qrious.min.js"></script>
     <script defer src="script.js"></script>
 </head>
@@ -33,7 +35,8 @@
 <body>
     <main class="page-shell">
         <section class="hero">
-            <a class="back-link" href="../index.html">Back to portfolio</a>
+            <a class="back-link" href="../index.html" data-umami-event="QR Generator - Back to Portfolio">Back to
+                portfolio</a>
             <p class="eyebrow">FREE TOOL + URL-DRIVEN QR OUTPUT</p>
             <h1>QR Generator</h1>
             <p class="hero-copy">
@@ -68,8 +71,10 @@
                     </div>
 
                     <div class="button-row">
-                        <button type="button" id="generateBtn" class="primary-btn">Generate QR Code</button>
-                        <button type="button" id="clearBtn" class="secondary-btn">Clear</button>
+                        <button type="button" id="generateBtn" class="primary-btn"
+                            data-umami-event="QR Generator - Generate">Generate QR Code</button>
+                        <button type="button" id="clearBtn" class="secondary-btn"
+                            data-umami-event="QR Generator - Clear">Clear</button>
                     </div>
                 </div>
 
@@ -97,8 +102,10 @@
                     </div>
                     <p id="resultLabel" class="result-label"></p>
                     <div class="button-row">
-                        <button type="button" id="downloadBtn" class="primary-btn">Download PNG</button>
-                        <button type="button" id="copyLinkBtn" class="secondary-btn">Copy share URL</button>
+                        <button type="button" id="downloadBtn" class="primary-btn"
+                            data-umami-event="QR Generator - Download PNG">Download PNG</button>
+                        <button type="button" id="copyLinkBtn" class="secondary-btn"
+                            data-umami-event="QR Generator - Copy Share URL">Copy share URL</button>
                     </div>
                 </div>
             </div>
