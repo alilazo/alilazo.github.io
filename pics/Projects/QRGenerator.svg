@@ -1,0 +1,38 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="1200" height="900" fill="#F7F5F0"/>
+<rect x="70" y="70" width="1060" height="760" rx="24" fill="#FFFFFF" stroke="#1A1A1A" stroke-width="18"/>
+<rect x="130" y="130" width="270" height="270" fill="#1A1A1A"/>
+<rect x="165" y="165" width="200" height="200" fill="#F7F5F0"/>
+<rect x="205" y="205" width="120" height="120" fill="#1A1A1A"/>
+<rect x="800" y="130" width="270" height="270" fill="#1A1A1A"/>
+<rect x="835" y="165" width="200" height="200" fill="#F7F5F0"/>
+<rect x="875" y="205" width="120" height="120" fill="#1A1A1A"/>
+<rect x="130" y="500" width="270" height="270" fill="#1A1A1A"/>
+<rect x="165" y="535" width="200" height="200" fill="#F7F5F0"/>
+<rect x="205" y="575" width="120" height="120" fill="#1A1A1A"/>
+<rect x="470" y="150" width="60" height="60" fill="#1A1A1A"/>
+<rect x="560" y="150" width="60" height="60" fill="#E63946"/>
+<rect x="650" y="150" width="60" height="60" fill="#1A1A1A"/>
+<rect x="470" y="240" width="60" height="60" fill="#E63946"/>
+<rect x="560" y="240" width="60" height="60" fill="#1A1A1A"/>
+<rect x="650" y="240" width="60" height="60" fill="#E63946"/>
+<rect x="470" y="330" width="60" height="60" fill="#1A1A1A"/>
+<rect x="560" y="330" width="60" height="60" fill="#E63946"/>
+<rect x="650" y="330" width="60" height="60" fill="#1A1A1A"/>
+<rect x="500" y="470" width="70" height="70" fill="#1A1A1A"/>
+<rect x="590" y="470" width="70" height="70" fill="#1A1A1A"/>
+<rect x="680" y="470" width="70" height="70" fill="#E63946"/>
+<rect x="770" y="470" width="70" height="70" fill="#1A1A1A"/>
+<rect x="470" y="560" width="70" height="70" fill="#E63946"/>
+<rect x="560" y="560" width="70" height="70" fill="#1A1A1A"/>
+<rect x="650" y="560" width="70" height="70" fill="#1A1A1A"/>
+<rect x="740" y="560" width="70" height="70" fill="#E63946"/>
+<rect x="500" y="650" width="70" height="70" fill="#1A1A1A"/>
+<rect x="590" y="650" width="70" height="70" fill="#E63946"/>
+<rect x="680" y="650" width="70" height="70" fill="#1A1A1A"/>
+<rect x="770" y="650" width="70" height="70" fill="#1A1A1A"/>
+<path d="M845 545H1045" stroke="#1A1A1A" stroke-width="22" stroke-linecap="square"/>
+<path d="M845 605H1005" stroke="#1A1A1A" stroke-width="22" stroke-linecap="square"/>
+<path d="M845 665H970" stroke="#E63946" stroke-width="22" stroke-linecap="square"/>
+<text x="845" y="760" fill="#1A1A1A" font-family="Arial, Helvetica, sans-serif" font-size="58" font-weight="700">QR GENERATOR</text>
+</svg>
