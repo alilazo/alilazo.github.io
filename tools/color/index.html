@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Free Color Converter API by Amado Lazo. Convert HEX colors to RGB and HSL, explore named recommended colors, and copy JSON-style output.">
+    <meta name="keywords" content="color converter, hex to rgb, hex to hsl, color API, Amado Lazo, developer tools">
+    <meta name="author" content="Amado Lazo">
+    <meta name="robots" content="index, follow">
+    <title>Color Converter API | Amado Lazo</title>
+    <link rel="canonical" href="https://amadolazo.com/tools/color/">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://amadolazo.com/tools/color/">
+    <meta property="og:title" content="Color Converter API | Amado Lazo">
+    <meta property="og:description"
+        content="Convert HEX colors to RGB and HSL with a free public tool and URL-driven output.">
+    <meta property="og:image" content="https://amadolazo.com/pics/projects/color-converter-api.svg">
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://amadolazo.com/tools/color/">
+    <meta property="twitter:title" content="Color Converter API | Amado Lazo">
+    <meta property="twitter:description"
+        content="Convert HEX colors to RGB and HSL with named recommended colors and JSON-style output.">
+    <meta property="twitter:image" content="https://amadolazo.com/pics/projects/color-converter-api.svg">
+    <link rel="icon" type="image/png" href="../../favicon.png">
+    <link rel="stylesheet" href="style.css">
+    <script defer src="https://cloud.umami.is/script.js"
+        data-website-id="7efb876f-5d13-4b99-bb0a-23fcbe8612cc"></script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "@id": "https://amadolazo.com/tools/color/#app",
+      "name": "Color Converter API",
+      "url": "https://amadolazo.com/tools/color/",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires JavaScript and a modern web browser.",
+      "description": "A free public color converter by Amado Lazo that converts HEX values into RGB and HSL output with named recommended color palettes.",
+      "creator": {
+        "@type": "Person",
+        "@id": "https://amadolazo.com/#person",
+        "name": "Amado Lazo",
+        "url": "https://amadolazo.com/"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "featureList": [
+        "Convert HEX colors to RGB",
+        "Convert HEX colors to HSL",
+        "Copy JSON-style color output",
+        "Explore named recommended colors"
+      ]
+    }
+    </script>
+    <script defer src="script.js"></script>
+</head>
+
+<body>
+    <main class="page-shell">
+        <section class="hero">
+            <a class="back-link" href="../../index.html" data-umami-event="Color Converter - Back to Portfolio">Back to
+                portfolio</a>
+            <p class="eyebrow">FREE TOOL + URL-DRIVEN COLOR OUTPUT</p>
+            <h1>Color Converter API</h1>
+            <p class="hero-copy">
+                Convert a HEX color into RGB and HSL, copy clean JSON-style output, and explore named colors that fit a
+                Swiss and Scandinavian design system.
+            </p>
+        </section>
+
+        <section class="tool-grid">
+            <div class="panel form-panel">
+                <div class="panel-header">
+                    <h2>Convert</h2>
+                    <p>Paste a HEX color with or without the # symbol.</p>
+                </div>
+
+                <div class="generator-form" role="form" aria-label="Color converter form">
+                    <label class="field-label" for="hexInput">HEX color</label>
+                    <input id="hexInput" name="hexInput" type="text" inputmode="text" autocomplete="off"
+                        placeholder="e63946">
+
+                    <div class="button-row">
+                        <button type="button" id="convertBtn" class="primary-btn"
+                            data-umami-event="Color Converter - Convert">Convert Color</button>
+                        <button type="button" id="clearBtn" class="secondary-btn"
+                            data-umami-event="Color Converter - Clear">Clear</button>
+                    </div>
+                </div>
+
+                <div class="helper-card">
+                    <h3>API-style usage</h3>
+                    <p class="helper-copy">Use a query string to load a conversion directly.</p>
+                    <code id="apiExample">https://amadolazo.com/tools/color/?hex=e63946</code>
+                </div>
+            </div>
+
+            <div class="panel preview-panel">
+                <div class="panel-header">
+                    <h2>Output</h2>
+                    <p id="statusMessage">Waiting for a HEX color.</p>
+                </div>
+
+                <div id="emptyState" class="empty-state">
+                    <p>Your converted color will appear here.</p>
+                </div>
+
+                <div id="colorResult" class="color-result is-hidden">
+                    <div id="colorSwatch" class="color-swatch" aria-label="Converted color preview"></div>
+                    <div>
+                        <p id="colorName" class="result-name">Converted Color</p>
+                        <p id="colorValues" class="result-label"></p>
+                    </div>
+                    <pre id="jsonOutput" class="json-output" aria-label="Color conversion JSON output"></pre>
+                    <div class="button-row">
+                        <button type="button" id="copyJsonBtn" class="primary-btn"
+                            data-umami-event="Color Converter - Copy JSON">Copy JSON</button>
+                        <button type="button" id="copyUrlBtn" class="secondary-btn"
+                            data-umami-event="Color Converter - Copy URL">Copy URL</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="panel recommendations-panel">
+            <div class="panel-header">
+                <h2>Recommended Colors</h2>
+                <p>Named colors that work well for crisp interfaces, public tools, and portfolio accents.</p>
+            </div>
+            <div id="recommendedColors" class="recommended-grid"></div>
+        </section>
+    </main>
+</body>
+
+</html>

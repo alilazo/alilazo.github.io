@@ -1,0 +1,16 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="1200" height="900" fill="#F7F5F0"/>
+<rect x="70" y="70" width="1060" height="760" rx="24" fill="#FFFFFF" stroke="#171717" stroke-width="18"/>
+<rect x="130" y="130" width="230" height="230" fill="#E63946" stroke="#171717" stroke-width="12"/>
+<rect x="390" y="130" width="230" height="230" fill="#2563EB" stroke="#171717" stroke-width="12"/>
+<rect x="650" y="130" width="230" height="230" fill="#2F855A" stroke="#171717" stroke-width="12"/>
+<rect x="910" y="130" width="160" height="230" fill="#FFB703" stroke="#171717" stroke-width="12"/>
+<rect x="130" y="430" width="940" height="270" fill="#171717" stroke="#171717" stroke-width="12"/>
+<text x="180" y="525" fill="#F7F5F0" font-family="Arial, Helvetica, sans-serif" font-size="54" font-weight="700">#E63946</text>
+<text x="180" y="600" fill="#F7F5F0" font-family="Arial, Helvetica, sans-serif" font-size="42" font-weight="700">rgb(230, 57, 70)</text>
+<text x="180" y="665" fill="#F7F5F0" font-family="Arial, Helvetica, sans-serif" font-size="42" font-weight="700">hsl(355, 78%, 56%)</text>
+<path d="M835 512H1010" stroke="#E63946" stroke-width="28" stroke-linecap="square"/>
+<path d="M835 590H1010" stroke="#2563EB" stroke-width="28" stroke-linecap="square"/>
+<path d="M835 668H1010" stroke="#FFB703" stroke-width="28" stroke-linecap="square"/>
+<text x="130" y="785" fill="#171717" font-family="Arial, Helvetica, sans-serif" font-size="62" font-weight="700">COLOR CONVERTER API</text>
+</svg>
