@@ -9,6 +9,10 @@ window.onload = function () {
     let isMobile = window.matchMedia("(max-width: 768px)").matches;
     let customCursorEnabled = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
     let zeroGravityEnabled = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+    let zeroGravityActive = false;
+    let zeroGravityFrame = null;
+    let zeroGravityToastTimer = null;
+    let zeroGravityKeyBuffer = [];
 
     const syncCustomCursorState = () => {
         customCursorEnabled = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
@@ -99,10 +103,6 @@ window.onload = function () {
     // Zero Gravity Easter Egg
     const zeroGravityCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight'];
     const zeroGravityTargets = new Map();
-    let zeroGravityActive = false;
-    let zeroGravityFrame = null;
-    let zeroGravityToastTimer = null;
-    let zeroGravityKeyBuffer = [];
     const zeroGravityToast = document.createElement('div');
     zeroGravityToast.className = 'zero-gravity-toast';
     document.body.appendChild(zeroGravityToast);
