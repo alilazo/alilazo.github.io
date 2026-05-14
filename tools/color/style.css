@@ -175,8 +175,20 @@ button {
     transition: transform 0.2s ease;
 }
 
-button:hover {
+button:hover,
+.button-link:hover {
     transform: translate(-2px, -2px);
+}
+
+.button-link {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.9rem 1.2rem;
+    border: 2px solid var(--border);
+    font-weight: 800;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: transform 0.2s ease;
 }
 
 .primary-btn {
@@ -248,7 +260,8 @@ button:hover {
     line-height: 1.6;
 }
 
-.recommendations-panel {
+.recommendations-panel,
+.faq-panel {
     margin-top: 24px;
 }
 
@@ -283,6 +296,24 @@ button:hover {
 
 .recommended-meta {
     font-weight: 700;
+}
+
+.faq-item {
+    padding: 18px 0;
+    border-top: 2px solid var(--border);
+}
+
+.faq-item h3 {
+    margin-bottom: 8px;
+    font-size: 1rem;
+}
+
+.faq-item p {
+    color: var(--muted);
+}
+
+.faq-item code {
+    margin-top: 0.75rem;
 }
 
 @media (max-width: 920px) {

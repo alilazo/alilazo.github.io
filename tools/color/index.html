@@ -6,23 +6,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="Free Color Converter API by Amado Lazo. Convert HEX colors to RGB and HSL, explore named recommended colors, and copy JSON-style output.">
-    <meta name="keywords" content="color converter, hex to rgb, hex to hsl, color API, Amado Lazo, developer tools">
+        content="Free Color Converter API by Amado Lazo. Convert HEX colors to RGB and HSL, copy JSON-style output, use URL query parameters, and explore named recommended colors.">
+    <meta name="keywords"
+        content="color converter, free color converter, hex to rgb, hex to hsl, hex color converter, color API, RGB converter, HSL converter, Amado Lazo">
     <meta name="author" content="Amado Lazo">
     <meta name="robots" content="index, follow">
-    <title>Color Converter API | Amado Lazo</title>
+    <title>Free Color Converter API - HEX to RGB & HSL | Amado Lazo</title>
     <link rel="canonical" href="https://amadolazo.com/tools/color/">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://amadolazo.com/tools/color/">
-    <meta property="og:title" content="Color Converter API | Amado Lazo">
+    <meta property="og:title" content="Free Color Converter API - HEX to RGB & HSL | Amado Lazo">
     <meta property="og:description"
-        content="Convert HEX colors to RGB and HSL with a free public tool and URL-driven output.">
+        content="Convert HEX colors to RGB and HSL with a free public tool, URL query parameters, and JSON-style output.">
     <meta property="og:image" content="https://amadolazo.com/pics/projects/color-converter-api.svg">
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://amadolazo.com/tools/color/">
-    <meta property="twitter:title" content="Color Converter API | Amado Lazo">
+    <meta property="twitter:title" content="Free Color Converter API - HEX to RGB & HSL | Amado Lazo">
     <meta property="twitter:description"
-        content="Convert HEX colors to RGB and HSL with named recommended colors and JSON-style output.">
+        content="Convert HEX colors to RGB and HSL with named recommended colors, URL query parameters, and JSON-style output.">
     <meta property="twitter:image" content="https://amadolazo.com/pics/projects/color-converter-api.svg">
     <link rel="icon" type="image/png" href="../../favicon.png">
     <link rel="stylesheet" href="style.css">
@@ -31,30 +32,129 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "@id": "https://amadolazo.com/tools/color/#app",
-      "name": "Color Converter API",
-      "url": "https://amadolazo.com/tools/color/",
-      "applicationCategory": "DeveloperApplication",
-      "operatingSystem": "Any",
-      "browserRequirements": "Requires JavaScript and a modern web browser.",
-      "description": "A free public color converter by Amado Lazo that converts HEX values into RGB and HSL output with named recommended color palettes.",
-      "creator": {
-        "@type": "Person",
-        "@id": "https://amadolazo.com/#person",
-        "name": "Amado Lazo",
-        "url": "https://amadolazo.com/"
-      },
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      },
-      "featureList": [
-        "Convert HEX colors to RGB",
-        "Convert HEX colors to HSL",
-        "Copy JSON-style color output",
-        "Explore named recommended colors"
+      "@graph": [
+        {
+          "@type": "WebPage",
+          "@id": "https://amadolazo.com/tools/color/#webpage",
+          "url": "https://amadolazo.com/tools/color/",
+          "name": "Free Color Converter API - HEX to RGB & HSL",
+          "description": "A free HEX color converter that converts HEX values to RGB and HSL, supports URL query parameters, and provides JSON-style output.",
+          "inLanguage": "en-US",
+          "isPartOf": {
+            "@id": "https://amadolazo.com/#website"
+          },
+          "about": {
+            "@id": "https://amadolazo.com/tools/color/#app"
+          },
+          "mainEntity": {
+            "@id": "https://amadolazo.com/tools/color/#app"
+          },
+          "primaryImageOfPage": {
+            "@type": "ImageObject",
+            "url": "https://amadolazo.com/pics/projects/color-converter-api.svg"
+          },
+          "breadcrumb": {
+            "@id": "https://amadolazo.com/tools/color/#breadcrumb"
+          }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://amadolazo.com/tools/color/#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://amadolazo.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Color Converter API",
+              "item": "https://amadolazo.com/tools/color/"
+            }
+          ]
+        },
+        {
+          "@type": "WebApplication",
+          "@id": "https://amadolazo.com/tools/color/#app",
+          "name": "Color Converter API",
+          "alternateName": [
+            "Free Color Converter",
+            "HEX to RGB Converter",
+            "HEX to HSL Converter",
+            "Color API",
+            "HEX Color Converter"
+          ],
+          "url": "https://amadolazo.com/tools/color/",
+          "applicationCategory": "DeveloperApplication",
+          "applicationSubCategory": "Color Conversion Tool",
+          "operatingSystem": "Any",
+          "browserRequirements": "Requires JavaScript and a modern web browser.",
+          "isAccessibleForFree": true,
+          "keywords": "color converter, free color converter, hex to rgb, hex to hsl, hex color converter, color API, RGB converter, HSL converter",
+          "description": "A free public color converter by Amado Lazo that converts HEX values into RGB and HSL output with named recommended color palettes and URL query parameter support.",
+          "image": "https://amadolazo.com/pics/projects/color-converter-api.svg",
+          "creator": {
+            "@type": "Person",
+            "@id": "https://amadolazo.com/#person",
+            "name": "Amado Lazo",
+            "url": "https://amadolazo.com/"
+          },
+          "publisher": {
+            "@id": "https://amadolazo.com/#person"
+          },
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD",
+            "availability": "https://schema.org/InStock"
+          },
+          "audience": {
+            "@type": "Audience",
+            "audienceType": "Developers, designers, and makers"
+          },
+          "featureList": [
+            "Convert HEX colors to RGB",
+            "Convert HEX colors to HSL",
+            "Copy JSON-style color output",
+            "Load colors with URL query parameters",
+            "Explore named recommended colors"
+          ],
+          "isRelatedTo": {
+            "@id": "https://amadolazo.com/tools/color-picker/#app"
+          }
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://amadolazo.com/tools/color/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "What does the Color Converter API do?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "The Color Converter API converts HEX color values into RGB and HSL formats and displays JSON-style output."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Can I use a URL to convert a HEX color?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. You can load a conversion directly with a URL such as https://amadolazo.com/tools/color/?hex=e63946."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Can I pick a color before converting it?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. The page links to the visual Color Picker so you can choose a color first and then convert it."
+              }
+            }
+          ]
+        }
       ]
     }
     </script>
@@ -99,6 +199,14 @@
                     <p class="helper-copy">Use a query string to load a conversion directly.</p>
                     <code id="apiExample">https://amadolazo.com/tools/color/?hex=e63946</code>
                 </div>
+
+                <div class="helper-card">
+                    <h3>Need to pick a color first?</h3>
+                    <p class="helper-copy">Use the visual Color Picker, then send your selected color back here for
+                        JSON-style conversion output.</p>
+                    <a class="primary-btn button-link" href="../color-picker/index.html"
+                        data-umami-event="Color Converter - Visit Color Picker">Open Color Picker</a>
+                </div>
             </div>
 
             <div class="panel preview-panel">
@@ -134,6 +242,28 @@
                 <p>Named colors that work well for crisp interfaces, public tools, and portfolio accents.</p>
             </div>
             <div id="recommendedColors" class="recommended-grid"></div>
+        </section>
+
+        <section class="panel faq-panel">
+            <div class="panel-header">
+                <h2>Color Converter FAQ</h2>
+                <p>Quick answers for people searching for HEX, RGB, HSL, and color API tools.</p>
+            </div>
+            <article class="faq-item">
+                <h3>What does the Color Converter API do?</h3>
+                <p>The Color Converter API converts HEX color values into RGB and HSL formats and displays JSON-style
+                    output.</p>
+            </article>
+            <article class="faq-item">
+                <h3>Can I use a URL to convert a HEX color?</h3>
+                <p>Yes. You can load a conversion directly with a URL such as
+                    <code>https://amadolazo.com/tools/color/?hex=e63946</code></p>
+            </article>
+            <article class="faq-item">
+                <h3>Can I pick a color before converting it?</h3>
+                <p>Yes. The page links to the visual Color Picker so you can choose a color first and then convert it.
+                </p>
+            </article>
         </section>
     </main>
 </body>
