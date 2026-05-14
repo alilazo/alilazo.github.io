@@ -85,9 +85,9 @@ window.onload = function () {
     if (typedEl) {
         new Typed('.typewriter', {
             strings: [
-                'I build scalable, modern web applications.',
-                'I specialize in AI & Full-Stack Development.',
-                'I love minimalist, functional design.'
+                'I build operational software for real-world teams.',
+                'I turn messy workflows into usable systems.',
+                'I ship AI tools, Power Apps, and public utilities.'
             ],
             typeSpeed: 40,
             backSpeed: 20,
@@ -113,8 +113,13 @@ window.onload = function () {
         '.hero-typewriter',
         '.hero-image-container',
         '.section-title',
+        '.impact-card',
+        '.built-for',
+        '.project-category-title',
+        '.featured-tool-cta',
         '.award-card',
         '.tip-card',
+        '.status-card',
         '.skill-item',
         '.project-card',
         '.btn-custom',

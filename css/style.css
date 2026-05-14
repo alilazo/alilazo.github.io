@@ -448,6 +448,54 @@ section {
     display: inline-block;
 }
 
+/* Credibility Blocks */
+.credibility-section {
+    padding-top: 3rem;
+}
+
+.status-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+}
+
+.status-card {
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.built-for {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.5rem;
+}
+
+.built-for-label,
+.eyebrow-label {
+    color: var(--accent-color);
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.built-for-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.built-for-tags span {
+    padding: 0.45rem 0.75rem;
+    border: 2px solid var(--text-color);
+    background: var(--secondary-bg);
+    font-size: 0.85rem;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
 /* Skills Grid */
 .skills-grid {
     display: grid;
@@ -484,6 +532,38 @@ section {
 }
 
 /* Projects */
+.project-category {
+    margin-top: 4rem;
+}
+
+.project-category-title {
+    display: inline-block;
+    margin-bottom: 2rem;
+    padding: 0.35rem 0.75rem;
+    border: 2px solid var(--text-color);
+    background: var(--secondary-bg);
+    box-shadow: var(--shadow);
+    font-size: clamp(1.4rem, 3vw, 2.25rem);
+}
+
+.featured-tool-cta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+    padding: 2rem;
+}
+
+.featured-tool-cta h3 {
+    margin: 0.4rem 0 0.75rem;
+}
+
+.featured-tool-cta p {
+    margin: 0;
+    max-width: 760px;
+}
+
 .project-card {
     display: flex;
     flex-direction: column;
@@ -526,7 +606,7 @@ section {
 .project-desc {
     font-size: 1rem;
     line-height: 1.5;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
     flex-grow: 1;
 }
 
@@ -575,6 +655,16 @@ section {
 .tip-content {
     position: relative;
     z-index: 1;
+}
+
+.status-card h4,
+.status-card p {
+    position: relative;
+    z-index: 1;
+}
+
+.status-card h4 {
+    margin-bottom: 1rem;
 }
 
 /* Contact */
@@ -681,6 +771,20 @@ footer {
 
     .hero-typewriter {
         min-height: 5.5rem;
+    }
+
+    .built-for,
+    .featured-tool-cta {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .built-for-label {
+        white-space: normal;
+    }
+
+    .project-category {
+        margin-top: 3rem;
     }
 
     .zero-gravity-secret {
