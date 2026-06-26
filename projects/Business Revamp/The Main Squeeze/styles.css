@@ -587,11 +587,16 @@ h3 {
   gap: 12px;
 }
 
-.pricing-strip div {
+.pricing-card {
   padding: 18px;
   background: var(--white);
   border: 3px solid var(--lemon);
   border-radius: 8px;
+}
+
+.pricing-card-featured {
+  background: var(--lemon);
+  box-shadow: 7px 7px 0 var(--coral);
 }
 
 .pricing-strip span {
@@ -606,6 +611,17 @@ h3 {
   color: var(--sea-ink);
   font-size: 2rem;
   line-height: 1;
+}
+
+.pricing-card p {
+  margin: 10px 0 0;
+  color: #27414b;
+  font-weight: 800;
+}
+
+.pricing-card-featured span,
+.pricing-card-featured p {
+  color: var(--sea-ink);
 }
 
 .site-footer {
