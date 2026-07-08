@@ -292,7 +292,7 @@
             <a href="#Services" class="nav-link-custom" data-umami-event="Nav Click - Services">Services</a>
             <a href="#Life" class="nav-link-custom" data-umami-event="Nav Click - Life">Life</a>
             <a href="#Principles" class="nav-link-custom" data-umami-event="Nav Click - Principles">Principles</a>
-            <a href="#Contact" class="nav-link-custom" data-umami-event="Nav Click - Contact">Contact</a>
+            <a href="#Booking" class="nav-link-custom" data-umami-event="Nav Click - Booking">Book Now</a>
             <button class="theme-switch" id="themeToggle">DARK MODE</button>
         </div>
 
@@ -313,7 +313,7 @@
         <a href="#Services" class="mobile-nav-link" data-umami-event="Mobile Nav Click - Services">Services</a>
         <a href="#Life" class="mobile-nav-link" data-umami-event="Mobile Nav Click - Life">Life</a>
         <a href="#Principles" class="mobile-nav-link" data-umami-event="Mobile Nav Click - Principles">Principles</a>
-        <a href="#Contact" class="mobile-nav-link" data-umami-event="Mobile Nav Click - Contact">Contact</a>
+        <a href="#Booking" class="mobile-nav-link" data-umami-event="Mobile Nav Click - Booking">Book Now</a>
         <button class="theme-switch mt-4" id="themeToggleMobile">DARK MODE</button>
     </div>
 
@@ -333,7 +333,7 @@
                 </p>
                 <div class="mt-5">
                     <a href="#Projects" class="btn-custom hoverable me-3">View Work</a>
-                    <a href="#Contact" class="btn-custom hoverable">Contact Me</a>
+                    <a href="#Booking" class="btn-custom hoverable" data-umami-event="Hero Click - Book Now">Book Now</a>
                 </div>
             </div>
             <div class="hero-img reveal hoverable">
@@ -865,7 +865,7 @@
                             <p class="small mb-3">Professional, minimalist, and AI-optimized portfolios designed to sell
                                 your skills. Perfect for engineers & creatives.</p>
                             <div class="fw-bold text-accent mb-4">Contact for a custom quote</div>
-                            <a href="#Contact" class="btn-custom w-100 text-center"
+                            <a href="#Booking" class="btn-custom w-100 text-center"
                                 data-umami-event="Service Inquiry - Portfolio">Inquire</a>
                         </div>
                     </div>
@@ -878,7 +878,7 @@
                             <p class="small mb-3">Fast MVPs, scalable frontend architecture, and robust API
                                 integrations to launch your idea quickly.</p>
                             <div class="fw-bold text-accent mb-4">Contact for a custom quote</div>
-                            <a href="#Contact" class="btn-custom w-100 text-center"
+                            <a href="#Booking" class="btn-custom w-100 text-center"
                                 data-umami-event="Service Inquiry - Startup">Inquire</a>
                         </div>
                     </div>
@@ -891,7 +891,7 @@
                             <p class="small mb-3">SEO-ready, high-conversion landing pages and informative sites to grow
                                 your local presence and authority.</p>
                             <div class="fw-bold text-accent mb-4">Contact for a custom quote</div>
-                            <a href="#Contact" class="btn-custom w-100 text-center"
+                            <a href="#Booking" class="btn-custom w-100 text-center"
                                 data-umami-event="Service Inquiry - Business">Inquire</a>
                         </div>
                     </div>
@@ -904,22 +904,35 @@
                             <p class="small mb-3">Secure, modern online stores with seamless payment integration and
                                 intuitive inventory management.</p>
                             <div class="fw-bold text-accent mb-4">Contact for a custom quote</div>
-                            <a href="#Contact" class="btn-custom w-100 text-center"
+                            <a href="#Booking" class="btn-custom w-100 text-center"
                                 data-umami-event="Service Inquiry - Ecommerce">Inquire</a>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        <section id="Contact">
-            <div class="contact-container boxShadow reveal hoverable text-center">
-                <h2>Let's build something beautiful.</h2>
-                <p class="lead mt-3 mb-5">Open for discussions about software engineering, AI integration, or just to
-                    say hi.</p>
-                <!-- Retained existing Google Form iframe for contact -->
-                <iframe
-                    src="https://docs.google.com/forms/d/e/1FAIpQLSdqNrA8OIf-VjHIIqlJnj6oZ2KR6LGZ77h8Rp1sO8XmaYpOSg/viewform?embedded=true"
-                    width="100%" height="800" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+        <section id="Booking">
+            <span id="Contact" class="section-anchor" aria-hidden="true"></span>
+            <div class="contact-container booking-container boxShadow reveal hoverable">
+                <div class="booking-grid">
+                    <div class="booking-copy">
+                        <span class="eyebrow-label">Secure scheduling</span>
+                        <h2>Let's build something beautiful.</h2>
+                        <p class="lead mt-3 mb-4">Open for focused calls about software engineering, AI integration,
+                            Power Apps, workflow automation, and practical product ideas. Choose a time that works for you on the calendar below,
+                            and include a little context in Cal.com so we can make the call useful from the first minute.</p>
+                        <a href="https://cal.com/amado-lazo" class="btn-custom booking-direct-link hoverable"
+                            target="_blank" rel="noopener"
+                            data-umami-event="Booking Click - Open Cal.com">Open Calendar</a>
+                    </div>
+                    <div class="booking-embed-card" aria-label="Cal.com booking calendar">
+                        <iframe class="booking-iframe"
+                            src="https://cal.com/amado-lazo?embed=true"
+                            title="Book a call with Amado Lazo"
+                            loading="lazy"
+                            allow="camera; microphone; fullscreen; display-capture"></iframe>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
