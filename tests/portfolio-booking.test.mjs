@@ -25,7 +25,8 @@ test('booking section includes extended intro copy and responsive styling', () =
   assert.doesNotMatch(css, /booking-security-list/);
   assert.match(css, /#Booking\s*{[\s\S]*padding-top:\s*3rem;/);
   assert.match(css, /\.booking-container\s*{[\s\S]*padding:\s*2rem;/);
-  assert.match(css, /\.booking-embed-card\s*{[\s\S]*max-width:\s*980px;[\s\S]*min-height:\s*640px;/);
+  assert.match(css, /\.booking-embed-card\s*{[\s\S]*min-height:\s*640px;/);
+  assert.doesNotMatch(css, /\.booking-embed-card\s*{[^}]*max-width:\s*980px;/);
   assert.match(css, /\.booking-embed-card\s*{[\s\S]*border-radius:\s*8px;/);
   assert.match(css, /\.booking-embed-card\s*{[\s\S]*box-shadow:\s*0 18px 40px rgba\(0,\s*0,\s*0,\s*0\.18\);/);
   assert.match(css, /\.booking-iframe\s*{[\s\S]*width:\s*100%;[\s\S]*min-height:\s*640px;/);
