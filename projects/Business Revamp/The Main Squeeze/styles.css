@@ -613,6 +613,11 @@ h3 {
   line-height: 1;
 }
 
+.price-lines {
+  display: grid;
+  gap: 8px;
+}
+
 .pricing-card p {
   margin: 10px 0 0;
   color: #27414b;
