@@ -569,6 +569,28 @@ section {
     flex-direction: column;
     height: 100%;
     border-radius: 0;
+    position: relative;
+    cursor: zoom-in;
+}
+
+.project-card-trigger {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: zoom-in;
+}
+
+.project-card-trigger:focus-visible {
+    outline: 4px solid var(--accent-color);
+    outline-offset: 5px;
+}
+
+.project-card .btn-custom {
+    position: relative;
+    z-index: 2;
 }
 
 .project-img-wrapper {
@@ -608,6 +630,193 @@ section {
     line-height: 1.5;
     margin-bottom: 1rem;
     flex-grow: 1;
+}
+
+/* Project Detail Modal */
+body.project-modal-open {
+    overflow: hidden;
+}
+
+.project-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 10020;
+    display: grid;
+    place-items: center;
+    padding: clamp(1rem, 4vw, 3rem);
+    background: rgba(10, 10, 10, 0);
+    backdrop-filter: blur(0);
+    visibility: hidden;
+    pointer-events: none;
+    transition: background 0.35s ease, backdrop-filter 0.35s ease, visibility 0s linear 0.4s;
+}
+
+.project-modal.is-visible {
+    visibility: visible;
+    pointer-events: auto;
+    background: rgba(10, 10, 10, 0.68);
+    backdrop-filter: blur(8px);
+    transition-delay: 0s;
+}
+
+.project-modal-panel {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1.7fr) minmax(310px, 0.85fr);
+    width: min(1120px, 100%);
+    max-height: min(820px, 88vh);
+    overflow: hidden;
+    border: 2px solid var(--text-color);
+    background: var(--card-bg);
+    color: var(--text-color);
+    box-shadow: 14px 14px 0 var(--accent-color), 0 28px 80px rgba(0, 0, 0, 0.35);
+    opacity: 0;
+    transform: translate(var(--project-modal-start-x, 0), var(--project-modal-start-y, 30px))
+        scale(var(--project-modal-start-scale-x, 0.72), var(--project-modal-start-scale-y, 0.72))
+        rotate(var(--project-modal-start-rotate, -2deg));
+    transform-origin: center;
+    transition: transform 0.68s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.24s ease;
+    will-change: transform, opacity;
+}
+
+.project-modal-panel::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: calc(66.67% - 3px);
+    z-index: 2;
+    width: 6px;
+    background: var(--accent-color);
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.42s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.project-modal.is-open .project-modal-panel {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+}
+
+.project-modal.is-open .project-modal-panel::after {
+    transform: scaleY(1);
+    transition-delay: 0.24s;
+}
+
+.project-modal-media {
+    min-height: 540px;
+    padding: clamp(0.75rem, 1.5vw, 1.25rem);
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    border-right: 2px solid var(--text-color);
+    background: var(--secondary-bg);
+    clip-path: inset(0 100% 0 0);
+    transform: scale(0.96);
+    transform-origin: left center;
+    transition: clip-path 0.62s cubic-bezier(0.16, 1, 0.3, 1), transform 0.62s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.project-modal.is-open .project-modal-media {
+    clip-path: inset(0 0 0 0);
+    transform: scale(1);
+    transition-delay: 0.1s;
+}
+
+.project-modal-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-height: 760px;
+    object-fit: contain;
+    filter: none;
+    transform: scale(1.12) rotate(-1.5deg);
+    transition: transform 0.78s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.project-modal.is-open .project-modal-image {
+    transform: scale(1) rotate(0);
+    transition-delay: 0.12s;
+}
+
+.project-modal-content {
+    min-width: 0;
+    padding: clamp(2rem, 4vw, 3.25rem);
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    opacity: 0;
+    transform: translateX(34px);
+    transition: opacity 0.3s ease, transform 0.52s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.project-modal.is-open .project-modal-content {
+    opacity: 1;
+    transform: translateX(0);
+    transition-delay: 0.27s;
+}
+
+.project-modal-eyebrow {
+    margin-bottom: 0.8rem;
+    color: var(--accent-color);
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+}
+
+.project-modal-title {
+    margin: 0 2rem 1.5rem 0;
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    line-height: 1;
+}
+
+.project-modal-description {
+    width: 100%;
+}
+
+.project-modal-description .project-desc {
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    line-height: 1.65;
+}
+
+.project-modal-link {
+    margin-top: auto;
+}
+
+.project-modal-link[hidden] {
+    display: none;
+}
+
+.project-modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 3;
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 2px solid var(--text-color);
+    border-radius: 50%;
+    background: var(--card-bg);
+    color: var(--text-color);
+    box-shadow: 3px 3px 0 var(--text-color);
+    font: 700 2rem/1 'Space Grotesk', sans-serif;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+
+.project-modal-close:hover,
+.project-modal-close:focus-visible {
+    background: var(--accent-color);
+    color: var(--card-bg);
+    transform: rotate(8deg) scale(1.06);
+    outline: none;
 }
 
 .btn-custom {
@@ -856,6 +1065,48 @@ footer {
         margin-top: 3rem;
     }
 
+    .project-modal {
+        padding: 1rem;
+    }
+
+    .project-modal-panel {
+        grid-template-columns: 1fr;
+        max-height: 88vh;
+        overflow-y: auto;
+        box-shadow: 8px 8px 0 var(--accent-color), 0 20px 50px rgba(0, 0, 0, 0.35);
+    }
+
+    .project-modal-media {
+        min-height: 0;
+        height: min(44vh, 380px);
+        border-right: 0;
+        border-bottom: 2px solid var(--text-color);
+    }
+
+    .project-modal-panel::after {
+        top: calc(min(44vh, 380px) - 3px);
+        right: 0;
+        bottom: auto;
+        left: 0;
+        width: 100%;
+        height: 6px;
+        transform: scaleX(0);
+        transform-origin: left;
+    }
+
+    .project-modal.is-open .project-modal-panel::after {
+        transform: scaleX(1);
+    }
+
+    .project-modal-content {
+        padding: 1.5rem;
+        overflow: visible;
+    }
+
+    .project-modal-title {
+        font-size: clamp(1.65rem, 8vw, 2.4rem);
+    }
+
     .zero-gravity-secret {
         display: none;
     }
@@ -893,5 +1144,13 @@ footer {
     .booking-embed-card,
     .booking-iframe {
         min-height: 620px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .project-modal,
+    .project-modal-panel,
+    .project-modal-close {
+        transition-duration: 0.01ms !important;
     }
 }

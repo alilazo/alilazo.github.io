@@ -488,6 +488,145 @@ window.onload = function () {
     window.addEventListener("scroll", revealElements);
     revealElements(); // Trigger on load
 
+    // Project detail modal
+    const projectModal = document.getElementById('projectModal');
+    const projectModalPanel = projectModal?.querySelector('.project-modal-panel');
+    const projectModalClose = projectModal?.querySelector('.project-modal-close');
+    const projectModalImage = projectModal?.querySelector('.project-modal-image');
+    const projectModalTitle = projectModal?.querySelector('.project-modal-title');
+    const projectModalDescription = projectModal?.querySelector('.project-modal-description');
+    const projectModalLink = projectModal?.querySelector('.project-modal-link');
+    let activeProjectCard = null;
+    let lastProjectTrigger = null;
+    let projectModalCloseTimer = null;
+
+    const setProjectModalOrigin = (card) => {
+        if (!projectModalPanel || !card) return;
+
+        const cardRect = card.getBoundingClientRect();
+        const panelRect = projectModalPanel.getBoundingClientRect();
+        const startX = cardRect.left + (cardRect.width / 2) - (panelRect.left + (panelRect.width / 2));
+        const startY = cardRect.top + (cardRect.height / 2) - (panelRect.top + (panelRect.height / 2));
+        const scaleX = Math.max(0.2, Math.min(1, cardRect.width / panelRect.width));
+        const scaleY = Math.max(0.2, Math.min(1, cardRect.height / panelRect.height));
+        const rotate = cardRect.left + (cardRect.width / 2) < (window.innerWidth / 2) ? '-2.5deg' : '2.5deg';
+
+        projectModalPanel.style.setProperty('--project-modal-start-x', `${startX}px`);
+        projectModalPanel.style.setProperty('--project-modal-start-y', `${startY}px`);
+        projectModalPanel.style.setProperty('--project-modal-start-scale-x', scaleX);
+        projectModalPanel.style.setProperty('--project-modal-start-scale-y', scaleY);
+        projectModalPanel.style.setProperty('--project-modal-start-rotate', rotate);
+    };
+
+    const getProjectModalFocusables = () => Array.from(projectModalPanel?.querySelectorAll(
+        'button:not([disabled]), a[href]:not([hidden]), [tabindex]:not([tabindex="-1"])'
+    ) || []);
+
+    const openProjectModal = (card, trigger) => {
+        if (!projectModal || !projectModalPanel || zeroGravityActive) return;
+
+        const image = card.querySelector('.project-img-wrapper img');
+        const title = card.querySelector('.project-title');
+        const descriptions = card.querySelectorAll('.project-desc');
+        const link = card.querySelector('.project-content .btn-custom');
+        if (!image || !title) return;
+
+        window.clearTimeout(projectModalCloseTimer);
+        activeProjectCard = card;
+        lastProjectTrigger = trigger;
+        projectModalImage.src = image.currentSrc || image.src;
+        projectModalImage.alt = image.alt;
+        projectModalTitle.textContent = title.textContent.trim();
+        projectModalDescription.replaceChildren(...Array.from(descriptions, (description) => description.cloneNode(true)));
+
+        if (link) {
+            projectModalLink.href = link.href;
+            projectModalLink.textContent = link.textContent.trim();
+            projectModalLink.target = link.target;
+            projectModalLink.rel = link.target === '_blank' ? 'noopener' : '';
+            projectModalLink.hidden = false;
+        } else {
+            projectModalLink.hidden = true;
+            projectModalLink.removeAttribute('href');
+            projectModalLink.removeAttribute('target');
+            projectModalLink.removeAttribute('rel');
+        }
+
+        projectModal.hidden = false;
+        projectModal.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('project-modal-open');
+        setProjectModalOrigin(card);
+        projectModal.classList.add('is-visible');
+
+        window.requestAnimationFrame(() => {
+            window.requestAnimationFrame(() => {
+                projectModal.classList.add('is-open');
+                projectModalClose.focus({ preventScroll: true });
+            });
+        });
+    };
+
+    const closeProjectModal = () => {
+        if (!projectModal?.classList.contains('is-visible')) return;
+
+        setProjectModalOrigin(activeProjectCard);
+        projectModal.classList.remove('is-open');
+        projectModal.setAttribute('aria-hidden', 'true');
+        lastProjectTrigger?.focus({ preventScroll: true });
+
+        projectModalCloseTimer = window.setTimeout(() => {
+            projectModal.classList.remove('is-visible');
+            projectModal.hidden = true;
+            projectModalImage.removeAttribute('src');
+            document.body.classList.remove('project-modal-open');
+            activeProjectCard = null;
+            lastProjectTrigger = null;
+        }, window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 700);
+    };
+
+    if (projectModal) {
+        document.querySelectorAll('.project-card').forEach((card) => {
+            const title = card.querySelector('.project-title')?.textContent.trim() || 'project';
+            const trigger = document.createElement('button');
+            trigger.type = 'button';
+            trigger.className = 'project-card-trigger';
+            trigger.setAttribute('aria-label', `View ${title} details`);
+            trigger.setAttribute('aria-haspopup', 'dialog');
+            trigger.addEventListener('click', () => openProjectModal(card, trigger));
+            card.appendChild(trigger);
+        });
+
+        projectModalClose.addEventListener('click', closeProjectModal);
+        projectModal.addEventListener('click', (event) => {
+            if (event.target === projectModal) closeProjectModal();
+        });
+
+        document.addEventListener('keydown', (event) => {
+            if (!projectModal.classList.contains('is-open')) return;
+
+            if (event.key === 'Escape') {
+                event.preventDefault();
+                closeProjectModal();
+                return;
+            }
+
+            if (event.key === 'Tab') {
+                const focusables = getProjectModalFocusables();
+                if (!focusables.length) return;
+                const first = focusables[0];
+                const last = focusables[focusables.length - 1];
+
+                if (event.shiftKey && document.activeElement === first) {
+                    event.preventDefault();
+                    last.focus();
+                } else if (!event.shiftKey && document.activeElement === last) {
+                    event.preventDefault();
+                    first.focus();
+                }
+            }
+        });
+    }
+
     // --- Analytics Tracking: Section Views ---
     const trackSectionView = () => {
         const sections = document.querySelectorAll('section[id], header.headerClass');

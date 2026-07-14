@@ -164,6 +164,17 @@
               "position": 4,
               "item": {
                 "@type": "SoftwareApplication",
+                "name": "EMS Unit Out of Service Scheduler",
+                "applicationCategory": "BusinessApplication",
+                "operatingSystem": "Microsoft Power Apps",
+                "description": "A custom Power Apps scheduler for tracking EMS units that are out of service and keeping operational availability easier to coordinate."
+              }
+            },
+            {
+              "@type": "ListItem",
+              "position": 5,
+              "item": {
+                "@type": "SoftwareApplication",
                 "name": "Color Converter API",
                 "url": "https://amadolazo.com/tools/color/",
                 "applicationCategory": "DeveloperApplication",
@@ -178,7 +189,7 @@
             },
             {
               "@type": "ListItem",
-              "position": 5,
+              "position": 6,
               "item": {
                 "@type": "SoftwareApplication",
                 "name": "Color Picker",
@@ -195,7 +206,7 @@
             },
             {
               "@type": "ListItem",
-              "position": 6,
+              "position": 7,
               "item": {
                 "@type": "SoftwareApplication",
                 "name": "QR Generator API",
@@ -644,6 +655,24 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="col-lg-4 reveal hoverable" style="transition-delay: 0.3s;">
+                        <div class="project-card boxShadow">
+                            <div class="project-img-wrapper">
+                                <img src="pics/power-apps/ems-unit-out-of-service-power-app.png"
+                                    alt="EMS Unit Out of Service Scheduler Power App interface screenshot">
+                            </div>
+                            <div class="project-content">
+                                <h3 class="project-title">EMS Unit Out of Service Scheduler</h3>
+                                <p class="project-desc"><strong>Problem:</strong> EMS teams needed a cleaner way to
+                                    coordinate unit availability and scheduled out-of-service time without scattered
+                                    updates or manual tracking.</p>
+                                <p class="project-desc"><strong>Fix:</strong> I built a Power App scheduler that gives
+                                    operators a focused place to view and manage unit out-of-service windows so coverage
+                                    planning stays easier to follow.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -936,6 +965,25 @@
             </div>
         </section>
     </main>
+
+    <!-- Project detail modal (content is populated from the selected project card) -->
+    <div class="project-modal" id="projectModal" aria-hidden="true" hidden>
+        <div class="project-modal-panel" role="dialog" aria-modal="true" aria-labelledby="projectModalTitle"
+            aria-describedby="projectModalDescription" tabindex="-1">
+            <button class="project-modal-close" type="button" aria-label="Close project details">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <div class="project-modal-media">
+                <img src="" alt="" class="project-modal-image">
+            </div>
+            <div class="project-modal-content">
+                <span class="project-modal-eyebrow">Project details</span>
+                <h2 class="project-modal-title" id="projectModalTitle"></h2>
+                <div class="project-modal-description" id="projectModalDescription"></div>
+                <a href="#" class="btn-custom project-modal-link"></a>
+            </div>
+        </div>
+    </div>
 
     <!--- Footer -->
     <footer class="footer">
