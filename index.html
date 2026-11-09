@@ -3,296 +3,285 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="description"
-        content="Amado Lazo builds operational software, AI-powered tools, custom Power Apps, and public utilities for municipal, healthcare, and business teams.">
-    <meta name="keywords" content="Amado Lazo, Portfolio, Computer Science, Programming, ReactJS, NodeJS, AI">
+    <meta name="description" content="Amado Lazo is an Austin, Texas software engineer building operational software, AI-powered tools, Power Apps, and free web utilities. Explore his work.">
     <meta name="author" content="Amado Lazo">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="js/bootstrap.js"></script>
-    <script src="js/script.js" defer></script>
-    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12/dist/gsap.min.js"></script>
+    <script src="js/script.js?v=20261109-3" defer></script>
+    <script>
+        try {
+            const theme = localStorage.getItem('theme');
+            if (theme === 'light' || theme === 'dark') document.documentElement.dataset.theme = theme;
+        } catch (_) { /* The light theme also works without browser storage. */ }
+    </script>
+    <script src="js/intro.js?v=20261109-5"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
     <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css?v=20261109-6">
     <script defer src="https://cloud.umami.is/script.js"
         data-website-id="7efb876f-5d13-4b99-bb0a-23fcbe8612cc"></script>
 
     <!-- Meta Tags & SEO -->
-    <title>Amado Lazo | Software Engineer & AI Specialist</title>
+    <title>Amado Lazo | Software Engineer in Austin, TX</title>
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="canonical" href="https://amadolazo.com/">
-    <meta name="robots" content="index, follow">
+    <meta name="robots" content="index, follow, max-image-preview:large">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://amadolazo.com/">
-    <meta property="og:title" content="Amado Lazo | Software Engineer & AI Specialist">
-    <meta property="og:description"
-        content="Systems shipped by Amado Lazo: operational software, AI-powered tools, custom Power Apps, and public web utilities.">
-    <meta property="og:image" content="https://amadolazo.com/pics/amado-lazo-tamucc-portrait.jpg">
+    <meta property="og:title" content="Amado Lazo | Software Engineer in Austin, TX">
+    <meta property="og:description" content="Amado Lazo is an Austin, Texas software engineer building operational software, AI-powered tools, Power Apps, and free web utilities. Explore his work.">
+    <meta property="og:image" content="https://amadolazo.com/pics/social/amado-lazo.png">
 
     <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://amadolazo.com/">
-    <meta property="twitter:title" content="Amado Lazo | Software Engineer & AI Specialist">
-    <meta property="twitter:description"
-        content="Systems shipped by Amado Lazo: operational software, AI-powered tools, custom Power Apps, and public web utilities.">
-    <meta property="twitter:image" content="https://amadolazo.com/pics/amado-lazo-tamucc-portrait.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://amadolazo.com/">
+    <meta name="twitter:title" content="Amado Lazo | Software Engineer in Austin, TX">
+    <meta name="twitter:description" content="Amado Lazo is an Austin, Texas software engineer building operational software, AI-powered tools, Power Apps, and free web utilities. Explore his work.">
+    <meta name="twitter:image" content="https://amadolazo.com/pics/social/amado-lazo.png">
 
     <!-- Structured Data (Schema.org) -->
     <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@context": "https://schema.org",
-      "@graph": [
+      "@type": "WebSite",
+      "@id": "https://amadolazo.com/#website",
+      "url": "https://amadolazo.com/",
+      "name": "Amado Lazo",
+      "alternateName": "Amado Lazo Portfolio",
+      "description": "Portfolio of Amado Lazo, a software engineer building operational software, AI-powered tools, custom Power Apps, and public web utilities.",
+      "inLanguage": "en-US",
+      "publisher": {
+        "@id": "https://amadolazo.com/#person"
+      }
+    },
+    {
+      "@type": "ProfilePage",
+      "@id": "https://amadolazo.com/#profilepage",
+      "url": "https://amadolazo.com/",
+      "name": "Amado Lazo | Software Engineer in Austin, TX",
+      "isPartOf": {
+        "@id": "https://amadolazo.com/#website"
+      },
+      "about": {
+        "@id": "https://amadolazo.com/#person"
+      },
+      "mainEntity": {
+        "@id": "https://amadolazo.com/#person"
+      },
+      "primaryImageOfPage": {
+        "@type": "ImageObject",
+        "url": "https://amadolazo.com/pics/amado-lazo-tamucc-portrait.jpg"
+      },
+      "description": "Amado Lazo is an Austin, Texas software engineer building operational software, AI-powered tools, Power Apps, and free web utilities. Explore his work.",
+      "dateModified": "2026-11-09"
+    },
+    {
+      "@type": "Person",
+      "@id": "https://amadolazo.com/#person",
+      "name": "Amado Lazo",
+      "url": "https://amadolazo.com/",
+      "image": "https://amadolazo.com/pics/amado-lazo-tamucc-portrait.jpg",
+      "sameAs": [
+        "https://github.com/alilazo",
+        "https://www.linkedin.com/in/amado-lazo/"
+      ],
+      "jobTitle": "Sr. Software Engineer",
+      "worksFor": [
         {
-          "@type": "WebSite",
-          "@id": "https://amadolazo.com/#website",
-          "url": "https://amadolazo.com/",
-          "name": "Amado Lazo",
-          "alternateName": "Amado Lazo Portfolio",
-          "description": "Portfolio of Amado Lazo, a software engineer building operational software, AI-powered tools, custom Power Apps, and public web utilities.",
-          "inLanguage": "en-US",
-          "publisher": {
-            "@id": "https://amadolazo.com/#person"
+          "@type": "Organization",
+          "name": "City of Austin"
+        },
+        {
+          "@type": "Organization",
+          "name": "careforge.ai",
+          "url": "https://careforge.ai/"
+        }
+      ],
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "Texas A&M University-Corpus Christi"
+      },
+      "knowsAbout": [
+        "Software Engineering",
+        "Artificial Intelligence",
+        "Full-Stack Development",
+        "React",
+        "Node.js",
+        "Python",
+        "C++",
+        "Java",
+        "FastAPI",
+        "PostgreSQL",
+        "Swiss Design",
+        "Scandinavian Design"
+      ],
+      "description": "Software engineer specializing in operational software, AI integration, custom Power Apps, public utilities, and full-stack development for municipal, healthcare, and business teams.",
+      "homeLocation": {
+        "@type": "Place",
+        "name": "Austin, Texas"
+      },
+      "award": "Outstanding Islander Graduate, Texas A&M University-Corpus Christi, 2023"
+    },
+    {
+      "@type": "ItemList",
+      "@id": "https://amadolazo.com/#projects",
+      "name": "Systems shipped by Amado Lazo",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "item": {
+            "@type": "SoftwareApplication",
+            "name": "CareForge AI",
+            "url": "https://careforge.ai/",
+            "applicationCategory": "HealthApplication",
+            "operatingSystem": "Web",
+            "description": "A mental health platform for veterans featuring a 24/7 AI-powered counselor and health coach."
           }
         },
         {
-          "@type": "ProfilePage",
-          "@id": "https://amadolazo.com/#profilepage",
-          "url": "https://amadolazo.com/",
-          "name": "Amado Lazo | Software Engineer & AI Specialist",
-          "isPartOf": {
-            "@id": "https://amadolazo.com/#website"
-          },
-          "about": {
-            "@id": "https://amadolazo.com/#person"
-          },
-          "mainEntity": {
-            "@id": "https://amadolazo.com/#person"
-          },
-          "primaryImageOfPage": {
-            "@type": "ImageObject",
-            "url": "https://amadolazo.com/pics/amado-lazo-tamucc-portrait.jpg"
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@type": "SoftwareApplication",
+            "name": "Stellar Inventory",
+            "url": "https://www.stellarinsight.app/",
+            "applicationCategory": "BusinessApplication",
+            "operatingSystem": "iOS, Android, Web",
+            "description": "An inventory tracking system using Bluetooth scanning technology for business operations."
           }
         },
         {
-          "@type": "Person",
-          "@id": "https://amadolazo.com/#person",
-          "name": "Amado Lazo",
-          "url": "https://amadolazo.com/",
-          "image": "https://amadolazo.com/pics/amado-lazo-tamucc-portrait.jpg",
-          "sameAs": [
-            "https://github.com/alilazo",
-            "https://www.linkedin.com/in/amado-lazo/"
-          ],
-          "jobTitle": "Sr. Software Engineer",
-          "worksFor": [
-            {
-              "@type": "Organization",
-              "name": "City of Austin"
-            },
-            {
-              "@type": "Organization",
-              "name": "careforge.ai",
-              "url": "https://careforge.ai/"
-            }
-          ],
-          "alumniOf": {
-            "@type": "CollegeOrUniversity",
-            "name": "Texas A&M University-Corpus Christi"
-          },
-          "knowsAbout": [
-            "Software Engineering",
-            "Artificial Intelligence",
-            "Full-Stack Development",
-            "React",
-            "Node.js",
-            "Python",
-            "C++",
-            "Java",
-            "FastAPI",
-            "PostgreSQL",
-            "Swiss Design",
-            "Scandinavian Design"
-          ],
-          "description": "Software engineer specializing in operational software, AI integration, custom Power Apps, public utilities, and full-stack development for municipal, healthcare, and business teams."
+          "@type": "ListItem",
+          "position": 3,
+          "item": {
+            "@type": "SoftwareApplication",
+            "name": "EMS Deployment Gateway",
+            "applicationCategory": "BusinessApplication",
+            "operatingSystem": "Microsoft Power Apps",
+            "description": "A custom Power Apps deployment tracking application connected to an Inventory ETL SQL database for monitoring active deployments, personnel, positions, fleet, and finances."
+          }
         },
         {
-          "@type": "ItemList",
-          "@id": "https://amadolazo.com/#projects",
-          "name": "Systems shipped by Amado Lazo",
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "item": {
-                "@type": "SoftwareApplication",
-                "name": "CareForge AI",
-                "url": "https://careforge.ai/",
-                "applicationCategory": "HealthApplication",
-                "operatingSystem": "Web",
-                "description": "A mental health platform for veterans featuring a 24/7 AI-powered counselor and health coach."
-              }
+          "@type": "ListItem",
+          "position": 4,
+          "item": {
+            "@type": "SoftwareApplication",
+            "name": "EMS Unit Out of Service Scheduler",
+            "applicationCategory": "BusinessApplication",
+            "operatingSystem": "Microsoft Power Apps",
+            "description": "A custom Power Apps scheduler for tracking EMS units that are out of service and keeping operational availability easier to coordinate."
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 5,
+          "item": {
+            "@type": "SoftwareApplication",
+            "name": "Color Converter API",
+            "url": "https://amadolazo.com/tools/color/",
+            "applicationCategory": "DeveloperApplication",
+            "operatingSystem": "Any",
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD"
             },
-            {
-              "@type": "ListItem",
-              "position": 2,
-              "item": {
-                "@type": "SoftwareApplication",
-                "name": "Stellar Inventory",
-                "url": "https://www.stellarinsight.app/",
-                "applicationCategory": "BusinessApplication",
-                "operatingSystem": "iOS, Android, Web",
-                "description": "An inventory tracking system using Bluetooth scanning technology for business operations."
-              }
+            "description": "A free public color converter that converts HEX values into RGB and HSL output with named recommended color palettes."
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 6,
+          "item": {
+            "@type": "SoftwareApplication",
+            "name": "Color Picker",
+            "url": "https://amadolazo.com/tools/color-picker/",
+            "applicationCategory": "DesignApplication",
+            "operatingSystem": "Any",
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD"
             },
-            {
-              "@type": "ListItem",
-              "position": 3,
-              "item": {
-                "@type": "SoftwareApplication",
-                "name": "EMS Deployment Gateway",
-                "applicationCategory": "BusinessApplication",
-                "operatingSystem": "Microsoft Power Apps",
-                "description": "A custom Power Apps deployment tracking application connected to an Inventory ETL SQL database for monitoring active deployments, personnel, positions, fleet, and finances."
-              }
+            "description": "A free public color picker for visually selecting colors, tuning HSL values, and copying HEX, RGB, and HSL output."
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 7,
+          "item": {
+            "@type": "SoftwareApplication",
+            "name": "QR Generator API",
+            "url": "https://amadolazo.com/qrgenerator/",
+            "applicationCategory": "DeveloperApplication",
+            "operatingSystem": "Any",
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD"
             },
-            {
-              "@type": "ListItem",
-              "position": 4,
-              "item": {
-                "@type": "SoftwareApplication",
-                "name": "EMS Unit Out of Service Scheduler",
-                "applicationCategory": "BusinessApplication",
-                "operatingSystem": "Microsoft Power Apps",
-                "description": "A custom Power Apps scheduler for tracking EMS units that are out of service and keeping operational availability easier to coordinate."
-              }
+            "description": "A free QR code generator that converts links or text into scannable QR codes through a web page or URL-based interface."
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 8,
+          "item": {
+            "@type": "SoftwareApplication",
+            "name": "Advantage Play BJ",
+            "url": "https://amadolazo.com/projects/Advantage%20Play%20BJ/",
+            "applicationCategory": "GameApplication",
+            "operatingSystem": "Any",
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD"
             },
-            {
-              "@type": "ListItem",
-              "position": 5,
-              "item": {
-                "@type": "SoftwareApplication",
-                "name": "Color Converter API",
-                "url": "https://amadolazo.com/tools/color/",
-                "applicationCategory": "DeveloperApplication",
-                "operatingSystem": "Any",
-                "offers": {
-                  "@type": "Offer",
-                  "price": "0",
-                  "priceCurrency": "USD"
-                },
-                "description": "A free public color converter that converts HEX values into RGB and HSL output with named recommended color palettes."
-              }
-            },
-            {
-              "@type": "ListItem",
-              "position": 6,
-              "item": {
-                "@type": "SoftwareApplication",
-                "name": "Color Picker",
-                "url": "https://amadolazo.com/tools/color-picker/",
-                "applicationCategory": "DesignApplication",
-                "operatingSystem": "Any",
-                "offers": {
-                  "@type": "Offer",
-                  "price": "0",
-                  "priceCurrency": "USD"
-                },
-                "description": "A free public color picker for visually selecting colors, tuning HSL values, and copying HEX, RGB, and HSL output."
-              }
-            },
-            {
-              "@type": "ListItem",
-              "position": 7,
-              "item": {
-                "@type": "SoftwareApplication",
-                "name": "QR Generator API",
-                "url": "https://amadolazo.com/qrgenerator/",
-                "applicationCategory": "DeveloperApplication",
-                "operatingSystem": "Any",
-                "offers": {
-                  "@type": "Offer",
-                  "price": "0",
-                  "priceCurrency": "USD"
-                },
-                "aggregateRating": {
-                  "@type": "AggregateRating",
-                  "ratingValue": "5",
-                  "ratingCount": "1"
-                },
-                "description": "A free QR code generator that converts links or text into scannable QR codes through a web page or URL-based interface."
-              }
-            }
-          ]
+            "description": "A free Hi-Lo card counting trainer with Basic Strategy drills, deviations, visual counting practice, achievements, analytics, and perfect-play EV simulation."
+          }
         }
       ]
     }
+  ]
+}
     </script>
+    <meta property="og:site_name" content="Amado Lazo">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:alt" content="Amado Lazo, software engineer in Austin, Texas">
+    <meta name="twitter:image:alt" content="Amado Lazo, software engineer in Austin, Texas">
 </head>
 
 <body>
-    <!-- AI-First Semantic Data (AIO) -->
-    <div id="ai-summary" style="display: none;" aria-hidden="true">
-        <h2>AI Summary of Amado Lazo</h2>
-        <p>Amado Lazo is a Software Engineer at the City of Austin and a Sr. Software Engineer at Careforge.ai. He builds
-            operational software, AI-powered tools, custom Power Apps, and public utilities for teams that need clarity
-            under pressure. His shipped systems include EMS workflow applications, SQL-backed deployment tracking tools,
-            veteran mental health technology, inventory platforms, and free public web utilities.</p>
-    </div>
-
-    <!-- FAQ for AI Bot Scraping -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [{
-        "@type": "Question",
-        "name": "Who is Amado Lazo?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Amado Lazo is a Software Engineer based in Austin, Texas, currently working for the City of Austin and Careforge.ai. He builds operational software, AI-powered tools, custom Power Apps, and public utilities."
-        }
-      }, {
-        "@type": "Question",
-        "name": "What is Amado Lazo's specialization?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "He specializes in full-stack engineering, operational workflows, AI-assisted development, Power Apps, SQL-backed tools, and practical public web utilities."
-        }
-      }]
-    }
-    </script>
-
-    <!--- Custom Blob Cursor -->
-    <div class="cursor-wrapper">
-        <div class="cursor">
-            <div class="cursor__blob main-blob"></div>
-            <div class="cursor__blob secondary-blob"></div>
-            <div class="cursor__blob secondary-blob"></div>
+    <div class="site-intro" id="siteIntro" role="dialog" aria-modal="true" aria-label="Welcome to Amado Lazo's portfolio" hidden>
+        <div class="intro-curtain intro-curtain-top" aria-hidden="true"></div>
+        <div class="intro-curtain intro-curtain-bottom" aria-hidden="true"></div>
+        <div class="intro-scene" aria-hidden="true">
+            <div class="intro-word-mask"><span class="intro-word intro-word-first">AMADO</span></div>
+            <div class="intro-word-mask"><span class="intro-word intro-word-last">LAZO<span class="intro-dot">.</span></span></div>
         </div>
+        <button class="intro-skip" id="introSkip" type="button">Skip intro<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></button>
     </div>
+    <a class="skip-link" href="#main-content">Skip to content</a>
 
-    <!-- SVG Gooey Filter -->
-    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" style="display:none">
-        <defs>
-            <filter id="goo">
-                <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
-                <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7"
-                    result="goo" />
-                <feBlend in="SourceGraphic" in2="goo" />
-            </filter>
-        </defs>
-    </svg>
+    <div class="cursor-wrapper" aria-hidden="true"><div class="cursor-follower"><span class="cursor-ring"></span><span class="cursor-label"></span></div></div>
 
     <!-- Scroll Progress -->
     <div class="scroll-progress" id="scrollProgress"></div>
 
     <!--- Navigation -->
-    <nav class="navbar-custom" id="navbar">
-        <a href="#" class="nav-brand">AMADO LAZO</a>
+    <nav class="navbar-custom" id="navbar" aria-label="Main navigation">
+        <a href="#top" class="nav-brand" aria-label="Amado Lazo, back to top">AMADO LAZO<span class="brand-period" aria-hidden="true">.</span></a>
 
         <!-- Desktop Nav -->
         <div class="nav-links">
@@ -304,19 +293,19 @@
             <a href="#Life" class="nav-link-custom" data-umami-event="Nav Click - Life">Life</a>
             <a href="#Principles" class="nav-link-custom" data-umami-event="Nav Click - Principles">Principles</a>
             <a href="#Booking" class="nav-link-custom" data-umami-event="Nav Click - Booking">Book Now</a>
-            <button class="theme-switch" id="themeToggle">DARK MODE</button>
+            <button class="theme-switch" id="themeToggle" type="button" aria-label="Switch to dark mode">DARK MODE</button>
         </div>
 
         <!-- Mobile Sandwich Menu Toggle -->
-        <div class="menu-toggle" id="mobileMenuToggle">
+        <button class="menu-toggle" id="mobileMenuToggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="mobileMenuOverlay">
             <span></span>
             <span></span>
             <span></span>
-        </div>
+        </button>
     </nav>
 
     <!-- Mobile Menu Overlay -->
-    <div class="mobile-menu-overlay" id="mobileMenuOverlay">
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay" role="dialog" aria-modal="true" aria-label="Navigation" hidden inert>
         <a href="#About" class="mobile-nav-link" data-umami-event="Mobile Nav Click - About">About</a>
         <a href="#Experience" class="mobile-nav-link" data-umami-event="Mobile Nav Click - Experience">Experience</a>
         <a href="#Recognition" class="mobile-nav-link" data-umami-event="Mobile Nav Click - Recognition">Recognition</a>
@@ -325,44 +314,45 @@
         <a href="#Life" class="mobile-nav-link" data-umami-event="Mobile Nav Click - Life">Life</a>
         <a href="#Principles" class="mobile-nav-link" data-umami-event="Mobile Nav Click - Principles">Principles</a>
         <a href="#Booking" class="mobile-nav-link" data-umami-event="Mobile Nav Click - Booking">Book Now</a>
-        <button class="theme-switch mt-4" id="themeToggleMobile">DARK MODE</button>
+        <button class="theme-switch mt-4" id="themeToggleMobile" type="button" aria-label="Switch to dark mode">DARK MODE</button>
     </div>
 
     <!-- Hero Section -->
-    <header class="headerClass">
+    <header class="headerClass" id="top">
         <div class="hero-grid">
             <div class="hero-text reveal">
-                <h1>Hi, I'm <br><span>Amado</span><br>Lazo</h1>
-                <div class="hero-roles mt-4">
+                <h1><span class="hero-greeting">Hi, I'm</span> <span class="hero-name">Amado</span> Lazo<span class="hero-period">.</span></h1>
+                <p class="hero-intro">
                     I build operational software, AI-powered tools, and public utilities for teams that need clarity
-                    under pressure.<br>
-                    Software Engineer @ <strong>City of Austin</strong><br>
-                    Sr. Software Engineer @ <strong>Careforge.ai</strong>
+                    under pressure.</p>
+                <div class="hero-roles">
+                    <p>Software Engineer <span>@</span> <strong>City of Austin</strong></p>
+                    <p>Sr. Software Engineer <span>@</span> <strong>Careforge.ai</strong></p>
                 </div>
-                <p class="lead mt-4 hero-typewriter">
-                    <span class="typewriter"></span>
-                </p>
-                <div class="mt-5">
-                    <a href="#Projects" class="btn-custom hoverable me-3">View Work</a>
-                    <a href="#Booking" class="btn-custom hoverable" data-umami-event="Hero Click - Book Now">Book Now</a>
+                <div class="hero-actions">
+                    <a href="#Projects" class="btn-custom">View Work<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
+                    <a href="#Booking" class="btn-custom btn-secondary" data-umami-event="Hero Click - Book Now">Book Now</a>
                 </div>
             </div>
-            <div class="hero-img reveal hoverable">
-                <div class="hero-image-container boxShadow">
-                    <img src="pics/amado-lazo-tamucc-portrait.jpg"
-                        alt="Portrait of Amado Lazo, software engineer and AI specialist" class="hero-image">
-                    <div class="decorative-shape"></div>
-                    <img src="pics/amado-lazo-oil-paint-portrait-overlay.png"
-                        alt="Decorative oil paint style portrait overlay"
-                        class="oil-paint-float reveal"
-                        style="position: absolute; bottom: -50px; right: -50px; width: 180px; z-index: 2; filter: drop-shadow(10px 10px 20px rgba(0,0,0,0.2));">
+            <figure class="hero-img">
+                <div class="hero-image-container">
+                    <button class="portrait-toggle" type="button" aria-label="Show portrait in color" aria-pressed="false">
+                        <picture><source type="image/webp" srcset="pics/amado-lazo-tamucc-portrait.webp"><img src="pics/amado-lazo-tamucc-portrait.jpg"
+                            alt="Portrait of Amado Lazo, software engineer and AI specialist" class="hero-image" fetchpriority="high" width="512" height="768" decoding="async"></picture>
+                        <picture><source type="image/webp" srcset="pics/amado-lazo-tamucc-portrait.webp"><img src="pics/amado-lazo-tamucc-portrait.jpg" alt="" aria-hidden="true"
+                            class="hero-image portrait-color" width="512" height="768" decoding="async"></picture>
+                    </button>
+                    <picture><source type="image/webp" srcset="pics/amado-lazo-oil-paint-portrait-overlay.webp"><img src="pics/amado-lazo-oil-paint-portrait-overlay.png"
+                        alt="" aria-hidden="true" class="portrait-cutout" decoding="async" width="1845" height="1942"></picture>
                 </div>
-            </div>
+                <figcaption><span>Austin, Texas</span></figcaption>
+            </figure>
         </div>
+        <a href="#Projects" class="hero-scroll">Explore the work<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v16m-6-6 6 6 6-6"/></svg></a>
     </header>
 
     <!--- Main Content -->
-    <main>
+    <main id="main-content" tabindex="-1">
         <section id="Impact" class="credibility-section">
             <div class="built-for boxShadow reveal hoverable">
                 <span class="built-for-label">Built for</span>
@@ -381,33 +371,33 @@
         <section id="Experience">
             <div class="row align-items-center">
                 <div class="col-md-6 revealLR hoverable">
-                    <img src="pics/scandinavian-minimalist-art.png"
+                    <picture><source type="image/webp" srcset="pics/scandinavian-minimalist-art.webp"><img src="pics/scandinavian-minimalist-art.png"
                         alt="Scandinavian minimalist artwork representing clean software design"
                         class="img-fluid boxShadow"
-                        style="border-radius: 0;">
+                        style="border-radius: 0;" width="640" height="640" decoding="async" loading="lazy"></picture>
                 </div>
-                <div class="col-md-6 revealLR" style="transition-delay: 0.2s;">
+                <div class="col-md-6 revealLR">
                     <h2 class="section-title">My Experience</h2>
                     <div class="mb-4">
-                        <h4>Software Engineer</h4>
+                        <h3>Software Engineer</h3>
                         <p class="text-muted mb-1">City of Austin</p>
                         <p>Developing robust, scalable solutions for municipal infrastructure and public services.</p>
                     </div>
                     <div class="mb-4">
-                        <h4>Sr. Software Engineer</h4>
+                        <h3>Sr. Software Engineer</h3>
                         <p class="text-muted mb-1">careforge.ai</p>
                         <p>Leading the development of a 24/7 AI-powered mental health platform dedicated to helping
                             veterans thrive.</p>
                     </div>
                     <div class="mb-4">
-                        <h4>IT Tech Support Specialist</h4>
+                        <h3>IT Tech Support Specialist</h3>
                         <p class="text-muted mb-1">City of Austin</p>
                         <p>Supported public sector operations across Travis County, EMS, CapMetro, Fire, APD, and
                             dispatch teams, helping keep critical systems and day-to-day technical workflows running
                             smoothly.</p>
                     </div>
                     <div class="mb-4">
-                        <h4>Software Engineer Intern</h4>
+                        <h3>Software Engineer Intern</h3>
                         <p class="text-muted mb-1">IBM</p>
                         <p>Built software using IBM's MERN-based technology stack and led an Agile team of 4 to deliver
                             project work collaboratively and on schedule.</p>
@@ -450,7 +440,7 @@
                     <div class="tip-card boxShadow" style="height: 100%;">
                         <span class="tip-number text-outline">PUB</span>
                         <div class="tip-content">
-                            <h4>Published Analysis: Using AI to Land Jobs</h4>
+                            <h3>Published Analysis: Using AI to Land Jobs</h3>
                             <p class="mb-4">A practical research-style strategy for using modern AI tools to strengthen
                                 recruiting workflows, personal branding, and job search execution.</p>
                             <a href="Final_Report_Latex.pdf" target="_blank" class="btn-custom"
@@ -464,7 +454,7 @@
                     <div class="tip-card boxShadow" style="height: 100%;">
                         <span class="tip-number text-outline">PUB</span>
                         <div class="tip-content">
-                            <h4>Published Analysis: ChatGPT’s Data Collection</h4>
+                            <h3>Published Analysis: ChatGPT’s Data Collection</h3>
                             <p class="mb-4">An ethics-focused analysis of rapid AI adoption, large-scale data collection,
                                 privacy tradeoffs, and responsible product development.</p>
                             <a href="ChatGPT_Data_Collection.pdf" target="_blank" class="btn-custom"
@@ -553,6 +543,14 @@
         <!-- Projects Section -->
         <section id="Projects">
             <h2 class="section-title reveal">Systems I've Shipped</h2>
+            <div class="project-filters" role="group" aria-label="Filter projects" hidden>
+                <button type="button" class="project-filter" data-filter="all" aria-pressed="true">All work</button>
+                <button type="button" class="project-filter" data-filter="featured" aria-pressed="false">Featured</button>
+                <button type="button" class="project-filter" data-filter="power-apps" aria-pressed="false">Power Apps</button>
+                <button type="button" class="project-filter" data-filter="public-tools" aria-pressed="false">Public tools</button>
+                <button type="button" class="project-filter" data-filter="other-projects" aria-pressed="false">Other projects</button>
+            </div>
+            <p class="visually-hidden" id="projectFilterStatus" role="status"></p>
 
             <div class="project-category reveal">
                 <h3 class="project-category-title">Featured</h3>
@@ -560,11 +558,11 @@
                     <div class="col-lg-6 reveal hoverable">
                         <div class="project-card boxShadow">
                             <div class="project-img-wrapper">
-                                <img src="pics/projects/careforge-ai-platform.png"
-                                    alt="CareForge AI mental health platform project screenshot">
+                                <picture><source type="image/webp" srcset="pics/projects/careforge-ai-platform.webp"><img src="pics/projects/careforge-ai-platform.png"
+                                    alt="CareForge AI mental health platform project screenshot" width="1898" height="907" decoding="async" loading="lazy"></picture>
                             </div>
                             <div class="project-content">
-                                <h3 class="project-title">CareForge AI</h3>
+                                <h4 class="project-title">CareForge AI</h4>
                                 <p class="project-desc"><strong>Problem:</strong> Veterans need access to supportive
                                     mental health resources outside normal care windows.</p>
                                 <p class="project-desc"><strong>System:</strong> A 24/7 AI-powered counselor and health
@@ -577,14 +575,14 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-6 reveal hoverable" style="transition-delay: 0.2s;">
+                    <div class="col-lg-6 reveal hoverable">
                         <div class="project-card boxShadow">
                             <div class="project-img-wrapper">
-                                <img src="pics/projects/stellar-inventory-app.png"
-                                    alt="Stellar Inventory mobile inventory tracking project screenshot">
+                                <picture><source type="image/webp" srcset="pics/projects/stellar-inventory-app.webp"><img src="pics/projects/stellar-inventory-app.png"
+                                    alt="Stellar Inventory mobile inventory tracking project screenshot" width="1898" height="937" decoding="async" loading="lazy"></picture>
                             </div>
                             <div class="project-content">
-                                <h3 class="project-title">Stellar Inventory</h3>
+                                <h4 class="project-title">Stellar Inventory</h4>
                                 <p class="project-desc"><strong>Problem:</strong> Inventory operations need faster item
                                     tracking without forcing teams through slow manual lookup workflows.</p>
                                 <p class="project-desc"><strong>System:</strong> A Bluetooth-enabled inventory platform
@@ -605,11 +603,11 @@
                     <div class="col-lg-4 reveal hoverable">
                         <div class="project-card boxShadow">
                             <div class="project-img-wrapper">
-                                <img src="pics/power-apps/ems-deployment-gateway-application-power-app.png"
-                                    alt="EMS Deployment Gateway Power App interface screenshot">
+                                <picture><source type="image/webp" srcset="pics/power-apps/ems-deployment-gateway-application-power-app.webp"><img src="pics/power-apps/ems-deployment-gateway-application-power-app.png"
+                                    alt="EMS Deployment Gateway Power App interface screenshot" width="1100" height="622" decoding="async" loading="lazy"></picture>
                             </div>
                             <div class="project-content">
-                                <h3 class="project-title">EMS Deployment Gateway</h3>
+                                <h4 class="project-title">EMS Deployment Gateway</h4>
                                 <p class="project-desc"><strong>Problem:</strong> Chiefs needed a faster way to monitor
                                     active deployments across personnel, positions, fleet, and finances using reliable
                                     operational data.</p>
@@ -620,14 +618,14 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-4 reveal hoverable" style="transition-delay: 0.1s;">
+                    <div class="col-lg-4 reveal hoverable">
                         <div class="project-card boxShadow">
                             <div class="project-img-wrapper">
-                                <img src="pics/power-apps/ems-ra-cad-events-power-app.png"
-                                    alt="EMS RA CAD Events Power App interface screenshot">
+                                <picture><source type="image/webp" srcset="pics/power-apps/ems-ra-cad-events-power-app.webp"><img src="pics/power-apps/ems-ra-cad-events-power-app.png"
+                                    alt="EMS RA CAD Events Power App interface screenshot" width="1248" height="709" decoding="async" loading="lazy"></picture>
                             </div>
                             <div class="project-content">
-                                <h3 class="project-title">EMS RA CAD Events App</h3>
+                                <h4 class="project-title">EMS RA CAD Events App</h4>
                                 <p class="project-desc"><strong>Problem:</strong> FDM RMS was being phased out, so the
                                     team needed an internal replacement without losing critical operational functionality.
                                 </p>
@@ -638,14 +636,14 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-4 reveal hoverable" style="transition-delay: 0.2s;">
+                    <div class="col-lg-4 reveal hoverable">
                         <div class="project-card boxShadow">
                             <div class="project-img-wrapper">
-                                <img src="pics/power-apps/ems-lecture-workshop-power-app.png"
-                                    alt="EMS Lecture Workshop Power App interface screenshot">
+                                <picture><source type="image/webp" srcset="pics/power-apps/ems-lecture-workshop-power-app.webp"><img src="pics/power-apps/ems-lecture-workshop-power-app.png"
+                                    alt="EMS Lecture Workshop Power App interface screenshot" width="1037" height="590" decoding="async" loading="lazy"></picture>
                             </div>
                             <div class="project-content">
-                                <h3 class="project-title">EMS Lecture Workshop Power App</h3>
+                                <h4 class="project-title">EMS Lecture Workshop Power App</h4>
                                 <p class="project-desc"><strong>Problem:</strong> The process depended on a legacy
                                     spreadsheet-based workflow that was manual, outdated, and time-consuming to manage.
                                 </p>
@@ -656,14 +654,14 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-4 reveal hoverable" style="transition-delay: 0.3s;">
+                    <div class="col-lg-4 reveal hoverable">
                         <div class="project-card boxShadow">
                             <div class="project-img-wrapper">
                                 <img src="pics/power-apps/ems-unit-out-of-service-power-app.png"
-                                    alt="EMS Unit Out of Service Scheduler Power App interface screenshot">
+                                    alt="EMS Unit Out of Service Scheduler Power App interface screenshot" width="1385" height="777" decoding="async" loading="lazy">
                             </div>
                             <div class="project-content">
-                                <h3 class="project-title">EMS Unit Out of Service Scheduler</h3>
+                                <h4 class="project-title">EMS Unit Out of Service Scheduler</h4>
                                 <p class="project-desc"><strong>Problem:</strong> EMS teams needed a cleaner way to
                                     coordinate unit availability and scheduled out-of-service time without scattered
                                     updates or manual tracking.</p>
@@ -680,64 +678,81 @@
                 <h3 class="project-category-title">Public Tools</h3>
                 <div class="featured-tool-cta boxShadow reveal hoverable">
                     <div>
-                        <span class="eyebrow-label">Featured public utility</span>
                         <h3>Free Utility APIs</h3>
                         <p>Small, URL-driven tools for quick everyday workflows: QR generation, color conversion, and
-                            practical developer output without accounts or setup.</p>
+                            practical developer output without accounts or setup. Also available: an <a href="projects/Image-Per-Square-Inch/">image print cost calculator</a>.</p>
                     </div>
-                    <a href="tools/color/index.html" class="btn-custom">Try Color Tool</a>
+                    <a href="tools/color/" class="btn-custom">Try Color Tool</a>
                 </div>
                 <div class="row g-4">
-                    <div class="col-md-4 reveal hoverable">
+                    <div class="col-md-6 col-xl-3 reveal hoverable">
                         <div class="project-card boxShadow">
                             <div class="project-img-wrapper">
                                 <img src="pics/projects/amadolazo-qr-code-generator.png"
-                                    alt="Amado Lazo QR Generator API project preview">
+                                    alt="Amado Lazo QR Generator API project preview" width="1433" height="1152" decoding="async" loading="lazy">
                             </div>
                             <div class="project-content">
-                                <h3 class="project-title">QR Generator API</h3>
+                                <h4 class="project-title">QR Generator API</h4>
                                 <p class="project-desc"><strong>Problem:</strong> People often need quick QR codes without
                                     accounts, dashboards, or paid tooling.</p>
                                 <p class="project-desc"><strong>System:</strong> A free public QR generator that accepts
                                     text or links from the UI or URL parameters.</p>
                                 <p class="project-desc"><strong>Impact:</strong> Makes a small, useful web utility
                                     available directly from amadolazo.com.</p>
-                                <a href="qrgenerator/index.html" class="btn-custom mt-auto">Open Tool</a>
+                                <a href="qrgenerator/" class="btn-custom mt-auto">Open Tool</a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4 reveal hoverable" style="transition-delay: 0.1s;">
+                    <div class="col-md-6 col-xl-3 reveal hoverable">
                         <div class="project-card boxShadow">
                             <div class="project-img-wrapper">
                                 <img src="pics/projects/color-converter-api.svg"
-                                    alt="Color Converter API project preview">
+                                    alt="Color Converter API project preview" width="1200" height="900" decoding="async" loading="lazy">
                             </div>
                             <div class="project-content">
-                                <h3 class="project-title">Color Converter API</h3>
+                                <h4 class="project-title">Color Converter API</h4>
                                 <p class="project-desc"><strong>Problem:</strong> Designers and developers often need
                                     quick color conversions while moving between CSS, design systems, and docs.</p>
                                 <p class="project-desc"><strong>System:</strong> A free URL-driven tool that converts HEX
                                     into RGB and HSL with named recommended colors.</p>
                                 <p class="project-desc"><strong>Impact:</strong> Makes color handoffs cleaner for public
                                     tools, landing pages, and interface experiments.</p>
-                                <a href="tools/color/index.html" class="btn-custom mt-auto">Open Tool</a>
+                                <a href="tools/color/" class="btn-custom mt-auto">Open Tool</a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4 reveal hoverable" style="transition-delay: 0.2s;">
+                    <div class="col-md-6 col-xl-3 reveal hoverable">
                         <div class="project-card boxShadow">
                             <div class="project-img-wrapper">
-                                <img src="pics/projects/color-picker-tool.svg" alt="Color Picker public tool preview">
+                                <img src="pics/projects/color-picker-tool.svg" alt="Color Picker public tool preview" width="1200" height="900" decoding="async" loading="lazy">
                             </div>
                             <div class="project-content">
-                                <h3 class="project-title">Color Picker</h3>
+                                <h4 class="project-title">Color Picker</h4>
                                 <p class="project-desc"><strong>Problem:</strong> Sometimes you need to discover the
                                     color first before converting it into developer-ready values.</p>
                                 <p class="project-desc"><strong>System:</strong> A visual picker with animated previews,
                                     HSL sliders, quick palettes, and copyable HEX, RGB, and HSL output.</p>
                                 <p class="project-desc"><strong>Impact:</strong> Speeds up visual color selection for
                                     UI experiments, dashboards, and public tools.</p>
-                                <a href="tools/color-picker/index.html" class="btn-custom mt-auto">Open Tool</a>
+                                <a href="tools/color-picker/" class="btn-custom mt-auto">Open Tool</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-xl-3 reveal hoverable">
+                        <div class="project-card boxShadow">
+                            <div class="project-img-wrapper">
+                                <img src="pics/projects/advantage-play-bj.svg"
+                                    alt="Advantage Play BJ Hi-Lo card counting trainer preview" width="1200" height="675" decoding="async" loading="lazy">
+                            </div>
+                            <div class="project-content">
+                                <h4 class="project-title">Advantage Play BJ</h4>
+                                <p class="project-desc"><strong>Problem:</strong> Serious blackjack practice is often
+                                    split across disconnected counting, strategy, and simulation tools.</p>
+                                <p class="project-desc"><strong>System:</strong> A complete Hi-Lo trainer with live play,
+                                    visual counting, deviations, achievements, and a configurable EV simulator.</p>
+                                <p class="project-desc"><strong>Impact:</strong> Gives advantage players one focused
+                                    place to build accuracy, speed, and a clearer understanding of expected value.</p>
+                                <a href="projects/Advantage%20Play%20BJ/" class="btn-custom mt-auto">Open Tool</a>
                             </div>
                         </div>
                     </div>
@@ -751,38 +766,38 @@
                         <div class="project-card boxShadow">
                             <div class="project-img-wrapper">
                                 <img src="pics/projects/comparing-ai-models.png"
-                                    alt="Comparing AI models project screenshot">
+                                    alt="Comparing AI models project screenshot" width="1893" height="880" decoding="async" loading="lazy">
                             </div>
                             <div class="project-content">
-                                <h3 class="project-title">Comparing AI Models</h3>
+                                <h4 class="project-title">Comparing AI Models</h4>
                                 <a href="http://comparing-ai.s3-website.us-east-2.amazonaws.com/" target="_blank"
                                     class="btn-custom mt-auto">View Details</a>
                             </div>
                         </div>
                     </div>
 
-                    <div class="col-md-4 reveal hoverable" style="transition-delay: 0.1s;">
+                    <div class="col-md-4 reveal hoverable">
                         <div class="project-card boxShadow">
                             <div class="project-img-wrapper">
-                                <img src="pics/projects/mflix-movie-database.png"
-                                    alt="Mflix movie database project screenshot">
+                                <picture><source type="image/webp" srcset="pics/projects/mflix-movie-database.webp"><img src="pics/projects/mflix-movie-database.png"
+                                    alt="Mflix movie database project screenshot" width="1024" height="398" decoding="async" loading="lazy"></picture>
                             </div>
                             <div class="project-content">
-                                <h3 class="project-title">Mflix Database</h3>
+                                <h4 class="project-title">Mflix Database</h4>
                                 <a href="https://github.com/gratiaa/mflix" target="_blank"
                                     class="btn-custom mt-auto">View Source</a>
                             </div>
                         </div>
                     </div>
 
-                    <div class="col-md-4 reveal hoverable" style="transition-delay: 0.2s;">
+                    <div class="col-md-4 reveal hoverable">
                         <div class="project-card boxShadow">
                             <div class="project-img-wrapper">
-                                <img src="pics/projects/gas-junkie-mobile-app.jpg"
-                                    alt="Gas Junkie mobile app project screenshot">
+                                <picture><source type="image/webp" srcset="pics/projects/gas-junkie-mobile-app.webp"><img src="pics/projects/gas-junkie-mobile-app.jpg"
+                                    alt="Gas Junkie mobile app project screenshot" width="1080" height="1152" decoding="async" loading="lazy"></picture>
                             </div>
                             <div class="project-content">
-                                <h3 class="project-title">Gas Junkie App</h3>
+                                <h4 class="project-title">Gas Junkie App</h4>
                                 <a href="https://github.com/alilazo/GasJunkie" target="_blank"
                                     class="btn-custom mt-auto">View Source</a>
                             </div>
@@ -798,19 +813,19 @@
             <div class="status-grid">
                 <div class="status-card boxShadow reveal hoverable">
                     <span class="tip-number">AI</span>
-                    <h4>AI-Assisted Operator Tools</h4>
+                    <h3>AI-Assisted Operator Tools</h3>
                     <p>Using AI to accelerate planning, drafting, debugging, and workflow design while keeping human
                         judgment in the loop.</p>
                 </div>
-                <div class="status-card boxShadow reveal hoverable" style="transition-delay: 0.1s;">
+                <div class="status-card boxShadow reveal hoverable">
                     <span class="tip-number">EMS</span>
-                    <h4>Emergency Services Workflows</h4>
+                    <h3>Emergency Services Workflows</h3>
                     <p>Building practical Power Apps and SQL-backed interfaces that help operational teams track people,
                         vehicles, deployments, and internal processes.</p>
                 </div>
-                <div class="status-card boxShadow reveal hoverable" style="transition-delay: 0.2s;">
+                <div class="status-card boxShadow reveal hoverable">
                     <span class="tip-number">WEB</span>
-                    <h4>Public Web Utilities</h4>
+                    <h3>Public Web Utilities</h3>
                     <p>Shipping small, free tools like the QR Generator API that solve real everyday problems with
                         minimal friction.</p>
                 </div>
@@ -826,31 +841,31 @@
                 <div class="tip-card boxShadow reveal hoverable">
                     <span class="tip-number">01</span>
                     <div class="tip-content">
-                        <h4>Build For Operators</h4>
+                        <h3>Build For Operators</h3>
                         <p>Great software respects the people using it under pressure. Interfaces should reduce steps,
                             surface the right data, and make the next action obvious.</p>
                     </div>
                 </div>
-                <div class="tip-card boxShadow reveal hoverable" style="transition-delay: 0.2s">
+                <div class="tip-card boxShadow reveal hoverable">
                     <span class="tip-number">02</span>
                     <div class="tip-content">
-                        <h4>Automate The Boring</h4>
+                        <h3>Automate The Boring</h3>
                         <p>Legacy workflows often hide the highest leverage. I look for repeated manual steps, brittle
                             handoffs, and spreadsheet work that can become reliable systems.</p>
                     </div>
                 </div>
-                <div class="tip-card boxShadow reveal hoverable" style="transition-delay: 0.4s">
+                <div class="tip-card boxShadow reveal hoverable">
                     <span class="tip-number">03</span>
                     <div class="tip-content">
-                        <h4>Use AI With Judgment</h4>
+                        <h3>Use AI With Judgment</h3>
                         <p>AI is a force multiplier, not a substitute for ownership. I use it to move faster while still
                             reviewing architecture, edge cases, and long-term maintainability.</p>
                     </div>
                 </div>
-                <div class="tip-card boxShadow reveal hoverable" style="transition-delay: 0.6s">
+                <div class="tip-card boxShadow reveal hoverable">
                     <span class="tip-number">04</span>
                     <div class="tip-content">
-                        <h4>Keep The System Understandable</h4>
+                        <h3>Keep The System Understandable</h3>
                         <p>Readable code, clear data flows, and simple interfaces are operational advantages. Complexity
                             is only worth it when it pays rent.</p>
                     </div>
@@ -869,12 +884,12 @@
                         to solve the toughest technical challenges.</p>
                     <p class="mt-3 fst-italic text-muted">A moment from my travels in New Mexico — 2024</p>
                 </div>
-                <div class="col-md-6 revealLR hoverable" style="transition-delay: 0.2s;">
+                <div class="col-md-6 revealLR hoverable">
                     <div class="life-image-wrapper boxShadow p-2 bg-white" style="transform: rotate(2deg);">
-                        <img src="pics/amado-lazo-new-mexico-outdoors.jpg"
+                        <picture><source type="image/webp" srcset="pics/amado-lazo-new-mexico-outdoors-480.webp 480w, pics/amado-lazo-new-mexico-outdoors.webp 960w" sizes="(max-width: 768px) calc(100vw - 40px), 42vw"><img src="pics/amado-lazo-new-mexico-outdoors.jpg"
                             alt="Amado Lazo exploring New Mexico outdoors"
                             class="img-fluid"
-                            style="border: 1px solid var(--border-color);">
+                            style="border: 1px solid var(--border-color);" width="1440" height="1800" decoding="async" loading="lazy"></picture>
                     </div>
                 </div>
             </div>
@@ -890,7 +905,7 @@
                     <div class="tip-card boxShadow" style="height: 100%;">
                         <span class="tip-number">P</span>
                         <div class="tip-content">
-                            <h4>Portfolios</h4>
+                            <h3>Portfolios</h3>
                             <p class="small mb-3">Professional, minimalist, and AI-optimized portfolios designed to sell
                                 your skills. Perfect for engineers & creatives.</p>
                             <div class="fw-bold text-accent mb-4">Contact for a custom quote</div>
@@ -899,11 +914,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-3 reveal hoverable" style="transition-delay: 0.1s;">
+                <div class="col-md-6 col-lg-3 reveal hoverable">
                     <div class="tip-card boxShadow" style="height: 100%;">
                         <span class="tip-number">S</span>
                         <div class="tip-content">
-                            <h4>Startups</h4>
+                            <h3>Startups</h3>
                             <p class="small mb-3">Fast MVPs, scalable frontend architecture, and robust API
                                 integrations to launch your idea quickly.</p>
                             <div class="fw-bold text-accent mb-4">Contact for a custom quote</div>
@@ -912,11 +927,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-3 reveal hoverable" style="transition-delay: 0.2s;">
+                <div class="col-md-6 col-lg-3 reveal hoverable">
                     <div class="tip-card boxShadow" style="height: 100%;">
                         <span class="tip-number">B</span>
                         <div class="tip-content">
-                            <h4>Businesses</h4>
+                            <h3>Businesses</h3>
                             <p class="small mb-3">SEO-ready, high-conversion landing pages and informative sites to grow
                                 your local presence and authority.</p>
                             <div class="fw-bold text-accent mb-4">Contact for a custom quote</div>
@@ -925,11 +940,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-3 reveal hoverable" style="transition-delay: 0.3s;">
+                <div class="col-md-6 col-lg-3 reveal hoverable">
                     <div class="tip-card boxShadow" style="height: 100%;">
                         <span class="tip-number">E</span>
                         <div class="tip-content">
-                            <h4>Ecommerce</h4>
+                            <h3>Ecommerce</h3>
                             <p class="small mb-3">Secure, modern online stores with seamless payment integration and
                                 intuitive inventory management.</p>
                             <div class="fw-bold text-accent mb-4">Contact for a custom quote</div>
@@ -945,7 +960,6 @@
             <div class="contact-container booking-container boxShadow reveal hoverable">
                 <div class="booking-grid">
                     <div class="booking-copy">
-                        <span class="eyebrow-label">Secure scheduling</span>
                         <h2>Let's build something beautiful.</h2>
                         <p class="lead mt-3 mb-4">Open for focused calls about software engineering, AI integration,
                             Power Apps, workflow automation, and practical product ideas. Choose a time that works for you on the calendar below,
@@ -974,7 +988,7 @@
                 <span aria-hidden="true">&times;</span>
             </button>
             <div class="project-modal-media">
-                <img src="" alt="" class="project-modal-image">
+                <img src="pics/projects/careforge-ai-platform.png" alt="" class="project-modal-image" loading="lazy" width="1898" height="907" decoding="async">
             </div>
             <div class="project-modal-content">
                 <span class="project-modal-eyebrow">Project details</span>
@@ -990,12 +1004,17 @@
         <div class="copyright">
             <span class="fw-bold">&copy; Amado Lazo, 2026</span>
         </div>
-        <span class="zero-gravity-secret">Zero gravity on desktop: Up Up Down Down Left Right Left Right.</span>
+        <div class="gravity-playground" hidden>
+            <button class="gravity-toggle" id="gravityToggle" type="button" aria-pressed="false">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><ellipse cx="12" cy="12" rx="10" ry="5" transform="rotate(-35 12 12)"/></svg>
+                <span>Play with gravity</span>
+            </button>
+        </div>
         <div class="social-links">
             <a href="https://github.com/alilazo" target="_blank" class="hoverable"><img src="pics/svg/github-logo.svg"
-                    alt="Amado Lazo GitHub profile" /></a>
+                    alt="Amado Lazo GitHub profile" / width="45" height="16" decoding="async" loading="lazy"></a>
             <a href="https://www.linkedin.com/in/amado-lazo/" target="_blank" class="hoverable"><img
-                    src="pics/svg/linkedin-logo.svg" alt="Amado Lazo LinkedIn profile" /></a>
+                    src="pics/svg/linkedin-logo.svg" alt="Amado Lazo LinkedIn profile" / width="24" height="24" decoding="async" loading="lazy"></a>
         </div>
     </footer>
 </body>

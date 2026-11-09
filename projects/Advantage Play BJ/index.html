@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Practice Hi-Lo card counting, Basic Strategy, and deviations with Advantage Play BJ. Free browser drills, local analytics, and a blackjack EV simulator.">
+  <meta name="author" content="Amado Lazo">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://amadolazo.com/projects/Advantage%20Play%20BJ/">
+  <link rel="icon" href="../../favicon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Advantage Play BJ | Free Hi-Lo Card Counting Trainer">
+  <meta property="og:description" content="Practice Hi-Lo card counting, Basic Strategy, and deviations with Advantage Play BJ. Free browser drills, local analytics, and a blackjack EV simulator.">
+  <meta property="og:url" content="https://amadolazo.com/projects/Advantage%20Play%20BJ/">
+  <meta property="og:image" content="https://amadolazo.com/pics/social/advantage-play-bj.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <title>Advantage Play BJ | Free Hi-Lo Card Counting Trainer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="7efb876f-5d13-4b99-bb0a-23fcbe8612cc"></script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Advantage Play BJ",
+  "url": "https://amadolazo.com/projects/Advantage%20Play%20BJ/",
+  "applicationCategory": "GameApplication",
+  "operatingSystem": "Any",
+  "isAccessibleForFree": true,
+  "description": "A free Hi-Lo card counting, Basic Strategy, deviations, visual counting, and blackjack EV training application.",
+  "featureList": [
+    "Hi-Lo card counting checkpoints",
+    "Rule-aware Basic Strategy trainer",
+    "Illustrious 18 and Fab 4 deviations",
+    "Visual card counting drills",
+    "Perfect-play EV simulation",
+    "Local performance analytics"
+  ],
+  "@id": "https://amadolazo.com/projects/Advantage%20Play%20BJ/#app",
+  "creator": {
+    "@type": "Person",
+    "@id": "https://amadolazo.com/#person",
+    "name": "Amado Lazo",
+    "url": "https://amadolazo.com/"
+  },
+  "image": "https://amadolazo.com/pics/social/advantage-play-bj.png",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  }
+}
+    </script>
+    <meta property="og:site_name" content="Amado Lazo">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:alt" content="Advantage Play BJ card counting and strategy trainer">
+    <meta name="twitter:url" content="https://amadolazo.com/projects/Advantage%20Play%20BJ/">
+    <meta name="twitter:title" content="Advantage Play BJ | Free Hi-Lo Card Counting Trainer">
+    <meta name="twitter:description" content="Practice Hi-Lo card counting, Basic Strategy, and deviations with Advantage Play BJ. Free browser drills, local analytics, and a blackjack EV simulator.">
+    <meta name="twitter:image" content="https://amadolazo.com/pics/social/advantage-play-bj.png">
+    <meta name="twitter:image:alt" content="Advantage Play BJ card counting and strategy trainer">
+</head>
+<body>
+  <a class="skip-link" href="#appMain">Skip to trainer</a>
+  <header class="hero shell">
+    <a class="back-link" href="../../">← Amado Lazo / Public Tools</a>
+    <p class="eyebrow">THE COMPLETE HI-LO TRAINING SYSTEM</p>
+    <div class="hero-grid">
+      <div>
+        <h1>Master the Count.<br><em>Perfect the Play.</em></h1>
+        <p class="hero-copy">Train card counting, Basic Strategy, high-value deviations, bet spreads, and casino decision-making in one focused simulator.</p>
+        <button class="button button-primary" type="button" data-go-tab="play" data-umami-event="Advantage Play BJ - Start Training">Start training</button>
+      </div>
+      <div class="hero-proof" aria-label="Training features">
+        <span><strong>Hi-Lo</strong> live checkpoints</span>
+        <span><strong>I18 + Fab 4</strong> deviations</span>
+        <span><strong>EV</strong> Monte Carlo modeling</span>
+      </div>
+    </div>
+  </header>
+
+  <nav class="tab-shell shell" aria-label="Advantage Play BJ sections">
+    <div class="tabs" role="tablist" aria-label="Trainer modes">
+      <button role="tab" aria-selected="true" aria-controls="panel-play" id="tab-play" data-tab="play">Play</button>
+      <button role="tab" aria-selected="false" aria-controls="panel-drills" id="tab-drills" data-tab="drills">Drills</button>
+      <button role="tab" aria-selected="false" aria-controls="panel-visual" id="tab-visual" data-tab="visual">Visual Count</button>
+      <button role="tab" aria-selected="false" aria-controls="panel-simulation" id="tab-simulation" data-tab="simulation">Perfect Play Simulation</button>
+      <button role="tab" aria-selected="false" aria-controls="panel-session" id="tab-session" data-tab="session">Session</button>
+      <button role="tab" aria-selected="false" aria-controls="panel-history" id="tab-history" data-tab="history">History</button>
+      <button role="tab" aria-selected="false" aria-controls="panel-settings" id="tab-settings" data-tab="settings">Settings</button>
+    </div>
+  </nav>
+
+  <main id="appMain" class="shell app-main">
+    <section class="tab-panel is-active" role="tabpanel" id="panel-play" aria-labelledby="tab-play">
+      <div class="section-heading"><div><p class="eyebrow">LIVE TABLE</p><h2>Blackjack training table</h2></div><p id="playRulesSummary" class="rule-summary"></p></div>
+      <div class="play-toolbar panel">
+        <div class="field compact"><label for="playBet">Wager</label><input id="playBet" type="number" min="1" value="10"></div>
+        <button id="startSession" class="button button-primary" type="button">Start session</button>
+        <button id="dealRound" class="button" type="button" disabled>Deal round</button>
+        <button id="endSession" class="button button-ghost" type="button" disabled>End session</button>
+        <span id="playBankroll" class="toolbar-stat">Bankroll $1,000</span>
+      </div>
+      <div class="casino-table" aria-label="Blackjack table">
+        <div class="shoe-meter"><span id="shoeFill"></span><small>Shoe</small></div>
+        <div class="table-position dealer-position"><span class="position-label">Dealer</span><div id="dealerCards" class="card-row"></div><strong id="dealerTotal"></strong></div>
+        <div id="autoSeats" class="auto-seats"></div>
+        <div class="table-position player-position"><span class="position-label">Your hand</span><div id="playerHands" class="player-hands"><div class="card-row"></div></div><strong id="playerTotal"></strong></div>
+        <div id="decisionControls" class="decision-controls" aria-label="Playing decisions">
+          <button class="button" data-action="hit" disabled>Hit</button><button class="button" data-action="stand" disabled>Stand</button>
+          <button class="button" data-action="double" disabled>Double</button><button class="button" data-action="split" disabled>Split</button>
+          <button class="button" data-action="surrender" disabled>Surrender</button>
+        </div>
+        <div id="insuranceControls" class="decision-controls insurance-controls" hidden>
+          <button class="button" id="takeInsurance" type="button">Take insurance</button>
+          <button class="button button-ghost" id="declineInsurance" type="button">Decline</button>
+        </div>
+      </div>
+      <div id="playFeedback" class="feedback" role="status" aria-live="polite">Start a session to take a seat.</div>
+      <dialog id="countDialog">
+        <form method="dialog" id="countForm"><p class="eyebrow">HIDDEN CHECKPOINT</p><h2>What is the count?</h2>
+          <div class="form-grid"><label>Running count<input name="running" type="number" required></label><label>True count<input name="true" type="number" required></label></div>
+          <button class="button button-primary" value="submit">Check count</button>
+        </form>
+      </dialog>
+    </section>
+
+    <section class="tab-panel" role="tabpanel" id="panel-drills" aria-labelledby="tab-drills" hidden>
+      <div class="section-heading"><div><p class="eyebrow">FOCUSED REPETITIONS</p><h2>Decision drills</h2></div><div class="segmented"><button class="is-active" data-drill-mode="strategy">Basic Strategy</button><button data-drill-mode="deviation">Deviations</button></div></div>
+      <div class="drill-stage panel">
+        <div><span class="position-label">Dealer upcard</span><div id="drillDealer" class="card-row"></div></div>
+        <div><span class="position-label">Your hand</span><div id="drillPlayer" class="card-row"></div></div>
+        <div id="drillCount" class="count-chip">Base strategy</div>
+        <div class="decision-controls" id="drillActions">
+          <button class="button" data-drill-action="hit">Hit</button><button class="button" data-drill-action="stand">Stand</button><button class="button" data-drill-action="double">Double</button><button class="button" data-drill-action="split">Split</button><button class="button" data-drill-action="surrender">Surrender</button>
+        </div>
+        <p id="drillFeedback" class="feedback" aria-live="polite">Choose the best play.</p>
+        <button id="nextDrill" class="button button-primary" type="button">Next hand</button>
+      </div>
+    </section>
+
+    <section class="tab-panel" role="tabpanel" id="panel-visual" aria-labelledby="tab-visual" hidden>
+      <div class="section-heading"><div><p class="eyebrow">FLASH COUNTING</p><h2>Card Counting Visual Training</h2></div><p>See the cards. Hold the count. Trust the system.</p></div>
+      <div id="visualSetup" class="panel setup-grid">
+        <label>Decks<select id="visualDecks"><option>1</option><option>2</option><option>4</option><option>6</option><option>8</option></select></label>
+        <label>Cards at once<select id="visualGroup"><option>1</option><option selected>2</option><option>3</option><option>4</option><option>5</option></select></label>
+        <label>Speed<select id="visualSpeed"><option value="0.5">0.5×</option><option value="1" selected>1×</option><option value="1.5">1.5×</option><option value="2">2×</option><option value="3">3×</option><option value="4">4×</option></select></label>
+        <button id="startVisual" class="button button-primary" type="button" data-umami-event="Advantage Play BJ - Start Visual Count">Start visual drill</button>
+      </div>
+      <div id="visualArena" class="visual-arena" hidden>
+        <div id="visualCountdown" class="countdown" aria-live="assertive"></div><div id="visualCards" class="card-row visual-cards"></div>
+        <p id="visualProgress">Get ready.</p><div class="visual-controls"><button id="pauseVisual" class="button">Pause</button><button id="restartVisual" class="button button-ghost">Restart</button></div>
+      </div>
+      <form id="visualAnswer" class="panel answer-panel" hidden><label>Final running count<input id="visualCountInput" type="number" required></label><button class="button button-primary">Check count</button></form>
+      <div id="visualResult" class="feedback" role="status" aria-live="polite"></div>
+    </section>
+
+    <section class="tab-panel" role="tabpanel" id="panel-simulation" aria-labelledby="tab-simulation" hidden>
+      <div class="section-heading"><div><p class="eyebrow">MONTE CARLO + LIVE TABLE</p><h2>Advantage Perfect Play Simulation</h2></div><p>Watch a perfect Hi-Lo bot play and see estimated EV converge.</p></div>
+      <div class="simulation-layout">
+        <aside class="panel simulation-settings">
+          <h3>Simulation setup</h3><div data-rules-editor="simulation"></div>
+          <h3>Bet spread</h3><div class="spread-grid"><label>TC ≤ 0<input data-spread="min" type="number" min="1"></label><label>TC +1<input data-spread="tc1" type="number" min="1"></label><label>TC +2<input data-spread="tc2" type="number" min="1"></label><label>TC +3<input data-spread="tc3" type="number" min="1"></label><label>TC +4<input data-spread="tc4" type="number" min="1"></label></div>
+          <div class="form-grid"><label>Base unit ($)<input id="simUnit" type="number" min="1"></label><label>Hands/hour<input id="simHandsHour" type="number" min="10" max="300"></label></div>
+          <label class="switch"><input id="simDeviations" type="checkbox" checked><span>Use I18 + Fab 4 deviations</span></label>
+        </aside>
+        <div class="simulation-main">
+          <div class="panel sim-controls"><button id="simRun" class="button button-primary" type="button" data-umami-event="Advantage Play BJ - Run EV Simulation">Run</button><button id="simStop" class="button" type="button" disabled>Stop</button><button id="simRestart" class="button button-ghost" type="button" disabled>Restart</button><label>Speed<select id="simSpeed"><option value="1">1×</option><option value="2">2×</option><option value="5">5×</option><option value="10">10×</option><option value="turbo">Turbo</option></select></label></div>
+          <div class="sim-hero-stat"><span>Estimated EV</span><strong id="simEv">0.00 units / 100</strong><small id="simEvDollars">$0.00/hour · Run to begin</small></div>
+          <div class="sim-table casino-table compact-table"><div class="table-position"><span class="position-label">Dealer</span><div id="simDealer" class="card-row"></div></div><div class="table-position"><span class="position-label">Perfect bot</span><div id="simPlayer" class="card-row"></div></div><div id="simBotHud" class="bot-hud">Waiting for a run.</div></div>
+          <div class="stat-grid"><div><span>Hands</span><strong id="simHands">0</strong></div><div><span>Profit</span><strong id="simProfit">0.00 u</strong></div><div><span>95% interval</span><strong id="simCi">±0.00</strong></div><div><span>Avg. wager</span><strong id="simAvgBet">0.00 u</strong></div></div>
+          <div class="chart-block"><h3>EV convergence</h3><div id="evChart"></div></div><div class="chart-block"><h3>EV by true count</h3><div id="evByCountChart"></div></div>
+          <p class="disclaimer">Monte Carlo estimates describe this ruleset and bet spread; they do not guarantee future casino results.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="tab-panel" role="tabpanel" id="panel-session" aria-labelledby="tab-session" hidden>
+      <div class="section-heading"><div><p class="eyebrow">LIVE PERFORMANCE</p><h2>Current session</h2></div></div>
+      <div id="sessionStats" class="stat-grid"></div><div class="chart-block"><h3>Decision accuracy</h3><div id="sessionChart"></div></div>
+    </section>
+
+    <section class="tab-panel" role="tabpanel" id="panel-history" aria-labelledby="tab-history" hidden>
+      <div class="section-heading"><div><p class="eyebrow">PROGRESS OVER TIME</p><h2>History and achievements</h2></div><button id="resetData" class="button button-ghost">Reset all data</button></div>
+      <div id="achievementGrid" class="achievement-grid"></div>
+      <div class="chart-block"><h3>Visual Count error trend</h3><div id="historyChart"></div></div>
+      <div id="historyList" class="history-list"></div>
+    </section>
+
+    <section class="tab-panel" role="tabpanel" id="panel-settings" aria-labelledby="tab-settings" hidden>
+      <div class="section-heading"><div><p class="eyebrow">TABLE CONFIGURATION</p><h2>Settings</h2></div><p>Changes apply to the next session or simulation.</p></div>
+      <div class="settings-layout"><div class="panel"><h3>Game rules</h3><div data-rules-editor="settings"></div></div>
+        <div class="panel"><h3>Training</h3>
+          <label>Automated seats<select id="automatedSeats"><option>0</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></label>
+          <label class="switch"><input id="trackCounting" type="checkbox"><span>Track Hi-Lo counting</span></label><label class="switch"><input id="trackStrategy" type="checkbox"><span>Track Basic Strategy</span></label><label class="switch"><input id="trackDeviations" type="checkbox"><span>Track deviations</span></label><label class="switch"><input id="trackBetting" type="checkbox"><span>Track bet sizing</span></label>
+          <div class="form-grid"><label>Starting bankroll ($)<input id="settingBankroll" type="number" min="1"></label><label>Base unit ($)<input id="settingUnit" type="number" min="1"></label></div>
+        </div></div>
+      <div id="settingsStatus" class="feedback" aria-live="polite">Settings save automatically.</div>
+    </section>
+  </main>
+
+  <section class="feature-band shell" aria-labelledby="why-title"><p class="eyebrow">WHY ADVANTAGE PLAY BJ</p><h2 id="why-title">One system. Every high-value skill.</h2><div class="feature-grid"><article><h3>Train the full stack</h3><p>Count cards, choose the right play, apply deviations, and size the bet without switching tools.</p></article><article><h3>See the edge form</h3><p>Watch a perfect bot play real shoes while EV, uncertainty, wagers, and true counts update.</p></article><article><h3>Keep your progress</h3><p>Private local history turns each session into clear trends, weak spots, and achievements.</p></article></div></section>
+  <section class="faq shell"><p class="eyebrow">QUICK ANSWERS</p><h2>About the trainer</h2><details><summary>Is Advantage Play BJ free?</summary><p>Yes. It runs locally in a modern browser with no account or subscription.</p></details><details><summary>Which counting system does it teach?</summary><p>The trainer uses the balanced Hi-Lo system: 2–6 are +1, 7–9 are 0, and tens through aces are −1.</p></details><details><summary>Does the EV simulator guarantee casino results?</summary><p>No. It provides reproducible Monte Carlo estimates for the selected rules and spread. Variance and real-world conditions still matter.</p></details></section>
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+  <footer class="shell"><span>Advantage Play BJ</span><a href="../../">Back to portfolio</a></footer>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

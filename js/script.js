@@ -1,31 +1,28 @@
-window.onload = function () {
-    // Blob Cursor logic
-    const mainBlob = document.querySelector('.main-blob');
-    const secondaryBlobs = document.querySelectorAll('.secondary-blob');
-    const hoverables = document.querySelectorAll('.hoverable');
-    const cursorWrapper = document.querySelector(".cursor-wrapper");
-    const cursor = document.querySelector(".cursor");
-
-    let isMobile = window.matchMedia("(max-width: 768px)").matches;
-    let customCursorEnabled = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
-    let zeroGravityEnabled = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+document.addEventListener('DOMContentLoaded', () => {
+    const cursorWrapper = document.querySelector('.cursor-wrapper');
+    const cursorFollower = cursorWrapper?.querySelector('.cursor-follower');
+    const cursorLabel = cursorWrapper?.querySelector('.cursor-label');
+    const gravityPlayground = document.querySelector('.gravity-playground');
+    const gravityToggle = document.getElementById('gravityToggle');
+    const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let customCursorEnabled = finePointer.matches && !reducedMotion.matches;
+    let zeroGravityEnabled = customCursorEnabled;
     let zeroGravityActive = false;
     let zeroGravityFrame = null;
     let zeroGravityToastTimer = null;
     let zeroGravityKeyBuffer = [];
 
     const syncCustomCursorState = () => {
-        customCursorEnabled = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
-
-        if (!cursorWrapper || !cursor) return;
-
-        cursorWrapper.style.display = customCursorEnabled ? 'block' : 'none';
+        customCursorEnabled = finePointer.matches && !reducedMotion.matches;
+        if (!cursorWrapper) return;
+        cursorWrapper.hidden = !customCursorEnabled;
         cursorWrapper.style.opacity = 0;
-        cursor.style.opacity = 0;
     };
 
     const syncZeroGravityState = () => {
-        zeroGravityEnabled = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+        zeroGravityEnabled = finePointer.matches && !reducedMotion.matches && window.innerWidth > 768;
+        if (gravityPlayground) gravityPlayground.hidden = !zeroGravityEnabled;
 
         if (!zeroGravityEnabled && zeroGravityActive) {
             disableZeroGravity();
@@ -35,82 +32,95 @@ window.onload = function () {
     syncCustomCursorState();
     syncZeroGravityState();
 
-    if (mainBlob) {
-        // Move blobs with different delays for a liquid effect
-        document.body.addEventListener('mousemove', (e) => {
-            if (!customCursorEnabled) return;
-
-            const { clientX, clientY } = e;
-
-            if (cursorWrapper) cursorWrapper.style.opacity = 1;
-            if (cursor) cursor.style.opacity = 1;
-
-            gsap.to(mainBlob, {
-                duration: 0.2,
-                x: clientX - 20,
-                y: clientY - 20,
-                ease: "power2.out"
-            });
-
-            secondaryBlobs.forEach((blob, index) => {
-                gsap.to(blob, {
-                    duration: 0.4 + (index * 0.15),
-                    x: clientX - 12,
-                    y: clientY - 12,
-                    ease: "power3.out"
-                });
-            });
+    // Coalesce pointer updates; no idle animation loop or external dependency.
+    let cursorFrame = null;
+    let pointerX = 0;
+    let pointerY = 0;
+    document.addEventListener('pointermove', (event) => {
+        if (!customCursorEnabled || !cursorWrapper || event.pointerType === 'touch') return;
+        pointerX = event.clientX;
+        pointerY = event.clientY;
+        cursorWrapper.style.opacity = 1;
+        cursorWrapper.classList.toggle('is-interactive', !!event.target.closest('a, button'));
+        const label = zeroGravityActive && event.target.closest('.zero-gravity-item') ? 'Drag'
+            : event.target.closest('.portrait-toggle') ? 'Color'
+            : event.target.closest('.project-card-trigger') ? 'View' : '';
+        cursorWrapper.classList.toggle('has-label', !!label);
+        if (cursorLabel && cursorLabel.textContent !== label) cursorLabel.textContent = label;
+        if (cursorFrame) return;
+        cursorFrame = requestAnimationFrame(() => {
+            if (cursorFollower) cursorFollower.style.transform = `translate3d(${pointerX}px, ${pointerY}px, 0)`;
+            cursorFrame = null;
         });
+    }, { passive: true });
+    const hideCursor = () => { if (cursorWrapper) cursorWrapper.style.opacity = 0; };
+    document.documentElement.addEventListener('pointerleave', hideCursor);
+    document.querySelectorAll('iframe').forEach(frame => frame.addEventListener('pointerenter', hideCursor));
+    window.addEventListener('blur', hideCursor);
+    document.addEventListener('keydown', hideCursor);
+    [finePointer, reducedMotion].forEach(media => media.addEventListener('change', () => {
+        syncCustomCursorState();
+        syncZeroGravityState();
+    }));
 
-        // Hide cursor when hovering over text and interactive elements
-        const hoverSelector = 'a, button, input, textarea, p, h1, h2, h3, h4, h5, h6, span, li, .card, .project-card, .hoverable, img';
-
-        document.body.addEventListener('mouseover', (e) => {
-            if (!customCursorEnabled) return;
-            if (e.target.closest(hoverSelector)) {
-                gsap.to('.cursor-wrapper', { duration: 0.2, opacity: 0 });
-            }
+    const portrait = document.querySelector('.portrait-toggle');
+    let portraitFrame = null;
+    let portraitX = 0.5;
+    let portraitY = 0.5;
+    const positionPortraitReveal = (event) => {
+        const rect = portrait.getBoundingClientRect();
+        portraitX = Math.min(1, Math.max(0, (event.clientX - rect.left) / rect.width));
+        portraitY = Math.min(1, Math.max(0, (event.clientY - rect.top) / rect.height));
+        portrait.style.setProperty('--portrait-x', `${portraitX * 100}%`);
+        portrait.style.setProperty('--portrait-y', `${portraitY * 100}%`);
+    };
+    portrait?.addEventListener('pointermove', event => {
+        if (!customCursorEnabled || zeroGravityActive || event.pointerType === 'touch') return;
+        positionPortraitReveal(event);
+        if (portraitFrame) return;
+        portraitFrame = requestAnimationFrame(() => {
+            portrait.style.setProperty('--portrait-tilt-x', `${(0.5 - portraitY) * 7}deg`);
+            portrait.style.setProperty('--portrait-tilt-y', `${(portraitX - 0.5) * 7}deg`);
+            portraitFrame = null;
         });
+    }, { passive: true });
+    const resetPortraitTilt = () => {
+        if (portraitFrame) cancelAnimationFrame(portraitFrame);
+        portraitFrame = null;
+        portrait?.style.removeProperty('--portrait-tilt-x');
+        portrait?.style.removeProperty('--portrait-tilt-y');
+    };
+    portrait?.addEventListener('pointerleave', resetPortraitTilt);
+    reducedMotion.addEventListener('change', resetPortraitTilt);
+    portrait?.addEventListener('click', event => {
+        if (event.detail) positionPortraitReveal(event);
+        else {
+            portrait.style.setProperty('--portrait-x', '50%');
+            portrait.style.setProperty('--portrait-y', '50%');
+        }
+        const showColor = portrait.getAttribute('aria-pressed') !== 'true';
+        portrait.setAttribute('aria-pressed', String(showColor));
+        portrait.setAttribute('aria-label', showColor ? 'Show portrait in black and white' : 'Show portrait in color');
+    });
+    document.querySelector('.hero-img')?.classList.add('portrait-ready');
 
-        document.body.addEventListener('mouseout', (e) => {
-            if (!customCursorEnabled) return;
-            // Only restore if we are leaving a hoverable element to go to a non-hoverable one
-            if (e.target.closest(hoverSelector)) {
-                // Determine if the new target is also hoverable
-                if (!e.relatedTarget || !e.relatedTarget.closest || !e.relatedTarget.closest(hoverSelector)) {
-                    gsap.to('.cursor-wrapper', { duration: 0.2, opacity: 1 });
-                }
-            }
-        });
-    }
-
-    // Typed.js
-    const typedEl = document.querySelector('.typewriter');
-    if (typedEl) {
-        new Typed('.typewriter', {
-            strings: [
-                'I build operational software for real-world teams.',
-                'I turn messy workflows into usable systems.',
-                'I ship AI tools, Power Apps, and public utilities.'
-            ],
-            typeSpeed: 40,
-            backSpeed: 20,
-            loop: true,
-            cursorChar: '_',
-        });
-    }
+    // Lazy-load below-the-fold photography without hiding content behind JS.
+    document.querySelectorAll('main img').forEach(image => {
+        image.loading = 'lazy';
+        image.decoding = 'async';
+    });
 
     // Zero Gravity Easter Egg
     const zeroGravityCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight'];
     const zeroGravityTargets = new Map();
     const zeroGravityToast = document.createElement('div');
     zeroGravityToast.className = 'zero-gravity-toast';
+    zeroGravityToast.setAttribute('role', 'status');
     document.body.appendChild(zeroGravityToast);
 
     const zeroGravitySelector = [
         '.hero-text h1',
         '.hero-roles',
-        '.hero-typewriter',
         '.hero-image-container',
         '.section-title',
         '.impact-card',
@@ -122,14 +132,8 @@ window.onload = function () {
         '.status-card',
         '.skill-item',
         '.project-card',
-        '.btn-custom',
         '.life-image-wrapper',
-        '.contact-container',
-        '.nav-brand',
-        '.nav-link-custom',
-        '.theme-switch',
-        '.menu-toggle',
-        '.social-links a'
+        '.contact-container'
     ].join(', ');
 
     const showZeroGravityToast = (message) => {
@@ -184,9 +188,10 @@ window.onload = function () {
 
         const viewportWidth = window.innerWidth;
         const viewportHeight = window.innerHeight;
+        let hasMotion = false;
 
         zeroGravityTargets.forEach((item) => {
-            if (item.dragging) return;
+            if (item.dragging || (!item.vx && !item.vy && !item.vr)) return;
 
             item.vx *= 0.985;
             item.vy *= 0.985;
@@ -195,6 +200,7 @@ window.onload = function () {
             if (Math.abs(item.vx) < 0.02) item.vx = 0;
             if (Math.abs(item.vy) < 0.02) item.vy = 0;
             if (Math.abs(item.vr) < 0.02) item.vr = 0;
+            if (item.vx || item.vy || item.vr) hasMotion = true;
 
             item.x += item.vx;
             item.y += item.vy;
@@ -229,29 +235,33 @@ window.onload = function () {
             renderZeroGravityItem(item);
         });
 
-        zeroGravityFrame = window.requestAnimationFrame(zeroGravityLoop);
+        zeroGravityFrame = hasMotion ? window.requestAnimationFrame(zeroGravityLoop) : null;
     };
 
     const enableZeroGravity = () => {
         setupZeroGravityTargets();
         zeroGravityActive = true;
         document.body.classList.add('zero-gravity-active');
+        gravityToggle?.setAttribute('aria-pressed', 'true');
+        if (gravityToggle) gravityToggle.querySelector('span').textContent = 'Reset gravity';
+        resetPortraitTilt();
 
         zeroGravityTargets.forEach((item) => {
             item.element.classList.add('zero-gravity-item');
-            item.element.style.willChange = 'transform';
             item.element.style.touchAction = 'none';
             item.element.style.zIndex = '2';
         });
 
         stopZeroGravityLoop();
         zeroGravityFrame = window.requestAnimationFrame(zeroGravityLoop);
-        showZeroGravityToast('Zero gravity enabled. Drag and throw anything you see.');
+        showZeroGravityToast('Gravity is off. Drag and toss the work. Press Escape to reset.');
     };
 
     const disableZeroGravity = () => {
         zeroGravityActive = false;
         document.body.classList.remove('zero-gravity-active');
+        gravityToggle?.setAttribute('aria-pressed', 'false');
+        if (gravityToggle) gravityToggle.querySelector('span').textContent = 'Play with gravity';
 
         zeroGravityTargets.forEach((item) => {
             item.element.classList.remove('zero-gravity-item', 'zero-gravity-dragging');
@@ -275,7 +285,7 @@ window.onload = function () {
     };
 
     const toggleZeroGravity = () => {
-        if (!zeroGravityEnabled) return;
+        if (!zeroGravityEnabled || document.body.classList.contains('project-modal-open') || document.body.classList.contains('menu-open')) return;
 
         if (zeroGravityActive) {
             disableZeroGravity();
@@ -283,6 +293,14 @@ window.onload = function () {
             enableZeroGravity();
         }
     };
+
+    gravityToggle?.addEventListener('click', toggleZeroGravity);
+
+    document.addEventListener('visibilitychange', () => {
+        hideCursor();
+        if (document.hidden) stopZeroGravityLoop();
+        else if (zeroGravityActive && !zeroGravityFrame) zeroGravityFrame = requestAnimationFrame(zeroGravityLoop);
+    });
 
     const handleZeroGravityPointerDown = (event) => {
         if (!zeroGravityEnabled || !zeroGravityActive) return;
@@ -347,6 +365,7 @@ window.onload = function () {
             item.element.classList.remove('zero-gravity-dragging');
             item.element.releasePointerCapture?.(event.pointerId);
         });
+        if (zeroGravityActive && !zeroGravityFrame) zeroGravityFrame = requestAnimationFrame(zeroGravityLoop);
     };
 
     document.addEventListener('pointerdown', handleZeroGravityPointerDown, { passive: false });
@@ -370,6 +389,10 @@ window.onload = function () {
 
     document.addEventListener('keydown', (event) => {
         if (!zeroGravityEnabled) return;
+        if (event.key === 'Escape' && zeroGravityActive) {
+            disableZeroGravity();
+            return;
+        }
 
         const activeTag = document.activeElement?.tagName;
         if (activeTag === 'INPUT' || activeTag === 'TEXTAREA' || document.activeElement?.isContentEditable) {
@@ -389,16 +412,14 @@ window.onload = function () {
 
     // Dark Mode Logic
     const initTheme = () => {
-        const storedTheme = localStorage.getItem('theme') || 'light';
-        document.documentElement.setAttribute('data-theme', storedTheme);
-        updateThemeButtons(storedTheme);
+        updateThemeButtons(document.documentElement.getAttribute('data-theme'));
     };
 
     const toggleTheme = () => {
         const currentTheme = document.documentElement.getAttribute('data-theme');
         const newTheme = currentTheme === 'light' ? 'dark' : 'light';
         document.documentElement.setAttribute('data-theme', newTheme);
-        localStorage.setItem('theme', newTheme);
+        try { localStorage.setItem('theme', newTheme); } catch (_) { /* Theme still works without storage. */ }
         updateThemeButtons(newTheme);
     };
 
@@ -406,6 +427,7 @@ window.onload = function () {
         const btns = document.querySelectorAll('.theme-switch');
         btns.forEach(btn => {
             btn.innerText = theme === 'light' ? 'DARK MODE' : 'LIGHT MODE';
+            btn.setAttribute('aria-label', theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode');
         });
     };
 
@@ -414,79 +436,131 @@ window.onload = function () {
     });
     initTheme();
 
-    // Navigation hide/show on scroll (Desktop)
-    let lastScrollTop = 0;
-    const navbar = document.getElementById('navbar');
-
+    // Reading progress updates once per frame, without layout-changing width animation.
+    const progress = document.getElementById('scrollProgress');
+    let progressFrame = null;
+    const updateProgress = () => {
+        const height = document.documentElement.scrollHeight - window.innerHeight;
+        if (progress) progress.style.transform = `scaleX(${height > 0 ? Math.min(1, Math.max(0, window.scrollY / height)) : 0})`;
+        progressFrame = null;
+    };
     window.addEventListener('scroll', () => {
-        let scrollTop = window.scrollY || document.documentElement.scrollTop;
+        if (!progressFrame) progressFrame = requestAnimationFrame(updateProgress);
+    }, { passive: true });
+    updateProgress();
 
-        // Update Scroll Progress bar
-        const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-        const scrolled = (winScroll / height) * 100;
-        document.getElementById("scrollProgress").style.width = scrolled + "%";
-
-        if (!isMobile) {
-            if (scrollTop > window.innerHeight * 0.5) {
-                navbar.classList.add('visible');
-            } else {
-                navbar.classList.remove('visible');
-            }
-        }
-        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For Mobile or negative scrolling
-    });
-
-    // Mobile Sandwich Menu
+    // Mobile navigation supports Escape, focus containment, and focus return.
     const mobileToggle = document.getElementById('mobileMenuToggle');
     const mobileOverlay = document.getElementById('mobileMenuOverlay');
     const mobileLinks = document.querySelectorAll('.mobile-nav-link');
 
     if (mobileToggle && mobileOverlay) {
-        const toggleMenu = () => {
-            mobileToggle.classList.toggle('active');
-            mobileOverlay.classList.toggle('active');
-            document.body.style.overflow = mobileOverlay.classList.contains('active') ? 'hidden' : '';
+        const backgroundElements = [document.querySelector('header.headerClass'), document.querySelector('main'), document.querySelector('footer')].filter(Boolean);
+        const setMenu = (open, restoreFocus = true) => {
+            mobileToggle.classList.toggle('active', open);
+            mobileToggle.setAttribute('aria-expanded', String(open));
+            mobileToggle.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
+            mobileOverlay.hidden = !open;
+            mobileOverlay.inert = !open;
+            mobileOverlay.classList.toggle('active', open);
+            document.body.classList.toggle('menu-open', open);
+            backgroundElements.forEach(element => { element.inert = open; });
+            if (open) mobileLinks[0]?.focus({ preventScroll: true });
+            else if (restoreFocus) mobileToggle.focus({ preventScroll: true });
         };
-
-        mobileToggle.addEventListener('click', toggleMenu);
-
+        mobileToggle.addEventListener('click', () => setMenu(mobileOverlay.hidden));
+        document.querySelector('.nav-brand')?.addEventListener('click', () => {
+            if (!mobileOverlay.hidden) setMenu(false, false);
+        });
         mobileLinks.forEach(link => {
             link.addEventListener('click', () => {
-                if (mobileOverlay.classList.contains('active')) toggleMenu();
+                setMenu(false, false);
+                const destination = document.querySelector(link.getAttribute('href'));
+                if (destination) {
+                    destination.setAttribute('tabindex', '-1');
+                    destination.focus({ preventScroll: true });
+                }
             });
         });
-
-        // Handle Resize Bug
+        document.addEventListener('keydown', event => {
+            if (mobileOverlay.hidden) return;
+            if (event.key === 'Escape') { event.preventDefault(); setMenu(false); }
+            if (event.key !== 'Tab') return;
+            const focusables = [mobileToggle, ...mobileOverlay.querySelectorAll('a[href], button')];
+            const first = focusables[0];
+            const last = focusables[focusables.length - 1];
+            if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+            else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+        });
         window.addEventListener('resize', () => {
-            isMobile = window.matchMedia("(max-width: 768px)").matches;
-            syncCustomCursorState();
             syncZeroGravityState();
-            // Close mobile menu if resized to desktop
-            if (!isMobile && mobileOverlay.classList.contains('active')) {
-                mobileToggle.classList.remove('active');
-                mobileOverlay.classList.remove('active');
-                document.body.style.overflow = '';
+            if (window.innerWidth >= 1200 && !mobileOverlay.hidden) {
+                setMenu(false, false);
+                document.querySelector('.nav-brand')?.focus({ preventScroll: true });
             }
         });
     }
 
-    // Reveal Animations
-    const revealElements = () => {
-        const reveals = document.querySelectorAll(".reveal, .revealLR");
-        const windowHeight = window.innerHeight;
-        const elementVisible = 100;
-
-        reveals.forEach(el => {
-            const elementTop = el.getBoundingClientRect().top;
-            if (elementTop < windowHeight - elementVisible) {
-                el.classList.add("active");
-            }
-        });
+    // Filters progressively enhance the complete, always-readable project list.
+    const filterBar = document.querySelector('.project-filters');
+    const categories = [...document.querySelectorAll('.project-category')];
+    const filterAnimations = new Set();
+    const cancelFilterAnimations = () => {
+        filterAnimations.forEach(animation => animation.cancel());
+        filterAnimations.clear();
     };
+    reducedMotion.addEventListener('change', cancelFilterAnimations);
+    categories.forEach(category => {
+        const heading = category.querySelector('.project-category-title');
+        category.dataset.category = heading.textContent.trim().toLowerCase().replace(/[^a-z0-9]+/g, '-');
+        const count = document.createElement('span');
+        count.className = 'project-count';
+        count.setAttribute('aria-hidden', 'true');
+        count.textContent = String(category.querySelectorAll('.project-card').length).padStart(2, '0');
+        heading.appendChild(count);
+    });
+    if (filterBar) {
+        filterBar.hidden = false;
+        filterBar.addEventListener('click', event => {
+            const selected = event.target.closest('[data-filter]');
+            if (!selected) return;
+            if (selected.getAttribute('aria-pressed') === 'true') return;
+            cancelFilterAnimations();
+            const filter = selected.dataset.filter;
+            filterBar.querySelectorAll('button').forEach(button => button.setAttribute('aria-pressed', String(button === selected)));
+            let count = 0;
+            categories.forEach(category => {
+                category.hidden = filter !== 'all' && category.dataset.category !== filter;
+                if (!category.hidden) count += category.querySelectorAll('.project-card').length;
+            });
+            if (!reducedMotion.matches) {
+                const visibleCards = categories.filter(category => !category.hidden)
+                    .flatMap(category => [...category.querySelectorAll('.project-card')]).slice(0, 4);
+                visibleCards.forEach((card, index) => {
+                    const animation = card.animate([
+                        { clipPath: 'inset(0 0 8% 0)', opacity: 0.45 },
+                        { clipPath: 'inset(0)', opacity: 1 }
+                    ], { duration: 320, delay: index * 35, easing: 'cubic-bezier(0.16, 1, 0.3, 1)' });
+                    filterAnimations.add(animation);
+                    animation.finished.then(() => filterAnimations.delete(animation), () => filterAnimations.delete(animation));
+                });
+            }
+            document.getElementById('projectFilterStatus').textContent = `${count} projects shown. ${selected.textContent.trim()}.`;
+            updateProgress();
+        });
+    }
 
-    window.addEventListener("scroll", revealElements);
-    revealElements(); // Trigger on load
+    const navigationLinks = [...document.querySelectorAll('.nav-link-custom[href^="#"]')];
+    const sectionObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            navigationLinks.forEach(link => {
+                if (link.hash === `#${entry.target.id}`) link.setAttribute('aria-current', 'location');
+                else link.removeAttribute('aria-current');
+            });
+        });
+    }, { rootMargin: '-15% 0px -55% 0px', threshold: 0 });
+    document.querySelectorAll('main section[id]').forEach(section => sectionObserver.observe(section));
 
     // Project detail modal
     const projectModal = document.getElementById('projectModal');
@@ -499,6 +573,7 @@ window.onload = function () {
     let activeProjectCard = null;
     let lastProjectTrigger = null;
     let projectModalCloseTimer = null;
+    const modalBackground = [...document.querySelectorAll('body > nav, body > header, body > main, body > footer')];
 
     const setProjectModalOrigin = (card) => {
         if (!projectModalPanel || !card) return;
@@ -555,6 +630,7 @@ window.onload = function () {
         projectModal.hidden = false;
         projectModal.setAttribute('aria-hidden', 'false');
         document.body.classList.add('project-modal-open');
+        modalBackground.forEach(element => { element.inert = true; });
         setProjectModalOrigin(card);
         projectModal.classList.add('is-visible');
 
@@ -571,8 +647,9 @@ window.onload = function () {
 
         setProjectModalOrigin(activeProjectCard);
         projectModal.classList.remove('is-open');
-        projectModal.setAttribute('aria-hidden', 'true');
+        modalBackground.forEach(element => { element.inert = false; });
         lastProjectTrigger?.focus({ preventScroll: true });
+        projectModal.setAttribute('aria-hidden', 'true');
 
         projectModalCloseTimer = window.setTimeout(() => {
             projectModal.classList.remove('is-visible');
@@ -581,7 +658,7 @@ window.onload = function () {
             document.body.classList.remove('project-modal-open');
             activeProjectCard = null;
             lastProjectTrigger = null;
-        }, window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 700);
+        }, reducedMotion.matches ? 0 : 500);
     };
 
     if (projectModal) {
@@ -658,4 +735,4 @@ window.onload = function () {
     };
 
     trackSectionView();
-};
+});

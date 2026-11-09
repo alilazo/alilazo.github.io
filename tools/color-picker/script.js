@@ -160,7 +160,8 @@ function setColor(hex, syncSliders = true) {
     rgbValue.textContent = rgbText;
     hslValue.textContent = hslText;
     statusMessage.textContent = `${getColorName(normalizedHex)} is ready.`;
-    converterLink.href = `../color/index.html?hex=${normalizedHex.replace('#', '')}`;
+    const converterPage = window.location.protocol === 'file:' ? '../color/index.html' : '../color/';
+    converterLink.href = `${converterPage}?hex=${normalizedHex.replace('#', '')}`;
 
     if (syncSliders) {
         hueRange.value = hsl.h;
